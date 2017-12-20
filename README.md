@@ -6,126 +6,131 @@ This library provides several useful and often common additions for iOS applicat
 
 ### Key Concepts
 This library is divided into 4 parts.
-* Instantiation - This subspec changes "Stringly-typed" view instantiation, view contorller instantiation, and reusable view dequeuing into type safe function calls.
-* General - This subspec includes extensions for both the FileManager and UIView. These simplify getting common URLs and programmatically adding views down to simple variables and function calls.
+* Instantiation - This subspec changes "Stringly-typed" view instantiation, view controller instantiation, and reusable view dequeuing into type-safe function calls.
+* General - This subspec includes extensions for both FileManager and UIView. These simplify getting common URLs and programmatically adding views down to simple variables and function calls.
 * Version - This subspec simplifies the display of version and build numbers.
 * TimelessDate - This subspec is an abstraction away from Date and Calendar. It is primarily designed to be used for simple scheduling and day comparisons in which the time is less important that the actual day.
 
 ### Usage
+##### Reusable Views
 Registering and dequeuing cells, collection view supplementary views, table view headers and footers, and annotations is as simple as calling register on their presenting view, and dequeuing them in the collectionView(_:, cellForItemAt:) -> UICollectionViewCell, or equivalent, function.
 
 ``` swift
 class ViewController: UIViewController {
-    @IBOutlet var collectionView: UICollectionView!
-    let dataA: [Int] = [0, 1, 2]
-    let dataB: [Int] = [0, 1, 2]
-    let dataC: [Int] = [0, 1, 2]
-    var data: [[Int]] = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+@IBOutlet var collectionView: UICollectionView!
+let dataA: [Int] = [0, 1, 2]
+let dataB: [Int] = [0, 1, 2]
+let dataC: [Int] = [0, 1, 2]
+var data: [[Int]] = []
 
-        collectionView.register(ProgrammaticCell.self)
-        collectionView.registerHeaderFooter(ProgrammaticHeaderFooterView.self)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-    }
+override func viewDidLoad() {
+super.viewDidLoad()
+
+collectionView.register(ProgrammaticCell.self)
+collectionView.registerHeaderFooter(ProgrammaticHeaderFooterView.self)
+collectionView.delegate = self
+collectionView.dataSource = self
+}
 }
 
+// MARK: - UICollectionViewDataSource
 extension ViewController: UICollectionViewDataSource {
 
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data[section].count
-    }
-
-    public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return data.count
-    }
-
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // Dequeue a "ProgrammaticCell" from the collection view using only the cell type
-        let cell: ProgrammaticCell = collectionView.dequeueReusableCell(for: indexPath)
-        return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-
-        // You need only provide the desired type and SupplementaryElementKind to receive a typed UICollectionReusableView
-        switch kind {
-        case UICollectionElementKindSectionHeader:
-            let header: ProgrammaticHeaderFooterView = collectionView.dequeueReusableSupplementaryView(of: .sectionHeader, for: indexPath)
-            return header
-        default:
-            let footer: ProgrammaticHeaderFooterView = collectionView.dequeueReusableSupplementaryView(of: .sectionFooter, for: indexPath)
-            footer.kind = .sectionFooter
-            return footer
-        }
-    }
+public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+return data[section].count
 }
 
+public func numberOfSections(in collectionView: UICollectionView) -> Int {
+return data.count
+}
+
+public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+// Dequeue a "ProgrammaticCell" from the collection view using only the cell type
+let cell: ProgrammaticCell = collectionView.dequeueReusableCell(for: indexPath)
+return cell
+}
+
+func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+// You need only provide the desired type and SupplementaryElementKind to receive a typed UICollectionReusableView
+switch kind {
+case UICollectionElementKindSectionHeader:
+let header: ProgrammaticHeaderFooterView = collectionView.dequeueReusableSupplementaryView(of: .sectionHeader, for: indexPath)
+return header
+default:
+let footer: ProgrammaticHeaderFooterView = collectionView.dequeueReusableSupplementaryView(of: .sectionFooter, for: indexPath)
+footer.kind = .sectionFooter
+return footer
+}
+}
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
 extension ViewController: UICollectionViewDelegateFlowLayout {
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 100)
-    }
+func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+return CGSize(width: collectionView.bounds.width, height: 100)
+}
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 50)
-    }
+func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+return CGSize(width: collectionView.bounds.width, height: 50)
+}
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 25)
-    }
+func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+return CGSize(width: collectionView.bounds.width, height: 25)
+}
 }
 ```
 
-In order to instantiating a view controller from a storyboard you simply need to create a Storyboard.Identifier for the storyboard and define the return type.
+##### View Controllers
+In order to instantiate a view controller from a storyboard you simply need to create a Storyboard.Identifier for the storyboard and define the return type.
 A simple implementation might look like this:
 
 ``` swift
 extension UIStoryboard.Identifier {
 
-    static let myStoryboard = UIStoryboard.Identifier(name: "MyStoryboard")
+static let myStoryboard = UIStoryboard.Identifier(name: "MyStoryboard")
 }
 
 class ViewController: UIViewController {
 
-    func presentMyViewController() {
-        let vc: MyViewController = UIStoryboard(identifier: .myStoryboard).instantiateViewController()
-        present(vc, animated: true)
-    }
+func presentMyViewController() {
+let vc: MyViewController = UIStoryboard(identifier: .myStoryboard).instantiateViewController()
+present(vc, animated: true)
+}
 }
 ```
 
-Getting version numbers into user facing strings  only requires a function call. *Note this function throws an error if the provided version config contains an invalid key.
+##### Version Numbers
+Getting version numbers into user facing strings only requires a function call. *Note this function throws an error if the provided version config contains an invalid key.
 A simple implementation might look like this:
 
 ``` swift
 func printVersions() {
-    do {
-        let customVersionString = try Bundle.main.versionString(for: MyVersionConfig(), isShortVersion: false)
-        let verboseVersionString = try Bundle.main.verboseVersionString()
-        let versionString = try Bundle.main.versionString()
+do {
+let customVersionString = try Bundle.main.versionString(for: MyVersionConfig(), isShortVersion: false)
+let verboseVersionString = try Bundle.main.verboseVersionString()
+let versionString = try Bundle.main.versionString()
 
-        print(customVersionString)
-        print(verboseVersionString)
-        print(versionString)
-    } catch {
-        print(error)
-    }
+print(customVersionString)
+print(verboseVersionString)
+print(versionString)
+} catch {
+print(error)
+}
 }
 ```
 
-### Timeless Dates
+##### Timeless Dates
 A Timeless Date is a simple abstraction the removes the time from a Date and uses Calendar for calculations. This is especially useful for calendar and travel use cases as seeing how many days away something is often is more important that the number of hours between them / 24.
 
 ``` swift
 func numberOfDaysBetween(start: TimelessDate, finish: TimelessDate) -> DateInterval {
-    return start.dateIntervalSince(finish)
+return start.dateIntervalSince(finish)
 }
 
 func isOneWeekFrom(checkout: TimelessDate) -> Bool {
-    return checkout.dateIntervalSince(TimelessDate()) <= 7
+return checkout.dateIntervalSince(TimelessDate()) <= 7
 }
 ```
 
@@ -133,7 +138,7 @@ This struct also removes the imprecise calculations of adding days, hours, minut
 
 ``` swift
 func addOneHourTo(date: Date) -> Date {
-    return date.adding(hours: 1)
+return date.adding(hours: 1)
 }
 ```
 
@@ -169,3 +174,5 @@ See the [CONTRIBUTING] document. Thank you, [contributors]!
 
 [CONTRIBUTING]: CONTRIBUTING.md
 [contributors]: https://github.com/BottleRocketStudios/iOS-UtiliKit/graphs/contributors
+
+
