@@ -7,9 +7,9 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'UtiliKit'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of UtiliKit.'
+s.name             = 'UtiliKit'
+s.version          = '0.1.0'
+s.summary          = 'All the things youre tired of writing.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,26 +17,39 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+s.description      = <<-DESC
+This framework is a collection of subspecs designed to be used to facilitate simpler cleaner code.
+These classes and extensions are common cases.
+DESC
 
-  s.homepage         = 'https://github.com/Wilson Turner/UtiliKit'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Wilson Turner' => 'wilson.turner@bottlerocketstudios.com' }
-  s.source           = { :git => 'https://github.com/Wilson Turner/UtiliKit.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+s.homepage          = 'https://github.com/BottleRocketStudios/iOS-UtiliKit'
+s.license           = { :type => 'Apache 2.0', :file => 'LICENSE' }
+s.author            = { 'Bottle Rocket Studios' => 'wilson.turner@bottlerocketstudios.com' }
+s.source            = { :git => 'https://github.com/bottlerocketstudios/iOS-UtiliKit.git', :tag => s.version.to_s }
+s.source_files      = 'UtiliKit/Classes/**/*'
+s.frameworks        = 'UIKit', 'MapKit'
+s.ios.deployment_target = '9.0'
+s.default_subspec = 'Core'
 
-  s.ios.deployment_target = '8.0'
+s.subspec 'Core' do |core|
+core.dependency 'UtiliKit/Instantiation'
+core.dependency 'UtiliKit/General'
+end
 
-  s.source_files = 'UtiliKit/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'UtiliKit' => ['UtiliKit/Assets/*.png']
-  # }
+s.subspec 'Instantiation' do |instantiation|
+instantiation.source_files = 'UtiliKit/Classes/Instantiation/*.swift'
+end
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+s.subspec 'TimelessDate' do |timeless|
+timeless.source_files = 'UtiliKit/Classes/TimelessDate/*.swift'
+end
+
+s.subspec 'General' do |general|
+general.source_files   = 'UtiliKit/Classes/General/*.swift'
+end
+
+s.subspec 'Version' do |version|
+version.source_files   = 'UtiliKit/Classes/Version/*.swift'
+end
+
 end

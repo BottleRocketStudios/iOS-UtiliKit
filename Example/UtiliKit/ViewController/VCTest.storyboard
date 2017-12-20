@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yS9-yB-FDn">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Initial View Controller-->
+        <scene sceneID="KcP-c6-udI">
+            <objects>
+                <viewController storyboardIdentifier="InitialViewController" id="yS9-yB-FDn" customClass="InitialViewController" customModule="CellMate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ICG-8O-ot6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1WF-I6-q9U">
+                                <rect key="frame" x="117.5" y="305" width="140" height="77"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQV-Jm-HF6">
+                                <rect key="frame" x="32" y="52" width="39" height="30"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="didSelectClose:" destination="yS9-yB-FDn" eventType="touchUpInside" id="b4y-nj-dnY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.71253797740000002" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="aQV-Jm-HF6" firstAttribute="top" secondItem="Cqp-wc-iTc" secondAttribute="top" constant="32" id="11K-hS-f8U"/>
+                            <constraint firstItem="1WF-I6-q9U" firstAttribute="centerX" secondItem="Cqp-wc-iTc" secondAttribute="centerX" id="3ar-fn-q8i"/>
+                            <constraint firstItem="1WF-I6-q9U" firstAttribute="centerY" secondItem="Cqp-wc-iTc" secondAttribute="centerY" id="67U-FV-GcS"/>
+                            <constraint firstItem="aQV-Jm-HF6" firstAttribute="leading" secondItem="Cqp-wc-iTc" secondAttribute="leading" constant="32" id="MH4-ai-n4l"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Cqp-wc-iTc"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l1P-oh-z21" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-279" y="-91"/>
+        </scene>
+        <!--Named View Controller-->
+        <scene sceneID="hVW-06-m3J">
+            <objects>
+                <viewController storyboardIdentifier="NamedViewController" id="JbZ-lq-FQU" customClass="NamedViewController" customModule="CellMate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LZT-F4-aCs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Named" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzb-YX-SSl">
+                                <rect key="frame" x="89" y="305.5" width="196.5" height="76.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdT-4h-kwx">
+                                <rect key="frame" x="32" y="52" width="39" height="30"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="didSelectClose:" destination="JbZ-lq-FQU" eventType="touchUpInside" id="bFE-od-ZbB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.08472456465" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="xzb-YX-SSl" firstAttribute="centerY" secondItem="rvh-cw-wqY" secondAttribute="centerY" id="37L-fO-ZfJ"/>
+                            <constraint firstItem="xzb-YX-SSl" firstAttribute="centerX" secondItem="rvh-cw-wqY" secondAttribute="centerX" id="AhH-LO-sSQ"/>
+                            <constraint firstItem="wdT-4h-kwx" firstAttribute="top" secondItem="rvh-cw-wqY" secondAttribute="top" constant="32" id="RGN-Qi-8Jv"/>
+                            <constraint firstItem="wdT-4h-kwx" firstAttribute="leading" secondItem="rvh-cw-wqY" secondAttribute="leading" constant="32" id="pBK-fY-s34"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rvh-cw-wqY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qhO-9y-ytp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="591" y="-94"/>
+        </scene>
+    </scenes>
+</document>

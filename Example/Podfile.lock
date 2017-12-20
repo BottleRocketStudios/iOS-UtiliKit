@@ -1,0 +1,28 @@
+PODS:
+  - UtiliKit (0.1.0):
+    - UtiliKit/Core (= 0.1.0)
+    - UtiliKit/General (= 0.1.0)
+    - UtiliKit/Instantiation (= 0.1.0)
+    - UtiliKit/TimelessDate (= 0.1.0)
+    - UtiliKit/Version (= 0.1.0)
+  - UtiliKit/Core (0.1.0):
+    - UtiliKit/General
+    - UtiliKit/Instantiation
+  - UtiliKit/General (0.1.0)
+  - UtiliKit/Instantiation (0.1.0)
+  - UtiliKit/TimelessDate (0.1.0)
+  - UtiliKit/Version (0.1.0)
+
+DEPENDENCIES:
+  - UtiliKit (from `../`)
+
+EXTERNAL SOURCES:
+  UtiliKit:
+    :path: ../
+
+SPEC CHECKSUMS:
+  UtiliKit: d7af3fa8b0f610b7a031a7e445d190892ef7a802
+
+PODFILE CHECKSUM: c2d5052eeec551f2e08653fd8021aeb849aaea2e
+
+COCOAPODS: 1.4.0.beta.2
