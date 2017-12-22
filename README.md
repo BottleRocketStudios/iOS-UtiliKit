@@ -6,12 +6,13 @@ This library provides several useful and often common additions for iOS applicat
 
 ### Key Concepts
 This library is divided into 4 parts.
-* Instantiation - This subspec changes "Stringly-typed" view instantiation, view contorller instantiation, and reusable view dequeuing into type safe function calls.
-* General - This subspec includes extensions for both the FileManager and UIView. These simplify getting common URLs and programmatically adding views down to simple variables and function calls.
+* Instantiation - This subspec changes "Stringly-typed" view instantiation, view controller instantiation, and reusable view dequeuing into type-safe function calls.
+* General - This subspec includes extensions for both FileManager and UIView. These simplify getting common URLs and programmatically adding views down to simple variables and function calls.
 * Version - This subspec simplifies the display of version and build numbers.
 * TimelessDate - This subspec is an abstraction away from Date and Calendar. It is primarily designed to be used for simple scheduling and day comparisons in which the time is less important that the actual day.
 
 ### Usage
+#### Reusable Views
 Registering and dequeuing cells, collection view supplementary views, table view headers and footers, and annotations is as simple as calling register on their presenting view, and dequeuing them in the collectionView(_:, cellForItemAt:) -> UICollectionViewCell, or equivalent, function.
 
 ``` swift
@@ -21,7 +22,7 @@ class ViewController: UIViewController {
     let dataB: [Int] = [0, 1, 2]
     let dataC: [Int] = [0, 1, 2]
     var data: [[Int]] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +33,7 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension ViewController: UICollectionViewDataSource {
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -63,6 +65,7 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension ViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -79,7 +82,8 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 }
 ```
 
-In order to instantiating a view controller from a storyboard you simply need to create a Storyboard.Identifier for the storyboard and define the return type.
+#### View Controllers
+In order to instantiate a view controller from a storyboard you simply need to create a Storyboard.Identifier for the storyboard and define the return type.
 A simple implementation might look like this:
 
 ``` swift
@@ -97,7 +101,8 @@ class ViewController: UIViewController {
 }
 ```
 
-Getting version numbers into user facing strings  only requires a function call. *Note this function throws an error if the provided version config contains an invalid key.
+#### Version Numbers
+Getting version numbers into user facing strings only requires a function call. *Note this function throws an error if the provided version config contains an invalid key.
 A simple implementation might look like this:
 
 ``` swift
@@ -116,7 +121,7 @@ func printVersions() {
 }
 ```
 
-### Timeless Dates
+#### Timeless Dates
 A Timeless Date is a simple abstraction the removes the time from a Date and uses Calendar for calculations. This is especially useful for calendar and travel use cases as seeing how many days away something is often is more important that the number of hours between them / 24.
 
 ``` swift
@@ -169,3 +174,5 @@ See the [CONTRIBUTING] document. Thank you, [contributors]!
 
 [CONTRIBUTING]: CONTRIBUTING.md
 [contributors]: https://github.com/BottleRocketStudios/iOS-UtiliKit/graphs/contributors
+
+
