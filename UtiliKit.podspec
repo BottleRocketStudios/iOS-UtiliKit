@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
 s.name             = 'UtiliKit'
-s.version          = '0.1.0'
-s.summary          = 'All the things youre tired of writing.'
+s.version          = '1.0.0'
+s.summary          = 'All the things you're tired of writing.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,8 +18,7 @@ s.summary          = 'All the things youre tired of writing.'
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
 s.description      = <<-DESC
-This framework is a collection of subspecs designed to be used to facilitate simpler cleaner code.
-These classes and extensions are common cases.
+This framework is a collection of subspecs designed to be used to facilitate simpler, cleaner code. These classes and extensions are common cases.
 DESC
 
 s.homepage          = 'https://github.com/BottleRocketStudios/iOS-UtiliKit'
