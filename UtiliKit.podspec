@@ -51,4 +51,8 @@ s.subspec 'Version' do |version|
 version.source_files   = 'UtiliKit/Classes/Version/*.swift'
 end
 
+s.subspec 'Container' do |container|
+container.source_files   = 'UtiliKit/Classes/Container/*.swift'
+end
+
 end
