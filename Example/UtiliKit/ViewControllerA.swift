@@ -18,7 +18,10 @@ class ViewControllerA: UIViewController {
         view.backgroundColor = .red
         logEvent("View A Did Load")
         
-        let newView = UIView(frame: .zero)
+        let newView = UILabel(frame: .zero)
+        newView.text = "A"
+        newView.textAlignment = .center
+        newView.font = UIFont.systemFont(ofSize: 100)
         newView.translatesAutoresizingMaskIntoConstraints = false
         newView.backgroundColor = .yellow
         

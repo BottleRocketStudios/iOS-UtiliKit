@@ -18,6 +18,7 @@ class BaseContainerViewController: UIViewController {
         return container
     }()
     private var logLifecycleEvents = true
+    private var useCustomAnimator = true
     private lazy var controllerA = ViewControllerA()
     private lazy var controllerB = ViewControllerB()
     
@@ -48,6 +49,10 @@ class BaseContainerViewController: UIViewController {
         controllerB.logLifecycleEvents = sender.isOn
         logLifecycleEvents = sender.isOn
     }
+    
+    @IBAction func useCustomAnimatorSwitchDidChange(_ sender: UISwitch) {
+        useCustomAnimator = sender.isOn
+    }
 }
 
 //MARK: ContainerViewControllerDelegate
@@ -72,6 +77,10 @@ extension BaseContainerViewController: ContainerViewControllerDelegate {
     func containerViewController(_ container: ContainerViewController,
                                  animationControllerForTransitionFrom source: UIViewController,
                                  to destination: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return WipeTransitionAnimator(direction: .leftToRight)
+        if useCustomAnimator, let sourceIndex = container.index(ofChild: source), let destinationIndex = container.index(ofChild: destination) {
+            return WipeTransitionAnimator(withStartIndex: sourceIndex, endIndex: destinationIndex)
+        }
+        
+        return nil
     }
 }

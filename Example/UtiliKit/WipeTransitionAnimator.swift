@@ -22,7 +22,7 @@ public class WipeTransitionAnimator: NSObject {
         super.init()
     }
     
-    public init(with startIndex: Int, endIndex: Int) {
+    public init(withStartIndex startIndex: Int, endIndex: Int) {
         self.transitionDirection = startIndex < endIndex ? .rightToLeft : .leftToRight
         super.init()
     }
