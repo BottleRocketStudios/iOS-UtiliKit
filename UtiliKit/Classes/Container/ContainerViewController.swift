@@ -103,6 +103,7 @@ private extension ContainerViewController {
         let animator = delegate?.containerViewController(self, animationControllerForTransitionFrom: source, to: destination) ?? ContainerViewControllerTransitionAnimator()
         let transitionContext = ContainerTransitionContext(containerViewController: self, sourceViewController: source, destinationViewController: destination) { [weak self] finished in
             guard let blockSelf = self else { return }
+            blockSelf.configure(destinationView: destination.view, inContainer: blockSelf.view)
             blockSelf.finishTransitioning(from: source, to: destination, animated: true)
             blockSelf.delegate?.containerViewController(blockSelf, didFinishTransitioningFrom: source, to: destination)
         }
@@ -125,6 +126,10 @@ private extension ContainerViewController {
     
     func add(destinationView: UIView, toContainer container: UIView, animated: Bool) {
         container.addSubview(destinationView)
+        configure(destinationView: destinationView, inContainer: container)
+    }
+    
+    func configure(destinationView: UIView, inContainer container: UIView) {
         destinationView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         destinationView.frame = container.bounds
     }
