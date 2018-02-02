@@ -66,11 +66,6 @@ extension ContainerViewController {
     open func transitionToController(for child: Child) {
         transition(to: child.viewController)
     }
-   
-    open func transitionToController(withTitle title: String) {
-        guard let child = children.first(where: { $0.title == title }) else { return }
-        transitionToController(for: child)
-    }
     
     open func index(ofChild controller: UIViewController) -> Int? {
         return children.index(where: { $0.viewController == controller })

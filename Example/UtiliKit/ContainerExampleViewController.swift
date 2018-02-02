@@ -55,6 +55,15 @@ class BaseContainerViewController: UIViewController {
     }
 }
 
+//MARK: Helper
+fileprivate extension ContainerViewController {
+    func transitionToController(withTitle title: String) {
+        //Note: As titles can change rapidly, it is much safer to directly use the Child object.
+        guard let child = children.first(where: { $0.title == title }) else { return }
+        transitionToController(for: child)
+    }
+}
+
 //MARK: ContainerViewControllerDelegate
 extension BaseContainerViewController: ContainerViewControllerDelegate {
     

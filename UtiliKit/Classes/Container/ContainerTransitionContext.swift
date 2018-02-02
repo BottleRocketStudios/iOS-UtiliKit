@@ -27,11 +27,11 @@ class ContainerTransitionContext: NSObject {
         destination = destinationViewController
         completion = completionHandler
         
-        viewControllers = [UITransitionContextViewControllerKey.from : sourceViewController,
-                           UITransitionContextViewControllerKey.to : destinationViewController]
+        viewControllers = [.from : sourceViewController,
+                           .to : destinationViewController]
         
-        views = [UITransitionContextViewKey.from: sourceViewController.view,
-                 UITransitionContextViewKey.to: destinationViewController.view]
+        views = [.from: sourceViewController.view,
+                 .to: destinationViewController.view]
         super.init()
     }
 }
@@ -73,7 +73,7 @@ extension ContainerTransitionContext: UIViewControllerContextTransitioning {
     }
     
     var targetTransform: CGAffineTransform {
-        return CGAffineTransform.identity
+        return .identity
     }
     
     //MARK: Interactivity
