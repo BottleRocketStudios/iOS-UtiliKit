@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0CE3E71FFC38A0003C84C9 /* ViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0CE3E51FFC38A0003C84C9 /* ViewControllerB.swift */; };
+		0E0CE3E81FFC38A0003C84C9 /* ViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0CE3E61FFC38A0003C84C9 /* ViewControllerA.swift */; };
+		0E0CE3EB1FFC38AE003C84C9 /* WipeTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0CE3EA1FFC38AE003C84C9 /* WipeTransitionAnimator.swift */; };
+		0E0CE3ED1FFC38BB003C84C9 /* ContainerExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0CE3EC1FFC38BB003C84C9 /* ContainerExampleViewController.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
@@ -52,6 +56,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E0CE3E51FFC38A0003C84C9 /* ViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerB.swift; sourceTree = "<group>"; };
+		0E0CE3E61FFC38A0003C84C9 /* ViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerA.swift; sourceTree = "<group>"; };
+		0E0CE3EA1FFC38AE003C84C9 /* WipeTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WipeTransitionAnimator.swift; sourceTree = "<group>"; };
+		0E0CE3EC1FFC38BB003C84C9 /* ContainerExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerExampleViewController.swift; sourceTree = "<group>"; };
 		27FA2ADFFD8059EFF57AC06A /* Pods_UtiliKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UtiliKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FDEB6E5A2E5C2FE34390424 /* Pods_UtiliKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UtiliKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA817C2A60811E04566D336 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -117,6 +125,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E0CE3E41FFC388B003C84C9 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				0E0CE3E91FFC38A3003C84C9 /* Animator */,
+				0E0CE3E61FFC38A0003C84C9 /* ViewControllerA.swift */,
+				0E0CE3E51FFC38A0003C84C9 /* ViewControllerB.swift */,
+				0E0CE3EC1FFC38BB003C84C9 /* ContainerExampleViewController.swift */,
+			);
+			name = Container;
+			sourceTree = "<group>";
+		};
+		0E0CE3E91FFC38A3003C84C9 /* Animator */ = {
+			isa = PBXGroup;
+			children = (
+				0E0CE3EA1FFC38AE003C84C9 /* WipeTransitionAnimator.swift */,
+			);
+			name = Animator;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +168,7 @@
 		607FACD21AFB9204008FA782 /* Example for UtiliKit */ = {
 			isa = PBXGroup;
 			children = (
+				0E0CE3E41FFC388B003C84C9 /* Container */,
 				86155FCB1FE44ABC00FEE37E /* Map */,
 				86155FC01FE44AA900FEE37E /* ViewController */,
 				86155FB91FE44A9A00FEE37E /* View */,
@@ -497,6 +525,7 @@
 				86155FB51FE44A9500FEE37E /* ProgrammaticViewsCollectionController.swift in Sources */,
 				86155FC91FE44AB900FEE37E /* VCViewController.swift in Sources */,
 				86155FC61FE44AB900FEE37E /* NamedViewController.swift in Sources */,
+				0E0CE3EB1FFC38AE003C84C9 /* WipeTransitionAnimator.swift in Sources */,
 				86155FAB1FE44A8A00FEE37E /* TableViewController.swift in Sources */,
 				86155FD11FE44AC500FEE37E /* MapViewController.swift in Sources */,
 				86155FCA1FE44AB900FEE37E /* UIStoryboardIdentifier+Extensions.swift in Sources */,
@@ -508,7 +537,10 @@
 				86155FAD1FE44A8A00FEE37E /* XibFooterView.swift in Sources */,
 				86155FAE1FE44A8A00FEE37E /* XibViewsTableController.swift in Sources */,
 				86155FCF1FE44AC500FEE37E /* MapController.swift in Sources */,
+				0E0CE3ED1FFC38BB003C84C9 /* ContainerExampleViewController.swift in Sources */,
+				0E0CE3E71FFC38A0003C84C9 /* ViewControllerB.swift in Sources */,
 				86155FBE1FE44AA500FEE37E /* XibView.swift in Sources */,
+				0E0CE3E81FFC38A0003C84C9 /* ViewControllerA.swift in Sources */,
 				86155FB61FE44A9500FEE37E /* ProgrammaticCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
