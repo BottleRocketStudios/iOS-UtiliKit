@@ -9,6 +9,8 @@ import UIKit
 
 //MARK: Storyboard Identifiable
 public protocol StoryboardIdentifiable {
+    
+    /// An identifier used to store the storyboard containing this class
     static var storyboardIdentifier: String { get }
 }
 

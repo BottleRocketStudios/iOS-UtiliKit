@@ -137,7 +137,7 @@ public struct TimelessDate: Comparable, Equatable, Hashable {
      - Parameter dateInterval: The value to add, in days.
      - Returns: The timeless date offset by the `DateInterval`
      */
-    public func addingDateInterval(_ dateInterval: DateInterval) -> TimelessDate {
+    public func adding(_ dateInterval: DateInterval) -> TimelessDate {
         return self + dateInterval
     }
     
@@ -146,7 +146,7 @@ public struct TimelessDate: Comparable, Equatable, Hashable {
      
      - Parameter dateInterval: The value to add, in days.
      */
-    public mutating func addDateInterval(_ dateInterval: DateInterval) {
+    public mutating func add(_ dateInterval: DateInterval) {
         self += dateInterval
     }
     
