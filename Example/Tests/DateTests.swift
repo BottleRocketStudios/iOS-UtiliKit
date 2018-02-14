@@ -163,13 +163,13 @@ class DateTests: XCTestCase {
     func test_TimelessDate_AddingDays() {
         let today = TimelessDate()
         let tomorrow = today + 1
-        XCTAssertEqual(tomorrow, today.addingDateInterval(1))
+        XCTAssertEqual(tomorrow, today.adding(1))
     }
 
     func test_TimelessDate_MutatingAddingDays() {
         var today = TimelessDate()
         let tomorrow = today + 1
-        today.addDateInterval(1)
+        today.add(1)
         XCTAssertEqual(tomorrow, today)
     }
     
