@@ -11,11 +11,12 @@ UtiliKit
 This library provides several useful and often common additions for iOS applications. These extensions, protocols, and structs are designed to simplify boiler plate code as well as remove common "Stringly-typed" use cases.
 
 ### Key Concepts
-This library is divided into 4 parts.
+This library is divided into 5 parts.
 * Instantiation - This subspec changes "Stringly-typed" view instantiation, view controller instantiation, and reusable view dequeuing into type-safe function calls.
 * General - This subspec includes extensions for both FileManager and UIView. These simplify getting common URLs and programmatically adding views down to simple variables and function calls.
 * Version - This subspec simplifies the display of version and build numbers.
 * TimelessDate - This subspec is an abstraction away from Date and Calendar. It is primarily designed to be used for simple scheduling and day comparisons in which the time is less important that the actual day.
+* Container - This subspec provides a simple ContainerViewController without any built-in navigation construct.
 
 ### Usage
 #### Reusable Views
@@ -148,13 +149,47 @@ func addOneHourTo(date: Date) -> Date {
 }
 ```
 
+#### ContainerViewController
+A solution for managing multiple child view controllers, the ContainerViewController manages the lifecycle of the child controllers. This allows you to focus on the navigational structure of your views as well as the transitions between them.
+
+``` swift
+containerViewController.children = [Child(title: "A", viewController: controllerA), Child(title: "B", viewController: controllerB)]
+
+containerViewController.willMove(toParentViewController: self)
+
+addChildViewController(containerViewController)
+containerView.addSubview(containerViewController.view)
+containerViewController.view.frame = containerView.bounds
+
+containerViewController.didMove(toParentViewController: self)
+```
+
+At this point, transitioning between the children of the container is incredibly simple.
+
+``` swift
+let child = ...
+containerViewController.transitionToController(for: child)
+```
+
+The container also has several delegate callback which can help customize it's behavior. Among them, is a function which returns a UIViewControllerAnimatedTransitioning object.
+
+``` swift
+func containerViewController(_ container: ContainerViewController, animationControllerForTransitionFrom source: UIViewController, to destination: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    if useCustomAnimator, let sourceIndex = container.index(ofChild: source), let destinationIndex = container.index(ofChild: destination) {
+        return WipeTransitionAnimator(withStartIndex: sourceIndex, endIndex: destinationIndex)
+    }
+
+    return nil
+}
+```
+
 ### Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ### Requirements
 
-Requires iOS 9.0 +, Swift 3.2
+Requires iOS 9.0 +, Swift 4.0
 
 ### Installation - CocoaPods
 
@@ -180,5 +215,3 @@ See the [CONTRIBUTING] document. Thank you, [contributors]!
 
 [CONTRIBUTING]: CONTRIBUTING.md
 [contributors]: https://github.com/BottleRocketStudios/iOS-UtiliKit/graphs/contributors
-
-
