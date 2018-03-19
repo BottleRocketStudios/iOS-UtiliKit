@@ -54,6 +54,16 @@
                ReferencedContainer = "container:UtiliKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8677314020601BB400C54343"
+               BuildableName = "UtiliKit-iOSTests.xctest"
+               BlueprintName = "UtiliKit-iOSTests"
+               ReferencedContainer = "container:UtiliKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
