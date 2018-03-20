@@ -7,7 +7,7 @@ language: swift
 env:
   global:
     - WORKSPACE=UtiliKit.xcworkspace
-    - IOS_FRAMEWORK_SCHEME="UtiliKit-Example"
+    - IOS_FRAMEWORK_SCHEME="UtiliKit-iOS"
   matrix:
     - DESTINATION="platform=iOS Simulator,OS=11.2,name=iPhone X" SDK="iphonesimulator" SCHEME="$IOS_FRAMEWORK_SCHEME" RUN_TESTS="YES" POD_LINT="YES"
 
