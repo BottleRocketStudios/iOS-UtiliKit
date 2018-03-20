@@ -5,7 +5,7 @@
 //  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ContainerTransitionContext: NSObject {
     
