@@ -6,7 +6,7 @@ osx_image: xcode9.2
 language: swift
 env:
   global:
-    - WORKSPACE=Example/UtiliKit.xcworkspace
+    - WORKSPACE=UtiliKit.xcworkspace
     - IOS_FRAMEWORK_SCHEME="UtiliKit-Example"
   matrix:
     - DESTINATION="platform=iOS Simulator,OS=11.2,name=iPhone X" SDK="iphonesimulator" SCHEME="$IOS_FRAMEWORK_SCHEME" RUN_TESTS="YES" POD_LINT="YES"
@@ -14,8 +14,6 @@ env:
 # cache: cocoapods
 # podfile: Example/Podfile
 before_install:
-  - gem install cocoapods --pre # Since Travis is not always on latest version
-  - pod install --project-directory=Example
 script:
   - set -o pipefail
 
