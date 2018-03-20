@@ -2,7 +2,6 @@
 //  UtiliKit.h
 //  UtiliKit
 //
-//  Created by Wilson Turner on 3/19/18.
 //  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 

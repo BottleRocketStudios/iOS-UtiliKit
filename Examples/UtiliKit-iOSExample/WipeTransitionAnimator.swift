@@ -1,7 +1,8 @@
 //
 //  WipeTransitionAnimator.swift
+//  UtiliKit
 //
-//  Created by Wilson Turner on 2/17/17.
+//  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 
 import UIKit
