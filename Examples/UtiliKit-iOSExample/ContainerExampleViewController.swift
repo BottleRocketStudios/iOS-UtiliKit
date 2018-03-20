@@ -1,9 +1,8 @@
 //
 //  ContainerExampleViewController.swift
-//  UtiliKit_Example
+//  UtiliKit
 //
-//  Created by Will McGinty on 1/2/18.
-//  Copyright © 2018 CocoaPods. All rights reserved.
+//  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 
 import UIKit

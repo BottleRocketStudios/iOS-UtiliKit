@@ -1,11 +1,11 @@
 //
 //  ContainerViewControllerDelegate.swift
-//  Container
+//  UtiliKit
 //
 //  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public protocol ContainerViewControllerDelegate: class {
     
