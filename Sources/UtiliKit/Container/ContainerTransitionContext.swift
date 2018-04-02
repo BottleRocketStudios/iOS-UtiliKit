@@ -68,6 +68,7 @@ extension ContainerTransitionContext: UIViewControllerContextTransitioning {
         return destination.modalPresentationStyle
     }
     
+    @objc(isAnimated)
     var isAnimated: Bool {
         return true
     }
@@ -77,6 +78,7 @@ extension ContainerTransitionContext: UIViewControllerContextTransitioning {
     }
     
     //MARK: Interactivity
+    @objc(isInteractive)
     var isInteractive: Bool {
         return false
     }
