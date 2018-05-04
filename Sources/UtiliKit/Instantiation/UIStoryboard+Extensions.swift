@@ -49,6 +49,19 @@ public extension UIStoryboard {
     }
     
     /**
+     Returns the initial view controller of type T configured with `element`.
+     
+     - Parameter element: An element of the appropriate type, used to configure the view controller.
+     - Returns: A view controller of type T.
+     */
+    public func instantiateInitialViewController<T: UIViewController & Configurable>(configuredWith element: T.ConfiguringType) -> T {
+        let vc: T = instantiateInitialViewController()
+        vc.configure(with: element)
+        
+        return vc
+    }
+    
+    /**
      Returns a view controller of type T.
     
      - Returns: A view controller of type T.
@@ -57,6 +70,19 @@ public extension UIStoryboard {
         guard let vc = instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T else {
             fatalError("Unable to instantiate a view controller with identifier \(T.storyboardIdentifier) from storyboard \(self)")
         }
+        
+        return vc
+    }
+    
+    /**
+     Returns the initial view controller of type T configured with `element`.
+     
+     - Parameter element: An element of the appropriate type, used to configure the view controller.
+     - Returns: A view controller of type T.
+     */
+    public func instantiateViewController<T: UIViewController & Configurable>(configuredWith element: T.ConfiguringType) -> T {
+        let vc: T = instantiateViewController()
+        vc.configure(with: element)
         
         return vc
     }

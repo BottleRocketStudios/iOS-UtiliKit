@@ -17,7 +17,7 @@ class VCViewController: UIViewController {
         // Instantiate an InitialViewController from the storyboard
         // Notice that the desired type of view controller that you want to instantiate must be provided.
         // The UIStoryboard extension will automatically attempt to instantiate a view controller with an identifier that matches the name of the view controller's type and then cast it into that type.
-        let vc: InitialViewController = UIStoryboard(identifier: .vcTest).instantiateInitialViewController()
+        let vc: InitialViewController = UIStoryboard(identifier: .vcTest).instantiateViewController(configuredWith: "configurationString")
         present(vc, animated: true)
     }
     
