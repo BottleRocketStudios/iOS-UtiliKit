@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yS9-yB-FDn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yS9-yB-FDn">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +13,7 @@
         <!--Initial View Controller-->
         <scene sceneID="KcP-c6-udI">
             <objects>
-                <viewController storyboardIdentifier="InitialViewController" id="yS9-yB-FDn" customClass="InitialViewController" customModule="CellMate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialViewController" id="yS9-yB-FDn" customClass="InitialViewController" customModule="UtiliKit_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ICG-8O-ot6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,6 +43,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cqp-wc-iTc"/>
                     </view>
+                    <connections>
+                        <outlet property="textLabel" destination="1WF-I6-q9U" id="NYe-lL-kiy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l1P-oh-z21" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -50,7 +54,7 @@
         <!--Named View Controller-->
         <scene sceneID="hVW-06-m3J">
             <objects>
-                <viewController storyboardIdentifier="NamedViewController" id="JbZ-lq-FQU" customClass="NamedViewController" customModule="CellMate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NamedViewController" id="JbZ-lq-FQU" customClass="NamedViewController" customModule="UtiliKit_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LZT-F4-aCs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
