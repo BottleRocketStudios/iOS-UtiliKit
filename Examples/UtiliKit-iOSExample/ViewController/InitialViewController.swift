@@ -15,11 +15,20 @@ import UtiliKit
  */
 class InitialViewController: UIViewController, Configurable {
     
+    @IBOutlet private var textLabel: UILabel!
+    private var configurationString: String?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        textLabel.text = configurationString ?? "Initial"
+    }
+    
     @IBAction func didSelectClose(_ sender: Any) {
         dismiss(animated: true)
     }
     
     func configure(with element: String) {
-        /* No op */
+        configurationString = element
     }
 }
