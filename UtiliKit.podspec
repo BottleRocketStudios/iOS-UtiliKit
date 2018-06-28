@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'UtiliKit'
-s.version          = '1.2.1'
+s.version          = '1.2.3'
 s.summary          = 'All the things you are tired of writing.'
 
 # This description is used to generate tags and improve search results.
