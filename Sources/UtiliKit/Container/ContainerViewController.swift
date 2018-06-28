@@ -21,7 +21,7 @@ public struct Child {
 open class ContainerViewController: UIViewController {
     
     //MARK: Properties
-    public var children: [Child] = []
+    public var managedChildren: [Child] = []
     public private(set) var isTransitioning: Bool = false
     public var shouldAutomaticallyTransitionOnLoad: Bool = true
     public var visibleController: UIViewController? {
@@ -38,9 +38,9 @@ open class ContainerViewController: UIViewController {
     public weak var delegate: ContainerViewControllerDelegate?
     
     //MARK: Initializers
-    public convenience init(children: [Child]) {
+    public convenience init(managedChildren: [Child]) {
         self.init(nibName: nil, bundle: nil)
-        self.children = children
+        self.managedChildren = managedChildren
     }
     
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -55,7 +55,7 @@ open class ContainerViewController: UIViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard shouldAutomaticallyTransitionOnLoad, let initial = children.first else { return }
+        guard shouldAutomaticallyTransitionOnLoad, let initial = managedChildren.first else { return }
         transition(to: initial.viewController)
     }
 }
@@ -68,7 +68,7 @@ extension ContainerViewController {
     }
     
     open func index(ofChild controller: UIViewController) -> Int? {
-        return children.index(where: { $0.viewController == controller })
+        return managedChildren.index(where: { $0.viewController == controller })
     }
 }
 
