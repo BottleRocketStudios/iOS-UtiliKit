@@ -45,6 +45,7 @@ open class ContainerViewController: UIViewController {
     public convenience init(managedChildren: [Child], delegate: ContainerViewControllerDelegate? = nil) {
         self.init(nibName: nil, bundle: nil)
         self.managedChildren = managedChildren
+        self.delegate = delegate
     }
     
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
