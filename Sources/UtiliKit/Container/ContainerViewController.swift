@@ -38,7 +38,7 @@ open class ContainerViewController: UIViewController {
     public weak var delegate: ContainerViewControllerDelegate?
     
     //MARK: Initializers
-    public convenience init(managedChildren: [Child]) {
+    public convenience init(managedChildren: [Child], delegate: ContainerViewControllerDelegate? = nil) {
         self.init(nibName: nil, bundle: nil)
         self.managedChildren = managedChildren
     }
@@ -67,8 +67,20 @@ extension ContainerViewController {
         transition(to: child.viewController)
     }
     
+    func child(at index: Int) -> Child? {
+        guard index >= managedChildren.startIndex && index < managedChildren.endIndex else { return nil }
+        return managedChildren[index]
+    }
+    
     open func index(ofChild controller: UIViewController) -> Int? {
         return managedChildren.index(where: { $0.viewController == controller })
+    }
+    
+    open func indexOfChild(following viewController: UIViewController) -> Int? {
+        guard let currentIndex = index(ofChild: viewController) else { return nil }
+        let nextIndex = managedChildren.index(after: currentIndex)
+        
+        return nextIndex < managedChildren.endIndex ? nextIndex : nil
     }
 }
 
