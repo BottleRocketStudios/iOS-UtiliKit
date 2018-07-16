@@ -8,13 +8,17 @@
 import UIKit
 
 //MARK: Child Subtype
-public struct Child {
+public struct Child: Equatable {
     public let title: String
     public let viewController: UIViewController
     
     public init(title: String, viewController: UIViewController) {
         self.title = title
         self.viewController = viewController
+    }
+    
+    public static func ==(lhs: Child, rhs: Child) -> Bool {
+        return lhs.title == rhs.title && lhs.viewController === rhs.viewController
     }
 }
 
@@ -73,7 +77,7 @@ extension ContainerViewController {
     }
     
     open func index(ofChild controller: UIViewController) -> Int? {
-        return managedChildren.index(where: { $0.viewController == controller })
+        return managedChildren.index(where: { $0.viewController === controller })
     }
     
     open func indexOfChild(following viewController: UIViewController) -> Int? {
