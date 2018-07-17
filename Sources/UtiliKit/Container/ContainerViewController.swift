@@ -100,7 +100,8 @@ private extension ContainerViewController {
             
             //If we do not already have a visible controller (first launch), skip the animator and contain the child
             prepareForTransitioning(from: nil, to: destination, animated: false)
-            add(destinationView: destination.view, toContainer: view, animated: false)
+            view.addSubview(destination.view)
+            configure(destinationView: destination.view, inContainer: view)
             finishTransitioning(from: nil, to: destination, animated: false)
             return
         }
@@ -134,11 +135,6 @@ private extension ContainerViewController {
         source?.willMove(toParentViewController: nil)
         destination.willMove(toParentViewController: self)
         addChildViewController(destination)
-    }
-    
-    func add(destinationView: UIView, toContainer container: UIView, animated: Bool) {
-        container.addSubview(destinationView)
-        configure(destinationView: destinationView, inContainer: container)
     }
     
     func configure(destinationView: UIView, inContainer container: UIView) {
