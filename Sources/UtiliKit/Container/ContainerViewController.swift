@@ -72,7 +72,7 @@ extension ContainerViewController {
         transition(to: child.viewController)
     }
     
-    func child(at index: Int) -> Child? {
+    open func child(at index: Int) -> Child? {
         guard index >= managedChildren.startIndex && index < managedChildren.endIndex else { return nil }
         return managedChildren[index]
     }
@@ -146,15 +146,10 @@ private extension ContainerViewController {
         destinationView.frame = container.bounds
     }
     
-    func removeSourceControllerFromContainer(_ source: UIViewController, animated: Bool) {
-        source.view.removeFromSuperview()
-        source.removeFromParentViewController()
-        
-        source.didMove(toParentViewController: nil)
-    }
-    
     func finishTransitioning(from source: UIViewController?, to destination: UIViewController, animated: Bool) {
-        source.map { removeSourceControllerFromContainer($0, animated: animated) }
+        source?.view.removeFromSuperview()
+        source?.removeFromParentViewController()
+        source?.didMove(toParentViewController: nil)
         destination.didMove(toParentViewController: self)
         
         visibleController = destination
