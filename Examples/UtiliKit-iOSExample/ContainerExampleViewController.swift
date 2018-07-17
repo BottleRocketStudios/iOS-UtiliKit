@@ -25,8 +25,8 @@ class BaseContainerViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        containerViewController.children = [Child(title: "A", viewController: controllerA),
-                                            Child(title: "B", viewController: controllerB)]
+        containerViewController.managedChildren = [Child(title: "A", viewController: controllerA),
+                                                   Child(title: "B", viewController: controllerB)]
 
         containerViewController.willMove(toParentViewController: self)
         addChildViewController(containerViewController)
@@ -58,7 +58,7 @@ class BaseContainerViewController: UIViewController {
 fileprivate extension ContainerViewController {
     func transitionToController(withTitle title: String) {
         //Note: As titles can change rapidly, it is much safer to directly use the Child object.
-        guard let child = children.first(where: { $0.title == title }) else { return }
+        guard let child = managedChildren.first(where: { $0.title == title }) else { return }
         transitionToController(for: child)
     }
 }

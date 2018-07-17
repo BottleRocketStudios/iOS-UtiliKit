@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0EC8025C209CE9C90051F732 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC8025B209CE9C90051F732 /* Configurable.swift */; };
+		0ED9476420FD473700B642AB /* ContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9476220FD461300B642AB /* ContainerTests.swift */; };
 		8677314220601BB400C54343 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
 		8677315720601D1A00C54343 /* UtiliKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869826261FE87BFA0024B73D /* UtiliKitTests.swift */; };
 		8677315820601D1A00C54343 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869826271FE87BFA0024B73D /* DateTests.swift */; };
@@ -74,6 +75,7 @@
 
 /* Begin PBXFileReference section */
 		0EC8025B209CE9C90051F732 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
+		0ED9476220FD461300B642AB /* ContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTests.swift; sourceTree = "<group>"; };
 		8677313920601BB400C54343 /* UtiliKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UtiliKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8677314120601BB400C54343 /* UtiliKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UtiliKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8677315A20601DD800C54343 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			children = (
 				869826271FE87BFA0024B73D /* DateTests.swift */,
 				869826261FE87BFA0024B73D /* UtiliKitTests.swift */,
+				0ED9476220FD461300B642AB /* ContainerTests.swift */,
 				8677315920601DD800C54343 /* Supporting Files */,
 			);
 			path = Tests;
@@ -541,6 +544,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ED9476420FD473700B642AB /* ContainerTests.swift in Sources */,
 				8677315720601D1A00C54343 /* UtiliKitTests.swift in Sources */,
 				8677315820601D1A00C54343 /* DateTests.swift in Sources */,
 			);

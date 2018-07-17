@@ -8,13 +8,17 @@
 import UIKit
 
 //MARK: Child Subtype
-public struct Child {
+public struct Child: Equatable {
     public let title: String
     public let viewController: UIViewController
     
     public init(title: String, viewController: UIViewController) {
         self.title = title
         self.viewController = viewController
+    }
+    
+    public static func ==(lhs: Child, rhs: Child) -> Bool {
+        return lhs.title == rhs.title && lhs.viewController === rhs.viewController
     }
 }
 
@@ -38,9 +42,10 @@ open class ContainerViewController: UIViewController {
     public weak var delegate: ContainerViewControllerDelegate?
     
     //MARK: Initializers
-    public convenience init(managedChildren: [Child]) {
+    public convenience init(managedChildren: [Child], delegate: ContainerViewControllerDelegate? = nil) {
         self.init(nibName: nil, bundle: nil)
         self.managedChildren = managedChildren
+        self.delegate = delegate
     }
     
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -67,8 +72,20 @@ extension ContainerViewController {
         transition(to: child.viewController)
     }
     
+    open func child(at index: Int) -> Child? {
+        guard index >= managedChildren.startIndex && index < managedChildren.endIndex else { return nil }
+        return managedChildren[index]
+    }
+    
     open func index(ofChild controller: UIViewController) -> Int? {
-        return managedChildren.index(where: { $0.viewController == controller })
+        return managedChildren.index(where: { $0.viewController === controller })
+    }
+    
+    open func indexOfChild(following viewController: UIViewController) -> Int? {
+        guard let currentIndex = index(ofChild: viewController) else { return nil }
+        let nextIndex = managedChildren.index(after: currentIndex)
+        
+        return nextIndex < managedChildren.endIndex ? nextIndex : nil
     }
 }
 
@@ -83,7 +100,8 @@ private extension ContainerViewController {
             
             //If we do not already have a visible controller (first launch), skip the animator and contain the child
             prepareForTransitioning(from: nil, to: destination, animated: false)
-            add(destinationView: destination.view, toContainer: view, animated: false)
+            view.addSubview(destination.view)
+            configure(destinationView: destination.view, inContainer: view)
             finishTransitioning(from: nil, to: destination, animated: false)
             return
         }
@@ -119,25 +137,15 @@ private extension ContainerViewController {
         addChildViewController(destination)
     }
     
-    func add(destinationView: UIView, toContainer container: UIView, animated: Bool) {
-        container.addSubview(destinationView)
-        configure(destinationView: destinationView, inContainer: container)
-    }
-    
     func configure(destinationView: UIView, inContainer container: UIView) {
         destinationView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         destinationView.frame = container.bounds
     }
     
-    func removeSourceControllerFromContainer(_ source: UIViewController, animated: Bool) {
-        source.view.removeFromSuperview()
-        source.removeFromParentViewController()
-        
-        source.didMove(toParentViewController: nil)
-    }
-    
     func finishTransitioning(from source: UIViewController?, to destination: UIViewController, animated: Bool) {
-        source.map { removeSourceControllerFromContainer($0, animated: animated) }
+        source?.view.removeFromSuperview()
+        source?.removeFromParentViewController()
+        source?.didMove(toParentViewController: nil)
         destination.didMove(toParentViewController: self)
         
         visibleController = destination
