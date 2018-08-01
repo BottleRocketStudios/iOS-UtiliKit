@@ -24,7 +24,7 @@ public extension ContainerViewController {
     
     // MARK: Removing a Child
     func removeChild(_ child: Child) {
-        if let index = managedChildren.firstIndex(of: child) {
+        if let index = managedChildren.index(of: child) {
             let removed = managedChildren.remove(at: index)
             removed.viewController.removeFromParentViewController()
         }
