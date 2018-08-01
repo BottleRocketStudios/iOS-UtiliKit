@@ -17,6 +17,10 @@ public struct Child: Equatable {
         self.viewController = viewController
     }
     
+    public init<T: RawRepresentable>(title: T, viewController: UIViewController) where T.RawValue == String {
+        self.init(title: title.rawValue, viewController: viewController)
+    }
+    
     public static func ==(lhs: Child, rhs: Child) -> Bool {
         return lhs.title == rhs.title && lhs.viewController === rhs.viewController
     }
@@ -69,23 +73,16 @@ open class ContainerViewController: UIViewController {
 extension ContainerViewController {
     
     open func transitionToController(for child: Child) {
+        if !managedChildren.contains(child) {
+            managedChildren.append(child)
+        }
+        
         transition(to: child.viewController)
     }
     
     open func child(at index: Int) -> Child? {
         guard index >= managedChildren.startIndex && index < managedChildren.endIndex else { return nil }
         return managedChildren[index]
-    }
-    
-    open func index(ofChild controller: UIViewController) -> Int? {
-        return managedChildren.index(where: { $0.viewController === controller })
-    }
-    
-    open func indexOfChild(following viewController: UIViewController) -> Int? {
-        guard let currentIndex = index(ofChild: viewController) else { return nil }
-        let nextIndex = managedChildren.index(after: currentIndex)
-        
-        return nextIndex < managedChildren.endIndex ? nextIndex : nil
     }
 }
 
