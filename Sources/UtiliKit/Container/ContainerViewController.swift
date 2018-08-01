@@ -72,12 +72,12 @@ open class ContainerViewController: UIViewController {
 //MARK: Public Interface
 extension ContainerViewController {
     
-    open func transitionToController(for child: Child) {
+    open func transitionToController(for child: Child, completion: ((Bool) -> Void)? = nil) {
         if !managedChildren.contains(child) {
             managedChildren.append(child)
         }
         
-        transition(to: child.viewController)
+        transition(to: child.viewController, completion: completion)
     }
     
     open func child(at index: Int) -> Child? {
