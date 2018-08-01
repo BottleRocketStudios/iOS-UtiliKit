@@ -89,7 +89,7 @@ extension ContainerViewController {
 //MARK: Transitioning
 private extension ContainerViewController {
     
-    func transition(to destination: UIViewController) {
+    func transition(to destination: UIViewController, completion: ((Bool) -> Void)? = nil) {
         
         //Ensure that the view is loaded, we're not already transitioning and the transition will result in a move
         guard isViewLoaded && !isTransitioning, visibleController != destination else { return }
@@ -100,6 +100,7 @@ private extension ContainerViewController {
             view.addSubview(destination.view)
             configure(destinationView: destination.view, inContainer: view)
             finishTransitioning(from: nil, to: destination, animated: false)
+            completion?(true)
             return
         }
         
@@ -116,6 +117,7 @@ private extension ContainerViewController {
             blockSelf.configure(destinationView: destination.view, inContainer: blockSelf.view)
             blockSelf.finishTransitioning(from: source, to: destination, animated: true)
             blockSelf.delegate?.containerViewController(blockSelf, didFinishTransitioningFrom: source, to: destination)
+            completion?(finished)
         }
         
         //Instruct the animator to begin transitioning
