@@ -14,8 +14,8 @@ class ContainerTests: XCTestCase {
     
     func test_Container_indexOfChild() {
         let viewController = UIViewController()
-        let children = [Child(title: "title", viewController: viewController),
-                        Child(title: "title2", viewController: UIViewController())]
+        let children = [Child(identifier: "title", viewController: viewController),
+                        Child(identifier: "title2", viewController: UIViewController())]
         
         let container = ContainerViewController(managedChildren: children)
         XCTAssertNil(container.index(ofChild: UIViewController()))
@@ -24,8 +24,8 @@ class ContainerTests: XCTestCase {
     
     func test_Container_indexOfChildFollowing() {
         let viewController = UIViewController()
-        let children = [Child(title: "title", viewController: viewController),
-                        Child(title: "title2", viewController: UIViewController())]
+        let children = [Child(identifier: "title", viewController: viewController),
+                        Child(identifier: "title2", viewController: UIViewController())]
         
         let container = ContainerViewController(managedChildren: children)
         XCTAssertEqual(container.indexOfChild(following: viewController), 1)
@@ -33,10 +33,10 @@ class ContainerTests: XCTestCase {
     }
     
     func test_Container_childAtIndex() {
-        let children = [Child(title: "title", viewController: UIViewController()),
-                        Child(title: "title2", viewController: UIViewController()),
-                        Child(title: "title3", viewController: UIViewController()),
-                        Child(title: "title4", viewController: UIViewController())]
+        let children = [Child(identifier: "title", viewController: UIViewController()),
+                        Child(identifier: "title2", viewController: UIViewController()),
+                        Child(identifier: "title3", viewController: UIViewController()),
+                        Child(identifier: "title4", viewController: UIViewController())]
         
         let container = ContainerViewController(managedChildren: children)
         
