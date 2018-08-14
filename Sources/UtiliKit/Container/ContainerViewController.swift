@@ -17,6 +17,10 @@ public struct Child: Equatable {
         self.viewController = viewController
     }
     
+    public init<T: RawRepresentable>(title: T, viewController: UIViewController) where T.RawValue == String {
+        self.init(title: title.rawValue, viewController: viewController)
+    }
+    
     public static func ==(lhs: Child, rhs: Child) -> Bool {
         return lhs.title == rhs.title && lhs.viewController === rhs.viewController
     }
@@ -68,31 +72,24 @@ open class ContainerViewController: UIViewController {
 //MARK: Public Interface
 extension ContainerViewController {
     
-    open func transitionToController(for child: Child) {
-        transition(to: child.viewController)
+    open func transitionToController(for child: Child, completion: ((Bool) -> Void)? = nil) {
+        if !managedChildren.contains(child) {
+            managedChildren.append(child)
+        }
+        
+        transition(to: child.viewController, completion: completion)
     }
     
     open func child(at index: Int) -> Child? {
         guard index >= managedChildren.startIndex && index < managedChildren.endIndex else { return nil }
         return managedChildren[index]
     }
-    
-    open func index(ofChild controller: UIViewController) -> Int? {
-        return managedChildren.index(where: { $0.viewController === controller })
-    }
-    
-    open func indexOfChild(following viewController: UIViewController) -> Int? {
-        guard let currentIndex = index(ofChild: viewController) else { return nil }
-        let nextIndex = managedChildren.index(after: currentIndex)
-        
-        return nextIndex < managedChildren.endIndex ? nextIndex : nil
-    }
 }
 
 //MARK: Transitioning
 private extension ContainerViewController {
     
-    func transition(to destination: UIViewController) {
+    func transition(to destination: UIViewController, completion: ((Bool) -> Void)? = nil) {
         
         //Ensure that the view is loaded, we're not already transitioning and the transition will result in a move
         guard isViewLoaded && !isTransitioning, visibleController != destination else { return }
@@ -103,6 +100,7 @@ private extension ContainerViewController {
             view.addSubview(destination.view)
             configure(destinationView: destination.view, inContainer: view)
             finishTransitioning(from: nil, to: destination, animated: false)
+            completion?(true)
             return
         }
         
@@ -119,6 +117,7 @@ private extension ContainerViewController {
             blockSelf.configure(destinationView: destination.view, inContainer: blockSelf.view)
             blockSelf.finishTransitioning(from: source, to: destination, animated: true)
             blockSelf.delegate?.containerViewController(blockSelf, didFinishTransitioningFrom: source, to: destination)
+            completion?(finished)
         }
         
         //Instruct the animator to begin transitioning
