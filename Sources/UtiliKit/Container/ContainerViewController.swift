@@ -7,29 +7,10 @@
 
 import UIKit
 
-//MARK: Child Subtype
-public struct Child: Equatable {
-    public let title: String
-    public let viewController: UIViewController
-    
-    public init(title: String, viewController: UIViewController) {
-        self.title = title
-        self.viewController = viewController
-    }
-    
-    public init<T: RawRepresentable>(title: T, viewController: UIViewController) where T.RawValue == String {
-        self.init(title: title.rawValue, viewController: viewController)
-    }
-    
-    public static func ==(lhs: Child, rhs: Child) -> Bool {
-        return lhs.title == rhs.title && lhs.viewController === rhs.viewController
-    }
-}
-
 open class ContainerViewController: UIViewController {
     
     //MARK: Properties
-    public var managedChildren: [Child] = []
+    public var managedChildren: [ManagedChild] = []
     public private(set) var isTransitioning: Bool = false
     public var shouldAutomaticallyTransitionOnLoad: Bool = true
     public var visibleController: UIViewController? {
@@ -46,7 +27,7 @@ open class ContainerViewController: UIViewController {
     public weak var delegate: ContainerViewControllerDelegate?
     
     //MARK: Initializers
-    public convenience init(managedChildren: [Child], delegate: ContainerViewControllerDelegate? = nil) {
+    public convenience init(managedChildren: [ManagedChild], delegate: ContainerViewControllerDelegate? = nil) {
         self.init(nibName: nil, bundle: nil)
         self.managedChildren = managedChildren
         self.delegate = delegate
@@ -72,15 +53,15 @@ open class ContainerViewController: UIViewController {
 //MARK: Public Interface
 extension ContainerViewController {
     
-    open func transitionToController(for child: Child, completion: ((Bool) -> Void)? = nil) {
-        if !managedChildren.contains(child) {
+    open func transitionToController(for child: ManagedChild, completion: ((Bool) -> Void)? = nil) {
+        if !managedChildren.contains { $0.viewController === child.viewController } {
             managedChildren.append(child)
         }
         
         transition(to: child.viewController, completion: completion)
     }
     
-    open func child(at index: Int) -> Child? {
+    open func child(at index: Int) -> ManagedChild? {
         guard index >= managedChildren.startIndex && index < managedChildren.endIndex else { return nil }
         return managedChildren[index]
     }

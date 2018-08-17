@@ -10,7 +10,7 @@ import UIKit
 
 public extension ContainerViewController {
     
-    //MARK: Finding a Child
+    //MARK: Finding a ManagedChild
     func index(ofChild controller: UIViewController) -> Int? {
         return managedChildren.index(where: { $0.viewController === controller })
     }
@@ -22,13 +22,13 @@ public extension ContainerViewController {
         return nextIndex < managedChildren.endIndex ? nextIndex : nil
     }
     
-    // MARK: Removing a Child
-    func removeChild(_ child: Child) {
-        let removed = managedChildren.index(of: child).flatMap { managedChildren.remove(at: $0) }
+    // MARK: Removing a ManagedChild
+    func removeChild(_ child: ManagedChild) {
+        let removed = managedChildren.index { $0.identifier == child.identifier }.flatMap { managedChildren.remove(at: $0) }
         removed?.viewController.removeFromParentViewController()
     }
     
-    func removeChildren(where predicate: (Child) -> Bool) {
+    func removeChildren(where predicate: (ManagedChild) -> Bool) {
         managedChildren.filter(predicate).forEach(removeChild)
     }
 }
