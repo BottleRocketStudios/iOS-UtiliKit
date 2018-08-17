@@ -22,9 +22,9 @@ public extension ContainerViewController {
         return nextIndex < managedChildren.endIndex ? nextIndex : nil
     }
     
-    // MARK: Removing a Child
-    func removeChild(_ child: Child) {
-        let removed = managedChildren.index(of: child).flatMap { managedChildren.remove(at: $0) }
+    // MARK: Removing a ManagedChild
+    func removeChild(_ child: ManagedChild) {
+        let removed = managedChildren.index { $0.identifier == child.identifier }.flatMap { managedChildren.remove(at: $0) }
         #if swift(>=4.2)
         removed?.viewController.removeFromParent()
         #else
