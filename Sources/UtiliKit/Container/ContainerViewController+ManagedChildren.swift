@@ -25,7 +25,11 @@ public extension ContainerViewController {
     // MARK: Removing a Child
     func removeChild(_ child: Child) {
         let removed = managedChildren.index(of: child).flatMap { managedChildren.remove(at: $0) }
+        #if swift(>=4.2)
+        removed?.viewController.removeFromParent()
+        #else
         removed?.viewController.removeFromParentViewController()
+        #endif
     }
     
     func removeChildren(where predicate: (Child) -> Bool) {
