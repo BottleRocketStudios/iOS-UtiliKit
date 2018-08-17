@@ -25,8 +25,8 @@ class BaseContainerViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        containerViewController.managedChildren = [Child(title: "A", viewController: controllerA),
-                                                   Child(title: "B", viewController: controllerB)]
+        containerViewController.managedChildren = [Child(identifier: "A", viewController: controllerA),
+                                                   Child(identifier: "B", viewController: controllerB)]
 
         containerViewController.willMove(toParent: self)
         addChild(containerViewController)
@@ -36,11 +36,11 @@ class BaseContainerViewController: UIViewController {
     }
     
     @IBAction func transitionToA() {
-        containerViewController.transitionToController(withTitle: "A")
+        containerViewController.transitionToController(withIdentifier: "A")
     }
     
     @IBAction func transitionToB() {
-        containerViewController.transitionToController(withTitle: "B")
+        containerViewController.transitionToController(withIdentifier: "B")
     }
     
     @IBAction func logSwitchDidChange(_ sender: UISwitch) {
@@ -56,9 +56,9 @@ class BaseContainerViewController: UIViewController {
 
 //MARK: Helper
 fileprivate extension ContainerViewController {
-    func transitionToController(withTitle title: String) {
+    func transitionToController(withIdentifier identifier: AnyHashable) {
         //Note: As titles can change rapidly, it is much safer to directly use the Child object.
-        guard let child = managedChildren.first(where: { $0.title == title }) else { return }
+        guard let child = managedChildren.first(where: { $0.identifier == identifier }) else { return }
         transitionToController(for: child)
     }
 }
