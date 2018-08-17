@@ -153,7 +153,7 @@ func addOneHourTo(date: Date) -> Date {
 A solution for managing multiple child view controllers, the ContainerViewController manages the lifecycle of the child controllers. This allows you to focus on the navigational structure of your views as well as the transitions between them.
 
 ``` swift
-containerViewController.managedChildren = [Child(title: "A", viewController: controllerA), Child(title: "B", viewController: controllerB)]
+containerViewController.managedChildren = [Child(identifier: "A", viewController: controllerA), Child(identifier: "B", viewController: controllerB)]
 
 containerViewController.willMove(toParentViewController: self)
 
