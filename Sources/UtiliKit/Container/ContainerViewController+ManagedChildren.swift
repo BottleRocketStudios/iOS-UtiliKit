@@ -10,7 +10,7 @@ import UIKit
 
 public extension ContainerViewController {
     
-    //MARK: Finding a Child
+    //MARK: Finding a ManagedChild
     func index(ofChild controller: UIViewController) -> Int? {
         return managedChildren.index(where: { $0.viewController === controller })
     }
@@ -32,7 +32,7 @@ public extension ContainerViewController {
         #endif
     }
     
-    func removeChildren(where predicate: (Child) -> Bool) {
+    func removeChildren(where predicate: (ManagedChild) -> Bool) {
         managedChildren.filter(predicate).forEach(removeChild)
     }
 }
