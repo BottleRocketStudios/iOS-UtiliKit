@@ -112,9 +112,15 @@ private extension ContainerViewController {
     func prepareForTransitioning(from source: UIViewController?, to destination: UIViewController, animated: Bool) {
         isTransitioning = true
         
+        #if swift(>=4.2)
+        source?.willMove(toParent: nil)
+        destination.willMove(toParent: self)
+        addChild(destination)
+        #else
         source?.willMove(toParentViewController: nil)
         destination.willMove(toParentViewController: self)
         addChildViewController(destination)
+        #endif
     }
     
     func configure(destinationView: UIView, inContainer container: UIView) {
@@ -124,9 +130,15 @@ private extension ContainerViewController {
     
     func finishTransitioning(from source: UIViewController?, to destination: UIViewController, animated: Bool) {
         source?.view.removeFromSuperview()
+        #if swift(>=4.2)
+        source?.removeFromParent()
+        source?.didMove(toParent: nil)
+        destination.didMove(toParent: self)
+        #else
         source?.removeFromParentViewController()
         source?.didMove(toParentViewController: nil)
         destination.didMove(toParentViewController: self)
+        #endif
         
         visibleController = destination
         isTransitioning = false
