@@ -2,6 +2,21 @@
 
 ##### Enhancements
 
+* None.
+
+##### Bug Fixes
+
+* None.
+
+
+## 1.3.2 (2018-09-19)
+
+##### Enhancements
+
+* Updated project for Xcode 10.
+  [Tyler Milner](https://github.com/tylermilner)
+  [#35](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/35)
+
 * Updated Travis-CI image to Xcode 9.4.
   [Tyler Milner](https://github.com/tylermilner)
   [#33](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/33)
