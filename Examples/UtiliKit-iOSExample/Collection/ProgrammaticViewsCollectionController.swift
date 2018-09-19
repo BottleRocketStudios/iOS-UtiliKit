@@ -61,7 +61,7 @@ extension ProgrammaticViewsCollectionController: UICollectionViewDataSource {
 		// The same scheme used to dequeue the "ProgrammaticCell" is used to dequeue header and footer views.
 		// You need only provide the desired type and SupplementaryElementKind to receive a typed UICollectionReusableView
         switch kind {
-        case UICollectionElementKindSectionHeader:
+        case UICollectionView.elementKindSectionHeader:
             let header: ProgrammaticHeaderFooterView = collectionView.dequeueReusableSupplementaryView(of: .sectionHeader, for: indexPath)
             return header
         default:

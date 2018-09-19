@@ -155,13 +155,13 @@ A solution for managing multiple child view controllers, the ContainerViewContro
 ``` swift
 containerViewController.managedChildren = [Child(identifier: "A", viewController: controllerA), Child(identifier: "B", viewController: controllerB)]
 
-containerViewController.willMove(toParentViewController: self)
+containerViewController.willMove(toParent: self)
 
-addChildViewController(containerViewController)
+addChild(containerViewController)
 containerView.addSubview(containerViewController.view)
 containerViewController.view.frame = containerView.bounds
 
-containerViewController.didMove(toParentViewController: self)
+containerViewController.didMove(toParent: self)
 ```
 
 At this point, transitioning between the children of the container is incredibly simple.

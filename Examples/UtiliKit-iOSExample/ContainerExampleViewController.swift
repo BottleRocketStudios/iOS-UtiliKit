@@ -28,11 +28,11 @@ class BaseContainerViewController: UIViewController {
         containerViewController.managedChildren = [Child(identifier: "A", viewController: controllerA),
                                                    Child(identifier: "B", viewController: controllerB)]
 
-        containerViewController.willMove(toParentViewController: self)
-        addChildViewController(containerViewController)
+        containerViewController.willMove(toParent: self)
+        addChild(containerViewController)
         containerView.addSubview(containerViewController.view)
         containerViewController.view.frame = containerView.bounds
-        containerViewController.didMove(toParentViewController: self)
+        containerViewController.didMove(toParent: self)
     }
     
     @IBAction func transitionToA() {
