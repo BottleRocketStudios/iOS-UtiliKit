@@ -22,6 +22,13 @@ public extension ContainerViewController {
         return nextIndex < managedChildren.endIndex ? nextIndex : nil
     }
     
+    func indexOfChild(preceding viewController: UIViewController) -> Int? {
+        guard let currentIndex = index(ofChild: viewController) else { return nil }
+        let previousIndex = managedChildren.index(before: currentIndex)
+        
+        return previousIndex >= managedChildren.startIndex ? previousIndex : nil
+    }
+    
     // MARK: Removing a ManagedChild
     func removeChild(_ child: ManagedChild) {
         let removed = managedChildren.index { $0.identifier == child.identifier }.flatMap { managedChildren.remove(at: $0) }
