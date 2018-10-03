@@ -2,7 +2,9 @@
 
 ##### Enhancements
 
-* None.
+* Add indexOfChild(preceding:) function.
+[Will McGinty](https://github.com/willmcginty)
+[#36](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/36)
 
 ##### Bug Fixes
 
