@@ -12,6 +12,8 @@
 		0ED9476420FD473700B642AB /* ContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9476220FD461300B642AB /* ContainerTests.swift */; };
 		1D419DBD21235EE100B62D91 /* ManagedChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D419DBC21235EE100B62D91 /* ManagedChild.swift */; };
 		1D419DBF21236CC300B62D91 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
+		7DBF0AA821700F21001F9DA6 /* LanguageTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF0AA721700F21001F9DA6 /* LanguageTool.swift */; };
+		7DBF0AAB21700F91001F9DA6 /* LanguageToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF0AA921700F73001F9DA6 /* LanguageToolTests.swift */; };
 		8677314220601BB400C54343 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
 		8677315720601D1A00C54343 /* UtiliKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869826261FE87BFA0024B73D /* UtiliKitTests.swift */; };
 		8677315820601D1A00C54343 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869826271FE87BFA0024B73D /* DateTests.swift */; };
@@ -81,6 +83,8 @@
 		0EC8025B209CE9C90051F732 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		0ED9476220FD461300B642AB /* ContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTests.swift; sourceTree = "<group>"; };
 		1D419DBC21235EE100B62D91 /* ManagedChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedChild.swift; sourceTree = "<group>"; };
+		7DBF0AA721700F21001F9DA6 /* LanguageTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTool.swift; sourceTree = "<group>"; };
+		7DBF0AA921700F73001F9DA6 /* LanguageToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageToolTests.swift; sourceTree = "<group>"; };
 		8677313920601BB400C54343 /* UtiliKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UtiliKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8677314120601BB400C54343 /* UtiliKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UtiliKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8677315A20601DD800C54343 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 				869826261FE87BFA0024B73D /* UtiliKitTests.swift */,
 				0ED9476220FD461300B642AB /* ContainerTests.swift */,
 				8677315920601DD800C54343 /* Supporting Files */,
+				7DBF0AA921700F73001F9DA6 /* LanguageToolTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 			children = (
 				8698CFA820619EAD0065AE20 /* FileManager+Extensions.swift */,
 				8698CFA920619EAD0065AE20 /* UIView+Extensions.swift */,
+				7DBF0AA721700F21001F9DA6 /* LanguageTool.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -540,6 +546,7 @@
 				8698CFC020619EAD0065AE20 /* MKMapView+Extensions.swift in Sources */,
 				8698CFC120619EAD0065AE20 /* NibLoadable.swift in Sources */,
 				8698CFBF20619EAD0065AE20 /* UIView+Extensions.swift in Sources */,
+				7DBF0AA821700F21001F9DA6 /* LanguageTool.swift in Sources */,
 				8698CFBB20619EAD0065AE20 /* ContainerViewController.swift in Sources */,
 				8698CFCA20619EAD0065AE20 /* VersionConfig.swift in Sources */,
 				8698CFC420619EAD0065AE20 /* UICollectionView+Extensions.swift in Sources */,
@@ -567,6 +574,7 @@
 				0ED9476420FD473700B642AB /* ContainerTests.swift in Sources */,
 				8677315720601D1A00C54343 /* UtiliKitTests.swift in Sources */,
 				8677315820601D1A00C54343 /* DateTests.swift in Sources */,
+				7DBF0AAB21700F91001F9DA6 /* LanguageToolTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
