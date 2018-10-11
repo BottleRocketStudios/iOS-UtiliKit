@@ -8,7 +8,7 @@ UtiliKit
 [![codebeat badge](https://codebeat.co/badges/e47aed79-20ee-4054-b8cd-2bdaceab52dd)](https://codebeat.co/projects/github-com-bottlerocketstudios-ios-utilikit-master)
 
 ### Purpose
-This library provides several useful and often common additions for iOS applications. These extensions, protocols, and structs are designed to simplify boiler plate code as well as remove common "Stringly-typed" use cases.
+This library provides several useful and often common additions for iOS applications. These extensions, protocols, and structs are designed to simplify boilerplate code as well as remove common "Stringly-typed" use cases.
 
 ### Key Concepts
 This library is divided into 5 parts.
@@ -153,15 +153,15 @@ func addOneHourTo(date: Date) -> Date {
 A solution for managing multiple child view controllers, the ContainerViewController manages the lifecycle of the child controllers. This allows you to focus on the navigational structure of your views as well as the transitions between them.
 
 ``` swift
-containerViewController.children = [Child(title: "A", viewController: controllerA), Child(title: "B", viewController: controllerB)]
+containerViewController.managedChildren = [Child(identifier: "A", viewController: controllerA), Child(identifier: "B", viewController: controllerB)]
 
-containerViewController.willMove(toParentViewController: self)
+containerViewController.willMove(toParent: self)
 
-addChildViewController(containerViewController)
+addChild(containerViewController)
 containerView.addSubview(containerViewController.view)
 containerViewController.view.frame = containerView.bounds
 
-containerViewController.didMove(toParentViewController: self)
+containerViewController.didMove(toParent: self)
 ```
 
 At this point, transitioning between the children of the container is incredibly simple.

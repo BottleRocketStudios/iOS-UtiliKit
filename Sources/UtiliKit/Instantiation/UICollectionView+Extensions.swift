@@ -17,8 +17,18 @@ public extension UICollectionView {
         /// Either UICollectionElementKindSectionHeader or UICollectionElementKindSectionFooter
         var type: String {
             switch self {
-            case .sectionHeader: return UICollectionElementKindSectionHeader
-            case .sectionFooter: return UICollectionElementKindSectionFooter
+            case .sectionHeader:
+                #if swift(>=4.2)
+                return UICollectionView.elementKindSectionHeader
+                #else
+                return UICollectionElementKindSectionHeader
+                #endif
+            case .sectionFooter:
+                #if swift(>=4.2)
+                return UICollectionView.elementKindSectionFooter
+                #else
+                return UICollectionElementKindSectionFooter
+                #endif
             }
         }
     }

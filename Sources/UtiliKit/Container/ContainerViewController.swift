@@ -7,21 +7,10 @@
 
 import UIKit
 
-//MARK: Child Subtype
-public struct Child {
-    public let title: String
-    public let viewController: UIViewController
-    
-    public init(title: String, viewController: UIViewController) {
-        self.title = title
-        self.viewController = viewController
-    }
-}
-
 open class ContainerViewController: UIViewController {
     
     //MARK: Properties
-    public var children: [Child] = []
+    public var managedChildren: [ManagedChild] = []
     public private(set) var isTransitioning: Bool = false
     public var shouldAutomaticallyTransitionOnLoad: Bool = true
     public var visibleController: UIViewController? {
@@ -38,9 +27,10 @@ open class ContainerViewController: UIViewController {
     public weak var delegate: ContainerViewControllerDelegate?
     
     //MARK: Initializers
-    public convenience init(children: [Child]) {
+    public convenience init(managedChildren: [ManagedChild], delegate: ContainerViewControllerDelegate? = nil) {
         self.init(nibName: nil, bundle: nil)
-        self.children = children
+        self.managedChildren = managedChildren
+        self.delegate = delegate
     }
     
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -55,7 +45,7 @@ open class ContainerViewController: UIViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard shouldAutomaticallyTransitionOnLoad, let initial = children.first else { return }
+        guard shouldAutomaticallyTransitionOnLoad, let initial = managedChildren.first else { return }
         transition(to: initial.viewController)
     }
 }
@@ -63,19 +53,24 @@ open class ContainerViewController: UIViewController {
 //MARK: Public Interface
 extension ContainerViewController {
     
-    open func transitionToController(for child: Child) {
-        transition(to: child.viewController)
+    open func transitionToController(for child: ManagedChild, completion: ((Bool) -> Void)? = nil) {
+        if !managedChildren.contains { $0.viewController === child.viewController } {
+            managedChildren.append(child)
+        }
+        
+        transition(to: child.viewController, completion: completion)
     }
     
-    open func index(ofChild controller: UIViewController) -> Int? {
-        return children.index(where: { $0.viewController == controller })
+    open func child(at index: Int) -> ManagedChild? {
+        guard index >= managedChildren.startIndex && index < managedChildren.endIndex else { return nil }
+        return managedChildren[index]
     }
 }
 
 //MARK: Transitioning
 private extension ContainerViewController {
     
-    func transition(to destination: UIViewController) {
+    func transition(to destination: UIViewController, completion: ((Bool) -> Void)? = nil) {
         
         //Ensure that the view is loaded, we're not already transitioning and the transition will result in a move
         guard isViewLoaded && !isTransitioning, visibleController != destination else { return }
@@ -83,8 +78,10 @@ private extension ContainerViewController {
             
             //If we do not already have a visible controller (first launch), skip the animator and contain the child
             prepareForTransitioning(from: nil, to: destination, animated: false)
-            add(destinationView: destination.view, toContainer: view, animated: false)
+            view.addSubview(destination.view)
+            configure(destinationView: destination.view, inContainer: view)
             finishTransitioning(from: nil, to: destination, animated: false)
+            completion?(true)
             return
         }
         
@@ -101,6 +98,7 @@ private extension ContainerViewController {
             blockSelf.configure(destinationView: destination.view, inContainer: blockSelf.view)
             blockSelf.finishTransitioning(from: source, to: destination, animated: true)
             blockSelf.delegate?.containerViewController(blockSelf, didFinishTransitioningFrom: source, to: destination)
+            completion?(finished)
         }
         
         //Instruct the animator to begin transitioning
@@ -114,14 +112,15 @@ private extension ContainerViewController {
     func prepareForTransitioning(from source: UIViewController?, to destination: UIViewController, animated: Bool) {
         isTransitioning = true
         
+        #if swift(>=4.2)
+        source?.willMove(toParent: nil)
+        destination.willMove(toParent: self)
+        addChild(destination)
+        #else
         source?.willMove(toParentViewController: nil)
         destination.willMove(toParentViewController: self)
         addChildViewController(destination)
-    }
-    
-    func add(destinationView: UIView, toContainer container: UIView, animated: Bool) {
-        container.addSubview(destinationView)
-        configure(destinationView: destinationView, inContainer: container)
+        #endif
     }
     
     func configure(destinationView: UIView, inContainer container: UIView) {
@@ -129,16 +128,17 @@ private extension ContainerViewController {
         destinationView.frame = container.bounds
     }
     
-    func removeSourceControllerFromContainer(_ source: UIViewController, animated: Bool) {
-        source.view.removeFromSuperview()
-        source.removeFromParentViewController()
-        
-        source.didMove(toParentViewController: nil)
-    }
-    
     func finishTransitioning(from source: UIViewController?, to destination: UIViewController, animated: Bool) {
-        source.map { removeSourceControllerFromContainer($0, animated: animated) }
+        source?.view.removeFromSuperview()
+        #if swift(>=4.2)
+        source?.removeFromParent()
+        source?.didMove(toParent: nil)
+        destination.didMove(toParent: self)
+        #else
+        source?.removeFromParentViewController()
+        source?.didMove(toParentViewController: nil)
         destination.didMove(toParentViewController: self)
+        #endif
         
         visibleController = destination
         isTransitioning = false
