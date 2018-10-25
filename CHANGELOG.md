@@ -2,6 +2,17 @@
 
 ##### Enhancements
 
+* None.
+
+##### Bug Fixes
+
+* None.
+
+
+## 1.3.3 (2018-10-25)
+
+##### Enhancements
+
 * Add indexOfChild(preceding:) function.
 [Will McGinty](https://github.com/willmcginty)
 [#36](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/36)
@@ -35,7 +46,7 @@
 * Add out-of-box support for Swift 4.2.
   [Tyler Milner](https://github.com/tylermilner)
   [#30](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/30)
-  
+
 * Abstract Child into ManagedChild protocol to be adopted by custom child types.
   [Cuong Leo Ngo](https://github.com/ngocholo)
   [#29](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/29)
