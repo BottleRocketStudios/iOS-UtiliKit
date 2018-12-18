@@ -17,7 +17,7 @@ public extension UICollectionView {
         /// Attempt to create a `UICollectionView.SupplementaryElementKind` from the given string.
         ///
         /// - Parameter kind: The type of supplementary view to be instantiated or dequeued.
-        init?(kind: String) {
+        public init?(kind: String) {
             let headerKind: String
             let footerKind: String
             #if swift(>=4.2)
@@ -38,7 +38,7 @@ public extension UICollectionView {
         }
     
         /// Either UICollectionElementKindSectionHeader or UICollectionElementKindSectionFooter
-        var type: String {
+        public var type: String {
             switch self {
             case .sectionHeader:
                 #if swift(>=4.2)
