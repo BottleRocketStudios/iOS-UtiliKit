@@ -2,7 +2,13 @@
 
 ##### Enhancements
 
-* None.
+* Make interface of `UICollectionView.SupplementaryElementKind` public.
+[Will McGinty](https://github.com/willmcginty)
+[#42](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/36)
+
+* Add init?(kind:) initializer to `UICollectionView.SupplementaryElementKind`.
+[Will McGinty](https://github.com/willmcginty)
+[#41](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/36)
 
 ##### Bug Fixes
 
