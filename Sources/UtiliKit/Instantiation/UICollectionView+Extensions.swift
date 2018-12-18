@@ -14,6 +14,29 @@ public extension UICollectionView {
         case sectionHeader
         case sectionFooter
         
+        /// Attempt to create a `UICollectionView.SupplementaryElementKind` from the given string.
+        ///
+        /// - Parameter kind: The type of supplementary view to be instantiated or dequeued.
+        init?(kind: String) {
+            let headerKind: String
+            let footerKind: String
+            #if swift(>=4.2)
+            headerKind = UICollectionView.elementKindSectionHeader
+            footerKind = UICollectionView.elementKindSectionFooter
+            #else
+            headerKind = UICollectionElementKindSectionHeader
+            footerKind = UICollectionElementKindSectionFooter
+            #endif
+            
+            if kind == headerKind {
+                self = .sectionHeader
+            } else if kind == footerKind {
+                self = .sectionFooter
+            } else {
+                return nil
+            }
+        }
+    
         /// Either UICollectionElementKindSectionHeader or UICollectionElementKindSectionFooter
         var type: String {
             switch self {
