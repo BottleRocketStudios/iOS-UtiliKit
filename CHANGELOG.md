@@ -12,7 +12,9 @@
 
 ##### Bug Fixes
 
-* None.
+* Allow calls to `transitionToController` before the view loads to have an effect at load time
+[Will McGinty](https://github.com/willmcginty)
+[#43](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/43)
 
 
 ## 1.3.3 (2018-10-25)

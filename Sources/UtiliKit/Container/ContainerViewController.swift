@@ -55,7 +55,7 @@ extension ContainerViewController {
     
     open func transitionToController(for child: ManagedChild, completion: ((Bool) -> Void)? = nil) {
         if !managedChildren.contains { $0.viewController === child.viewController } {
-            managedChildren.append(child)
+            managedChildren.insert(child, at: managedChildren.startIndex)
         }
         
         transition(to: child.viewController, completion: completion)
