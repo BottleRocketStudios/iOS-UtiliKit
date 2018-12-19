@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'UtiliKit'
-s.version          = '1.3.3'
+s.version          = '1.3.4'
 s.summary          = 'All the things you are tired of writing.'
 
 # This description is used to generate tags and improve search results.
@@ -43,15 +43,15 @@ timeless.source_files = 'Sources/UtiliKit/TimelessDate/*.swift'
 end
 
 s.subspec 'General' do |general|
-general.source_files   = 'Sources/UtiliKit/General/*.swift'
+general.source_files = 'Sources/UtiliKit/General/*.swift'
 end
 
 s.subspec 'Version' do |version|
-version.source_files   = 'Sources/UtiliKit/Version/*.swift'
+version.source_files = 'Sources/UtiliKit/Version/*.swift'
 end
 
 s.subspec 'Container' do |container|
-container.source_files   = 'Sources/UtiliKit/Container/*.swift'
+container.source_files = 'Sources/UtiliKit/Container/*.swift'
 end
 
 end

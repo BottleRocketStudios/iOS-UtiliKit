@@ -2,6 +2,17 @@
 
 ##### Enhancements
 
+* None.
+
+##### Bug Fixes
+
+* None.
+
+
+## 1.3.4 (2018-12-19)
+
+##### Enhancements
+
 * Make interface of `UICollectionView.SupplementaryElementKind` public.
 [Will McGinty](https://github.com/willmcginty)
 [#42](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/42)
