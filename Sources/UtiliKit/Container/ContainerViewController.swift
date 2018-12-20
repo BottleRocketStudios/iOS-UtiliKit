@@ -58,6 +58,11 @@ extension ContainerViewController {
             managedChildren.insert(child, at: managedChildren.startIndex)
         }
         
+        if !isViewLoaded, managedChildren.first?.identifier != child.identifier {
+            managedChildren.removeAll { $0.identifier == child.identifier }
+            managedChildren.insert(child, at: managedChildren.startIndex)
+        }
+        
         transition(to: child.viewController, completion: completion)
     }
     
