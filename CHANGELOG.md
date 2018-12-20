@@ -8,7 +8,7 @@
 
 * Handle another case of transitioning pre-load.
 [Will McGinty](https://github.com/willmcginty)
-[#44](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/44)
+[#46](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/46)
 
 
 ## 1.3.4 (2018-12-19)
