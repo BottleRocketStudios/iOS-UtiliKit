@@ -6,6 +6,17 @@
 
 ##### Bug Fixes
 
+* None.
+
+
+## 1.3.5 (2019-01-02)
+
+##### Enhancements
+
+* None.
+
+##### Bug Fixes
+
 * Handle another case of transitioning pre-load.
 [Will McGinty](https://github.com/willmcginty)
 [#46](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/46)
