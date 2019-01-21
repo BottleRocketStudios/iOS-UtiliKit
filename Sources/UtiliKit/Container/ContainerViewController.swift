@@ -24,6 +24,11 @@ open class ContainerViewController: UIViewController {
         return visibleController.flatMap { index(ofChild: $0 ) }
     }
     
+    private var containerTransitionCoordinator: ContainerTransitionCoordinator?
+    override open var transitionCoordinator: UIViewControllerTransitionCoordinator? {
+        return containerTransitionCoordinator
+    }
+    
     public weak var delegate: ContainerViewControllerDelegate?
     
     //MARK: Initializers
@@ -92,22 +97,25 @@ private extension ContainerViewController {
         
         guard delegate?.containerViewController(self, shouldTransitionFrom: source, to: destination) ?? true else { return }
         
-        //Inform the delegate transitioning is set to begin
-        delegate?.containerViewController(self, didBeginTransitioningFrom: source, to: destination)
-        
         //Begin the internal transitioning process, using a UIViewControllerAnimatedTransitioning object
         prepareForTransitioning(from: source, to: destination, animated: true)
         let animator = delegate?.containerViewController(self, animationControllerForTransitionFrom: source, to: destination) ?? ContainerViewControllerTransitionAnimator()
         let transitionContext = ContainerTransitionContext(containerViewController: self, sourceViewController: source, destinationViewController: destination) { [weak self] finished in
-            guard let blockSelf = self else { return }
-            blockSelf.configure(destinationView: destination.view, inContainer: blockSelf.view)
-            blockSelf.finishTransitioning(from: source, to: destination, animated: true)
-            blockSelf.delegate?.containerViewController(blockSelf, didFinishTransitioningFrom: source, to: destination)
+            guard let self = self else { return }
+            self.configure(destinationView: destination.view, inContainer: self.view)
+            self.finishTransitioning(from: source, to: destination, animated: true)
+            self.delegate?.containerViewController(self, didFinishTransitioningFrom: source, to: destination)
+            self.containerTransitionCoordinator = nil
+            
             completion?(finished)
         }
         
         //Instruct the animator to begin transitioning
         animator.animateTransition(using: transitionContext)
+        containerTransitionCoordinator = ContainerTransitionCoordinator()
+        
+        //Inform the delegate transitioning has begun
+        delegate?.containerViewController(self, didBeginTransitioningFrom: source, to: destination)
     }
 }
 

@@ -10,6 +10,7 @@
 		0E6E8C6D2112551200617815 /* ContainerViewController+ManagedChildren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E8C6C2112551200617815 /* ContainerViewController+ManagedChildren.swift */; };
 		0EC8025C209CE9C90051F732 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC8025B209CE9C90051F732 /* Configurable.swift */; };
 		0ED9476420FD473700B642AB /* ContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9476220FD461300B642AB /* ContainerTests.swift */; };
+		0EFAFE8C21F68498005B2B16 /* ContainerTransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE8B21F68498005B2B16 /* ContainerTransitionCoordinator.swift */; };
 		1D419DBD21235EE100B62D91 /* ManagedChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D419DBC21235EE100B62D91 /* ManagedChild.swift */; };
 		1D419DBF21236CC300B62D91 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
 		8677314220601BB400C54343 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
@@ -80,6 +81,7 @@
 		0E6E8C6C2112551200617815 /* ContainerViewController+ManagedChildren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContainerViewController+ManagedChildren.swift"; sourceTree = "<group>"; };
 		0EC8025B209CE9C90051F732 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		0ED9476220FD461300B642AB /* ContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTests.swift; sourceTree = "<group>"; };
+		0EFAFE8B21F68498005B2B16 /* ContainerTransitionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTransitionCoordinator.swift; sourceTree = "<group>"; };
 		1D419DBC21235EE100B62D91 /* ManagedChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedChild.swift; sourceTree = "<group>"; };
 		8677313920601BB400C54343 /* UtiliKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UtiliKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8677314120601BB400C54343 /* UtiliKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UtiliKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				8698CFA320619EAD0065AE20 /* ContainerTransitionContext.swift */,
+				0EFAFE8B21F68498005B2B16 /* ContainerTransitionCoordinator.swift */,
 				8698CFA420619EAD0065AE20 /* ContainerViewController.swift */,
 				0E6E8C6C2112551200617815 /* ContainerViewController+ManagedChildren.swift */,
 				8698CFA520619EAD0065AE20 /* ContainerViewControllerDelegate.swift */,
@@ -554,6 +557,7 @@
 				8698CFC720619EAD0065AE20 /* Date+Extensions.swift in Sources */,
 				8698CFBA20619EAD0065AE20 /* ContainerTransitionContext.swift in Sources */,
 				8698CFBE20619EAD0065AE20 /* FileManager+Extensions.swift in Sources */,
+				0EFAFE8C21F68498005B2B16 /* ContainerTransitionCoordinator.swift in Sources */,
 				8698CFBD20619EAD0065AE20 /* ContainerViewControllerTransitionAnimator.swift in Sources */,
 				1D419DBD21235EE100B62D91 /* ManagedChild.swift in Sources */,
 				8698CFBC20619EAD0065AE20 /* ContainerViewControllerDelegate.swift in Sources */,
