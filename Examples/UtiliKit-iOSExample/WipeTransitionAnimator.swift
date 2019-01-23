@@ -66,7 +66,7 @@ extension WipeTransitionAnimator: UIViewControllerAnimatedTransitioning {
             self.configureFinalState(forSource: source, destination: destination, context: transitionContext)
         }
         
-        propertyAnimator.addCompletion { [unowned self] (animatingPosition) in
+        propertyAnimator.addCompletion { [unowned self] animatingPosition in
             self.completeAnimation(successfully: animatingPosition == .end, for: source, destination: destination, with: transitionContext)
             self.interruptibleAnimator = nil
         }

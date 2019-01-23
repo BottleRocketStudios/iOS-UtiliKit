@@ -26,8 +26,6 @@ open class ContainerViewController: UIViewController {
         return managedChildren.first{ $0.viewController === visibleController }
     }
     
-    private var containerTransitionCoordinator: ContainerTransitionCoordinator?
-    override open var transitionCoordinator: UIViewControllerTransitionCoordinator? { return containerTransitionCoordinator }
     private var containerTransitionContext: UIViewControllerContextTransitioning?
     
     public weak var delegate: ContainerViewControllerDelegate?
@@ -135,15 +133,17 @@ private extension ContainerViewController {
         isTransitioning = true
         
         #if swift(>=4.2)
-        source?.willMove(toParent: nil)
+        source?.beginAppearanceTransition(false, animated: animated)
         
-        destination.willMove(toParent: self)
+        destination.beginAppearanceTransition(true, animated: animated)
         addChild(destination)
+        destination.didMove(toParent: self)
         #else
-        source?.willMove(toParentViewController: nil)
+        source?.beginAppearanceTransition(false, animated: animated)
         
-        destination.willMove(toParentViewController: self)
+        destination.beginAppearanceTransition(true, animated: animated)
         addChildViewController(destination)
+        destination.didMove(toParentViewController: self)
         #endif
     }
     
@@ -159,47 +159,40 @@ private extension ContainerViewController {
         
         if success {
             #if swift(>=4.2)
-            destination.didMove(toParent: self)
+            destination.endAppearanceTransition()
 
+            source?.endAppearanceTransition()
+            source?.willMove(toParent: nil)
             source?.removeFromParent()
-            source?.didMove(toParent: nil)
             #else
-            destination.didMove(toParentViewController: self)
+            destination.endAppearanceTransition()
             
+            source?.endAppearanceTransition()
+            source?.willMove(toParentViewController: nil)
             source?.removeFromParentViewController()
-            source?.didMove(toParentViewController: nil)
             #endif
             
             visibleController = destination
             
         } else {
             #if swift(>=4.2)
+            destination.endAppearanceTransition()
             destination.willMove(toParent: nil)
-            destination.beginAppearanceTransition(false, animated: animated)
             destination.removeFromParent()
-            destination.endAppearanceTransition()
-            destination.didMove(toParent: nil)
             
-            source?.willMove(toParent: self)
-            source?.beginAppearanceTransition(true, animated: animated)
             source?.endAppearanceTransition()
-            source?.didMove(toParent: self)
             #else
-            destination.willMove(toParentViewController: nil)
-            destination.beginAppearanceTransition(false, animated: animated)
-            destination.removeFromParentViewController()
             destination.endAppearanceTransition()
-            destination.didMove(toParentViewController: nil)
+            destination.willMove(toParentViewController: nil)
+            destination.removeFromParentViewController()
             
-            source?.willMove(toParentViewController: self)
-            source?.beginAppearanceTransition(true, animated: animated)
             source?.endAppearanceTransition()
-            source?.didMove(toParentViewController: self)
             #endif
             
             visibleController = source
         }
         
+        containerTransitionContext = nil
         isTransitioning = false
     }
 }

@@ -8,154 +8,77 @@
 
 import UIKit
 
-class ContainerTransitionCoordinator: NSObject, UIViewControllerTransitionCoordinator {
-    
-    // MARK: Typealias
-    typealias ContextHandler = (UIViewControllerTransitionCoordinatorContext) -> Swift.Void
-    
-    // MARK: Properties
-    private var animations: [ContextHandler] = []
-    private var nonContaineeAnimatedViews: [UIView] = []
-    private var completionCallbacks: [ContextHandler] = []
-    private var endNotificationCallbacks: [ContextHandler] = []
-    private var changeNotificationCallbacks: [ContextHandler] = []
-    
-    internal(set) public var isAnimated: Bool = true
-    internal(set) public var presentationStyle: UIModalPresentationStyle = .none
-    internal(set) public var initiallyInteractive: Bool = false
-    internal(set) public var isInterruptible: Bool = false
-    internal(set) public var isInteractive: Bool = false
-    internal(set) public var isCancelled: Bool = false
-    internal(set) public var transitionDuration: TimeInterval = 0.5
-    
-    // These three methods are potentially meaningful for interactive transitions that are
-    // completing. It reports the percent complete of the transition when it moves
-    // to the non-interactive completion phase of the transition.
-    public var percentComplete: CGFloat = 0
-    public var completionVelocity: CGFloat = 1.0
-    public var completionCurve: UIView.AnimationCurve = .linear
-    
-    private var viewControllers: [UITransitionContextViewControllerKey:UIViewController]
-    private var views: [UITransitionContextViewKey:UIView]
-    
-    func viewController(forKey key: UITransitionContextViewControllerKey) -> UIViewController? {
-        return viewControllers[key]
-    }
-    
-    func view(forKey key: UITransitionContextViewKey) -> UIView? {
-        return views[key]
-    }
-    
-    public var containerView: UIView
-    
-    public var targetTransform: CGAffineTransform = CGAffineTransform.identity
-    
-    init(containerView: UIView, fromViewController: UIViewController, toViewController: UIViewController) {
-        self.containerView = containerView
-        self.viewControllers = [
-            UITransitionContextViewControllerKey.from: fromViewController,
-            UITransitionContextViewControllerKey.to: toViewController
-        ]
-        self.views = [
-            UITransitionContextViewKey.from: fromViewController.view,
-            UITransitionContextViewKey.to: toViewController.view
-        ]
-        
-        super.init()
-    }
-}
-
-extension ContainerTransitionCoordinator {
-    
-    var otherAnimatedViews: [UIView] {
-        return nonContaineeAnimatedViews
-    }
-    
-    func performAlongsideAnimations() {
-        animations.forEach { (callback) in
-            callback(self)
-        }
-    }
-    
-    func completeTransition() {
-        completionCallbacks.forEach { (callback) in
-            callback(self)
-        }
-    }
-    
-    func notifyThatInteractionStopped() {
-        self.isInteractive = false
-        notifyInteractionChanged()
-        notifyInteractionEnded()
-    }
-    
-    func notifyInteractionChanged() {
-        changeNotificationCallbacks.forEach { (notificationCallbacks) in
-            notificationCallbacks(self)
-        }
-    }
-    
-    func notifyInteractionEnded() {
-        endNotificationCallbacks.forEach { (notificationCallbacks) in
-            notificationCallbacks(self)
-        }
-    }
-    
-}
-
-extension ContainerTransitionCoordinator {
-    
-    public func animate(alongsideTransition animation: ((UIViewControllerTransitionCoordinatorContext) -> Swift.Void)?, completion: ((UIViewControllerTransitionCoordinatorContext) -> Swift.Void)? = nil) -> Bool {
-        
-        let addedAnimation = add(alongsideAnimation: animation)
-        let addedCompletionBlock = add(completionBlock: completion)
-        return addedAnimation || addedCompletionBlock
-    }
-    
-    public func animateAlongsideTransition(in view: UIView?, animation: ((UIViewControllerTransitionCoordinatorContext) -> Swift.Void)?, completion: ((UIViewControllerTransitionCoordinatorContext) -> Swift.Void)? = nil) -> Bool {
-        
-        let addedNonContaineeView = add(viewForAnimation: view)
-        let addedAnimation = add(alongsideAnimation: animation)
-        let addedCompletionBlock = add(completionBlock: completion)
-        return addedNonContaineeView || addedAnimation || addedCompletionBlock
-    }
-    
-    public func notifyWhenInteractionEnds(_ handler: @escaping (UIViewControllerTransitionCoordinatorContext) -> Swift.Void) {
-        endNotificationCallbacks.append(handler)
-    }
-    
-    public func notifyWhenInteractionChanges(_ handler: @escaping (UIViewControllerTransitionCoordinatorContext) -> Swift.Void) {
-        changeNotificationCallbacks.append(handler)
-    }
-    
-}
-
-private extension ContainerTransitionCoordinator {
-    
-    func add(viewForAnimation: UIView?) -> Bool {
-        if let view = viewForAnimation {
-            nonContaineeAnimatedViews.append(view)
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func add(alongsideAnimation: ContextHandler?) -> Bool {
-        if let animation = alongsideAnimation {
-            animations.append(animation)
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func add(completionBlock: ContextHandler?) -> Bool {
-        if let completion = completionBlock {
-            completionCallbacks.append(completion)
-            return true
-        } else {
-            return false
-        }
-    }
-}
+//class ContainerTransitionCoordinator: NSObject, UIViewControllerTransitionCoordinator {
+//    
+//    // MARK: Properties
+//    private let context: UIViewControllerContextTransitioning
+//    private let interruptibleAnimator: UIViewImplicitlyAnimating
+//    private let transitionAnimator: UIViewControllerAnimatedTransitioning?
+//    private let interactionController: ContainerPercentDrivenInteractiveTransition?
+//    private var interactionChangeHandlers: [(UIViewControllerTransitionCoordinatorContext) -> Void] = []
+//    
+//    // MARK: Initializers
+//    init?(context: UIViewControllerContextTransitioning, animator: UIViewControllerAnimatedTransitioning? = nil, interactionController: ContainerPercentDrivenInteractiveTransition? = nil) {
+//        guard let interruptibleAnimator = interactionController?.transitionAnimator?.interruptibleAnimator?(using: context) ?? animator?.interruptibleAnimator?(using: context) else { return nil }
+//        
+//        self.context = context
+//        self.interruptibleAnimator = interruptibleAnimator
+//        self.transitionAnimator = animator
+//        self.interactionController = interactionController
+//        self.initiallyInteractive = (interactionController != nil)
+//        super.init()
+//        
+//        self.interactionController?.transitionCoordinator = self
+//    }
+//    
+//    // MARK: UIViewControllerTransitionCoordinatorContext
+//    var isAnimated: Bool { return context.isAnimated }
+//    var presentationStyle: UIModalPresentationStyle { return context.presentationStyle }
+//    var initiallyInteractive: Bool
+//    var isInterruptible: Bool { return true }
+//    var isInteractive: Bool { return context.isInteractive }
+//    var isCancelled: Bool { return context.transitionWasCancelled }
+//    var transitionDuration: TimeInterval { return transitionAnimator?.transitionDuration(using: context) ?? 0 }
+//    var percentComplete: CGFloat { return interruptibleAnimator.fractionComplete }
+//    var completionVelocity: CGFloat { return interactionController?.completionSpeed ?? 1 }
+//    var completionCurve: UIView.AnimationCurve { return interactionController?.completionCurve ?? .linear }
+//    var containerView: UIView { return context.containerView }
+//    var targetTransform: CGAffineTransform { return context.targetTransform }
+//    
+//    func viewController(forKey key: UITransitionContextViewControllerKey) -> UIViewController? {
+//        return context.viewController(forKey: key)
+//    }
+//    
+//    func view(forKey key: UITransitionContextViewKey) -> UIView? {
+//        return context.view(forKey: key)
+//    }
+//    
+//    // MARK: UIViewControllerTransitionCoordinator
+//    func animate(alongsideTransition animation: ((UIViewControllerTransitionCoordinatorContext) -> Void)?, completion: ((UIViewControllerTransitionCoordinatorContext) -> Void)? = nil) -> Bool {
+//        interruptibleAnimator.addAnimations? { [unowned self] in animation?(self) }
+//        interruptibleAnimator.addCompletion? { [unowned self] _ in completion?(self) }
+//        return true
+//    }
+//    
+//    func animateAlongsideTransition(in view: UIView?, animation: ((UIViewControllerTransitionCoordinatorContext) -> Void)?, completion: ((UIViewControllerTransitionCoordinatorContext) -> Void)? = nil) -> Bool {
+//        interruptibleAnimator.addAnimations? { [unowned self] in animation?(self) }
+//        interruptibleAnimator.addCompletion? { [unowned self] _ in completion?(self) }
+//        return true
+//    }
+//    
+//    func notifyWhenInteractionEnds(_ handler: @escaping (UIViewControllerTransitionCoordinatorContext) -> Void) {
+//        notifyWhenInteractionChanges(handler)
+//    }
+//    
+//    func notifyWhenInteractionChanges(_ handler: @escaping (UIViewControllerTransitionCoordinatorContext) -> Void) {
+//        interactionChangeHandlers.append(handler)
+//    }
+//}
+//
+//// MARK: Private
+//extension ContainerTransitionCoordinator {
+//    
+//    func notifyInteractionChanged() {
+//        interactionChangeHandlers.forEach { $0(self) }
+//    }
+//}

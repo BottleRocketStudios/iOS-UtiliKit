@@ -8,7 +8,7 @@
 
 import UIKit
 
-@available(iOSApplicationExtension 10.0, *)
+@available(iOS 10.0, *)
 open class ContainerAnimatorBasedPercentDrivenInteractiveTransition: ContainerPercentDrivenInteractiveTransition {
     
     // MARK: Properties

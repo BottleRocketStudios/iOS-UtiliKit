@@ -41,12 +41,14 @@ class BaseContainerViewController: UIViewController {
         //Configure the interaction controller for the example
         interactionController = HorizontalPanGestureInteractiveTransition(in: view) { [weak self] recognizer in
             guard let self = self, let currentController = self.containerViewController.visibleController else { return }
-
+            
             if recognizer.velocity(in: recognizer.view).x > 0 {
                 guard let previousChild = self.containerViewController.child(preceding: currentController) else { return }
+                self.animationController.transitionDirection = .leftToRight
                 self.containerViewController.transitionToController(for: previousChild)
             } else {
                 guard let nextChild = self.containerViewController.child(following: currentController) else { return }
+                self.animationController.transitionDirection = .rightToLeft
                 self.containerViewController.transitionToController(for: nextChild)
             }
         }

@@ -11,25 +11,13 @@ import UIKit
 class ContainerTransitionContext: NSObject {
     
     // MARK: Properties
-    let transitionCoordinator: ContainerTransitionCoordinator
     var containerView: UIView
     var percentComplete: CGFloat = 0
-    var presentationStyle: UIModalPresentationStyle = .custom // use destination
-    var transitionWasCancelled: Bool = false {
-        didSet { transitionCoordinator.isCancelled = self.transitionWasCancelled }
-    }
-    var targetTransform: CGAffineTransform = CGAffineTransform.identity {
-        didSet { transitionCoordinator.targetTransform = self.targetTransform }
-    }
-    var isAnimated: Bool = true {
-        didSet { transitionCoordinator.isAnimated = self.isAnimated }
-    }
-    var isInteractive: Bool = false {
-        didSet {
-            transitionCoordinator.isInteractive = self.isInteractive
-            transitionCoordinator.initiallyInteractive = self.isInteractive
-        }
-    }
+    var presentationStyle: UIModalPresentationStyle
+    var transitionWasCancelled: Bool = false
+    var targetTransform: CGAffineTransform = CGAffineTransform.identity
+    var isAnimated: Bool = true
+    var isInteractive: Bool = false
     
     private var viewControllers: [UITransitionContextViewControllerKey: UIViewController]
     private var views: [UITransitionContextViewKey: UIView]
@@ -39,10 +27,9 @@ class ContainerTransitionContext: NSObject {
     // MARK: Initializers
     init(containerView: UIView, fromViewController: UIViewController, toViewController: UIViewController) {
         self.containerView = containerView
+        self.presentationStyle = toViewController.modalPresentationStyle
         self.viewControllers = [.from: fromViewController, .to: toViewController]
         self.views = [.from: fromViewController.view, .to: toViewController.view ]
-        
-        transitionCoordinator = ContainerTransitionCoordinator(containerView: containerView, fromViewController: fromViewController, toViewController: toViewController)
         super.init()
     }
 }
@@ -78,12 +65,10 @@ extension ContainerTransitionContext: UIViewControllerContextTransitioning {
     }
     
     func finishInteractiveTransition() {
-        transitionCoordinator.notifyThatInteractionStopped()
         transitionWasCancelled = false
     }
     
     func cancelInteractiveTransition() {
-        transitionCoordinator.notifyThatInteractionStopped()
         transitionWasCancelled = true
     }
     
