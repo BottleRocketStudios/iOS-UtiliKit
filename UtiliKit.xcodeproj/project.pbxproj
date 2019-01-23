@@ -12,7 +12,6 @@
 		0ED9476420FD473700B642AB /* ContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9476220FD461300B642AB /* ContainerTests.swift */; };
 		0EFAFE8F21F785F5005B2B16 /* InteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE8D21F77568005B2B16 /* InteractiveTransition.swift */; };
 		0EFAFE9221F80CDA005B2B16 /* ContainerPercentDrivenInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9121F80CDA005B2B16 /* ContainerPercentDrivenInteractiveTransition.swift */; };
-		0EFAFE9521F80ED9005B2B16 /* ContainerLayerBasedPercentDrivenInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9421F80ED9005B2B16 /* ContainerLayerBasedPercentDrivenInteractiveTransition.swift */; };
 		0EFAFE9A21F81659005B2B16 /* ContainerTransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9921F81659005B2B16 /* ContainerTransitionCoordinator.swift */; };
 		0EFAFE9D21F81743005B2B16 /* ContainerTransitionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9C21F81743005B2B16 /* ContainerTransitionContext.swift */; };
 		0EFAFE9F21F81C72005B2B16 /* ContainerAnimatorBasedPercentDrivenInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9E21F81C72005B2B16 /* ContainerAnimatorBasedPercentDrivenInteractiveTransition.swift */; };
@@ -87,7 +86,6 @@
 		0ED9476220FD461300B642AB /* ContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTests.swift; sourceTree = "<group>"; };
 		0EFAFE8D21F77568005B2B16 /* InteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveTransition.swift; sourceTree = "<group>"; };
 		0EFAFE9121F80CDA005B2B16 /* ContainerPercentDrivenInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerPercentDrivenInteractiveTransition.swift; sourceTree = "<group>"; };
-		0EFAFE9421F80ED9005B2B16 /* ContainerLayerBasedPercentDrivenInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerLayerBasedPercentDrivenInteractiveTransition.swift; sourceTree = "<group>"; };
 		0EFAFE9921F81659005B2B16 /* ContainerTransitionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTransitionCoordinator.swift; sourceTree = "<group>"; };
 		0EFAFE9C21F81743005B2B16 /* ContainerTransitionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTransitionContext.swift; sourceTree = "<group>"; };
 		0EFAFE9E21F81C72005B2B16 /* ContainerAnimatorBasedPercentDrivenInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerAnimatorBasedPercentDrivenInteractiveTransition.swift; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				0EFAFE9121F80CDA005B2B16 /* ContainerPercentDrivenInteractiveTransition.swift */,
-				0EFAFE9421F80ED9005B2B16 /* ContainerLayerBasedPercentDrivenInteractiveTransition.swift */,
 				0EFAFE9E21F81C72005B2B16 /* ContainerAnimatorBasedPercentDrivenInteractiveTransition.swift */,
 			);
 			path = Interaction;
@@ -590,7 +587,6 @@
 				8698CFBB20619EAD0065AE20 /* ContainerViewController.swift in Sources */,
 				8698CFCA20619EAD0065AE20 /* VersionConfig.swift in Sources */,
 				0EFAFE9221F80CDA005B2B16 /* ContainerPercentDrivenInteractiveTransition.swift in Sources */,
-				0EFAFE9521F80ED9005B2B16 /* ContainerLayerBasedPercentDrivenInteractiveTransition.swift in Sources */,
 				8698CFC420619EAD0065AE20 /* UICollectionView+Extensions.swift in Sources */,
 				0E6E8C6D2112551200617815 /* ContainerViewController+ManagedChildren.swift in Sources */,
 				0EC8025C209CE9C90051F732 /* Configurable.swift in Sources */,

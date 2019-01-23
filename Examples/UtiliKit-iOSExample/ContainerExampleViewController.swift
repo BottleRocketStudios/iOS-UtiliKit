@@ -76,7 +76,7 @@ class BaseContainerViewController: UIViewController {
 fileprivate extension ContainerViewController {
     func transitionToController(withIdentifier identifier: AnyHashable) {
         guard let child = managedChildren.first(where: { $0.identifier == identifier }) else { return }
-        transitionToController(for: child)
+        transitionToController(for: child, allowInteraction: false)
     }
 }
 

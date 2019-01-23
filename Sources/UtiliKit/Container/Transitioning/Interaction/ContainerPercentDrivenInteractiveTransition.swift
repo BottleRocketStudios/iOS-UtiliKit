@@ -13,7 +13,7 @@ open class ContainerPercentDrivenInteractiveTransition: NSObject, UIViewControll
     public enum State {
         case inactive
         case interacting
-        case tearDown
+        case completing
     }
 
     // MARK: Properties
@@ -55,14 +55,14 @@ open class ContainerPercentDrivenInteractiveTransition: NSObject, UIViewControll
     open func cancel() {
         guard state == .interacting else { return }
         
-        state = .tearDown
+        state = .completing
         transitionContext?.cancelInteractiveTransition()
     }
     
     open func finish() {
         guard state == .interacting else { return }
         
-        state = .tearDown
+        state = .completing
         transitionContext?.finishInteractiveTransition()
     }
     

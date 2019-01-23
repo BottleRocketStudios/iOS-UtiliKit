@@ -18,6 +18,21 @@ class ViewControllerB: UIViewController {
         logEvent("View B Did Load")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        logEvent("View B Will Appear")
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        logEvent("View B Will Layout Subviews")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        logEvent("View B Did Layout Subviews")
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         logEvent("View B Did Appear")

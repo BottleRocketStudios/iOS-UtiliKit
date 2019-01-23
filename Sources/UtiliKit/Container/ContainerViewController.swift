@@ -59,7 +59,7 @@ open class ContainerViewController: UIViewController {
 //MARK: Public Interface
 extension ContainerViewController {
     
-    open func transitionToController(for child: ManagedChild, completion: ((Bool) -> Void)? = nil) {
+    open func transitionToController(for child: ManagedChild, allowInteraction: Bool = true, completion: ((Bool) -> Void)? = nil) {
         if !managedChildren.contains { $0.viewController === child.viewController } {
             managedChildren.insert(child, at: managedChildren.startIndex)
         }
@@ -69,7 +69,7 @@ extension ContainerViewController {
             managedChildren.insert(child, at: managedChildren.startIndex)
         }
         
-        transition(to: child.viewController, completion: completion)
+        transition(to: child.viewController, allowInteraction: allowInteraction, completion: completion)
     }
     
     open func child(at index: Int) -> ManagedChild? {
@@ -81,7 +81,7 @@ extension ContainerViewController {
 //MARK: Transitioning
 private extension ContainerViewController {
     
-    func transition(to destination: UIViewController, completion: ((Bool) -> Void)? = nil) {
+    func transition(to destination: UIViewController, allowInteraction: Bool = true, completion: ((Bool) -> Void)? = nil) {
         //Ensure that the view is loaded, we're not already transitioning and the transition will result in a move
         guard isViewLoaded && !isTransitioning, visibleController != destination else { return }
         guard let source = visibleController else {
@@ -96,27 +96,21 @@ private extension ContainerViewController {
         
         guard delegate?.containerViewController(self, shouldTransitionFrom: source, to: destination) ?? true else { return }
         
-        //Begin the internal transitioning process, using a UIViewControllerAnimatedTransitioning object
         prepareForTransitioning(from: source, to: destination, animated: true)
-        let animator = delegate?.containerViewController(self, animationControllerForTransitionFrom: source, to: destination) ?? ContainerTransitionAnimator()
-        let interactor = delegate?.containerViewController(self, interactionControllerForTransitionFrom: source, to: destination)
+        let context = configuredTransitionContext(from: source, to: destination)
         
-        let context = ContainerTransitionContext(containerView: view, fromViewController: source, toViewController: destination)
-        context.isInteractive = (interactor != nil)
-        context.completion = { [weak self] finished in
-            self?.finishTransitioning(from: source, to: destination, success: finished, animated: true)
-        }
-        
-        if context.isInteractive {
-            //The transition is interactive, it should begin using the interaction controller before transitioning (heh) to animation
-            interactor?.startInteractiveTransition(context)
+        if allowInteraction, let interactor = delegate?.containerViewController(self, interactionControllerForTransitionFrom: source, to: destination) {
+            
+            //The delegate has vended an interaction controller, we will use it to drive the transition to completion
+            context.isInteractive = allowInteraction
+            interactor.startInteractiveTransition(context)
         } else {
-            //Instruct the animator to begin transitioning
+            
+            //The delegate did not vend an interaction controller, we'll drive the animation using an animation controller instead.
+            let animator = delegate?.containerViewController(self, animationControllerForTransitionFrom: source, to: destination) ?? ContainerTransitionAnimator()
             animator.animateTransition(using: context)
         }
 
-        containerTransitionContext = context
-        
         //Inform the delegate transitioning has begun
         delegate?.containerViewController(self, didBeginTransitioningFrom: source, to: destination)
     }
@@ -125,22 +119,30 @@ private extension ContainerViewController {
 //MARK: Helper
 private extension ContainerViewController {
     
+    func configuredTransitionContext(from source: UIViewController, to destination: UIViewController) -> ContainerTransitionContext {
+        let context = ContainerTransitionContext(containerView: view, fromViewController: source, toViewController: destination)
+        context.completion = { [weak self] finished in
+            guard let self = self else { return }
+            self.finishTransitioning(from: source, to: destination, success: finished, animated: true)
+            self.delegate?.containerViewController(self, didFinishTransitioningFrom: source, to: destination)
+        }
+        
+        containerTransitionContext = context
+        return context
+    }
+    
     func prepareForTransitioning(from source: UIViewController?, to destination: UIViewController, animated: Bool) {
         isTransitioning = true
         
         #if swift(>=4.2)
         source?.willMove(toParent: nil)
-        source?.beginAppearanceTransition(false, animated: animated)
         
         destination.willMove(toParent: self)
-        destination.beginAppearanceTransition(true, animated: animated)
         addChild(destination)
         #else
         source?.willMove(toParentViewController: nil)
-        source?.beginAppearanceTransition(false, animated: animated)
         
         destination.willMove(toParentViewController: self)
-        destination?.beginAppearanceTransition(true, animated: animated)
         addChildViewController(destination)
         #endif
     }
@@ -158,18 +160,14 @@ private extension ContainerViewController {
         if success {
             #if swift(>=4.2)
             destination.didMove(toParent: self)
-            destination.endAppearanceTransition()
-            
+
             source?.removeFromParent()
             source?.didMove(toParent: nil)
-            source?.endAppearanceTransition()
             #else
             destination.didMove(toParentViewController: self)
-            destination.endAppearanceTransition()
             
             source?.removeFromParentViewController()
             source?.didMove(toParentViewController: nil)
-            source?.endAppearanceTransition()
             #endif
             
             visibleController = destination

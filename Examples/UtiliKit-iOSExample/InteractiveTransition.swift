@@ -48,7 +48,7 @@ public class HorizontalPanGestureInteractiveTransition: ContainerAnimatorBasedPe
         case .began: gestureRecognizedBlock(recognizer)
         case .changed:
             //Returning to the initial position can cancel the interaction, we should avoid that
-            guard state != .tearDown else { return }
+            guard state != .completing else { return }
 
             //If it was cancelled and torn down, but panning continues, we restart it
             guard state == .interacting else { return gestureRecognizedBlock(recognizer) }
@@ -73,7 +73,7 @@ public class HorizontalPanGestureInteractiveTransition: ContainerAnimatorBasedPe
             update(percentComplete: progress)
             
         default:
-            guard transitionContext != nil, state != .tearDown else { return }
+            guard transitionContext != nil, state != .completing else { return }
             
             shouldCompleteTransition ? finish() : cancel()
             shouldCompleteTransition = false
