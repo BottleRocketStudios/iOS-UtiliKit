@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// This class is a superclass intended to implement the base functionality provided by 'UIViewControllerInteractiveTransitioning' and the concrete class 'UIPercentDrivenInteractiveTransition'. Because the container must vend it's own `UIViewControllerContextTransitioning` object, it can not rely on `UIPercentDrivenInteractiveTransition` as it uses a private variable to access the `UIViewControllerAnimatedTransitioning` object associated with it to drive the transition. This class provides the same basic functionality as `UIPercentDrivenInteractiveTransition` with an additional variable for the animator object which is used to drive the transition.
 open class ContainerPercentDrivenInteractiveTransition: NSObject, UIViewControllerInteractiveTransitioning {
     
     public enum State {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-@available(iOS 10.0, *)
+/// This class implements the functionality required for `UIViewControllerInteractiveTransitioning`. In order to drive the interactive nature of the transition, it utilizes an interruptible, reversible `UIViewPropertyAnimator`.
 open class ContainerAnimatorBasedPercentDrivenInteractiveTransition: ContainerPercentDrivenInteractiveTransition {
     
     // MARK: Properties
@@ -24,7 +24,6 @@ open class ContainerAnimatorBasedPercentDrivenInteractiveTransition: ContainerPe
         guard let animator = transitionAnimator?.interruptibleAnimator?(using: context) else { return }
         interruptibleAnimator = animator
         
-        animator.startAnimation()
         animator.pauseAnimation()
         animator.addCompletion? { [weak self] position in
             self?.interactiveTransitionCompleted()

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// This class is internal to the framework. It's concrete class type is never leaked and is instead exposed simply as an object conforming to `UIViewControllerContextTransitioning`. It's purpose is to function as a drop in replacement for the transition context objects vended by UIKit for presentations. Because the container utilizes it's own child-based transition environment, UIKit will not create a transition context for it's transitions. This context supports both interactive and animated transitions.
 class ContainerTransitionContext: NSObject {
     
     // MARK: Properties
@@ -42,7 +43,8 @@ extension ContainerTransitionContext: UIViewControllerContextTransitioning {
         guard vc == viewController(forKey: .from) else { return .null }
         return containerView.bounds
     }
-    
+
+    /// The frame's are set to .null when they are not known or otherwise undefined.  For example the finalFrame of the fromViewController will be .null if and only if the fromView will be removed from the window at the end of the transition. On the other hand, if the finalFrame is not .null then it must be respected at the end of the transition.
     func finalFrame(for vc: UIViewController) -> CGRect {
         guard vc == viewController(forKey: .to) else { return .null }
         return containerView.bounds

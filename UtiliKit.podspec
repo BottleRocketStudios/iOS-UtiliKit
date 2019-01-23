@@ -26,7 +26,7 @@ s.license           = { :type => 'Apache 2.0', :file => 'LICENSE' }
 s.author            = { 'Bottle Rocket Studios' => 'wilson.turner@bottlerocketstudios.com' }
 s.source            = { :git => 'https://github.com/bottlerocketstudios/iOS-UtiliKit.git', :tag => s.version.to_s }
 s.source_files      = 'Sources/UtiliKit/**/*'
-s.ios.deployment_target = '9.0'
+s.ios.deployment_target = '10.0'
 s.default_subspec = 'Core'
 
 s.subspec 'Core' do |core|
