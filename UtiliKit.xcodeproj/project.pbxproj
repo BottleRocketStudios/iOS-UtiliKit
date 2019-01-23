@@ -179,8 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				0EFAFE9B21F8172E005B2B16 /* Context */,
-				0EFAFE9821F81640005B2B16 /* Coordinator */,
 				0EFAFE9321F80EC9005B2B16 /* Interaction */,
+				0EFAFE9821F81640005B2B16 /* Coordinator */,
 				8698CFA620619EAD0065AE20 /* ContainerTransitionAnimator.swift */,
 			);
 			path = Transitioning;
