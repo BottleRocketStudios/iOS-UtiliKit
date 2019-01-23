@@ -10,17 +10,21 @@
 		0E6E8C6D2112551200617815 /* ContainerViewController+ManagedChildren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E8C6C2112551200617815 /* ContainerViewController+ManagedChildren.swift */; };
 		0EC8025C209CE9C90051F732 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC8025B209CE9C90051F732 /* Configurable.swift */; };
 		0ED9476420FD473700B642AB /* ContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9476220FD461300B642AB /* ContainerTests.swift */; };
-		0EFAFE8C21F68498005B2B16 /* ContainerTransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE8B21F68498005B2B16 /* ContainerTransitionCoordinator.swift */; };
+		0EFAFE8F21F785F5005B2B16 /* InteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE8D21F77568005B2B16 /* InteractiveTransition.swift */; };
+		0EFAFE9221F80CDA005B2B16 /* ContainerPercentDrivenInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9121F80CDA005B2B16 /* ContainerPercentDrivenInteractiveTransition.swift */; };
+		0EFAFE9521F80ED9005B2B16 /* ContainerLayerBasedPercentDrivenInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9421F80ED9005B2B16 /* ContainerLayerBasedPercentDrivenInteractiveTransition.swift */; };
+		0EFAFE9A21F81659005B2B16 /* ContainerTransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9921F81659005B2B16 /* ContainerTransitionCoordinator.swift */; };
+		0EFAFE9D21F81743005B2B16 /* ContainerTransitionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9C21F81743005B2B16 /* ContainerTransitionContext.swift */; };
+		0EFAFE9F21F81C72005B2B16 /* ContainerAnimatorBasedPercentDrivenInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9E21F81C72005B2B16 /* ContainerAnimatorBasedPercentDrivenInteractiveTransition.swift */; };
 		1D419DBD21235EE100B62D91 /* ManagedChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D419DBC21235EE100B62D91 /* ManagedChild.swift */; };
 		1D419DBF21236CC300B62D91 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
 		8677314220601BB400C54343 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
 		8677315720601D1A00C54343 /* UtiliKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869826261FE87BFA0024B73D /* UtiliKitTests.swift */; };
 		8677315820601D1A00C54343 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869826271FE87BFA0024B73D /* DateTests.swift */; };
 		8698CFB920619EAD0065AE20 /* UtiliKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8698CFA020619EAD0065AE20 /* UtiliKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8698CFBA20619EAD0065AE20 /* ContainerTransitionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFA320619EAD0065AE20 /* ContainerTransitionContext.swift */; };
 		8698CFBB20619EAD0065AE20 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFA420619EAD0065AE20 /* ContainerViewController.swift */; };
 		8698CFBC20619EAD0065AE20 /* ContainerViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFA520619EAD0065AE20 /* ContainerViewControllerDelegate.swift */; };
-		8698CFBD20619EAD0065AE20 /* ContainerViewControllerTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFA620619EAD0065AE20 /* ContainerViewControllerTransitionAnimator.swift */; };
+		8698CFBD20619EAD0065AE20 /* ContainerTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFA620619EAD0065AE20 /* ContainerTransitionAnimator.swift */; };
 		8698CFBE20619EAD0065AE20 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFA820619EAD0065AE20 /* FileManager+Extensions.swift */; };
 		8698CFBF20619EAD0065AE20 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFA920619EAD0065AE20 /* UIView+Extensions.swift */; };
 		8698CFC020619EAD0065AE20 /* MKMapView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFAB20619EAD0065AE20 /* MKMapView+Extensions.swift */; };
@@ -81,7 +85,12 @@
 		0E6E8C6C2112551200617815 /* ContainerViewController+ManagedChildren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContainerViewController+ManagedChildren.swift"; sourceTree = "<group>"; };
 		0EC8025B209CE9C90051F732 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		0ED9476220FD461300B642AB /* ContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTests.swift; sourceTree = "<group>"; };
-		0EFAFE8B21F68498005B2B16 /* ContainerTransitionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTransitionCoordinator.swift; sourceTree = "<group>"; };
+		0EFAFE8D21F77568005B2B16 /* InteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveTransition.swift; sourceTree = "<group>"; };
+		0EFAFE9121F80CDA005B2B16 /* ContainerPercentDrivenInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerPercentDrivenInteractiveTransition.swift; sourceTree = "<group>"; };
+		0EFAFE9421F80ED9005B2B16 /* ContainerLayerBasedPercentDrivenInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerLayerBasedPercentDrivenInteractiveTransition.swift; sourceTree = "<group>"; };
+		0EFAFE9921F81659005B2B16 /* ContainerTransitionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTransitionCoordinator.swift; sourceTree = "<group>"; };
+		0EFAFE9C21F81743005B2B16 /* ContainerTransitionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTransitionContext.swift; sourceTree = "<group>"; };
+		0EFAFE9E21F81C72005B2B16 /* ContainerAnimatorBasedPercentDrivenInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerAnimatorBasedPercentDrivenInteractiveTransition.swift; sourceTree = "<group>"; };
 		1D419DBC21235EE100B62D91 /* ManagedChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedChild.swift; sourceTree = "<group>"; };
 		8677313920601BB400C54343 /* UtiliKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UtiliKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8677314120601BB400C54343 /* UtiliKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UtiliKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,10 +99,9 @@
 		869826271FE87BFA0024B73D /* DateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
 		8698CF9F20619EAD0065AE20 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8698CFA020619EAD0065AE20 /* UtiliKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtiliKit.h; sourceTree = "<group>"; };
-		8698CFA320619EAD0065AE20 /* ContainerTransitionContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerTransitionContext.swift; sourceTree = "<group>"; };
 		8698CFA420619EAD0065AE20 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		8698CFA520619EAD0065AE20 /* ContainerViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewControllerDelegate.swift; sourceTree = "<group>"; };
-		8698CFA620619EAD0065AE20 /* ContainerViewControllerTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewControllerTransitionAnimator.swift; sourceTree = "<group>"; };
+		8698CFA620619EAD0065AE20 /* ContainerTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerTransitionAnimator.swift; sourceTree = "<group>"; };
 		8698CFA820619EAD0065AE20 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		8698CFA920619EAD0065AE20 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		8698CFAB20619EAD0065AE20 /* MKMapView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKMapView+Extensions.swift"; sourceTree = "<group>"; };
@@ -169,6 +177,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EFAFE9021F80CBD005B2B16 /* Transitioning */ = {
+			isa = PBXGroup;
+			children = (
+				0EFAFE9B21F8172E005B2B16 /* Context */,
+				0EFAFE9821F81640005B2B16 /* Coordinator */,
+				0EFAFE9321F80EC9005B2B16 /* Interaction */,
+				8698CFA620619EAD0065AE20 /* ContainerTransitionAnimator.swift */,
+			);
+			path = Transitioning;
+			sourceTree = "<group>";
+		};
+		0EFAFE9321F80EC9005B2B16 /* Interaction */ = {
+			isa = PBXGroup;
+			children = (
+				0EFAFE9121F80CDA005B2B16 /* ContainerPercentDrivenInteractiveTransition.swift */,
+				0EFAFE9421F80ED9005B2B16 /* ContainerLayerBasedPercentDrivenInteractiveTransition.swift */,
+				0EFAFE9E21F81C72005B2B16 /* ContainerAnimatorBasedPercentDrivenInteractiveTransition.swift */,
+			);
+			path = Interaction;
+			sourceTree = "<group>";
+		};
+		0EFAFE9821F81640005B2B16 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0EFAFE9921F81659005B2B16 /* ContainerTransitionCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		0EFAFE9B21F8172E005B2B16 /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				0EFAFE9C21F81743005B2B16 /* ContainerTransitionContext.swift */,
+			);
+			path = Context;
+			sourceTree = "<group>";
+		};
 		1D419DBE21236CC300B62D91 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,12 +294,10 @@
 		8698CFA220619EAD0065AE20 /* Container */ = {
 			isa = PBXGroup;
 			children = (
-				8698CFA320619EAD0065AE20 /* ContainerTransitionContext.swift */,
-				0EFAFE8B21F68498005B2B16 /* ContainerTransitionCoordinator.swift */,
+				0EFAFE9021F80CBD005B2B16 /* Transitioning */,
 				8698CFA420619EAD0065AE20 /* ContainerViewController.swift */,
 				0E6E8C6C2112551200617815 /* ContainerViewController+ManagedChildren.swift */,
 				8698CFA520619EAD0065AE20 /* ContainerViewControllerDelegate.swift */,
-				8698CFA620619EAD0065AE20 /* ContainerViewControllerTransitionAnimator.swift */,
 				1D419DBC21235EE100B62D91 /* ManagedChild.swift */,
 			);
 			path = Container;
@@ -327,6 +370,7 @@
 				8698D0072061A3930065AE20 /* ViewControllerA.swift */,
 				8698D0082061A3930065AE20 /* ViewControllerB.swift */,
 				8698D0092061A3930065AE20 /* WipeTransitionAnimator.swift */,
+				0EFAFE8D21F77568005B2B16 /* InteractiveTransition.swift */,
 			);
 			path = "UtiliKit-iOSExample";
 			sourceTree = "<group>";
@@ -545,6 +589,8 @@
 				8698CFBF20619EAD0065AE20 /* UIView+Extensions.swift in Sources */,
 				8698CFBB20619EAD0065AE20 /* ContainerViewController.swift in Sources */,
 				8698CFCA20619EAD0065AE20 /* VersionConfig.swift in Sources */,
+				0EFAFE9221F80CDA005B2B16 /* ContainerPercentDrivenInteractiveTransition.swift in Sources */,
+				0EFAFE9521F80ED9005B2B16 /* ContainerLayerBasedPercentDrivenInteractiveTransition.swift in Sources */,
 				8698CFC420619EAD0065AE20 /* UICollectionView+Extensions.swift in Sources */,
 				0E6E8C6D2112551200617815 /* ContainerViewController+ManagedChildren.swift in Sources */,
 				0EC8025C209CE9C90051F732 /* Configurable.swift in Sources */,
@@ -555,10 +601,11 @@
 				8698CFC220619EAD0065AE20 /* ReuseIdentifiable.swift in Sources */,
 				8698CFC620619EAD0065AE20 /* UITableView+Extensions.swift in Sources */,
 				8698CFC720619EAD0065AE20 /* Date+Extensions.swift in Sources */,
-				8698CFBA20619EAD0065AE20 /* ContainerTransitionContext.swift in Sources */,
+				0EFAFE9A21F81659005B2B16 /* ContainerTransitionCoordinator.swift in Sources */,
+				0EFAFE9F21F81C72005B2B16 /* ContainerAnimatorBasedPercentDrivenInteractiveTransition.swift in Sources */,
+				0EFAFE9D21F81743005B2B16 /* ContainerTransitionContext.swift in Sources */,
 				8698CFBE20619EAD0065AE20 /* FileManager+Extensions.swift in Sources */,
-				0EFAFE8C21F68498005B2B16 /* ContainerTransitionCoordinator.swift in Sources */,
-				8698CFBD20619EAD0065AE20 /* ContainerViewControllerTransitionAnimator.swift in Sources */,
+				8698CFBD20619EAD0065AE20 /* ContainerTransitionAnimator.swift in Sources */,
 				1D419DBD21235EE100B62D91 /* ManagedChild.swift in Sources */,
 				8698CFBC20619EAD0065AE20 /* ContainerViewControllerDelegate.swift in Sources */,
 			);
@@ -578,6 +625,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EFAFE8F21F785F5005B2B16 /* InteractiveTransition.swift in Sources */,
 				8698D0232061A3930065AE20 /* NamedViewController.swift in Sources */,
 				8698D01F2061A3930065AE20 /* ViewController.swift in Sources */,
 				8698D0152061A3930065AE20 /* MapController.swift in Sources */,
@@ -852,6 +900,7 @@
 		8698CFE02061A19D0065AE20 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -877,6 +926,7 @@
 		8698CFE12061A19D0065AE20 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;

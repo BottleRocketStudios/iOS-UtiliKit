@@ -21,6 +21,9 @@ class BaseContainerViewController: UIViewController {
     private lazy var controllerA = ViewControllerA()
     private lazy var controllerB = ViewControllerB()
     
+    private var interactionController: HorizontalPanGestureInteractiveTransition?
+    private var animationController = WipeTransitionAnimator(direction: .leftToRight)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -28,11 +31,26 @@ class BaseContainerViewController: UIViewController {
         containerViewController.managedChildren = [Child(identifier: "A", viewController: controllerA),
                                                    Child(identifier: "B", viewController: controllerB)]
 
+        //Configure the the container view controller
         containerViewController.willMove(toParent: self)
         addChild(containerViewController)
         containerView.addSubview(containerViewController.view)
         containerViewController.view.frame = containerView.bounds
         containerViewController.didMove(toParent: self)
+        
+        //Configure the interaction controller for the example
+        interactionController = HorizontalPanGestureInteractiveTransition(in: view) { [weak self] recognizer in
+            guard let self = self, let currentController = self.containerViewController.visibleController else { return }
+
+            if recognizer.velocity(in: recognizer.view).x > 0 {
+                guard let previousChild = self.containerViewController.child(preceding: currentController) else { return }
+                self.containerViewController.transitionToController(for: previousChild)
+            } else {
+                guard let nextChild = self.containerViewController.child(following: currentController) else { return }
+                self.containerViewController.transitionToController(for: nextChild)
+            }
+        }
+        interactionController?.transitionAnimator = animationController
     }
     
     @IBAction func transitionToA() {
@@ -57,7 +75,6 @@ class BaseContainerViewController: UIViewController {
 //MARK: Helper
 fileprivate extension ContainerViewController {
     func transitionToController(withIdentifier identifier: AnyHashable) {
-        //Note: As titles can change rapidly, it is much safer to directly use the Child object.
         guard let child = managedChildren.first(where: { $0.identifier == identifier }) else { return }
         transitionToController(for: child)
     }
@@ -86,9 +103,15 @@ extension BaseContainerViewController: ContainerViewControllerDelegate {
                                  animationControllerForTransitionFrom source: UIViewController,
                                  to destination: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if useCustomAnimator, let sourceIndex = container.index(ofChild: source), let destinationIndex = container.index(ofChild: destination) {
-            return WipeTransitionAnimator(withStartIndex: sourceIndex, endIndex: destinationIndex)
+            
+            animationController.configure(withStartIndex: sourceIndex, endIndex: destinationIndex)
+            return animationController
         }
         
         return nil
+    }
+    
+    func containerViewController(_ container: ContainerViewController, interactionControllerForTransitionFrom source: UIViewController, to destination: UIViewController) -> UIViewControllerInteractiveTransitioning? {
+        return interactionController
     }
 }

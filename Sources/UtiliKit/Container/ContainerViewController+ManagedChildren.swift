@@ -15,6 +15,16 @@ public extension ContainerViewController {
         return managedChildren.index(where: { $0.viewController === controller })
     }
     
+    func child(following viewController: UIViewController) -> ManagedChild? {
+        guard let currentIndex = index(ofChild: viewController) else { return nil }
+        return child(at: managedChildren.index(after: currentIndex))
+    }
+    
+    func child(preceding viewController: UIViewController) -> ManagedChild? {
+        guard let currentIndex = index(ofChild: viewController) else { return nil }
+        return child(at: managedChildren.index(before: currentIndex))
+    }
+    
     func indexOfChild(following viewController: UIViewController) -> Int? {
         guard let currentIndex = index(ofChild: viewController) else { return nil }
         let nextIndex = managedChildren.index(after: currentIndex)

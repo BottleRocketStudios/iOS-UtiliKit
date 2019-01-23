@@ -30,7 +30,7 @@ class ViewControllerB: UIViewController {
     
     func logEvent(_ message: String) {
         if logLifecycleEvents {
-            print(message)
+            debugPrint(message)
         }
     }
 }
