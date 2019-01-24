@@ -97,6 +97,16 @@ private extension ContainerViewController {
         prepareForTransitioning(from: source, to: destination, animated: true)
         let context = configuredTransitionContext(from: source, to: destination)
         
+        if let animator = delegate?.containerViewController(self, animationControllerForTransitionFrom: source, to: destination) {
+            if let interactor = delegate?.containerViewController(self, interactionControllerForTransitionFrom: source, to: destination) {
+                interactor.startInteractiveTransition(context, animator: animator)
+            } else {
+                animator.animateTransition(using: context)
+            }
+        } else {
+            let animator = ContainerTransitionAnimator()
+            animator.animateTransition(using: context)
+        }
         if allowInteraction, let interactor = delegate?.containerViewController(self, interactionControllerForTransitionFrom: source, to: destination) {
             
             //The delegate has vended an interaction controller, we will use it to drive the transition to completion

@@ -9,7 +9,7 @@
 import UIKit
 import UtiliKit
 
-public class HorizontalPanGestureInteractiveTransition: ContainerAnimatorBasedPercentDrivenInteractiveTransition {
+public class HorizontalPanGestureInteractiveTransition: ContainerPercentDrivenInteractiveTransitioner {
     
     public typealias PanHandler = (UIPanGestureRecognizer) -> Void
     
@@ -33,11 +33,10 @@ public class HorizontalPanGestureInteractiveTransition: ContainerAnimatorBasedPe
         
         gestureRecognizer.addTarget(self, action: #selector(handlePan(recognizer:)))
         view.addGestureRecognizer(self.gestureRecognizer)
-        
     }
     
-    public override func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
-        super.startInteractiveTransition(transitionContext)
+    public override func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning, animator: UIViewControllerAnimatedTransitioning) {
+        super.startInteractiveTransition(transitionContext, animator: animator)
         isLeftToRight = gestureRecognizer.velocity(in: gestureRecognizer.view).x > 0
     }
     
@@ -47,11 +46,6 @@ public class HorizontalPanGestureInteractiveTransition: ContainerAnimatorBasedPe
         switch recognizer.state {
         case .began: gestureRecognizedBlock(recognizer)
         case .changed:
-            //Returning to the initial position can cancel the interaction, we should avoid that
-            guard state != .completing else { return }
-
-            //If it was cancelled and torn down, but panning continues, we restart it
-            guard state == .interacting else { return gestureRecognizedBlock(recognizer) }
             guard transitionContext != nil else { assertionFailure("The transition context must exist at this point to perform a transition - logic error."); return }
 
             let translation = gestureRecognizer.translation(in: gestureRecognizer.view)
@@ -73,8 +67,6 @@ public class HorizontalPanGestureInteractiveTransition: ContainerAnimatorBasedPe
             update(percentComplete: progress)
             
         default:
-            guard transitionContext != nil, state != .completing else { return }
-            
             shouldCompleteTransition ? finish() : cancel()
             shouldCompleteTransition = false
         }

@@ -17,7 +17,7 @@ public protocol ContainerViewControllerDelegate: class {
     
     func containerViewController(_ container: ContainerViewController,
                                  interactionControllerForTransitionFrom source: UIViewController,
-                                 to destination: UIViewController) -> UIViewControllerInteractiveTransitioning?
+                                 to destination: UIViewController) -> ContainerPercentDrivenInteractiveTransitioning?
     
     func containerViewController(_ container: ContainerViewController, didBeginTransitioningFrom source: UIViewController, to destination: UIViewController)
     func containerViewController(_ container: ContainerViewController, didFinishTransitioningFrom source: UIViewController, to destination: UIViewController)

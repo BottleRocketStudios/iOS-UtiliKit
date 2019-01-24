@@ -52,7 +52,6 @@ class BaseContainerViewController: UIViewController {
                 self.containerViewController.transitionToController(for: nextChild)
             }
         }
-        interactionController?.transitionAnimator = animationController
     }
     
     @IBAction func transitionToA() {
@@ -113,7 +112,7 @@ extension BaseContainerViewController: ContainerViewControllerDelegate {
         return nil
     }
     
-    func containerViewController(_ container: ContainerViewController, interactionControllerForTransitionFrom source: UIViewController, to destination: UIViewController) -> UIViewControllerInteractiveTransitioning? {
+    func containerViewController(_ container: ContainerViewController, interactionControllerForTransitionFrom source: UIViewController, to destination: UIViewController) -> ContainerPercentDrivenInteractiveTransitioning? {
         return interactionController
     }
 }
