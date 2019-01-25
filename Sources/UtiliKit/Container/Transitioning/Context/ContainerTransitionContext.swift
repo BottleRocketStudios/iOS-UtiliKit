@@ -28,9 +28,9 @@ class ContainerTransitionContext: NSObject {
     // MARK: Initializers
     init(containerView: UIView, fromViewController: UIViewController, toViewController: UIViewController) {
         self.containerView = containerView
-        self.presentationStyle = toViewController.modalPresentationStyle
         self.viewControllers = [.from: fromViewController, .to: toViewController]
-        self.views = [.from: fromViewController.view, .to: toViewController.view ]
+        self.views = [.from: fromViewController.view, .to: toViewController.view]
+        self.presentationStyle = toViewController.modalPresentationStyle
         super.init()
     }
 }
@@ -64,15 +64,20 @@ extension ContainerTransitionContext: UIViewControllerContextTransitioning {
     
     func updateInteractiveTransition(_ complete: CGFloat) {
         percentComplete = complete
+        isInteractive = true
     }
     
     func finishInteractiveTransition() {
         transitionWasCancelled = false
+        isInteractive = false
     }
     
     func cancelInteractiveTransition() {
         transitionWasCancelled = true
+        isInteractive = false
     }
     
-    func pauseInteractiveTransition() { /* No op */ }
+    func pauseInteractiveTransition() {
+        isInteractive = true
+    }
 }

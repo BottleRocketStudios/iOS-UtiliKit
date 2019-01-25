@@ -13,7 +13,7 @@
 		0EFAFE8F21F785F5005B2B16 /* InteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE8D21F77568005B2B16 /* InteractiveTransition.swift */; };
 		0EFAFE9A21F81659005B2B16 /* ContainerTransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9921F81659005B2B16 /* ContainerTransitionCoordinator.swift */; };
 		0EFAFE9D21F81743005B2B16 /* ContainerTransitionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9C21F81743005B2B16 /* ContainerTransitionContext.swift */; };
-		0EFAFEA121FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransition2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFEA021FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransition2.swift */; };
+		0EFAFEA121FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFEA021FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioning.swift */; };
 		1D419DBD21235EE100B62D91 /* ManagedChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D419DBC21235EE100B62D91 /* ManagedChild.swift */; };
 		1D419DBF21236CC300B62D91 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
 		8677314220601BB400C54343 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
@@ -86,7 +86,7 @@
 		0EFAFE8D21F77568005B2B16 /* InteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveTransition.swift; sourceTree = "<group>"; };
 		0EFAFE9921F81659005B2B16 /* ContainerTransitionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTransitionCoordinator.swift; sourceTree = "<group>"; };
 		0EFAFE9C21F81743005B2B16 /* ContainerTransitionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTransitionContext.swift; sourceTree = "<group>"; };
-		0EFAFEA021FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransition2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerPercentDrivenInteractiveTransition2.swift; sourceTree = "<group>"; };
+		0EFAFEA021FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerPercentDrivenInteractiveTransitioning.swift; sourceTree = "<group>"; };
 		1D419DBC21235EE100B62D91 /* ManagedChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedChild.swift; sourceTree = "<group>"; };
 		8677313920601BB400C54343 /* UtiliKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UtiliKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8677314120601BB400C54343 /* UtiliKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UtiliKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,7 +187,7 @@
 		0EFAFE9321F80EC9005B2B16 /* Interaction */ = {
 			isa = PBXGroup;
 			children = (
-				0EFAFEA021FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransition2.swift */,
+				0EFAFEA021FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioning.swift */,
 			);
 			path = Interaction;
 			sourceTree = "<group>";
@@ -579,7 +579,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8698CFC020619EAD0065AE20 /* MKMapView+Extensions.swift in Sources */,
-				0EFAFEA121FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransition2.swift in Sources */,
+				0EFAFEA121FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioning.swift in Sources */,
 				8698CFC120619EAD0065AE20 /* NibLoadable.swift in Sources */,
 				8698CFBF20619EAD0065AE20 /* UIView+Extensions.swift in Sources */,
 				8698CFBB20619EAD0065AE20 /* ContainerViewController.swift in Sources */,
