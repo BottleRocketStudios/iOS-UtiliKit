@@ -43,14 +43,7 @@ extension WipeTransitionAnimator: UIViewControllerAnimatedTransitioning {
     }
     
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let destination = transitionContext.viewController(forKey: .to), let source = transitionContext.viewController(forKey: .from) else { return }
-
-        configureInitialState(for: destination, with: transitionContext)
-        UIView.animate(withDuration: duration, delay: 0.0, options: [.curveEaseInOut], animations: {
-            self.configureFinalState(forSource: source, destination: destination, context: transitionContext)
-        }, completion: { finished in
-            self.completeAnimation(successfully: finished, for: source, destination: destination, with: transitionContext)
-        })
+        interruptibleAnimator?.startAnimation()
     }
     
     public func interruptibleAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {

@@ -11,6 +11,8 @@ import UtiliKit
 class BaseContainerViewController: UIViewController {
     
     @IBOutlet private var containerView: UIView!
+    @IBOutlet private var aButton: UIButton!
+    @IBOutlet private var bButton: UIButton!
     private lazy var containerViewController: ContainerViewController = {
         let container = ContainerViewController()
         container.delegate = self
@@ -85,6 +87,11 @@ fileprivate extension ContainerViewController {
 extension BaseContainerViewController: ContainerViewControllerDelegate {
     
     func containerViewController(_ container: ContainerViewController, didBeginTransitioningFrom source: UIViewController, to destination: UIViewController) {
+        container.transitionCoordinator?.animate(alongsideTransition: { context in
+            self.aButton.transform = self.aButton.transform == .identity ? CGAffineTransform(scaleX: 2, y: 2) : .identity
+            self.bButton.transform =  self.bButton.transform == .identity ? CGAffineTransform(scaleX: 2, y: 2) : .identity
+        }, completion: nil)
+        
         if logLifecycleEvents {
             debugPrint("Did Begin Transitioning from: \(source) to: \(destination)")
         }

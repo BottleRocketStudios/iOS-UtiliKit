@@ -27,6 +27,8 @@ open class ContainerViewController: UIViewController {
     }
     
     private var containerTransitionContext: UIViewControllerContextTransitioning?
+    private var containerTransitionCoordinator: UIViewControllerTransitionCoordinator?
+    open override var transitionCoordinator: UIViewControllerTransitionCoordinator? { return containerTransitionCoordinator }
     
     public weak var delegate: ContainerViewControllerDelegate?
     
@@ -98,13 +100,16 @@ private extension ContainerViewController {
         let context = configuredTransitionContext(from: source, to: destination)
         
         if let animator = delegate?.containerViewController(self, animationControllerForTransitionFrom: source, to: destination) {
-            if let interactor = delegate?.containerViewController(self, interactionControllerForTransitionFrom: source, to: destination) {
+            if allowInteraction, let interactor = delegate?.containerViewController(self, interactionControllerForTransitionFrom: source, to: destination) {
+                containerTransitionCoordinator = ContainerTransitionCoordinator(context: context, animator: animator, interactionController: interactor)
                 interactor.startInteractiveTransition(context, animator: animator)
             } else {
+                containerTransitionCoordinator = ContainerTransitionCoordinator(context: context, animator: animator)
                 animator.animateTransition(using: context)
             }
         } else {
-            let animator = ContainerTransitionAnimator()
+            let animator: UIViewControllerAnimatedTransitioning = ContainerTransitionAnimator()
+            containerTransitionCoordinator = ContainerTransitionCoordinator(context: context, animator: animator)
             animator.animateTransition(using: context)
         }
         if allowInteraction, let interactor = delegate?.containerViewController(self, interactionControllerForTransitionFrom: source, to: destination) {

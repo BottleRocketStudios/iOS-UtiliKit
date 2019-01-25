@@ -20,14 +20,17 @@ open class ContainerPercentDrivenInteractiveTransitioner: NSObject, ContainerPer
     // MARK: Properties
     open var transitionAnimator: UIViewControllerAnimatedTransitioning?
     open private(set) var transitionContext: UIViewControllerContextTransitioning?
-    private var interruptibleAnimator: UIViewImplicitlyAnimating?
+    var interruptibleAnimator: UIViewImplicitlyAnimating?
     
     // MARK: Internal State
     open var percentComplete: CGFloat = 0.0 {
         didSet { interruptibleAnimator?.fractionComplete = percentComplete }
     }
     
-    open var timingCurve: UITimingCurveProvider = UICubicTimingParameters(animationCurve: .linear)
+    open var completionSpeed: CGFloat = 1.0
+    open var completionCurve: UIView.AnimationCurve = .easeInOut
+    open lazy var timingCurve: UITimingCurveProvider = UICubicTimingParameters(animationCurve: completionCurve)
+    
     open var wantsInteractiveStart: Bool = true
     
     // MARK: ContainerPercentDrivenInteractiveTransitioning
@@ -40,7 +43,7 @@ open class ContainerPercentDrivenInteractiveTransitioner: NSObject, ContainerPer
         transitionAnimator = animator
         interruptibleAnimator = animator.interruptibleAnimator?(using: context)
         
-        assertionFailure("In order for a transition to be interactive, the UIViewControllerAnimatedTransitioning object must implemented interruptibleAnimator(using:)")
+        assert(interruptibleAnimator != nil, "In order for a transition to be interactive, the UIViewControllerAnimatedTransitioning object must implemented interruptibleAnimator(using:)")
         
         interruptibleAnimator?.pauseAnimation()
         interruptibleAnimator?.addCompletion? { [weak self] _ in

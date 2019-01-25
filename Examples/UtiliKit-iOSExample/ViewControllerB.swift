@@ -14,7 +14,6 @@ class ViewControllerB: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .green
-        
         logEvent("View B Did Load")
     }
     
