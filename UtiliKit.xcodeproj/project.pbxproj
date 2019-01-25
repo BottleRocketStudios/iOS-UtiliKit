@@ -208,6 +208,18 @@
 			path = Transitioning;
 			sourceTree = "<group>";
 		};
+		0EFAFEA721FBB6ED005B2B16 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				8698CFED2061A3930065AE20 /* ContainerExampleViewController.swift */,
+				8698D0072061A3930065AE20 /* ViewControllerA.swift */,
+				8698D0082061A3930065AE20 /* ViewControllerB.swift */,
+				8698D0092061A3930065AE20 /* WipeTransitionAnimator.swift */,
+				0EFAFE8D21F77568005B2B16 /* InteractiveTransition.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
 		1D419DBE21236CC300B62D91 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,17 +366,13 @@
 				8698CFE42061A3930065AE20 /* LaunchScreen.xib */,
 				8698CFE62061A3930065AE20 /* Main.storyboard */,
 				8698CFE82061A3930065AE20 /* Collection */,
-				8698CFED2061A3930065AE20 /* ContainerExampleViewController.swift */,
 				8698CFEE2061A3930065AE20 /* Images.xcassets */,
 				8698CFEF2061A3930065AE20 /* Info.plist */,
 				8698CFF02061A3930065AE20 /* Map */,
 				8698CFF42061A3930065AE20 /* Table */,
 				8698CFFD2061A3930065AE20 /* View */,
 				8698D0012061A3930065AE20 /* ViewController */,
-				8698D0072061A3930065AE20 /* ViewControllerA.swift */,
-				8698D0082061A3930065AE20 /* ViewControllerB.swift */,
-				8698D0092061A3930065AE20 /* WipeTransitionAnimator.swift */,
-				0EFAFE8D21F77568005B2B16 /* InteractiveTransition.swift */,
+				0EFAFEA721FBB6ED005B2B16 /* Container */,
 			);
 			path = "UtiliKit-iOSExample";
 			sourceTree = "<group>";

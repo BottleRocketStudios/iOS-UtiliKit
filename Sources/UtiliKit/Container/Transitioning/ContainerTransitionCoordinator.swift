@@ -60,10 +60,8 @@ class ContainerTransitionCoordinator: NSObject, UIViewControllerTransitionCoordi
     }
     
     func animateAlongsideTransition(in view: UIView?, animation: ((UIViewControllerTransitionCoordinatorContext) -> Void)?, completion: ((UIViewControllerTransitionCoordinatorContext) -> Void)? = nil) -> Bool {
-        interruptibleAnimator.addAnimations? { animation?(self) }
-        interruptibleAnimator.addCompletion? { _ in completion?(self) }
-        
-        return true
+        //This is not yet supported
+        return false
     }
     
     func notifyWhenInteractionEnds(_ handler: @escaping (UIViewControllerTransitionCoordinatorContext) -> Void) {
