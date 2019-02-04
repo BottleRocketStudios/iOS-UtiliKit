@@ -9,8 +9,6 @@ import UIKit
 
 public protocol ContainerViewControllerDelegate: class {
     
-    func additionalSafeAreaInsets(for child: UIViewController) -> UIEdgeInsets
-    
     func containerViewController(_ container: ContainerViewController,
                                  animationControllerForTransitionFrom source: UIViewController,
                                  to destination: UIViewController) -> UIViewControllerAnimatedTransitioning?
@@ -26,8 +24,6 @@ public protocol ContainerViewControllerDelegate: class {
 }
 
 public extension ContainerViewControllerDelegate {
-    
-    func additionalSafeAreaInsets(for child: UIViewController) -> UIEdgeInsets { return .zero }
     
     func containerViewController(_ container: ContainerViewController,
                                  animationControllerForTransitionFrom source: UIViewController,

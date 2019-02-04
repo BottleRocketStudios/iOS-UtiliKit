@@ -590,13 +590,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8698CFC020619EAD0065AE20 /* MKMapView+Extensions.swift in Sources */,
-				0EFAFEA121FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioning.swift in Sources */,
 				8698CFC120619EAD0065AE20 /* NibLoadable.swift in Sources */,
 				8698CFBF20619EAD0065AE20 /* UIView+Extensions.swift in Sources */,
-				8698CFBB20619EAD0065AE20 /* ContainerViewController.swift in Sources */,
 				8698CFCA20619EAD0065AE20 /* VersionConfig.swift in Sources */,
 				8698CFC420619EAD0065AE20 /* UICollectionView+Extensions.swift in Sources */,
-				0E6E8C6D2112551200617815 /* ContainerViewController+ManagedChildren.swift in Sources */,
 				0EC8025C209CE9C90051F732 /* Configurable.swift in Sources */,
 				8698CFC820619EAD0065AE20 /* TimelessDate.swift in Sources */,
 				8698CFC320619EAD0065AE20 /* StoryboardIdentifiable.swift in Sources */,
@@ -604,13 +601,16 @@
 				8698CFC520619EAD0065AE20 /* UIStoryboard+Extensions.swift in Sources */,
 				8698CFC220619EAD0065AE20 /* ReuseIdentifiable.swift in Sources */,
 				8698CFC620619EAD0065AE20 /* UITableView+Extensions.swift in Sources */,
+				8698CFBE20619EAD0065AE20 /* FileManager+Extensions.swift in Sources */,
 				8698CFC720619EAD0065AE20 /* Date+Extensions.swift in Sources */,
+				1D419DBD21235EE100B62D91 /* ManagedChild.swift in Sources */,
+				0EFAFEA121FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioning.swift in Sources */,
 				0EFAFE9A21F81659005B2B16 /* ContainerTransitionCoordinator.swift in Sources */,
 				0EFAFE9D21F81743005B2B16 /* ContainerTransitionContext.swift in Sources */,
-				8698CFBE20619EAD0065AE20 /* FileManager+Extensions.swift in Sources */,
 				8698CFBD20619EAD0065AE20 /* ContainerTransitionAnimator.swift in Sources */,
-				1D419DBD21235EE100B62D91 /* ManagedChild.swift in Sources */,
 				8698CFBC20619EAD0065AE20 /* ContainerViewControllerDelegate.swift in Sources */,
+				8698CFBB20619EAD0065AE20 /* ContainerViewController.swift in Sources */,
+				0E6E8C6D2112551200617815 /* ContainerViewController+ManagedChildren.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
