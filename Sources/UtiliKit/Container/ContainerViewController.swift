@@ -59,6 +59,10 @@ open class ContainerViewController: UIViewController {
 //MARK: Public Interface
 extension ContainerViewController {
     
+    open func transitionToControllerForChild(with identifier: AnyHashable, allowInteraction: Bool = true, completion: ((Bool) -> Void)? = nil) {
+        managedChildren.first { identifier == $0.identifier }.map { transitionToController(for: $0, allowInteraction: allowInteraction, completion: completion) }
+    }
+    
     open func transitionToController(for child: ManagedChild, allowInteraction: Bool = true, completion: ((Bool) -> Void)? = nil) {
         if !managedChildren.contains { $0.viewController === child.viewController } {
             managedChildren.insert(child, at: managedChildren.startIndex)
