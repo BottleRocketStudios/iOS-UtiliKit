@@ -59,9 +59,9 @@ public extension UIView {
         
         if isUsingSafeArea {
             superview.addConstraints([leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: insets.left),
-                                      trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: insets.right),
+                                      trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -insets.right),
                                       topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: insets.top),
-                                      bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: insets.bottom)])
+                                      bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -insets.bottom)])
         } else {
             constrainEdgesToSuperview(with: insets)
         }
