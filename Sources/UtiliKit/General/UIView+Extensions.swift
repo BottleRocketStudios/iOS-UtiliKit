@@ -76,9 +76,9 @@ public extension UIView {
         guard let superview = superview else { return }
         
         superview.addConstraints([leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: insets.left),
-                                  trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: insets.right),
+                                  trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -insets.right),
                                   topAnchor.constraint(equalTo: superview.topAnchor, constant: insets.top),
-                                  bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: insets.bottom)])
+                                  bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -insets.bottom)])
     }
     
     /**
