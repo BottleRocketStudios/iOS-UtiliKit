@@ -6,7 +6,9 @@
 
 ##### Bug Fixes
 
-* None.
+* Fix an issue where right and bottom insets were being inverted in constraints.
+[Will McGinty](https://github.com/willmcginty)
+[#46](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/50)
 
 
 ## 1.3.5 (2019-01-02)
