@@ -2,7 +2,9 @@
 
 ##### Enhancements
 
-* None.
+* Migrate to Swift 5.0.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#53](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/53)
 
 ##### Bug Fixes
 
