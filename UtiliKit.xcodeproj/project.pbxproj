@@ -12,6 +12,8 @@
 		0ED9476420FD473700B642AB /* ContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9476220FD461300B642AB /* ContainerTests.swift */; };
 		1D419DBD21235EE100B62D91 /* ManagedChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D419DBC21235EE100B62D91 /* ManagedChild.swift */; };
 		1D419DBF21236CC300B62D91 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
+		62F5256D2257F4F50052B8E7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 62F5256C2257F4F50052B8E7 /* README.md */; };
+		62F5256F2257F4FE0052B8E7 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 62F5256E2257F4FE0052B8E7 /* CHANGELOG.md */; };
 		8677314220601BB400C54343 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
 		8677315720601D1A00C54343 /* UtiliKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869826261FE87BFA0024B73D /* UtiliKitTests.swift */; };
 		8677315820601D1A00C54343 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869826271FE87BFA0024B73D /* DateTests.swift */; };
@@ -81,6 +83,8 @@
 		0EC8025B209CE9C90051F732 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		0ED9476220FD461300B642AB /* ContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTests.swift; sourceTree = "<group>"; };
 		1D419DBC21235EE100B62D91 /* ManagedChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedChild.swift; sourceTree = "<group>"; };
+		62F5256C2257F4F50052B8E7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		62F5256E2257F4FE0052B8E7 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		8677313920601BB400C54343 /* UtiliKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UtiliKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8677314120601BB400C54343 /* UtiliKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UtiliKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8677315A20601DD800C54343 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -177,6 +181,8 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				62F5256C2257F4F50052B8E7 /* README.md */,
+				62F5256E2257F4FE0052B8E7 /* CHANGELOG.md */,
 				8698CFCB2061A0FB0065AE20 /* Examples */,
 				8698CF9D20619EAD0065AE20 /* Sources */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -465,24 +471,25 @@
 				TargetAttributes = {
 					8677313820601BB400C54343 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					8677314020601BB400C54343 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					8698CFCF2061A19D0065AE20 = {
 						CreatedOnToolsVersion = 9.2;
 						DevelopmentTeam = 2UAV38D2MU;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "UtiliKit" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -505,6 +512,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62F5256D2257F4F50052B8E7 /* README.md in Resources */,
+				62F5256F2257F4FE0052B8E7 /* CHANGELOG.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,6 +691,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSION = 1.3.5;
 			};
 			name = Debug;
@@ -730,6 +740,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 				VERSION = 1.3.5;
 			};
@@ -761,7 +772,7 @@
 				PRODUCT_NAME = UtiliKit;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -792,7 +803,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "bottlerocketstudios.UtiliKit-iOS";
 				PRODUCT_NAME = UtiliKit;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -818,7 +829,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "bottlerocketstudios.UtiliKit-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -840,7 +851,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "bottlerocketstudios.UtiliKit-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -865,7 +876,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "bottlerocketstudios.UtiliKit-iOSExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -888,7 +899,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "bottlerocketstudios.UtiliKit-iOSExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

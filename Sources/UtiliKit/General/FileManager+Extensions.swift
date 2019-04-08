@@ -9,7 +9,7 @@ import Foundation
 public extension FileManager {
     
     /// The URL for the documents directory.
-    public var documentsDirectory: URL {
+    var documentsDirectory: URL {
         guard let documentDirectory = urls(for: .documentDirectory, in: .userDomainMask).first else {
             fatalError("Could not locate Documents Directory.")
         }
@@ -18,7 +18,7 @@ public extension FileManager {
     }
     
     /// The URL for the chaches directory.
-    public var cachesDirectory: URL {
+    var cachesDirectory: URL {
         guard let cachesDirectory = urls(for: .cachesDirectory, in: .userDomainMask).first else {
             fatalError("Could not locate Caches Directory.")
         }
@@ -27,7 +27,7 @@ public extension FileManager {
     }
     
     /// The URL for the application support directory.
-    public var applicationSupportDirectory: URL {
+    var applicationSupportDirectory: URL {
         guard let applicationSupportDirectory = urls(for: .applicationSupportDirectory, in: .userDomainMask).first else {
             fatalError("Could not locate Application Support Directory.")
         }
@@ -41,7 +41,7 @@ public extension FileManager {
      - Parameter groupIdentifier: The group identifier for the app group.
      - Returns: The URL for the shared container.
     */
-    public func sharedContainerURL(forSecurityApplicationGroupIdentifier groupIdentifier: String) -> URL {
+    func sharedContainerURL(forSecurityApplicationGroupIdentifier groupIdentifier: String) -> URL {
         guard let sharedContainerURL = containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier) else {
             fatalError("Could not locate Shared Container URL.")
         }
