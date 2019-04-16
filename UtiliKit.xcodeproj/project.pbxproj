@@ -12,6 +12,9 @@
 		0ED9476420FD473700B642AB /* ContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9476220FD461300B642AB /* ContainerTests.swift */; };
 		1D419DBD21235EE100B62D91 /* ManagedChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D419DBC21235EE100B62D91 /* ManagedChild.swift */; };
 		1D419DBF21236CC300B62D91 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
+		5C574BF72264EC10003D1641 /* ActiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574BF62264EC10003D1641 /* ActiveLabel.swift */; };
+		5C574BF92264EC3C003D1641 /* ActiveLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574BF82264EC3C003D1641 /* ActiveLabelViewController.swift */; };
+		5C574BFB2264ED61003D1641 /* ActiveLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574BFA2264ED61003D1641 /* ActiveLabelTests.swift */; };
 		62F5256D2257F4F50052B8E7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 62F5256C2257F4F50052B8E7 /* README.md */; };
 		62F5256F2257F4FE0052B8E7 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 62F5256E2257F4FE0052B8E7 /* CHANGELOG.md */; };
 		8677314220601BB400C54343 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
@@ -83,6 +86,9 @@
 		0EC8025B209CE9C90051F732 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		0ED9476220FD461300B642AB /* ContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTests.swift; sourceTree = "<group>"; };
 		1D419DBC21235EE100B62D91 /* ManagedChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedChild.swift; sourceTree = "<group>"; };
+		5C574BF62264EC10003D1641 /* ActiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLabel.swift; sourceTree = "<group>"; };
+		5C574BF82264EC3C003D1641 /* ActiveLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLabelViewController.swift; sourceTree = "<group>"; };
+		5C574BFA2264ED61003D1641 /* ActiveLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLabelTests.swift; sourceTree = "<group>"; };
 		62F5256C2257F4F50052B8E7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		62F5256E2257F4FE0052B8E7 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		8677313920601BB400C54343 /* UtiliKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UtiliKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +184,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5C574BF52264EBF8003D1641 /* ActiveLabel */ = {
+			isa = PBXGroup;
+			children = (
+				5C574BF62264EC10003D1641 /* ActiveLabel.swift */,
+			);
+			path = ActiveLabel;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +221,7 @@
 				869826271FE87BFA0024B73D /* DateTests.swift */,
 				869826261FE87BFA0024B73D /* UtiliKitTests.swift */,
 				0ED9476220FD461300B642AB /* ContainerTests.swift */,
+				5C574BFA2264ED61003D1641 /* ActiveLabelTests.swift */,
 				8677315920601DD800C54343 /* Supporting Files */,
 			);
 			path = Tests;
@@ -241,6 +256,7 @@
 		8698CFA120619EAD0065AE20 /* UtiliKit */ = {
 			isa = PBXGroup;
 			children = (
+				5C574BF52264EBF8003D1641 /* ActiveLabel */,
 				8698CFA220619EAD0065AE20 /* Container */,
 				8698CFA720619EAD0065AE20 /* General */,
 				8698CFAA20619EAD0065AE20 /* Instantiation */,
@@ -388,6 +404,7 @@
 				8698D0042061A3930065AE20 /* UIStoryboardIdentifier+Extensions.swift */,
 				8698D0052061A3930065AE20 /* VCTest.storyboard */,
 				8698D0062061A3930065AE20 /* VCViewController.swift */,
+				5C574BF82264EC3C003D1641 /* ActiveLabelViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -561,7 +578,9 @@
 				8698CFC220619EAD0065AE20 /* ReuseIdentifiable.swift in Sources */,
 				8698CFC620619EAD0065AE20 /* UITableView+Extensions.swift in Sources */,
 				8698CFC720619EAD0065AE20 /* Date+Extensions.swift in Sources */,
+				5C574BF72264EC10003D1641 /* ActiveLabel.swift in Sources */,
 				8698CFBA20619EAD0065AE20 /* ContainerTransitionContext.swift in Sources */,
+				5C574BF92264EC3C003D1641 /* ActiveLabelViewController.swift in Sources */,
 				8698CFBE20619EAD0065AE20 /* FileManager+Extensions.swift in Sources */,
 				8698CFBD20619EAD0065AE20 /* ContainerViewControllerTransitionAnimator.swift in Sources */,
 				1D419DBD21235EE100B62D91 /* ManagedChild.swift in Sources */,
@@ -573,6 +592,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C574BFB2264ED61003D1641 /* ActiveLabelTests.swift in Sources */,
 				0ED9476420FD473700B642AB /* ContainerTests.swift in Sources */,
 				8677315720601D1A00C54343 /* UtiliKitTests.swift in Sources */,
 				8677315820601D1A00C54343 /* DateTests.swift in Sources */,

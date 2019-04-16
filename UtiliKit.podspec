@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'UtiliKit'
-s.version          = '1.3.5'
+s.version          = '1.3.6'
 s.summary          = 'All the things you are tired of writing.'
 
 # This description is used to generate tags and improve search results.
@@ -52,6 +52,10 @@ end
 
 s.subspec 'Container' do |container|
 container.source_files = 'Sources/UtiliKit/Container/*.swift'
+end
+
+s.subspec `ActiveLabel` do |activeLabel|
+activeLabel.source_files = 'Sources/UtiliKit/ActiveLabel/*.swift'
 end
 
 end

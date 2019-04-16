@@ -181,7 +181,48 @@ func containerViewController(_ container: ContainerViewController, animationCont
 
     return nil
 }
+``` 
+
+#### ActiveLabel
+ActiveLabel is a UILabel subclass that adds horizontal activity indicators to your label while the text value is set to nil. You can customize this view quite a bit in code or in Interface Builder to fit your specific needs. The purpose of this subclass is to have a visual indication at the label level while you are loading data into labels.
+
+Default Configuration
+``` swift
+let label: ActiveLabel = ActiveLabel()
 ```
+![](ActiveLabelDefault.gif)
+
+Custom Configuration
+``` swift
+let label: ActiveLabel = ActiveLabel()
+label.estimatedNumberOfLines = 3
+label.finalLineTrailingInset = 100
+label.configurationChanged()
+```
+![](ActiveLabelEdited01.gif)
+
+Custom Configuration using convenience initializer.
+``` swift
+var configuration = ActiveLabelConfiguration.default
+configuration.estimatedNumberOfLines = 3
+label.finalLineLength = 100
+label.loadingAnimationDuration = 2.0
+label.loadingAnimationDelay = 0
+let label: ActiveLabel = ActiveLabel(frame: CGRect(x: 0, y: 0, width: 335, height: 21), configuration: configuration)
+```
+![](ActiveLabelEdited02.gif)
+
+Add some color
+``` swift
+let label: ActiveLabel = ActiveLabel()
+label.estimatedNumberOfLines = 3
+label.finalLineTrailingInset = 100
+label.loadingViewColor = UIColor(red: 233.0/255.0, green: 231.0/255.0, blue: 237.0/255.0, alpha: 1.0))
+label.loadingLineHeight = 16
+label.loadingLineVerticalSpacing = 8
+label.configurationChanged()
+```
+![](ActiveLabelEdited03.gif)
 
 ### Example
 
