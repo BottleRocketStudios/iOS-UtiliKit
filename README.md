@@ -212,7 +212,7 @@ let label: ActiveLabel = ActiveLabel(frame: CGRect(x: 0, y: 0, width: 335, heigh
 ```
 ![](ActiveLabelEdited02.gif)
 
-Add some color
+Add some color, change line height and spacing.
 ``` swift
 let label: ActiveLabel = ActiveLabel()
 label.estimatedNumberOfLines = 3
