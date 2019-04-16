@@ -205,9 +205,9 @@ Custom Configuration using convenience initializer.
 ``` swift
 var configuration = ActiveLabelConfiguration.default
 configuration.estimatedNumberOfLines = 3
-label.finalLineLength = 100
-label.loadingAnimationDuration = 2.0
-label.loadingAnimationDelay = 0
+configuration.finalLineLength = 100
+configuration.loadingAnimationDuration = 2.0
+configuration.loadingAnimationDelay = 0
 let label: ActiveLabel = ActiveLabel(frame: CGRect(x: 0, y: 0, width: 335, height: 21), configuration: configuration)
 ```
 ![](ActiveLabelEdited02.gif)
