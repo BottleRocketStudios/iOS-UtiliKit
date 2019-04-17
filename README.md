@@ -184,13 +184,13 @@ func containerViewController(_ container: ContainerViewController, animationCont
 ``` 
 
 #### ActiveLabel
-ActiveLabel is a UILabel subclass that adds horizontal activity indicators to your label while the text value is set to nil. You can customize this view quite a bit in code or in Interface Builder to fit your specific needs. The purpose of this subclass is to have a visual indication at the label level while you are loading data into labels.
+`ActiveLabel` is a `UILabel` subclass that adds horizontal activity indicators to your label while its `text` property is set to `nil`. You can customize this view quite a bit in code or in Interface Builder to fit your specific needs. The purpose of this subclass is to have a visual indication at the label level while you are loading data into labels.
 
 Default Configuration
 ``` swift
 let label: ActiveLabel = ActiveLabel()
 ```
-![](ActiveLabelDefault.gif)
+![](docs/images/ActiveLabelDefault.gif)
 
 Custom Configuration
 ``` swift
@@ -199,7 +199,7 @@ label.estimatedNumberOfLines = 3
 label.finalLineTrailingInset = 100
 label.configurationChanged()
 ```
-![](ActiveLabelEdited01.gif)
+![](docs/images/ActiveLabelEdited01.gif)
 
 Custom Configuration using convenience initializer.
 ``` swift
@@ -210,7 +210,7 @@ configuration.loadingAnimationDuration = 2.0
 configuration.loadingAnimationDelay = 0
 let label: ActiveLabel = ActiveLabel(frame: CGRect(x: 0, y: 0, width: 335, height: 21), configuration: configuration)
 ```
-![](ActiveLabelEdited02.gif)
+![](docs/images/ActiveLabelEdited02.gif)
 
 Add some color, change line height and spacing.
 ``` swift
@@ -222,7 +222,7 @@ label.loadingLineHeight = 16
 label.loadingLineVerticalSpacing = 8
 label.configurationChanged()
 ```
-![](ActiveLabelEdited03.gif)
+![](docs/images/ActiveLabelEdited03.gif)
 
 ### Example
 
