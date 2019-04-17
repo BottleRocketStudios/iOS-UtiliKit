@@ -13,6 +13,6 @@ class ActiveLabelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        activeLabels.forEach({ $0.text = nil })
+        activeLabels.forEach { $0.text = nil } 
     }
 }
