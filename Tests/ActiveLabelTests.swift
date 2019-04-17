@@ -96,7 +96,7 @@ class ActiveLabelTests: XCTestCase {
     }
     
     func testConvenienceInitializerDefault() {
-        let label = ActiveLabel(frame: .zero, configuration: ActiveLabelConfiguration.default)
+        let label = ActiveLabel(frame: .zero, configuration: ActiveLabel.ActiveLabelConfiguration.default)
         
         XCTAssertEqual(label.estimatedNumberOfLines, 1)
         XCTAssertEqual(label.finalLineTrailingInset, 0)
@@ -109,7 +109,7 @@ class ActiveLabelTests: XCTestCase {
     }
     
     func testConvenvienceInitializerModified() {
-        var configuration = ActiveLabelConfiguration.default
+        var configuration = ActiveLabel.ActiveLabelConfiguration.default
         configuration.estimatedNumberOfLines = 2
         let label = ActiveLabel(frame: CGRect(x: 0, y: 0, width: 335, height: 21), configuration: configuration)
         

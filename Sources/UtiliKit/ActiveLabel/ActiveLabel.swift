@@ -6,56 +6,57 @@
 //
 
 import UIKit
-import GLKit
-
-struct ActiveLabelConfiguration {
-    var estimatedNumberOfLines: UInt
-    var finalLineTrailingInset: CGFloat
-    var finalLineLength: CGFloat
-    var loadingViewColor: UIColor
-    var loadingLineHeight: CGFloat
-    var loadingLineVerticalSpacing: CGFloat
-    var loadingAnimationDuration: Double
-    var loadingAnimationDelay: Double
-    
-    /// Default configuration to be used with the ActiveLabel convenience initializer.
-    ///
-    /// Default values are:
-    /// - estimatedNumberOfLines = 1
-    /// - finalLineTrailingInset = 0
-    /// - finalLineLength = 0
-    /// - loadingViewColor = (233,231,237)
-    /// - loadingLineHeight = 8
-    /// - loadingLineVerticalSpacing = 14
-    /// - loadingAnimationDuration = 2.4
-    /// - loadingAnimationDelay = 0.4
-    static var `default`: ActiveLabelConfiguration {
-        return ActiveLabelConfiguration(estimatedNumberOfLines: 1,
-                                        finalLineTrailingInset: 0,
-                                        finalLineLength: 0,
-                                        loadingViewColor: UIColor(red: 233.0/255.0, green: 231.0/255.0, blue: 237.0/255.0, alpha: 1.0),
-                                        loadingLineHeight: 8,
-                                        loadingLineVerticalSpacing: 14,
-                                        loadingAnimationDuration: 2.4,
-                                        loadingAnimationDelay: 0.4)
-    }
-}
 
 /// Used to show loading progress in a UILabel through an animated gradient.
 ///
-/// Setting text to nil will cause the loading indicator to show, non nil will remove the loading indicators.
-/// Use lastLineTrailingInset and lastLineLength to control how the last line is displayed. If only 1 line then
-/// it is considered the last line. lastLineTrailingInset takes precendence over lastLineLength.
+/// Setting text to `nil` will cause the loading indicator to show, non-`nil` will remove the loading indicators.
+/// Use `lastLineTrailingInset` and `lastLineLength` to control how the last line is displayed. If only 1 line then
+/// it is considered the last line. `lastLineTrailingInset` takes precendence over `lastLineLength`.
 @IBDesignable
 class ActiveLabel: UILabel {
+    static let loadingGray: UIColor = UIColor(red: 233.0/255.0, green: 231.0/255.0, blue: 237.0/255.0, alpha: 1.0)
+    
+    struct ActiveLabelConfiguration {
+        var estimatedNumberOfLines: UInt
+        var finalLineTrailingInset: CGFloat
+        var finalLineLength: CGFloat
+        var loadingViewColor: UIColor
+        var loadingLineHeight: CGFloat
+        var loadingLineVerticalSpacing: CGFloat
+        var loadingAnimationDuration: Double
+        var loadingAnimationDelay: Double
+        
+        /// Default configuration to be used with the ActiveLabel convenience initializer.
+        ///
+        /// Default values are:
+        /// - estimatedNumberOfLines = 1
+        /// - finalLineTrailingInset = 0
+        /// - finalLineLength = 0
+        /// - loadingViewColor = (233,231,237)
+        /// - loadingLineHeight = 8
+        /// - loadingLineVerticalSpacing = 14
+        /// - loadingAnimationDuration = 2.4
+        /// - loadingAnimationDelay = 0.4
+        static var `default`: ActiveLabelConfiguration {
+            return ActiveLabelConfiguration(estimatedNumberOfLines: 1,
+                                            finalLineTrailingInset: 0,
+                                            finalLineLength: 0,
+                                            loadingViewColor: ActiveLabel.loadingGray,
+                                            loadingLineHeight: 8,
+                                            loadingLineVerticalSpacing: 14,
+                                            loadingAnimationDuration: 2.4,
+                                            loadingAnimationDelay: 0.4)
+        }
+    }
+    
     /// The number of activity lines to display. Default is 1.
     @IBInspectable public var estimatedNumberOfLines: UInt = 1
     /// Trailing Inset for the last activity line. Default is 0.
     @IBInspectable public var finalLineTrailingInset: CGFloat = 0
-    /// Line Length in points for the last activity line. If finalLineTralingInset is set to greater than 0 this value is not used. Default is 0.
+    /// Line Length in points for the last activity line. If `finalLineTralingInset` is set to greater than 0 this value is not used. Default is 0.
     @IBInspectable public var finalLineLength: CGFloat = 0
     /// This color is the darkest area of the line seen during activity animation. Default is (233,231,237) Gray.
-    @IBInspectable public var loadingViewColor: UIColor = UIColor(red: 233.0/255.0, green: 231.0/255.0, blue: 237.0/255.0, alpha: 1.0)
+    @IBInspectable public var loadingViewColor: UIColor = ActiveLabel.loadingGray
     /// The height of each activity line. Default is 8.
     @IBInspectable public var loadingLineHeight: CGFloat = 8
     /// Vertical spacing between each activity line when 2 or more lines are displayed. Default is 14.
@@ -92,7 +93,7 @@ class ActiveLabel: UILabel {
     }
     
     /**
-     When text is set to nil the loading views will display. When text is non-nill the loading views will be hidden.
+     When text is set to `nil` the loading views will display. When text is non-`nil` the loading views will be hidden.
      */
     override var text: String? {
         didSet {
@@ -113,20 +114,16 @@ class ActiveLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        defer {
-            textDidUpdate()
-        }
+        textDidUpdate()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        defer {
-            textDidUpdate()
-        }
+        textDidUpdate()
     }
     
-    convenience init(frame: CGRect, configuration: ActiveLabelConfiguration) {
+    convenience init(frame: CGRect, configuration: ActiveLabel.ActiveLabelConfiguration) {
         self.init(frame: frame)
         
         self.estimatedNumberOfLines = configuration.estimatedNumberOfLines
@@ -164,7 +161,7 @@ class ActiveLabel: UILabel {
      You must call this function to reset the loading views after you have changed a configuration value.
      */
     func configurationChanged() {
-        loadingViews.forEach({ $0.removeFromSuperview() })
+        loadingViews.forEach { $0.removeFromSuperview() }
         loadingViews.removeAll()
         
         if isLoading {
@@ -191,7 +188,7 @@ private extension ActiveLabel {
     }
     
     func configureLoadingViews() {
-        for i in 0..<Int(estimatedNumberOfLines) {
+        for index in 0..<Int(estimatedNumberOfLines) {
             let view = UIView()
             view.translatesAutoresizingMaskIntoConstraints = false
             view.backgroundColor = loadingViewColor
@@ -202,31 +199,41 @@ private extension ActiveLabel {
             loadingViews.append(view)
             
             addSubview(view)
-            NSLayoutConstraint.activate([view.leadingAnchor.constraint(equalTo: leadingAnchor),
-                                         view.heightAnchor.constraint(greaterThanOrEqualToConstant: loadingLineHeight)])
-            
-            if i == 0 {
-                view.topAnchor.constraint(equalTo: topAnchor).isActive = true
-            } else {
-                let aboveView = loadingViews[i - 1]
-                view.topAnchor.constraint(equalTo: aboveView.bottomAnchor, constant: loadingLineVerticalSpacing).isActive = true
-            }
-            
-            if i + 1 == estimatedNumberOfLines {
-                view.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-                if finalLineTrailingInset != 0 {
-                    view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -finalLineTrailingInset).isActive = true
-                } else if finalLineLength != 0 {
-                    view.widthAnchor.constraint(equalToConstant: finalLineLength).isActive = true
-                } else {
-                    view.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-                }
-            } else {
-                view.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-            }
+            setupConstraints(for: view, at: index)
         }
         
         loadingViews.forEach({ $0.isHidden = isHidden })
+    }
+    
+    func setupConstraints(for view: UIView, at index: Int) {
+        NSLayoutConstraint.activate([view.leadingAnchor.constraint(equalTo: leadingAnchor),
+                                     view.heightAnchor.constraint(greaterThanOrEqualToConstant: loadingLineHeight)])
+        
+        if index == 0 {
+            // Constrain the first view to the top of the label.
+            view.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        } else {
+            // If not the first view constrain the top to the above views bottom with the loadingLineVerticalSpacing.
+            let aboveView = loadingViews[index - 1]
+            view.topAnchor.constraint(equalTo: aboveView.bottomAnchor, constant: loadingLineVerticalSpacing).isActive = true
+        }
+        
+        if index + 1 == estimatedNumberOfLines {
+            // If this is the last view then constraint it's bottom to the label
+            view.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+            
+            // Handle the last line width/trailing constraint based on finalLineTrailingInset, finalLineLength, or none in that order.
+            if finalLineTrailingInset != 0 {
+                view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -finalLineTrailingInset).isActive = true
+            } else if finalLineLength != 0 {
+                view.widthAnchor.constraint(equalToConstant: finalLineLength).isActive = true
+            } else {
+                view.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+            }
+        } else {
+            // Only set up the trailing constraint since next view will constrain to this bottomAnchor.
+            view.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        }
     }
     
     // MARK: - CA Helpers
@@ -240,6 +247,7 @@ private extension ActiveLabel {
         let darkColor = UIColor(white: 1, alpha: 1)
         
         maskLayer.colors = [lightColor.cgColor, darkColor.cgColor, lightColor.cgColor]
+        // If we are viewing in InterfaceBuilder we want to shift the gradient to the center so that it can be seen at design time otherwise set it to the far left.
         if showLoadingViewsInStoryboard && isDisplayingInStoryboard {
             maskLayer.locations = [NSNumber(value: 0.4), NSNumber(value: 0.5), NSNumber(value: 0.6)]
         } else {
