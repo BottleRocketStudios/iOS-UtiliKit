@@ -68,6 +68,9 @@ class ActiveLabel: UILabel {
     /// Shows the loading views in the Storyboard by default since text of a label can't be nil in a Storybaord. Default is true.
     @IBInspectable private var showLoadingViewsInStoryboard: Bool = true
     
+    /// Used to make sure the gradient is centered during snapshot testing
+    var isSnapshotTesting: Bool = false
+    
     private static let locationKeyPath = "locations"
     
     private var isDisplayingInStoryboard: Bool = false
@@ -248,7 +251,7 @@ private extension ActiveLabel {
         
         maskLayer.colors = [lightColor.cgColor, darkColor.cgColor, lightColor.cgColor]
         // If we are viewing in InterfaceBuilder we want to shift the gradient to the center so that it can be seen at design time otherwise set it to the far left.
-        if showLoadingViewsInStoryboard && isDisplayingInStoryboard {
+        if (showLoadingViewsInStoryboard && isDisplayingInStoryboard) || isSnapshotTesting {
             maskLayer.locations = [NSNumber(value: 0.4), NSNumber(value: 0.5), NSNumber(value: 0.6)]
         } else {
             maskLayer.locations = [NSNumber(value: 0.0), NSNumber(value: 0.1), NSNumber(value: 0.2)]

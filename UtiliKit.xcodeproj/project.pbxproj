@@ -15,6 +15,8 @@
 		5C574BF72264EC10003D1641 /* ActiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574BF62264EC10003D1641 /* ActiveLabel.swift */; };
 		5C574BF92264EC3C003D1641 /* ActiveLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574BF82264EC3C003D1641 /* ActiveLabelViewController.swift */; };
 		5C574BFB2264ED61003D1641 /* ActiveLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574BFA2264ED61003D1641 /* ActiveLabelTests.swift */; };
+		5C574BFD22675999003D1641 /* SnapshotTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C574BFC22675999003D1641 /* SnapshotTesting.framework */; };
+		5C574BFF22675A51003D1641 /* SnapshotTesting.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5C574BFC22675999003D1641 /* SnapshotTesting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		62F5256D2257F4F50052B8E7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 62F5256C2257F4F50052B8E7 /* README.md */; };
 		62F5256F2257F4FE0052B8E7 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 62F5256E2257F4FE0052B8E7 /* CHANGELOG.md */; };
 		8677314220601BB400C54343 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
@@ -81,6 +83,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5C574BFE22675A38003D1641 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5C574BFF22675A51003D1641 /* SnapshotTesting.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0E6E8C6C2112551200617815 /* ContainerViewController+ManagedChildren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContainerViewController+ManagedChildren.swift"; sourceTree = "<group>"; };
 		0EC8025B209CE9C90051F732 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
@@ -89,6 +104,7 @@
 		5C574BF62264EC10003D1641 /* ActiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLabel.swift; sourceTree = "<group>"; };
 		5C574BF82264EC3C003D1641 /* ActiveLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLabelViewController.swift; sourceTree = "<group>"; };
 		5C574BFA2264ED61003D1641 /* ActiveLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLabelTests.swift; sourceTree = "<group>"; };
+		5C574BFC22675999003D1641 /* SnapshotTesting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapshotTesting.framework; path = Carthage/Build/iOS/SnapshotTesting.framework; sourceTree = "<group>"; };
 		62F5256C2257F4F50052B8E7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		62F5256E2257F4FE0052B8E7 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		8677313920601BB400C54343 /* UtiliKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UtiliKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C574BFD22675999003D1641 /* SnapshotTesting.framework in Frameworks */,
 				8677314220601BB400C54343 /* UtiliKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -180,6 +197,7 @@
 		1D419DBE21236CC300B62D91 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5C574BFC22675999003D1641 /* SnapshotTesting.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -448,6 +466,7 @@
 				8677313D20601BB400C54343 /* Sources */,
 				8677313E20601BB400C54343 /* Frameworks */,
 				8677313F20601BB400C54343 /* Resources */,
+				5C574BFE22675A38003D1641 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -842,6 +861,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
@@ -865,6 +888,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
