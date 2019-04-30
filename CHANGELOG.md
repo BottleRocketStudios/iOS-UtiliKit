@@ -2,6 +2,15 @@
 
 ##### Enhancements
 
+##### Bug Fixes
+
+* None.
+
+
+## 1.4.0 (2019-04-30)
+
+##### Enhancements
+
 * Migrate to Swift 5.0.
 [Earl Gaspard](https://github.com/earlgaspard)
 [#53](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/53)
