@@ -78,7 +78,7 @@ private extension ContainerViewController {
     func transition(to destination: UIViewController, completion: ((Bool) -> Void)? = nil) {
         
         //Ensure that the view is loaded, we're not already transitioning and the transition will result in a move
-        guard isViewLoaded && !isTransitioning, visibleController != destination else { return }
+        guard isViewLoaded && !isTransitioning, visibleController != destination else { completion?(true); return }
         guard let source = visibleController else {
             
             //If we do not already have a visible controller (first launch), skip the animator and contain the child
@@ -90,7 +90,7 @@ private extension ContainerViewController {
             return
         }
         
-        guard delegate?.containerViewController(self, shouldTransitionFrom: source, to: destination) ?? true else { return }
+        guard delegate?.containerViewController(self, shouldTransitionFrom: source, to: destination) ?? true else { completion?(false); return }
         
         //Inform the delegate transitioning is set to begin
         delegate?.containerViewController(self, didBeginTransitioningFrom: source, to: destination)
