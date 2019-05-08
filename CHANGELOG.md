@@ -4,7 +4,9 @@
 
 ##### Bug Fixes
 
-* None.
+* Fix a bug where completion wasn't always called when transitioning.
+[Will McGinty](https://github.com/willmcginty)
+[#57](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/57)
 
 
 ## 1.4.0 (2019-04-30)
