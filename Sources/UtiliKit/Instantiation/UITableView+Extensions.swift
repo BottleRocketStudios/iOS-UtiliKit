@@ -62,6 +62,20 @@ public extension UITableView {
     }
     
     /**
+     Returns a reusable table view cell of type T.
+     
+     - Parameter indexPath: The index path of the cell.
+     - Parameter element: An object used to configure the newly dequeued cell.
+     - Returns: A table view cell of type T configured with `element`.
+     */
+    func dequeueReusableCell<T: UITableViewCell & Configurable>(for indexPath: IndexPath, configuredWith element: T.ConfiguringType) -> T  {
+        let reusableCell: T = dequeueReusableCell(for: indexPath)
+        reusableCell.configure(with: element)
+        
+        return reusableCell
+    }
+    
+    /**
      Returns a reusable headerFooter view of type T.
     
      - Returns: A headerFooter view of type T.
@@ -70,6 +84,19 @@ public extension UITableView {
         guard let reusableView = dequeueReusableHeaderFooterView(withIdentifier: T.reuseIdentifier) as? T else {
             fatalError("Could not dequeue a reusable view of type \(T.self) with identifier \(T.reuseIdentifier) for use in \(self)")
         }
+        
+        return reusableView
+    }
+    
+    /**
+     Returns a reusable headerFooter view of type T.
+     
+     - Parameter element: An object used to configure the newly dequeued header or footer view.
+     - Returns: A headerFooter view of type T configured with `element`.
+     */
+    func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView & Configurable>(configuredWith element: T.ConfiguringType) -> T {
+        let reusableView: T = dequeueReusableHeaderFooterView()
+        reusableView.configure(with: element)
         
         return reusableView
     }
