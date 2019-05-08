@@ -2,11 +2,13 @@
 
 ##### Enhancements
 
-##### Bug Fixes
-
 * Add support for `Configurable` types when dequeuing reusable views.
 [Will McGinty](https://github.com/willmcginty)
 [#53](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/58)
+
+##### Bug Fixes
+
+*
 
 
 ## 1.4.0 (2019-04-30)
