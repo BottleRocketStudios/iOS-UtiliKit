@@ -2,6 +2,10 @@
 
 ##### Enhancements
 
+* Add support for `Configurable` types when dequeuing reusable views.
+[Will McGinty](https://github.com/willmcginty)
+[#53](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/58)
+
 ##### Bug Fixes
 
 * Fix a bug where completion wasn't always called when transitioning.
