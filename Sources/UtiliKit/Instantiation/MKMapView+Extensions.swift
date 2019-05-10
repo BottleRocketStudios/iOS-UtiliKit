@@ -37,9 +37,23 @@ public extension MKMapView {
     }
     
     /**
+     Returns a reusable annotation view of type T.
+     
+     - Parameter annotation: The annotation of the annotation view.
+     - Parameter element: An object used to configure the newly dequeued cell.
+     - Returns: An annotation view of type T configured with `element`.
+     */
+    @available(iOS 11.0, *)
+    func dequeueReusableAnnotationView<T: MKAnnotationView & Configurable>(for annotation: MKAnnotation, configuredWith element: T.ConfiguringType) -> T {
+        let annotationView: T = dequeueReusableAnnotationView(for: annotation)
+        annotationView.configure(with: element)
+        
+        return annotationView
+    }
+    
+    /**
      Returns a reusable, optional annotation view  of type T.
     
-     - Parameter type: The type of the cell being registered. This should match the reuse identifier on the nib.
      - Returns: Either a reusable annotation view of type T or a new instance of it.
     */
     func dequeueReusableAnnotationView<T: MKAnnotationView>() -> T {
@@ -54,5 +68,18 @@ public extension MKMapView {
         }
         
         return T()
+    }
+    
+    /**
+     Returns a reusable, optional annotation view  of type T.
+     
+     - Parameter element: An object used to configure the newly dequeued cell.
+     - Returns: Either a reusable annotation view of type T or a new instance of it, configured with `element`.
+     */
+    func dequeueReusableAnnotationView<T: MKAnnotationView & Configurable>(configuredWith element: T.ConfiguringType) -> T {
+        let annotationView: T = dequeueReusableAnnotationView()
+        annotationView.configure(with: element)
+        
+        return annotationView
     }
 }
