@@ -131,6 +131,20 @@ public extension UICollectionView {
     }
     
     /**
+     Returns a reusable collection view cell of type T.
+     
+     - Parameter indexPath: The index path of the cell.
+     - Parameter element: An object used to configure the newly dequeued cell.
+     - Returns: A collection view cell of type T configured with `element`.
+     */
+    func dequeueReusableCell<T: UICollectionViewCell & Configurable>(for indexPath: IndexPath, configuredWith element: T.ConfiguringType) -> T {
+        let reusableCell: T = dequeueReusableCell(for: indexPath)
+        reusableCell.configure(with: element)
+        
+        return reusableCell
+    }
+    
+    /**
      Returns a reusable supplementary view of type T.
     
      - Parameter kind: The kind of supplementary view to make.
@@ -141,6 +155,21 @@ public extension UICollectionView {
         guard let reusableView = dequeueReusableSupplementaryView(ofKind: kind.type, withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("Could not dequeue a reusable supplementary view of type \(T.self) with identifier \(T.reuseIdentifier) for use in \(self)")
         }
+        
+        return reusableView
+    }
+    
+    /**
+     Returns a reusable supplementary view of type T.
+     
+     - Parameter kind: The kind of supplementary view to make.
+     - Parameter indexPath: The index path of the cell.
+     - Parameter element: An object used to configure the newly dequeued cell.
+     - Returns: A collection reusable view of type T configured with `element`.
+     */
+    func dequeueReusableSupplementaryView<T: UICollectionReusableView & Configurable>(of kind: SupplementaryElementKind, for indexPath: IndexPath, configuredWith element: T.ConfiguringType) -> T {
+        let reusableView: T = dequeueReusableSupplementaryView(of: kind, for: indexPath)
+        reusableView.configure(with: element)
         
         return reusableView
     }
