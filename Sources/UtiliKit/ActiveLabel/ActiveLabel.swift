@@ -12,6 +12,7 @@ import UIKit
 /// Setting text to `nil` will cause the loading indicator to show, non-`nil` will remove the loading indicators.
 /// Use `lastLineTrailingInset` and `lastLineLength` to control how the last line is displayed. If only 1 line then
 /// it is considered the last line. `lastLineTrailingInset` takes precendence over `lastLineLength`.
+/// - Note: `ActiveLabel` loading indicators do not scale with Dynamic Type at this time. The text in the label does scale as expected.
 @IBDesignable
 class ActiveLabel: UILabel {
     static let loadingGray: UIColor = UIColor(red: 233.0/255.0, green: 231.0/255.0, blue: 237.0/255.0, alpha: 1.0)
