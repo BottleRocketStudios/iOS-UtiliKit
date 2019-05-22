@@ -37,11 +37,11 @@ class ActiveLabelTests: XCTestCase {
         XCTAssertEqual(label.loadingLineVerticalSpacing, 14)
         XCTAssertEqual(label.loadingAnimationDuration, 2.4)
         XCTAssertEqual(label.loadingAnimationDelay, 0.4)
-        XCTAssertEqual(label.isLoading, true)
+        XCTAssertEqual(label.state, .loading)
         XCTAssertEqual(label.subviews.count, Int(label.estimatedNumberOfLines))
 
         label.text = tempText
-        XCTAssertEqual(label.isLoading, false)
+        XCTAssertEqual(label.state, .text(tempText))
         XCTAssertEqual(label.subviews.count, 0)
     }
     
@@ -60,11 +60,11 @@ class ActiveLabelTests: XCTestCase {
         XCTAssertEqual(label.loadingLineVerticalSpacing, 14)
         XCTAssertEqual(label.loadingAnimationDuration, 2.4)
         XCTAssertEqual(label.loadingAnimationDelay, 0.4)
-        XCTAssertEqual(label.isLoading, true)
+        XCTAssertEqual(label.state, .loading)
         XCTAssertEqual(label.subviews.count, Int(label.estimatedNumberOfLines))
 
         label.text = tempText
-        XCTAssertEqual(label.isLoading, false)
+        XCTAssertEqual(label.state, .text(tempText))
         XCTAssertEqual(label.subviews.count, 0)
 
         label.finalLineTrailingInset = 0
@@ -72,7 +72,7 @@ class ActiveLabelTests: XCTestCase {
         label.configurationChanged()
         
         label.text = nil
-        XCTAssertEqual(label.isLoading, true)
+        XCTAssertEqual(label.state, .loading)
         XCTAssertEqual(label.finalLineTrailingInset, 0)
         XCTAssertEqual(label.finalLineLength, 100)
         XCTAssertEqual(label.subviews.count, Int(label.estimatedNumberOfLines))

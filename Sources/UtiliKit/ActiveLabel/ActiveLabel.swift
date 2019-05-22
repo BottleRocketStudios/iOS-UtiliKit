@@ -16,6 +16,7 @@ import UIKit
 class ActiveLabel: UILabel {
     static let loadingGray: UIColor = UIColor(red: 233.0/255.0, green: 231.0/255.0, blue: 237.0/255.0, alpha: 1.0)
     
+    /// Struct used to represent how an `ActiveLabel` should be displayed. Should be passed into the `ActiveLabel` convenience initializer.
     struct ActiveLabelConfiguration {
         var estimatedNumberOfLines: UInt
         var finalLineTrailingInset: CGFloat
@@ -26,7 +27,7 @@ class ActiveLabel: UILabel {
         var loadingAnimationDuration: Double
         var loadingAnimationDelay: Double
         
-        /// Default configuration to be used with the ActiveLabel convenience initializer.
+        /// Default configuration to be used with the `ActiveLabel` convenience initializer.
         ///
         /// Default values are:
         /// - estimatedNumberOfLines = 1
@@ -46,6 +47,24 @@ class ActiveLabel: UILabel {
                                             loadingLineVerticalSpacing: 14,
                                             loadingAnimationDuration: 2.4,
                                             loadingAnimationDelay: 0.4)
+        }
+    }
+    
+    /// Used to represent an `ActiveLabel`s state.
+    enum State: Equatable {
+        case loading
+        case text(String)
+        
+        static func ==(lhs: State, rhs: State) -> Bool {
+            switch (lhs, rhs) {
+            case (.loading, .loading):
+                return true
+            case (let .text(leftString), let .text(rightString)):
+                return leftString == rightString
+            case (.loading, .text),
+                 (.text, .loading):
+                return false
+            }
         }
     }
     
@@ -71,19 +90,23 @@ class ActiveLabel: UILabel {
     /// Used to make sure the gradient is centered during snapshot testing
     var isSnapshotTesting: Bool = false
     
+    /// Used for Animation KeyPath
     private static let locationKeyPath = "locations"
     
+    /// When true the gradient will show centered so that it can be adjusted easily in IB
     private var isDisplayingInStoryboard: Bool = false
-    private(set) var isLoading: Bool = false {
+    /// Public read-only representation of the labels state. Either `loading` or `text(String)`.
+    private(set) var state: State = .text("") {
         didSet {
-            guard oldValue != isLoading else { return }
+            guard oldValue != state else { return }
             
-            if isLoading {
+            switch state {
+            case .loading:
                 text = nil
                 if !isHidden {
                     showLoadingViews()
                 }
-            } else {
+            case .text:
                 loadingViews.forEach({ $0.removeFromSuperview() })
                 loadingViews.removeAll()
             }
@@ -108,7 +131,7 @@ class ActiveLabel: UILabel {
         didSet {
             if isHidden {
                 hideLoadingViews()
-            } else if !isHidden && isLoading {
+            } else if !isHidden && state == .loading {
                 showLoadingViews()
             }
         }
@@ -117,13 +140,13 @@ class ActiveLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        textDidUpdate()
+        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        textDidUpdate()
+        commonInit()
     }
     
     convenience init(frame: CGRect, configuration: ActiveLabel.ActiveLabelConfiguration) {
@@ -139,6 +162,10 @@ class ActiveLabel: UILabel {
         self.loadingAnimationDelay = configuration.loadingAnimationDelay
         
         configurationChanged()
+    }
+    
+    private func commonInit() {
+        textDidUpdate()
     }
     
     override func layoutSubviews() {
@@ -157,7 +184,7 @@ class ActiveLabel: UILabel {
         super.prepareForInterfaceBuilder()
         
         isDisplayingInStoryboard = true
-        isLoading = showLoadingViewsInStoryboard
+        state = showLoadingViewsInStoryboard ? .loading : .text("")
     }
     
     /**
@@ -167,7 +194,7 @@ class ActiveLabel: UILabel {
         loadingViews.forEach { $0.removeFromSuperview() }
         loadingViews.removeAll()
         
-        if isLoading {
+        if state == .loading {
             showLoadingViews()
         }
     }
@@ -175,7 +202,7 @@ class ActiveLabel: UILabel {
 
 private extension ActiveLabel {
     func textDidUpdate() {
-        isLoading = text == nil
+        state = text == nil ? .loading : .text(text ?? "")
     }
     
     // MARK: - Loading View Functions
