@@ -2,6 +2,21 @@
 
 ##### Enhancements
 
+* Add support for `Configurable` types when dequeuing reusable views.
+[Will McGinty](https://github.com/willmcginty)
+[#53](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/58)
+
+##### Bug Fixes
+
+* Fix a bug where completion wasn't always called when transitioning.
+[Will McGinty](https://github.com/willmcginty)
+[#57](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/57)
+
+
+## 1.4.0 (2019-04-30)
+
+##### Enhancements
+
 * Migrate to Swift 5.0.
 [Earl Gaspard](https://github.com/earlgaspard)
 [#53](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/53)
