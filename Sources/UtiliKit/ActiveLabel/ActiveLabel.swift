@@ -18,7 +18,7 @@ class ActiveLabel: UILabel {
     static let loadingGray: UIColor = UIColor(red: 233.0/255.0, green: 231.0/255.0, blue: 237.0/255.0, alpha: 1.0)
     
     /// Struct used to represent how an `ActiveLabel` should be displayed. Should be passed into the `ActiveLabel` convenience initializer.
-    struct ActiveLabelConfiguration {
+    struct Configuration {
         var estimatedNumberOfLines: UInt
         var finalLineTrailingInset: CGFloat
         var finalLineLength: CGFloat
@@ -39,8 +39,8 @@ class ActiveLabel: UILabel {
         /// - loadingLineVerticalSpacing = 14
         /// - loadingAnimationDuration = 2.4
         /// - loadingAnimationDelay = 0.4
-        static var `default`: ActiveLabelConfiguration {
-            return ActiveLabelConfiguration(estimatedNumberOfLines: 1,
+        static var `default`: Configuration {
+            return Configuration(estimatedNumberOfLines: 1,
                                             finalLineTrailingInset: 0,
                                             finalLineLength: 0,
                                             loadingViewColor: ActiveLabel.loadingGray,
@@ -70,26 +70,29 @@ class ActiveLabel: UILabel {
     }
     
     /// The number of activity lines to display. Default is 1.
-    @IBInspectable public var estimatedNumberOfLines: UInt = 1
+    @IBInspectable public var estimatedNumberOfLines: UInt = Configuration.default.estimatedNumberOfLines
     /// Trailing Inset for the last activity line. Default is 0.
-    @IBInspectable public var finalLineTrailingInset: CGFloat = 0
+    @IBInspectable public var finalLineTrailingInset: CGFloat = Configuration.default.finalLineTrailingInset
     /// Line Length in points for the last activity line. If `finalLineTralingInset` is set to greater than 0 this value is not used. Default is 0.
-    @IBInspectable public var finalLineLength: CGFloat = 0
+    @IBInspectable public var finalLineLength: CGFloat = Configuration.default.finalLineLength
     /// This color is the darkest area of the line seen during activity animation. Default is (233,231,237) Gray.
-    @IBInspectable public var loadingViewColor: UIColor = ActiveLabel.loadingGray
+    @IBInspectable public var loadingViewColor: UIColor = Configuration.default.loadingViewColor
     /// The height of each activity line. Default is 8.
-    @IBInspectable public var loadingLineHeight: CGFloat = 8
+    @IBInspectable public var loadingLineHeight: CGFloat = Configuration.default.loadingLineHeight
     /// Vertical spacing between each activity line when 2 or more lines are displayed. Default is 14.
-    @IBInspectable public var loadingLineVerticalSpacing: CGFloat = 14
+    @IBInspectable public var loadingLineVerticalSpacing: CGFloat = Configuration.default.loadingLineVerticalSpacing
     /// The duration of the gradient animation applied to the activity lines. Default is 2.4.
-    @IBInspectable public var loadingAnimationDuration: Double = 2.4
+    @IBInspectable public var loadingAnimationDuration: Double = Configuration.default.loadingAnimationDuration
     /// The delay that is applied before each animation begins. Default is 0.4.
-    @IBInspectable public var loadingAnimationDelay: Double = 0.4
-    /// Shows the loading views in the Storyboard by default since text of a label can't be nil in a Storybaord. Default is true.
-    @IBInspectable private var showLoadingViewsInStoryboard: Bool = true
+    @IBInspectable public var loadingAnimationDelay: Double = Configuration.default.loadingAnimationDelay
+//    /// Shows the loading views in the Storyboard by default since text of a label can't be nil in a Storybaord. Default is true.
+//    @IBInspectable private var showLoadingViewsInStoryboard: Bool = true
+//
+//    /// Used to make sure the gradient is centered during snapshot testing
+//    var isSnapshotTesting: Bool = false
     
-    /// Used to make sure the gradient is centered during snapshot testing
-    var isSnapshotTesting: Bool = false
+    /// Used to make sure the gradient is centered during snapshot testing and/or viewing in a Storyboard.
+    private var isGradientCentered: Bool = false
     
     /// Used for Animation KeyPath
     private static let locationKeyPath = "locations"
@@ -150,7 +153,7 @@ class ActiveLabel: UILabel {
         commonInit()
     }
     
-    convenience init(frame: CGRect, configuration: ActiveLabel.ActiveLabelConfiguration) {
+    convenience init(frame: CGRect, configuration: ActiveLabel.Configuration) {
         self.init(frame: frame)
         
         self.estimatedNumberOfLines = configuration.estimatedNumberOfLines
@@ -184,8 +187,12 @@ class ActiveLabel: UILabel {
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         
-        isDisplayingInStoryboard = true
-        state = showLoadingViewsInStoryboard ? .loading : .text("")
+        isGradientCentered = true
+        if let text = text {
+            state = text.isEmpty ? .loading : .text(text)
+        } else {
+            state = .loading
+        }
     }
     
     /**
@@ -198,6 +205,10 @@ class ActiveLabel: UILabel {
         if state == .loading {
             showLoadingViews()
         }
+    }
+    
+    func configureForSnapshotTesting() {
+        isGradientCentered = true
     }
 }
 
@@ -278,8 +289,7 @@ private extension ActiveLabel {
         let darkColor = UIColor(white: 1, alpha: 1)
         
         maskLayer.colors = [lightColor.cgColor, darkColor.cgColor, lightColor.cgColor]
-        // If we are viewing in InterfaceBuilder we want to shift the gradient to the center so that it can be seen at design time otherwise set it to the far left.
-        if (showLoadingViewsInStoryboard && isDisplayingInStoryboard) || isSnapshotTesting {
+        if isGradientCentered {
             maskLayer.locations = [NSNumber(value: 0.4), NSNumber(value: 0.5), NSNumber(value: 0.6)]
         } else {
             maskLayer.locations = [NSNumber(value: 0.0), NSNumber(value: 0.1), NSNumber(value: 0.2)]

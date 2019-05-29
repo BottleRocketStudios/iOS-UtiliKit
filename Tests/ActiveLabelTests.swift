@@ -89,7 +89,7 @@ class ActiveLabelTests: XCTestCase {
     }
     
     func testConvenienceInitializerDefault() {
-        let label = ActiveLabel(frame: .zero, configuration: ActiveLabel.ActiveLabelConfiguration.default)
+        let label = ActiveLabel(frame: .zero, configuration: ActiveLabel.Configuration.default)
 
         XCTAssertEqual(label.estimatedNumberOfLines, 1)
         XCTAssertEqual(label.finalLineTrailingInset, 0)
@@ -102,7 +102,7 @@ class ActiveLabelTests: XCTestCase {
     }
     
     func testConvenvienceInitializerModified() {
-        var configuration = ActiveLabel.ActiveLabelConfiguration.default
+        var configuration = ActiveLabel.Configuration.default
         configuration.estimatedNumberOfLines = 2
         configuration.loadingViewColor = .red
         let label = ActiveLabel(frame: .zero, configuration: configuration)
@@ -124,7 +124,7 @@ class ActiveLabelTests: XCTestCase {
         let label = ActiveLabel()
         addLabel(label, to: viewController)
 
-        label.isSnapshotTesting = true
+        label.configureForSnapshotTesting()
         label.configurationChanged()
         assertSnapshot(matching: viewController, as: .image(on: .iPhoneX))
     }
@@ -135,7 +135,7 @@ class ActiveLabelTests: XCTestCase {
         let label = ActiveLabel()
         addLabel(label, to: viewController)
         
-        label.isSnapshotTesting = true
+        label.configureForSnapshotTesting()
         label.configurationChanged()
         assertSnapshot(matching: viewController, as: .image(on: .iPhoneX))
         
@@ -152,7 +152,7 @@ class ActiveLabelTests: XCTestCase {
         label.numberOfLines = 0
         label.estimatedNumberOfLines = 3
         label.finalLineTrailingInset = 100
-        label.isSnapshotTesting = true
+        label.configureForSnapshotTesting()
         label.configurationChanged()
         assertSnapshot(matching: viewController, as: .image(on: .iPhoneX))
         
@@ -175,7 +175,7 @@ class ActiveLabelTests: XCTestCase {
         let label = ActiveLabel()
         addLabel(label, to: viewController)
         
-        label.isSnapshotTesting = true
+        label.configureForSnapshotTesting()
         label.configurationChanged()
         assertSnapshot(matching: viewController, as: .image(on: .iPhoneX))
         
@@ -189,10 +189,10 @@ class ActiveLabelTests: XCTestCase {
     func testConvenienceInitializerSnapshot() {
         let viewController = UIViewController()
         viewController.view.backgroundColor = .white
-        let label = ActiveLabel(frame: .zero, configuration: ActiveLabel.ActiveLabelConfiguration.default)
+        let label = ActiveLabel(frame: .zero, configuration: ActiveLabel.Configuration.default)
         addLabel(label, to: viewController)
         
-        label.isSnapshotTesting = true
+        label.configureForSnapshotTesting()
         label.configurationChanged()
         assertSnapshot(matching: viewController, as: .image(on: .iPhoneX))
     }
@@ -200,14 +200,14 @@ class ActiveLabelTests: XCTestCase {
     func testConvenienceInitializerModifiedSnapshot() {
         let viewController = UIViewController()
         viewController.view.backgroundColor = .white
-        var configuration = ActiveLabel.ActiveLabelConfiguration.default
+        var configuration = ActiveLabel.Configuration.default
         configuration.estimatedNumberOfLines = 2
         configuration.loadingViewColor = .red
         configuration.finalLineTrailingInset = 100
         let label = ActiveLabel(frame: .zero, configuration: configuration)
         addLabel(label, to: viewController)
         
-        label.isSnapshotTesting = true
+        label.configureForSnapshotTesting()
         label.configurationChanged()
         assertSnapshot(matching: viewController, as: .image(on: .iPhoneX))
     }
@@ -217,7 +217,7 @@ class ActiveLabelTests: XCTestCase {
         viewController.view.backgroundColor = .white
         let firstLabel = ActiveLabel()
         addLabel(firstLabel, to: viewController)
-        firstLabel.isSnapshotTesting = true
+        firstLabel.configureForSnapshotTesting()
         firstLabel.configurationChanged()
         
         let secondLabel = ActiveLabel()
@@ -225,17 +225,17 @@ class ActiveLabelTests: XCTestCase {
         secondLabel.estimatedNumberOfLines = 3
         secondLabel.finalLineTrailingInset = 100
         addLabel(secondLabel, to: viewController, below: firstLabel)
-        secondLabel.isSnapshotTesting = true
+        secondLabel.configureForSnapshotTesting()
         secondLabel.configurationChanged()
         
-        var configuration = ActiveLabel.ActiveLabelConfiguration.default
+        var configuration = ActiveLabel.Configuration.default
         configuration.estimatedNumberOfLines = 2
         configuration.loadingViewColor = .red
         configuration.finalLineTrailingInset = 100
         let thirdLabel = ActiveLabel(frame: .zero, configuration: configuration)
         thirdLabel.numberOfLines = 2
         addLabel(thirdLabel, to: viewController, below: secondLabel)
-        thirdLabel.isSnapshotTesting = true
+        thirdLabel.configureForSnapshotTesting()
         thirdLabel.configurationChanged()
         
         assertSnapshot(matching: viewController, as: .image(on: .iPhoneX))
