@@ -17,7 +17,7 @@ public extension UIView {
      - Parameter isUsingSafeArea: A Bool value used to determine the use of safeAreaLayoutGuides or superview anchors
     */
     @available(iOS 11, *)
-    public func addSubview(_ subview: UIView, constrainedToSuperview: Bool, usingSafeArea isUsingSafeArea: Bool) {
+    func addSubview(_ subview: UIView, constrainedToSuperview: Bool, usingSafeArea isUsingSafeArea: Bool) {
         guard constrainedToSuperview else {
             addSubview(subview)
             return
@@ -35,7 +35,7 @@ public extension UIView {
      - Parameter subview: The subview to add.
      - Parameter constrainedToSuperview: Whether or not you want the edges to be automatically constrained to the superview. If 'true', then 'translatesAutoresizingMaskIntoConstraints' will automatically be set to false for the given subview.
      */
-    public func addSubview(_ subview: UIView, constrainedToSuperview: Bool) {
+    func addSubview(_ subview: UIView, constrainedToSuperview: Bool) {
         guard constrainedToSuperview else {
             addSubview(subview)
             return
@@ -54,14 +54,14 @@ public extension UIView {
      - Parameter isUsingSafeArea: A Bool value used to determine the use of safeAreaLayoutGuides or superview anchors
     */
     @available(iOS 11, *)
-    public func constrainEdgesToSuperview(with insets: UIEdgeInsets = .zero, usingSafeArea isUsingSafeArea: Bool) {
+    func constrainEdgesToSuperview(with insets: UIEdgeInsets = .zero, usingSafeArea isUsingSafeArea: Bool) {
         guard let superview = superview else { return }
         
         if isUsingSafeArea {
             superview.addConstraints([leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: insets.left),
-                                      trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: insets.right),
+                                      trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -insets.right),
                                       topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: insets.top),
-                                      bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: insets.bottom)])
+                                      bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -insets.bottom)])
         } else {
             constrainEdgesToSuperview(with: insets)
         }
@@ -72,13 +72,13 @@ public extension UIView {
      
      - Parameter insets: Defaults to UIEdgeInsets.zero, this parameter is used for the constant value of the constraints
      */
-    public func constrainEdgesToSuperview(with insets: UIEdgeInsets = .zero) {
+    func constrainEdgesToSuperview(with insets: UIEdgeInsets = .zero) {
         guard let superview = superview else { return }
         
         superview.addConstraints([leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: insets.left),
-                                  trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: insets.right),
+                                  trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -insets.right),
                                   topAnchor.constraint(equalTo: superview.topAnchor, constant: insets.top),
-                                  bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: insets.bottom)])
+                                  bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -insets.bottom)])
     }
     
     /**

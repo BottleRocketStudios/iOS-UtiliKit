@@ -11,7 +11,7 @@ import UIKit
 public extension Bundle {
 	
     /// Error thrown when version lookup fails
-	public struct VersionLookupError: Error {
+    struct VersionLookupError: Error {
 		public let versionKey: String
 		public var localizedDescription: String {
 			let localizedVersionString = NSLocalizedString("Could not find Info.plist key: '%@' of type \(String.self)", comment: "Version Lookup Error - %@ will be replaced with a the key used")
@@ -27,7 +27,7 @@ public extension Bundle {
      - Parameter configuration: Defaults to the standard config. This struct defines the keys used for fetching the version number
      - Parameter isShortVersion: A Bool value used to switch between the short and long version
 	*/
-	public func versionString(for configuration: VersionConfig = VersionConfig(), isShortVersion: Bool = false) throws -> String {
+    func versionString(for configuration: VersionConfig = VersionConfig(), isShortVersion: Bool = false) throws -> String {
 		let key = isShortVersion ? configuration.shortVersionKey : configuration.primaryVersionKey
 		guard let versionString = object(forInfoDictionaryKey: key) as? String else { throw VersionLookupError(versionKey: key) }
 		
@@ -43,7 +43,7 @@ public extension Bundle {
      - Parameter isShortVersion: A Bool value used to switch between the short and long version
      - Parameter showDebugSymbol: A Bool value used to determine the use of the bug symbol for debug builds
 	*/
-	public func verboseVersionString(for configuration: VersionConfig = VersionConfig(), isShortVersion: Bool = false, showDebugSymbol: Bool = false) throws -> String {
+    func verboseVersionString(for configuration: VersionConfig = VersionConfig(), isShortVersion: Bool = false, showDebugSymbol: Bool = false) throws -> String {
 		
 		let version = try versionString(for: configuration, isShortVersion: isShortVersion)
 		let environment = configuration.environmentName ?? ""

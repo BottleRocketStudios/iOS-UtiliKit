@@ -10,7 +10,7 @@ import UIKit
 public extension UICollectionView {
     
     /// Enum defining UICollectionElementKind
-    public enum SupplementaryElementKind {
+    enum SupplementaryElementKind {
         case sectionHeader
         case sectionFooter
         
@@ -62,7 +62,7 @@ public extension UICollectionView {
     
      - Parameter type: The type of the cell being registered.
     */
-    public func register<T: UICollectionViewCell>(_ type: T.Type) {
+    func register<T: UICollectionViewCell>(_ type: T.Type) {
         register(type, forCellWithReuseIdentifier: T.reuseIdentifier)
     }
     
@@ -71,7 +71,7 @@ public extension UICollectionView {
     
      - Parameter type: The class of the nib being registered. This should match its reuse identifier.
     */
-    public func registerNib<T: UICollectionViewCell>(for type: T.Type) {
+    func registerNib<T: UICollectionViewCell>(for type: T.Type) {
         register(UINib(nibName: T.nibName, bundle: Bundle(for: type)), forCellWithReuseIdentifier: T.reuseIdentifier)
     }
     
@@ -80,7 +80,7 @@ public extension UICollectionView {
     
      - Parameter type: The type of the view being registered.
      */
-    public func registerHeaderFooter<T: UICollectionReusableView>(_ type: T.Type) {
+    func registerHeaderFooter<T: UICollectionReusableView>(_ type: T.Type) {
         register(type, forSupplementaryViewOfKind: .sectionHeader)
         register(type, forSupplementaryViewOfKind: .sectionFooter)
     }
@@ -91,7 +91,7 @@ public extension UICollectionView {
      - Parameter type: The type of the view being registered.
      - Parameter kind: The kind of supplementary view to make.
     */
-    public func register<T: UICollectionReusableView>(_ type: T.Type, forSupplementaryViewOfKind kind: SupplementaryElementKind) {
+    func register<T: UICollectionReusableView>(_ type: T.Type, forSupplementaryViewOfKind kind: SupplementaryElementKind) {
         register(type, forSupplementaryViewOfKind: kind.type, withReuseIdentifier: T.reuseIdentifier)
     }
     
@@ -100,7 +100,7 @@ public extension UICollectionView {
     
      - Parameter type: The type of the view being registered.
     */
-    public func registerNib<T: UICollectionReusableView>(forHeaderFooterView type: T.Type) {
+    func registerNib<T: UICollectionReusableView>(forHeaderFooterView type: T.Type) {
         registerNib(forHeaderFooterView: type, forSupplementaryViewOfKind: .sectionHeader)
         registerNib(forHeaderFooterView: type, forSupplementaryViewOfKind: .sectionFooter)
     }
@@ -111,7 +111,7 @@ public extension UICollectionView {
      - Parameter type: The type of the view being registered.
      - Parameter kind: The kind of supplementary view to make.
     */
-    public func registerNib<T: UICollectionReusableView>(forHeaderFooterView type: T.Type, forSupplementaryViewOfKind kind: SupplementaryElementKind) {
+    func registerNib<T: UICollectionReusableView>(forHeaderFooterView type: T.Type, forSupplementaryViewOfKind kind: SupplementaryElementKind) {
         register(UINib(nibName: T.nibName, bundle: Bundle(for: type)), forSupplementaryViewOfKind: kind.type, withReuseIdentifier: T.reuseIdentifier)
     }
     
@@ -122,10 +122,24 @@ public extension UICollectionView {
      - Parameter indexPath: The index path of the cell.
      - Returns: A collection view cell of type T.
     */
-    public func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
+    func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
         guard let reusableCell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("Could not dequeue a reusable cell of type \(T.self) with identifier \(T.reuseIdentifier) for use in \(self)")
         }
+        
+        return reusableCell
+    }
+    
+    /**
+     Returns a reusable collection view cell of type T.
+     
+     - Parameter indexPath: The index path of the cell.
+     - Parameter element: An object used to configure the newly dequeued cell.
+     - Returns: A collection view cell of type T configured with `element`.
+     */
+    func dequeueReusableCell<T: UICollectionViewCell & Configurable>(for indexPath: IndexPath, configuredWith element: T.ConfiguringType) -> T {
+        let reusableCell: T = dequeueReusableCell(for: indexPath)
+        reusableCell.configure(with: element)
         
         return reusableCell
     }
@@ -137,10 +151,25 @@ public extension UICollectionView {
      - Parameter indexPath: The index path of the cell.
      - Returns: A collection view cell of type T.
     */
-    public func dequeueReusableSupplementaryView<T: UICollectionReusableView>(of kind: SupplementaryElementKind, for indexPath: IndexPath) -> T {
+    func dequeueReusableSupplementaryView<T: UICollectionReusableView>(of kind: SupplementaryElementKind, for indexPath: IndexPath) -> T {
         guard let reusableView = dequeueReusableSupplementaryView(ofKind: kind.type, withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("Could not dequeue a reusable supplementary view of type \(T.self) with identifier \(T.reuseIdentifier) for use in \(self)")
         }
+        
+        return reusableView
+    }
+    
+    /**
+     Returns a reusable supplementary view of type T.
+     
+     - Parameter kind: The kind of supplementary view to make.
+     - Parameter indexPath: The index path of the cell.
+     - Parameter element: An object used to configure the newly dequeued cell.
+     - Returns: A collection reusable view of type T configured with `element`.
+     */
+    func dequeueReusableSupplementaryView<T: UICollectionReusableView & Configurable>(of kind: SupplementaryElementKind, for indexPath: IndexPath, configuredWith element: T.ConfiguringType) -> T {
+        let reusableView: T = dequeueReusableSupplementaryView(of: kind, for: indexPath)
+        reusableView.configure(with: element)
         
         return reusableView
     }

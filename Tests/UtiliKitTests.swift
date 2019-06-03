@@ -48,4 +48,33 @@ class OpenSourceUtilitiesTests: XCTestCase {
         
         XCTAssertEqual(superview.constraints.count, 2)
     }
+    
+    func test_ConstrainSubviewWithInsets_InsetsAddedInCorrectDirection() {
+        let insets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        
+        superview.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.constrainEdgesToSuperview(with: insets)
+        
+        superview.setNeedsLayout()
+        superview.layoutIfNeeded()
+        
+        XCTAssertEqual(superview.bounds.inset(by: insets), view.frame)
+    }
+    
+    @available(iOS 11, *)
+    func test_ConstrainSubviewInsideSafeAreaWithInsets_InsetsAddedInCorrectDirection() {
+        let insets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        
+        superview.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.constrainEdgesToSuperview(with: insets, usingSafeArea: false)
+        
+        superview.setNeedsLayout()
+        superview.layoutIfNeeded()
+        
+        XCTAssertEqual(superview.bounds.inset(by: insets), view.frame)
+    }
 }

@@ -8,14 +8,8 @@
 
 Pod::Spec.new do |s|
 s.name             = 'UtiliKit'
-s.version          = '1.3.5'
+s.version          = '1.4.0'
 s.summary          = 'All the things you are tired of writing.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
 
 s.description      = <<-DESC
 This framework is a collection of subspecs designed to be used to facilitate simpler, cleaner code. These classes and extensions are common cases.
@@ -27,6 +21,8 @@ s.author            = { 'Bottle Rocket Studios' => 'wilson.turner@bottlerocketst
 s.source            = { :git => 'https://github.com/bottlerocketstudios/iOS-UtiliKit.git', :tag => s.version.to_s }
 s.source_files      = 'Sources/UtiliKit/**/*'
 s.ios.deployment_target = '10.0'
+s.swift_version = '5.0'
+
 s.default_subspec = 'Core'
 
 s.subspec 'Core' do |core|

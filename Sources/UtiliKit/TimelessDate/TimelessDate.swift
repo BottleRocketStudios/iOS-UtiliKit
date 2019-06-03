@@ -152,8 +152,8 @@ public struct TimelessDate: Comparable, Equatable, Hashable {
     
     // MARK: Hashable
     
-    public var hashValue: Int {
-        return date.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(date.hashValue)
     }
     
     // MARK: Math

@@ -10,13 +10,13 @@ import Foundation
 public extension Date {
     
     /// Current date and time.
-    public static var now: Date { return Date() }
+    static var now: Date { return Date() }
     
     /// Date and time of Midnight January 1, 2001.
-    public static var reference2001: Date { return Date(timeIntervalSinceReferenceDate: 0) }
+    static var reference2001: Date { return Date(timeIntervalSinceReferenceDate: 0) }
     
     /// Date and time of Midnight January 1, 1970.
-    public static var reference1970: Date { return Date(timeIntervalSince1970: 0) }
+    static var reference1970: Date { return Date(timeIntervalSince1970: 0) }
     
     /**
      Creates a Date initialized relative to another given date by a given number of days, hours, minutes, and seconds.
@@ -29,7 +29,7 @@ public extension Date {
      - Parameter seconds: The number of seconds to be added.
      - Parameter date: The reference Date
     */
-    public init?(days: Int = 0, hours: Int = 0, minutes: Int = 0, seconds: Int = 0, since date: Date) {
+    init?(days: Int = 0, hours: Int = 0, minutes: Int = 0, seconds: Int = 0, since date: Date) {
         var components = DateComponents()
         components.day = days
         components.hour = hours
@@ -49,7 +49,7 @@ public extension Date {
      - Parameter seconds: The number of seconds to be added.
      - Returns: An optional Date with the given values added to it.
      */
-    public func adding(days: Int = 0, hours: Int = 0, minutes: Int = 0, seconds: Int = 0) -> Date? {
+    func adding(days: Int = 0, hours: Int = 0, minutes: Int = 0, seconds: Int = 0) -> Date? {
         return Date(days: days, hours: hours, minutes: minutes, seconds: seconds, since: self)
     }
     
@@ -62,7 +62,7 @@ public extension Date {
      - Parameter seconds: The number of seconds to be subtracted.
      - Returns: An optional Date with the given values subtracted to it.
     */
-    public func subtracting(days: Int = 0, hours: Int = 0, minutes: Int = 0, seconds: Int = 0) -> Date? {
+    func subtracting(days: Int = 0, hours: Int = 0, minutes: Int = 0, seconds: Int = 0) -> Date? {
         return Date(days: -days, hours: -hours, minutes: -minutes, seconds: -seconds, since: self)
     }
 }

@@ -12,7 +12,7 @@ public extension ContainerViewController {
     
     //MARK: Finding a ManagedChild
     func index(ofChild controller: UIViewController) -> Int? {
-        return managedChildren.index(where: { $0.viewController === controller })
+        return managedChildren.firstIndex(where: { $0.viewController === controller })
     }
     
     func child(following viewController: UIViewController) -> ManagedChild? {
@@ -41,7 +41,7 @@ public extension ContainerViewController {
     
     // MARK: Removing a ManagedChild
     func removeChild(_ child: ManagedChild) {
-        let removed = managedChildren.index { $0.identifier == child.identifier }.flatMap { managedChildren.remove(at: $0) }
+        let removed = managedChildren.firstIndex { $0.identifier == child.identifier }.flatMap { managedChildren.remove(at: $0) }
         #if swift(>=4.2)
         removed?.viewController.removeFromParent()
         #else
