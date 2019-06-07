@@ -45,7 +45,6 @@ open class ContainerPercentDrivenInteractiveTransitioner: NSObject, ContainerPer
         
         assert(interruptibleAnimator != nil, "In order for a transition to be interactive, the UIViewControllerAnimatedTransitioning object must implemented interruptibleAnimator(using:)")
         
-        interruptibleAnimator?.pauseAnimation()
         interruptibleAnimator?.addCompletion? { [weak self] _ in
             self?.interruptibleAnimator = nil
         }

@@ -46,7 +46,7 @@ public class HorizontalPanGestureInteractiveTransition: ContainerPercentDrivenIn
         switch recognizer.state {
         case .began: gestureRecognizedBlock(recognizer)
         case .changed:
-            guard transitionContext != nil else { return /*If the transition context doesn't exist, we haven't been given it - we aren't using a compatabile animator. The container will only ask for an interaction controller and configure it if you provide it with a custom animator. */ }
+            guard transitionContext != nil else { return /*If the transition context doesn't exist, we haven't been given it - we aren't using a compatible animator. The container will only ask for an interaction controller and configure it if you provide it with a custom animator. */ }
 
             let translation = gestureRecognizer.translation(in: gestureRecognizer.view)
             lastVelocity = gestureRecognizer.velocity(in: gestureRecognizer.view)
