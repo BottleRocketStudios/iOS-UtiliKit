@@ -54,11 +54,11 @@ open class ContainerViewController: UIViewController {
 //MARK: Public Interface
 extension ContainerViewController {
     
-    open func transitionToControllerForChild(with identifier: AnyHashable, allowInteraction: Bool = true, completion: ((Bool) -> Void)? = nil) {
-        managedChildren.first { identifier == $0.identifier }.map { transitionToController(for: $0, allowInteraction: allowInteraction, completion: completion) }
+    open func transitionToControllerForChild(with identifier: AnyHashable, completion: ((Bool) -> Void)? = nil) {
+        managedChildren.first { identifier == $0.identifier }.map { transitionToController(for: $0, completion: completion) }
     }
     
-    open func transitionToController(for child: ManagedChild, allowInteraction: Bool = true, completion: ((Bool) -> Void)? = nil) {
+    open func transitionToController(for child: ManagedChild, completion: ((Bool) -> Void)? = nil) {
         if !managedChildren.contains { $0.viewController === child.viewController } {
             managedChildren.insert(child, at: managedChildren.startIndex)
         }
@@ -68,7 +68,7 @@ extension ContainerViewController {
             managedChildren.insert(child, at: managedChildren.startIndex)
         }
         
-        transition(to: child.viewController, allowInteraction: allowInteraction, completion: completion)
+        transition(to: child.viewController, completion: completion)
     }
     
     open func child(at index: Int) -> ManagedChild? {
@@ -80,7 +80,7 @@ extension ContainerViewController {
 //MARK: Transitioning
 private extension ContainerViewController {
     
-    func transition(to destination: UIViewController, allowInteraction: Bool = true, completion: ((Bool) -> Void)? = nil) {
+    func transition(to destination: UIViewController, completion: ((Bool) -> Void)? = nil) {
         //Ensure that the view is loaded, we're not already transitioning and the transition will result in a move
         guard isViewLoaded && !isTransitioning, visibleController != destination else { completion?(true); return }
         guard let source = visibleController else {
@@ -105,17 +105,14 @@ private extension ContainerViewController {
             return animator.animateTransition(using: context)
         }
         
-        if let interactor = delegate?.containerViewController(self, interactionControllerForTransitionFrom: source, to: destination), allowInteraction {
-            
+        let interactor = delegate?.containerViewController(self, interactionControllerForTransitionFrom: source, to: destination)
+        containerTransitionCoordinator = ContainerTransitionCoordinator(context: context, animator: animator, interactionController: interactor)
+        
+        if let interactor = interactor, interactor.wantsInteractiveStart {
             //We have both an interaction and animation controller - start transitioning interactively
-            containerTransitionCoordinator = ContainerTransitionCoordinator(context: context, animator: animator, interactionController: interactor)
-            context.isInteractive = true
             interactor.startInteractiveTransition(context, using: animator)
-            
         } else {
-            
-            //We have only an animation controller - transition through animation
-            containerTransitionCoordinator = ContainerTransitionCoordinator(context: context, animator: animator)
+            //We either have only an animation controller or an interaction controller that should not start immediately - transition through animation
             animator.animateTransition(using: context)
         }
     }

@@ -37,6 +37,7 @@ class ContainerTransitionCoordinator: NSObject, ContainerViewControllerTransitio
         self.animator = animator
         self.interactionController = interactionController
         self.interruptibleAnimator = interruptibleAnimator
+        self.context.isInteractive = (interactionController != nil)
     }
     
     // MARK: UIViewControllerTransitionCoordinatorContext

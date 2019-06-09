@@ -57,11 +57,13 @@ class BaseContainerViewController: UIViewController {
     }
     
     @IBAction func transitionToA() {
-        containerViewController.transitionToController(withIdentifier: "A")
+        interactionController?.wantsInteractiveStart = false
+        containerViewController.transitionToControllerForChild(with: "A")
     }
     
     @IBAction func transitionToB() {
-        containerViewController.transitionToController(withIdentifier: "B")
+        interactionController?.wantsInteractiveStart = false
+        containerViewController.transitionToControllerForChild(with: "B")
     }
     
     @IBAction func logSwitchDidChange(_ sender: UISwitch) {
@@ -75,14 +77,6 @@ class BaseContainerViewController: UIViewController {
     }
 }
 
-//MARK: Helper
-fileprivate extension ContainerViewController {
-    func transitionToController(withIdentifier identifier: AnyHashable) {
-        guard let child = managedChildren.first(where: { $0.identifier == identifier }) else { return }
-        transitionToController(for: child, allowInteraction: false)
-    }
-}
-
 //MARK: ContainerViewControllerDelegate
 extension BaseContainerViewController: ContainerViewControllerDelegate {
     
@@ -91,6 +85,10 @@ extension BaseContainerViewController: ContainerViewControllerDelegate {
             self.aButton.transform = self.aButton.transform == .identity ? CGAffineTransform(scaleX: 2, y: 2) : .identity
             self.bButton.transform =  self.bButton.transform == .identity ? CGAffineTransform(scaleX: 2, y: 2) : .identity
         }, completion: nil)
+        
+        container.containerTransitionCoordinator?.notifyWhenInteractionEnds { [weak self] context in
+            self?.interactionController?.wantsInteractiveStart = true
+        }
         
         if logLifecycleEvents {
             debugPrint("Did Begin Transitioning from: \(source) to: \(destination)")

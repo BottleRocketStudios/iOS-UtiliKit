@@ -14,11 +14,11 @@ public class HorizontalPanGestureInteractiveTransition: ContainerPercentDrivenIn
     public typealias PanHandler = (UIPanGestureRecognizer) -> Void
     
     // MARK: Properties
-    public let gestureRecognizer: UIPanGestureRecognizer = UIPanGestureRecognizer()
+    private let gestureRecognizer: UIPanGestureRecognizer = UIPanGestureRecognizer()
     private let progressNeeded: CGFloat
     private let velocityNeeded: CGFloat
-    private var isLeftToRight = false
     
+    private var isLeftToRight = false
     private var shouldCompleteTransition = false
     private var lastVelocity = CGPoint.zero
     

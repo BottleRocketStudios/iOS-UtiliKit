@@ -9,6 +9,7 @@
 import UIKit
 
 public protocol ContainerPercentDrivenInteractiveTransitioning: UIViewControllerInteractiveTransitioning {
+    var wantsInteractiveStart: Bool { get }
     var transitionAnimator: ContainerViewControllerAnimatedTransitioning? { get }
     var transitionContext: UIViewControllerContextTransitioning? { get }
     
