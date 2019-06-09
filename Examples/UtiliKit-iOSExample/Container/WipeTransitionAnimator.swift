@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UtiliKit
 
 public class WipeTransitionAnimator: NSObject {
     
@@ -25,18 +26,18 @@ public class WipeTransitionAnimator: NSObject {
         super.init()
     }
     
-    public init(startIndex: Int, endIndex: Int) {
-        self.transitionDirection = startIndex < endIndex ? .rightToLeft : .leftToRight
-        super.init()
+    public convenience init(startIndex: Int, endIndex: Int) {
+        self.init(direction: startIndex < endIndex ? .rightToLeft : .leftToRight)
     }
     
-    func configure(withStartIndex startIndex: Int, endIndex: Int) {
+    // MARK: Interface
+    func configure(forStartIndex startIndex: Int, endIndex: Int) {
         transitionDirection = startIndex < endIndex ? .rightToLeft : .leftToRight
     }
 }
 
-//MARK: UIViewControllerAnimatedTransitioning
-extension WipeTransitionAnimator: UIViewControllerAnimatedTransitioning {
+//MARK: ContainerViewControllerAnimatedTransitioning
+extension WipeTransitionAnimator: ContainerViewControllerAnimatedTransitioning {
     
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
@@ -51,10 +52,13 @@ extension WipeTransitionAnimator: UIViewControllerAnimatedTransitioning {
             return animator
         }
         
-        guard let destination = transitionContext.viewController(forKey: .to), let source = transitionContext.viewController(forKey: .from) else { fatalError("The context is improperly configured - require both a source and destination.") }
+        guard let destination = transitionContext.viewController(forKey: .to), let source = transitionContext.viewController(forKey: .from) else {
+            fatalError("The context is improperly configured - require both a source and destination.")
+        }
 
         configureInitialState(for: destination, with: transitionContext)
-        let propertyAnimator = UIViewPropertyAnimator(duration: transitionDuration(using: transitionContext), timingParameters: UICubicTimingParameters(animationCurve: .easeInOut))
+        let timingParameters = UICubicTimingParameters(animationCurve: .easeInOut)
+        let propertyAnimator = UIViewPropertyAnimator(duration: transitionDuration(using: transitionContext), timingParameters: timingParameters)
         propertyAnimator.addAnimations { [unowned self] in
             self.configureFinalState(forSource: source, destination: destination, context: transitionContext)
         }
@@ -74,14 +78,13 @@ private extension WipeTransitionAnimator {
     
     func configureInitialState(for destination: UIViewController, with context: UIViewControllerContextTransitioning) {
         context.containerView.addSubview(destination.view)
-        
         destination.view.frame = context.finalFrame(for: destination)
-        destination.view.transform = generateTransform(for: context.containerView, direction: transitionDirection, isSourceTransform: false)
+        destination.view.transform = transform(for: context.containerView, direction: transitionDirection, isSourceTransform: false)
     }
     
     func configureFinalState(forSource source: UIViewController, destination: UIViewController, context: UIViewControllerContextTransitioning) {
         destination.view.transform = .identity
-        source.view.transform = generateTransform(for: context.containerView, direction: transitionDirection, isSourceTransform: true)
+        source.view.transform = transform(for: context.containerView, direction: transitionDirection, isSourceTransform: true)
     }
     
     func completeAnimation(successfully: Bool, for source: UIViewController, destination: UIViewController, with context: UIViewControllerContextTransitioning) {
@@ -98,12 +101,8 @@ private extension WipeTransitionAnimator {
         context.completeTransition(successfully && !context.transitionWasCancelled)
     }
     
-    func generateTransform(for containerView: UIView, direction: Direction, isSourceTransform: Bool) -> CGAffineTransform {
+    func transform(for containerView: UIView, direction: Direction, isSourceTransform: Bool) -> CGAffineTransform {
         let xPosition = isSourceTransform ? containerView.bounds.width : -containerView.bounds.width
-        
-        switch direction {
-        case .leftToRight: return CGAffineTransform(translationX: xPosition, y: 0)
-        case .rightToLeft: return CGAffineTransform(translationX: -xPosition, y: 0)
-        }
+        return CGAffineTransform(translationX: xPosition * (direction == .rightToLeft ? -1 : 1), y: 0)
     }
 }

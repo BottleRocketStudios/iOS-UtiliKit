@@ -8,7 +8,17 @@
 
 import UIKit
 
-class ContainerTransitionCoordinator: NSObject, UIViewControllerTransitionCoordinator {
+public protocol ContainerViewControllerTransitionCoordinator: UIViewControllerTransitionCoordinatorContext {
+    
+    @discardableResult
+    func animate(alongsideTransition animation: ((UIViewControllerTransitionCoordinatorContext) -> Void)?,
+                 completion: ((UIViewControllerTransitionCoordinatorContext) -> Void)?) -> Bool
+    
+    func notifyWhenInteractionEnds(_ handler: @escaping (UIViewControllerTransitionCoordinatorContext) -> Void)
+    func notifyWhenInteractionChanges(_ handler: @escaping (UIViewControllerTransitionCoordinatorContext) -> Void)
+}
+
+class ContainerTransitionCoordinator: NSObject, ContainerViewControllerTransitionCoordinator {
     
     private static let defaultCompletionVelocity: CGFloat = 1.0
     private static let defaultCompletionCurve = UIView.AnimationCurve.easeInOut
@@ -52,16 +62,12 @@ class ContainerTransitionCoordinator: NSObject, UIViewControllerTransitionCoordi
     }
     
     // MARK: UIViewControllerTransitionCoordinatorContext
-    func animate(alongsideTransition animation: ((UIViewControllerTransitionCoordinatorContext) -> Void)?, completion: ((UIViewControllerTransitionCoordinatorContext) -> Void)? = nil) -> Bool {
+    func animate(alongsideTransition animation: ((UIViewControllerTransitionCoordinatorContext) -> Void)?,
+                 completion: ((UIViewControllerTransitionCoordinatorContext) -> Void)? = nil) -> Bool {
         interruptibleAnimator.addAnimations? { animation?(self) }
         interruptibleAnimator.addCompletion? { _ in completion?(self) }
         
         return true
-    }
-    
-    func animateAlongsideTransition(in view: UIView?, animation: ((UIViewControllerTransitionCoordinatorContext) -> Void)?, completion: ((UIViewControllerTransitionCoordinatorContext) -> Void)? = nil) -> Bool {
-        //This is not yet supported
-        return false
     }
     
     func notifyWhenInteractionEnds(_ handler: @escaping (UIViewControllerTransitionCoordinatorContext) -> Void) {

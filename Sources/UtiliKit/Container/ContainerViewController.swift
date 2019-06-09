@@ -10,27 +10,22 @@ import UIKit
 open class ContainerViewController: UIViewController {
     
     //MARK: Properties
-    public var managedChildren: [ManagedChild] = []
-    public private(set) var isTransitioning: Bool = false
-    public var shouldAutomaticallyTransitionOnLoad: Bool = true
-    public var visibleController: UIViewController? {
-        didSet {
-            guard let visible = visibleController else { return }
-            transition(to: visible)
-        }
-    }
-    public var visibleIndex: Int? {
-        return visibleController.flatMap { index(ofChild: $0 ) }
-    }
-    public var visibleChild: ManagedChild? {
-        return managedChildren.first{ $0.viewController === visibleController }
+    open var managedChildren: [ManagedChild] = []
+    open var visibleIndex: Int? { return visibleController.flatMap(index(ofChild:)) }
+    open var visibleChild: ManagedChild? { return managedChildren.first { $0.viewController === visibleController } }
+    
+    open private(set) var isTransitioning: Bool = false
+    open var shouldAutomaticallyTransitionOnLoad: Bool = true
+    
+    open var visibleController: UIViewController? {
+        didSet { visibleController.map { transition(to: $0) } }
     }
     
+    open weak var delegate: ContainerViewControllerDelegate?
+    
+    // MARK: Transitioning
     private var containerTransitionContext: UIViewControllerContextTransitioning?
-    private var containerTransitionCoordinator: UIViewControllerTransitionCoordinator?
-    open override var transitionCoordinator: UIViewControllerTransitionCoordinator? { return containerTransitionCoordinator }
-    
-    public weak var delegate: ContainerViewControllerDelegate?
+    open var containerTransitionCoordinator: ContainerViewControllerTransitionCoordinator?
     
     //MARK: Initializers
     public convenience init(managedChildren: [ManagedChild], delegate: ContainerViewControllerDelegate? = nil) {
@@ -101,35 +96,28 @@ private extension ContainerViewController {
         guard delegate?.containerViewController(self, shouldTransitionFrom: source, to: destination) ?? true else { completion?(false); return }
         
         prepareForTransitioning(from: source, to: destination, animated: true)
-        let context = configuredTransitionContext(from: source, to: destination)
+        defer { delegate?.containerViewController(self, didBeginTransitioningFrom: source, to: destination) }
         
-        if let animator = delegate?.containerViewController(self, animationControllerForTransitionFrom: source, to: destination) {
-            if allowInteraction, let interactor = delegate?.containerViewController(self, interactionControllerForTransitionFrom: source, to: destination) {
-                containerTransitionCoordinator = ContainerTransitionCoordinator(context: context, animator: animator, interactionController: interactor)
-                interactor.startInteractiveTransition(context, animator: animator)
-            } else {
-                containerTransitionCoordinator = ContainerTransitionCoordinator(context: context, animator: animator)
-                animator.animateTransition(using: context)
-            }
+        let context = configuredTransitionContext(from: source, to: destination)
+        guard let animator = delegate?.containerViewController(self, animationControllerForTransitionFrom: source, to: destination) else  {
+            let animator = ContainerTransitionAnimator()
+            containerTransitionCoordinator = ContainerTransitionCoordinator(context: context, animator: animator)
+            return animator.animateTransition(using: context)
+        }
+        
+        if let interactor = delegate?.containerViewController(self, interactionControllerForTransitionFrom: source, to: destination), allowInteraction {
+            
+            //We have both an interaction and animation controller - start transitioning interactively
+            containerTransitionCoordinator = ContainerTransitionCoordinator(context: context, animator: animator, interactionController: interactor)
+            context.isInteractive = true
+            interactor.startInteractiveTransition(context, using: animator)
+            
         } else {
-            let animator: UIViewControllerAnimatedTransitioning = ContainerTransitionAnimator()
+            
+            //We have only an animation controller - transition through animation
             containerTransitionCoordinator = ContainerTransitionCoordinator(context: context, animator: animator)
             animator.animateTransition(using: context)
         }
-        if allowInteraction, let interactor = delegate?.containerViewController(self, interactionControllerForTransitionFrom: source, to: destination) {
-            
-            //The delegate has vended an interaction controller, we will use it to drive the transition to completion
-            context.isInteractive = allowInteraction
-            interactor.startInteractiveTransition(context)
-        } else {
-            
-            //The delegate did not vend an interaction controller, we'll drive the animation using an animation controller instead.
-            let animator = delegate?.containerViewController(self, animationControllerForTransitionFrom: source, to: destination) ?? ContainerTransitionAnimator()
-            animator.animateTransition(using: context)
-        }
-
-        //Inform the delegate transitioning has begun
-        delegate?.containerViewController(self, didBeginTransitioningFrom: source, to: destination)
     }
 }
 
@@ -144,7 +132,6 @@ private extension ContainerViewController {
             self.delegate?.containerViewController(self, didFinishTransitioningFrom: source, to: destination)
         }
         
-        containerTransitionContext = context
         return context
     }
     
@@ -167,15 +154,13 @@ private extension ContainerViewController {
     }
     
     func configure(destinationView: UIView, inContainer container: UIView) {
-        //It is the animator's responsibility to add the destinationView as a subview of the container view. The container will simply ensure the proper layout is used once the transition is completed.
+        //It is the animator's responsibility (as with all UIViewControllerAnimatedTransitioning objects) to add the destinationView as a subview of the container view. The container will simply ensure the proper layout is used once the transition is completed.
         
         destinationView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         destinationView.frame = container.bounds
     }
     
     func finishTransitioning(from source: UIViewController?, to destination: UIViewController, success: Bool, animated: Bool) {
-        //It is the animator's responsibility to remove the source view from it's superview in the case of a successful transition, or the destination in the case of a cancellation.
-        
         if success {
             #if swift(>=4.2)
             destination.endAppearanceTransition()

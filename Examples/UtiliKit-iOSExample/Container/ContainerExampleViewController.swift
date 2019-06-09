@@ -87,7 +87,7 @@ fileprivate extension ContainerViewController {
 extension BaseContainerViewController: ContainerViewControllerDelegate {
     
     func containerViewController(_ container: ContainerViewController, didBeginTransitioningFrom source: UIViewController, to destination: UIViewController) {
-        container.transitionCoordinator?.animate(alongsideTransition: { context in
+        container.containerTransitionCoordinator?.animate(alongsideTransition: { context in
             self.aButton.transform = self.aButton.transform == .identity ? CGAffineTransform(scaleX: 2, y: 2) : .identity
             self.bButton.transform =  self.bButton.transform == .identity ? CGAffineTransform(scaleX: 2, y: 2) : .identity
         }, completion: nil)
@@ -107,12 +107,10 @@ extension BaseContainerViewController: ContainerViewControllerDelegate {
         return true
     }
     
-    func containerViewController(_ container: ContainerViewController,
-                                 animationControllerForTransitionFrom source: UIViewController,
-                                 to destination: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func containerViewController(_ container: ContainerViewController, animationControllerForTransitionFrom source: UIViewController,
+                                 to destination: UIViewController) -> ContainerViewControllerAnimatedTransitioning? {
         if useCustomAnimator, let sourceIndex = container.index(ofChild: source), let destinationIndex = container.index(ofChild: destination) {
-            
-            animationController.configure(withStartIndex: sourceIndex, endIndex: destinationIndex)
+            animationController.configure(forStartIndex: sourceIndex, endIndex: destinationIndex)
             return animationController
         }
         

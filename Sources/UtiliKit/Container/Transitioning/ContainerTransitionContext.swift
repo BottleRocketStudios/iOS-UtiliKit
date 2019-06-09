@@ -66,17 +66,17 @@ extension ContainerTransitionContext: UIViewControllerContextTransitioning {
         percentComplete = complete
         isInteractive = true
     }
-    
+
     func finishInteractiveTransition() {
         transitionWasCancelled = false
         isInteractive = false
     }
-    
+
     func cancelInteractiveTransition() {
         transitionWasCancelled = true
         isInteractive = false
     }
-    
+
     func pauseInteractiveTransition() {
         isInteractive = true
     }

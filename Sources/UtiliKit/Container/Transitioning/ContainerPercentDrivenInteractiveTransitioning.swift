@@ -9,18 +9,18 @@
 import UIKit
 
 public protocol ContainerPercentDrivenInteractiveTransitioning: UIViewControllerInteractiveTransitioning {
-    var transitionAnimator: UIViewControllerAnimatedTransitioning? { get }
+    var transitionAnimator: ContainerViewControllerAnimatedTransitioning? { get }
     var transitionContext: UIViewControllerContextTransitioning? { get }
     
-    func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning, animator: UIViewControllerAnimatedTransitioning)
+    func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning, using animator: ContainerViewControllerAnimatedTransitioning)
 }
 
 open class ContainerPercentDrivenInteractiveTransitioner: NSObject, ContainerPercentDrivenInteractiveTransitioning {
 
     // MARK: Properties
-    open var transitionAnimator: UIViewControllerAnimatedTransitioning?
+    open var transitionAnimator: ContainerViewControllerAnimatedTransitioning?
     open private(set) var transitionContext: UIViewControllerContextTransitioning?
-    var interruptibleAnimator: UIViewImplicitlyAnimating?
+    private(set) var interruptibleAnimator: UIViewImplicitlyAnimating?
     
     // MARK: Internal State
     open var percentComplete: CGFloat = 0.0 {
@@ -35,16 +35,14 @@ open class ContainerPercentDrivenInteractiveTransitioner: NSObject, ContainerPer
     
     // MARK: ContainerPercentDrivenInteractiveTransitioning
     public func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
-        /* No op - startInteractiveTransition(_:animator:) will be called instead */
+        assertionFailure("In order to ensure present of the animator, use startInteractiveTransition(_:using:) instead.")
     }
     
-    open func startInteractiveTransition(_ context: UIViewControllerContextTransitioning, animator: UIViewControllerAnimatedTransitioning) {
+    open func startInteractiveTransition(_ context: UIViewControllerContextTransitioning, using animator: ContainerViewControllerAnimatedTransitioning) {
         transitionContext = context
         transitionAnimator = animator
-        interruptibleAnimator = animator.interruptibleAnimator?(using: context)
-        
-        assert(interruptibleAnimator != nil, "In order for a transition to be interactive, the UIViewControllerAnimatedTransitioning object must implemented interruptibleAnimator(using:)")
-        
+        interruptibleAnimator = animator.interruptibleAnimator(using: context)
+                
         interruptibleAnimator?.addCompletion? { [weak self] _ in
             self?.interruptibleAnimator = nil
         }

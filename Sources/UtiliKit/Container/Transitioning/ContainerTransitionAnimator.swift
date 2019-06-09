@@ -7,10 +7,21 @@
 
 import UIKit
 
-class ContainerTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+public protocol ContainerViewControllerAnimatedTransitioning: UIViewControllerAnimatedTransitioning {
+
+    /// A conforming object implements this method if the transition it creates can
+    /// be interrupted. For example, it could return an instance of a
+    /// UIViewPropertyAnimator. It is expected that this method will return the same
+    /// instance for the life of a transition.
+    func interruptibleAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating
+}
+
+class ContainerTransitionAnimator: NSObject, ContainerViewControllerAnimatedTransitioning {
     
+    // MARK: Properties
     private var interruptibleAnimator: UIViewPropertyAnimator?
   
+    // MARK: ContainerViewControllerAnimatedTransitioning
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3
     }
@@ -28,9 +39,11 @@ class ContainerTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioni
             fatalError("The context is improperly configured - require both a source and destination.")
         }
         
-        let propertyAnimator = UIViewPropertyAnimator(duration: transitionDuration(using: transitionContext), timingParameters: UICubicTimingParameters(animationCurve: .easeInOut))
-        propertyAnimator.addAnimations { [unowned self] in
-            UIView.transition(from: source, to: destination, duration: self.transitionDuration(using: transitionContext), options: [.transitionCrossDissolve]) { finished in
+        let duration = transitionDuration(using: transitionContext)
+        let timingParameters = UICubicTimingParameters(animationCurve: .easeInOut)
+        let propertyAnimator = UIViewPropertyAnimator(duration: duration, timingParameters: timingParameters)
+        propertyAnimator.addAnimations {
+            UIView.transition(from: source, to: destination, duration: duration, options: [.transitionCrossDissolve]) { finished in
                 transitionContext.completeTransition(finished)
             }
         }

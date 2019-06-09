@@ -35,8 +35,8 @@ public class HorizontalPanGestureInteractiveTransition: ContainerPercentDrivenIn
         view.addGestureRecognizer(self.gestureRecognizer)
     }
     
-    public override func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning, animator: UIViewControllerAnimatedTransitioning) {
-        super.startInteractiveTransition(transitionContext, animator: animator)
+    public override func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning, using animator: ContainerViewControllerAnimatedTransitioning) {
+        super.startInteractiveTransition(transitionContext, using: animator)
         isLeftToRight = gestureRecognizer.velocity(in: gestureRecognizer.view).x > 0
     }
     
