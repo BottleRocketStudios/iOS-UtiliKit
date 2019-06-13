@@ -54,7 +54,16 @@ class ActiveLabel: UILabel {
     /// Used to represent an `ActiveLabel`s state.
     enum State: Equatable {
         case loading
-        case text(String)
+        case text(String?)
+        
+        init(text: String?) {
+            guard let text = text else {
+                self = .loading
+                return
+            }
+            
+            self = .text(text)
+        }
         
         static func ==(lhs: State, rhs: State) -> Bool {
             switch (lhs, rhs) {
@@ -70,21 +79,53 @@ class ActiveLabel: UILabel {
     }
     
     /// The number of activity lines to display. Default is 1.
-    @IBInspectable public var estimatedNumberOfLines: UInt = Configuration.default.estimatedNumberOfLines
+    @IBInspectable public var estimatedNumberOfLines: UInt = Configuration.default.estimatedNumberOfLines {
+        didSet {
+            configurationChanged()
+        }
+    }
     /// Trailing Inset for the last activity line. Default is 0.
-    @IBInspectable public var finalLineTrailingInset: CGFloat = Configuration.default.finalLineTrailingInset
+    @IBInspectable public var finalLineTrailingInset: CGFloat = Configuration.default.finalLineTrailingInset {
+        didSet {
+            configurationChanged()
+        }
+    }
     /// Line Length in points for the last activity line. If `finalLineTralingInset` is set to greater than 0 this value is not used. Default is 0.
-    @IBInspectable public var finalLineLength: CGFloat = Configuration.default.finalLineLength
+    @IBInspectable public var finalLineLength: CGFloat = Configuration.default.finalLineLength {
+        didSet {
+            configurationChanged()
+        }
+    }
     /// This color is the darkest area of the line seen during activity animation. Default is (233,231,237) Gray.
-    @IBInspectable public var loadingViewColor: UIColor = Configuration.default.loadingViewColor
+    @IBInspectable public var loadingViewColor: UIColor = Configuration.default.loadingViewColor {
+        didSet {
+            configurationChanged()
+        }
+    }
     /// The height of each activity line. Default is 8.
-    @IBInspectable public var loadingLineHeight: CGFloat = Configuration.default.loadingLineHeight
+    @IBInspectable public var loadingLineHeight: CGFloat = Configuration.default.loadingLineHeight {
+        didSet {
+            configurationChanged()
+        }
+    }
     /// Vertical spacing between each activity line when 2 or more lines are displayed. Default is 14.
-    @IBInspectable public var loadingLineVerticalSpacing: CGFloat = Configuration.default.loadingLineVerticalSpacing
+    @IBInspectable public var loadingLineVerticalSpacing: CGFloat = Configuration.default.loadingLineVerticalSpacing {
+        didSet {
+            configurationChanged()
+        }
+    }
     /// The duration of the gradient animation applied to the activity lines. Default is 2.4.
-    @IBInspectable public var loadingAnimationDuration: Double = Configuration.default.loadingAnimationDuration
+    @IBInspectable public var loadingAnimationDuration: Double = Configuration.default.loadingAnimationDuration {
+        didSet {
+            configurationChanged()
+        }
+    }
     /// The delay that is applied before each animation begins. Default is 0.4.
-    @IBInspectable public var loadingAnimationDelay: Double = Configuration.default.loadingAnimationDelay
+    @IBInspectable public var loadingAnimationDelay: Double = Configuration.default.loadingAnimationDelay {
+        didSet {
+            configurationChanged()
+        }
+    }
 //    /// Shows the loading views in the Storyboard by default since text of a label can't be nil in a Storybaord. Default is true.
 //    @IBInspectable private var showLoadingViewsInStoryboard: Bool = true
 //
@@ -100,7 +141,7 @@ class ActiveLabel: UILabel {
     /// When true the gradient will show centered so that it can be adjusted easily in IB
     private var isDisplayingInStoryboard: Bool = false
     /// Public read-only representation of the labels state. Either `loading` or `text(String)`.
-    private(set) var state: State = .text("") {
+    private(set) var state: State = .text(nil) {
         didSet {
             guard oldValue != state else { return }
             
@@ -188,6 +229,7 @@ class ActiveLabel: UILabel {
         super.prepareForInterfaceBuilder()
         
         isGradientCentered = true
+        // Since IB doesn't allow the text to be nil we need to check for an empty string as well.
         if let text = text {
             state = text.isEmpty ? .loading : .text(text)
         } else {
@@ -196,8 +238,15 @@ class ActiveLabel: UILabel {
     }
     
     /**
-     You must call this function to reset the loading views after you have changed a configuration value.
+     Sets the gradient to be centered so that it is visible, instead of offscreen, during snapshot testing.
      */
+    func configureForSnapshotTest() {
+        isGradientCentered = true
+        configurationChanged()
+    }
+}
+
+private extension ActiveLabel {
     func configurationChanged() {
         loadingViews.forEach { $0.removeFromSuperview() }
         loadingViews.removeAll()
@@ -207,14 +256,8 @@ class ActiveLabel: UILabel {
         }
     }
     
-    func configureForSnapshotTesting() {
-        isGradientCentered = true
-    }
-}
-
-private extension ActiveLabel {
     func textDidUpdate() {
-        state = text == nil ? .loading : .text(text ?? "")
+        state = State(text: text)
     }
     
     // MARK: - Loading View Functions
@@ -255,13 +298,13 @@ private extension ActiveLabel {
             // Constrain the first view to the top of the label.
             view.topAnchor.constraint(equalTo: topAnchor).isActive = true
         } else {
-            // If not the first view constrain the top to the above views bottom with the loadingLineVerticalSpacing.
+            // If not the first view, constrain the top to the above views bottom with the loadingLineVerticalSpacing.
             let aboveView = loadingViews[index - 1]
             view.topAnchor.constraint(equalTo: aboveView.bottomAnchor, constant: loadingLineVerticalSpacing).isActive = true
         }
         
         if index + 1 == estimatedNumberOfLines {
-            // If this is the last view then constraint it's bottom to the label
+            // If this is the last view, then constrain its bottom to the label
             view.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
             
             // Handle the last line width/trailing constraint based on finalLineTrailingInset, finalLineLength, or none in that order.

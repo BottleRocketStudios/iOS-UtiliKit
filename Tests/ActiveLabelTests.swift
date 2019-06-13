@@ -50,7 +50,6 @@ class ActiveLabelTests: XCTestCase {
         label.numberOfLines = 0
         label.estimatedNumberOfLines = 3
         label.finalLineTrailingInset = 100
-        label.configurationChanged()
         
         XCTAssertEqual(label.estimatedNumberOfLines, 3)
         XCTAssertEqual(label.finalLineTrailingInset, 100)
@@ -69,7 +68,6 @@ class ActiveLabelTests: XCTestCase {
 
         label.finalLineTrailingInset = 0
         label.finalLineLength = 100
-        label.configurationChanged()
         
         label.text = nil
         XCTAssertEqual(label.state, .loading)
@@ -124,8 +122,7 @@ class ActiveLabelTests: XCTestCase {
         let label = ActiveLabel()
         addLabel(label, to: viewController)
 
-        label.configureForSnapshotTesting()
-        label.configurationChanged()
+        label.configureForSnapshotTest()
         assertSnapshot(matching: viewController, as: .image(on: .iPhoneX))
     }
     
@@ -135,8 +132,7 @@ class ActiveLabelTests: XCTestCase {
         let label = ActiveLabel()
         addLabel(label, to: viewController)
         
-        label.configureForSnapshotTesting()
-        label.configurationChanged()
+        label.configureForSnapshotTest()
         assertSnapshot(matching: viewController, as: .image(on: .iPhoneX))
         
         label.text = tempText
@@ -152,8 +148,7 @@ class ActiveLabelTests: XCTestCase {
         label.numberOfLines = 0
         label.estimatedNumberOfLines = 3
         label.finalLineTrailingInset = 100
-        label.configureForSnapshotTesting()
-        label.configurationChanged()
+        label.configureForSnapshotTest()
         assertSnapshot(matching: viewController, as: .image(on: .iPhoneX))
         
         label.text = tempText
@@ -161,7 +156,6 @@ class ActiveLabelTests: XCTestCase {
         
         label.finalLineTrailingInset = 0
         label.finalLineLength = 100
-        label.configurationChanged()
         label.text = nil
         assertSnapshot(matching: viewController, as: .image(on: .iPhoneX))
         
@@ -175,8 +169,7 @@ class ActiveLabelTests: XCTestCase {
         let label = ActiveLabel()
         addLabel(label, to: viewController)
         
-        label.configureForSnapshotTesting()
-        label.configurationChanged()
+        label.configureForSnapshotTest()
         assertSnapshot(matching: viewController, as: .image(on: .iPhoneX))
         
         label.isHidden = true
@@ -192,8 +185,7 @@ class ActiveLabelTests: XCTestCase {
         let label = ActiveLabel(frame: .zero, configuration: ActiveLabel.Configuration.default)
         addLabel(label, to: viewController)
         
-        label.configureForSnapshotTesting()
-        label.configurationChanged()
+        label.configureForSnapshotTest()
         assertSnapshot(matching: viewController, as: .image(on: .iPhoneX))
     }
     
@@ -207,8 +199,7 @@ class ActiveLabelTests: XCTestCase {
         let label = ActiveLabel(frame: .zero, configuration: configuration)
         addLabel(label, to: viewController)
         
-        label.configureForSnapshotTesting()
-        label.configurationChanged()
+        label.configureForSnapshotTest()
         assertSnapshot(matching: viewController, as: .image(on: .iPhoneX))
     }
     
@@ -217,16 +208,14 @@ class ActiveLabelTests: XCTestCase {
         viewController.view.backgroundColor = .white
         let firstLabel = ActiveLabel()
         addLabel(firstLabel, to: viewController)
-        firstLabel.configureForSnapshotTesting()
-        firstLabel.configurationChanged()
+        firstLabel.configureForSnapshotTest()
         
         let secondLabel = ActiveLabel()
         secondLabel.numberOfLines = 0
         secondLabel.estimatedNumberOfLines = 3
         secondLabel.finalLineTrailingInset = 100
         addLabel(secondLabel, to: viewController, below: firstLabel)
-        secondLabel.configureForSnapshotTesting()
-        secondLabel.configurationChanged()
+        secondLabel.configureForSnapshotTest()
         
         var configuration = ActiveLabel.Configuration.default
         configuration.estimatedNumberOfLines = 2
@@ -235,8 +224,7 @@ class ActiveLabelTests: XCTestCase {
         let thirdLabel = ActiveLabel(frame: .zero, configuration: configuration)
         thirdLabel.numberOfLines = 2
         addLabel(thirdLabel, to: viewController, below: secondLabel)
-        thirdLabel.configureForSnapshotTesting()
-        thirdLabel.configurationChanged()
+        thirdLabel.configureForSnapshotTest()
         
         assertSnapshot(matching: viewController, as: .image(on: .iPhoneX))
         
