@@ -126,11 +126,6 @@ class ActiveLabel: UILabel {
             configurationChanged()
         }
     }
-//    /// Shows the loading views in the Storyboard by default since text of a label can't be nil in a Storybaord. Default is true.
-//    @IBInspectable private var showLoadingViewsInStoryboard: Bool = true
-//
-//    /// Used to make sure the gradient is centered during snapshot testing
-//    var isSnapshotTesting: Bool = false
     
     /// Used to make sure the gradient is centered during snapshot testing and/or viewing in a Storyboard.
     private var isGradientCentered: Bool = false
