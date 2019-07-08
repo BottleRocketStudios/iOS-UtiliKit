@@ -205,8 +205,8 @@ Custom Configuration using convenience initializer.
 var configuration = ActiveLabelConfiguration.default
 configuration.estimatedNumberOfLines = 3
 configuration.finalLineLength = 100
-configuration.loadingAnimationDuration = 2.0
-configuration.loadingAnimationDelay = 0
+configuration.loadingView.animationDuration = 2.0
+configuration.loadingView.animationDelay = 0
 let label: ActiveLabel = ActiveLabel(frame: CGRect(x: 0, y: 0, width: 335, height: 21), configuration: configuration)
 ```
 ![](docs/images/ActiveLabelEdited02.gif)
@@ -216,13 +216,13 @@ Add some color, change line height and spacing.
 let label: ActiveLabel = ActiveLabel()
 label.estimatedNumberOfLines = 3
 label.finalLineTrailingInset = 100
-label.loadingViewColor = UIColor(red: 233.0/255.0, green: 231.0/255.0, blue: 237.0/255.0, alpha: 1.0))
-label.loadingLineHeight = 16
-label.loadingLineVerticalSpacing = 8
+label.loadingView.color = UIColor(red: 233.0/255.0, green: 231.0/255.0, blue: 237.0/255.0, alpha: 1.0))
+label.loadingView.lineHeight = 16
+label.loadingView.lineVerticalSpacing = 8
 ```
 ![](docs/images/ActiveLabelEdited03.gif)
 
-When initializing `ActiveLabel` in Storyboards or Xibs you must set the labels text to `nil` in code because IB initialized the label with an empty string value.
+When initializing `ActiveLabel` in Storyboards or Xibs you must set the labels text to `nil` in code because IB initializes labels with an empty string value.
 
 When using `ActiveLabel` for snapshot tests you can center the gradient by calling `configureForSnapshotTest()` on your label.
 

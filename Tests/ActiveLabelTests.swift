@@ -102,7 +102,7 @@ class ActiveLabelTests: XCTestCase {
     func testConvenvienceInitializerModified() {
         var configuration = ActiveLabel.Configuration.default
         configuration.estimatedNumberOfLines = 2
-        configuration.loadingViewColor = .red
+        configuration.loadingView.color = .red
         let label = ActiveLabel(frame: .zero, configuration: configuration)
 
         XCTAssertEqual(label.estimatedNumberOfLines, 2)
@@ -194,7 +194,7 @@ class ActiveLabelTests: XCTestCase {
         viewController.view.backgroundColor = .white
         var configuration = ActiveLabel.Configuration.default
         configuration.estimatedNumberOfLines = 2
-        configuration.loadingViewColor = .red
+        configuration.loadingView.color = .red
         configuration.finalLineTrailingInset = 100
         let label = ActiveLabel(frame: .zero, configuration: configuration)
         addLabel(label, to: viewController)
@@ -219,7 +219,7 @@ class ActiveLabelTests: XCTestCase {
         
         var configuration = ActiveLabel.Configuration.default
         configuration.estimatedNumberOfLines = 2
-        configuration.loadingViewColor = .red
+        configuration.loadingView.color = .red
         configuration.finalLineTrailingInset = 100
         let thirdLabel = ActiveLabel(frame: .zero, configuration: configuration)
         thirdLabel.numberOfLines = 2

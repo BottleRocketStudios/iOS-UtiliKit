@@ -22,11 +22,7 @@ class ActiveLabel: UILabel {
         var estimatedNumberOfLines: UInt
         var finalLineTrailingInset: CGFloat
         var finalLineLength: CGFloat
-        var loadingViewColor: UIColor
-        var loadingLineHeight: CGFloat
-        var loadingLineVerticalSpacing: CGFloat
-        var loadingAnimationDuration: Double
-        var loadingAnimationDelay: Double
+        var loadingView: LoadingView
         
         /// Default configuration to be used with the `ActiveLabel` convenience initializer.
         ///
@@ -43,11 +39,19 @@ class ActiveLabel: UILabel {
             return Configuration(estimatedNumberOfLines: 1,
                                             finalLineTrailingInset: 0,
                                             finalLineLength: 0,
-                                            loadingViewColor: ActiveLabel.loadingGray,
-                                            loadingLineHeight: 8,
-                                            loadingLineVerticalSpacing: 14,
-                                            loadingAnimationDuration: 2.4,
-                                            loadingAnimationDelay: 0.4)
+                                            loadingView: LoadingView(color: ActiveLabel.loadingGray,
+                                                                     lineHeight: 8,
+                                                                     lineVerticalSpacing: 14,
+                                                                     animationDuration: 2.4,
+                                                                     animationDelay: 0.4))
+        }
+        
+        struct LoadingView {
+            var color: UIColor
+            var lineHeight: CGFloat
+            var lineVerticalSpacing: CGFloat
+            var animationDuration: Double
+            var animationDelay: Double
         }
     }
     
@@ -97,31 +101,31 @@ class ActiveLabel: UILabel {
         }
     }
     /// This color is the darkest area of the line seen during activity animation. Default is (233,231,237) Gray.
-    @IBInspectable public var loadingViewColor: UIColor = Configuration.default.loadingViewColor {
+    @IBInspectable public var loadingViewColor: UIColor = Configuration.default.loadingView.color {
         didSet {
             configurationChanged()
         }
     }
     /// The height of each activity line. Default is 8.
-    @IBInspectable public var loadingLineHeight: CGFloat = Configuration.default.loadingLineHeight {
+    @IBInspectable public var loadingLineHeight: CGFloat = Configuration.default.loadingView.lineHeight {
         didSet {
             configurationChanged()
         }
     }
     /// Vertical spacing between each activity line when 2 or more lines are displayed. Default is 14.
-    @IBInspectable public var loadingLineVerticalSpacing: CGFloat = Configuration.default.loadingLineVerticalSpacing {
+    @IBInspectable public var loadingLineVerticalSpacing: CGFloat = Configuration.default.loadingView.lineVerticalSpacing {
         didSet {
             configurationChanged()
         }
     }
     /// The duration of the gradient animation applied to the activity lines. Default is 2.4.
-    @IBInspectable public var loadingAnimationDuration: Double = Configuration.default.loadingAnimationDuration {
+    @IBInspectable public var loadingAnimationDuration: Double = Configuration.default.loadingView.animationDuration {
         didSet {
             configurationChanged()
         }
     }
     /// The delay that is applied before each animation begins. Default is 0.4.
-    @IBInspectable public var loadingAnimationDelay: Double = Configuration.default.loadingAnimationDelay {
+    @IBInspectable public var loadingAnimationDelay: Double = Configuration.default.loadingView.animationDelay {
         didSet {
             configurationChanged()
         }
@@ -195,11 +199,11 @@ class ActiveLabel: UILabel {
         self.estimatedNumberOfLines = configuration.estimatedNumberOfLines
         self.finalLineTrailingInset = configuration.finalLineTrailingInset
         self.finalLineLength = configuration.finalLineTrailingInset
-        self.loadingViewColor = configuration.loadingViewColor
-        self.loadingLineHeight = configuration.loadingLineHeight
-        self.loadingLineVerticalSpacing = configuration.loadingLineVerticalSpacing
-        self.loadingAnimationDuration = configuration.loadingAnimationDuration
-        self.loadingAnimationDelay = configuration.loadingAnimationDelay
+        self.loadingViewColor = configuration.loadingView.color
+        self.loadingLineHeight = configuration.loadingView.lineHeight
+        self.loadingLineVerticalSpacing = configuration.loadingView.lineVerticalSpacing
+        self.loadingAnimationDuration = configuration.loadingView.animationDuration
+        self.loadingAnimationDelay = configuration.loadingView.animationDelay
         
         configurationChanged()
     }
