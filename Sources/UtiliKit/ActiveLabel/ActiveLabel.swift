@@ -353,15 +353,11 @@ private extension ActiveLabel {
         var animations: [CABasicAnimation] = []
         
         for index in 0..<(animationValues.count - 1) {
-            let animation = CABasicAnimation(keyPath: ActiveLabel.locationKeyPath)
-            animation.fromValue = animationValues[index]
-            animation.toValue = animationValues[index + 1]
-            animation.beginTime = beginTime
-            animation.duration = animationPartDuration
-            animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+            let animation = createAnimation(fromValue: animationValues[index],
+                                            toValue: animationValues[index + 1],
+                                            beginTime: &beginTime,
+                                            duration: animationPartDuration)
             animations.append(animation)
-            
-            beginTime = animation.beginTime + animation.duration
         }
         
         let group = CAAnimationGroup()
@@ -372,5 +368,18 @@ private extension ActiveLabel {
         group.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         
         return group
+    }
+    
+    func createAnimation(fromValue: [NSNumber], toValue: [NSNumber], beginTime: inout Double, duration: Double) -> CABasicAnimation {
+        let animation = CABasicAnimation(keyPath: ActiveLabel.locationKeyPath)
+        animation.fromValue = fromValue
+        animation.toValue = toValue
+        animation.beginTime = beginTime
+        animation.duration = duration
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        
+        beginTime = animation.beginTime + animation.duration
+        
+        return animation
     }
 }
