@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rdK-4z-16f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rdK-4z-16f">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -57,6 +57,7 @@
                         <segue destination="iLD-QG-pWG" kind="relationship" relationship="viewControllers" id="u2o-EG-xud"/>
                         <segue destination="SBK-FD-08V" kind="relationship" relationship="viewControllers" id="Ric-fg-gv0"/>
                         <segue destination="GXF-61-Br5" kind="relationship" relationship="viewControllers" id="re5-0u-IVM"/>
+                        <segue destination="ZgP-fe-jSw" kind="relationship" relationship="viewControllers" id="72I-7a-zWf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4I-4h-IrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -157,6 +158,202 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g94-xs-E7s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="470" y="193"/>
+        </scene>
+        <!--Active Label-->
+        <scene sceneID="BvX-ia-Zad">
+            <objects>
+                <viewController id="ZgP-fe-jSw" customClass="ActiveLabelViewController" customModule="UtiliKit" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ybc-Th-23T">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gx9-WO-CwS">
+                                <rect key="frame" x="20" y="30" width="335" height="39"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Defaults" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odm-z2-vFd">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOr-6e-7K3" customClass="ActiveLabel" customModule="UtiliKit">
+                                        <rect key="frame" x="0.0" y="31" width="335" height="8"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="BOr-6e-7K3" secondAttribute="bottom" id="5dC-lL-ote"/>
+                                    <constraint firstAttribute="trailing" secondItem="odm-z2-vFd" secondAttribute="trailing" id="KtF-X1-alT"/>
+                                    <constraint firstAttribute="trailing" secondItem="BOr-6e-7K3" secondAttribute="trailing" id="N0P-gL-dCK"/>
+                                    <constraint firstItem="odm-z2-vFd" firstAttribute="top" secondItem="gx9-WO-CwS" secondAttribute="top" id="a2V-oH-ae0"/>
+                                    <constraint firstItem="BOr-6e-7K3" firstAttribute="leading" secondItem="gx9-WO-CwS" secondAttribute="leading" id="de4-V4-RVG"/>
+                                    <constraint firstItem="odm-z2-vFd" firstAttribute="leading" secondItem="gx9-WO-CwS" secondAttribute="leading" id="lAr-HR-sAz"/>
+                                    <constraint firstItem="BOr-6e-7K3" firstAttribute="top" secondItem="odm-z2-vFd" secondAttribute="bottom" constant="10" id="ppL-17-m1s"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTm-1B-I0o">
+                                <rect key="frame" x="20" y="89" width="335" height="103"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUR-Kq-Egw">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="41"/>
+                                        <string key="text">estimatedNumberOfLines = 3
+finalLineTrailingInset = 100</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxu-jH-172" customClass="ActiveLabel" customModule="UtiliKit">
+                                        <rect key="frame" x="0.0" y="51" width="335" height="52"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="estimatedNumberOfLines">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="finalLineTrailingInset">
+                                                <real key="value" value="100"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Rxu-jH-172" firstAttribute="leading" secondItem="wTm-1B-I0o" secondAttribute="leading" id="1Uy-KC-njy"/>
+                                    <constraint firstItem="sUR-Kq-Egw" firstAttribute="top" secondItem="wTm-1B-I0o" secondAttribute="top" id="6IZ-yO-80d"/>
+                                    <constraint firstItem="Rxu-jH-172" firstAttribute="top" secondItem="sUR-Kq-Egw" secondAttribute="bottom" constant="10" id="Bf2-QA-GjS"/>
+                                    <constraint firstAttribute="trailing" secondItem="sUR-Kq-Egw" secondAttribute="trailing" id="Tfc-1l-Wgx"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rxu-jH-172" secondAttribute="bottom" id="dda-BO-lfd"/>
+                                    <constraint firstItem="sUR-Kq-Egw" firstAttribute="leading" secondItem="wTm-1B-I0o" secondAttribute="leading" id="iYX-Zk-ukn"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rxu-jH-172" secondAttribute="trailing" id="t2m-5B-9lc"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zU-Lg-Pnf">
+                                <rect key="frame" x="20" y="212" width="335" height="143.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5H-fS-3tV">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="81.5"/>
+                                        <string key="text">estimatedNumberOfLines = 3
+finalLineLength = 100
+loadingAnimationDuration = 2.0
+loadingAnimationDelay = 0</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUK-6D-d4K" customClass="ActiveLabel" customModule="UtiliKit">
+                                        <rect key="frame" x="0.0" y="91.5" width="335" height="52"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="estimatedNumberOfLines">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="finalLineLength">
+                                                <real key="value" value="100"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="loadingAnimationDuration">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="loadingAnimationDelay">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="iUK-6D-d4K" secondAttribute="bottom" id="8qj-HV-ahY"/>
+                                    <constraint firstItem="p5H-fS-3tV" firstAttribute="leading" secondItem="6zU-Lg-Pnf" secondAttribute="leading" id="U3l-8M-pfx"/>
+                                    <constraint firstItem="p5H-fS-3tV" firstAttribute="top" secondItem="6zU-Lg-Pnf" secondAttribute="top" id="dLg-Rg-tpA"/>
+                                    <constraint firstItem="iUK-6D-d4K" firstAttribute="leading" secondItem="6zU-Lg-Pnf" secondAttribute="leading" id="e1J-AI-X0H"/>
+                                    <constraint firstAttribute="trailing" secondItem="p5H-fS-3tV" secondAttribute="trailing" id="jIB-UE-Z9e"/>
+                                    <constraint firstItem="iUK-6D-d4K" firstAttribute="top" secondItem="p5H-fS-3tV" secondAttribute="bottom" constant="10" id="le0-af-l9v"/>
+                                    <constraint firstAttribute="trailing" secondItem="iUK-6D-d4K" secondAttribute="trailing" id="uge-jb-C6p"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w3s-YM-FVq">
+                                <rect key="frame" x="20" y="375.5" width="335" height="175.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fD7-QG-qKS">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="101.5"/>
+                                        <string key="text">estimatedNumberOfLines = 3
+finalLineTrailingInset = 100
+loadingViewColor = (226,35,25)
+loadingLineHeight = 16
+loadingLineVerticalSpacing = 8</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oh1-E6-a27" customClass="ActiveLabel" customModule="UtiliKit">
+                                        <rect key="frame" x="0.0" y="111.5" width="335" height="64"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="estimatedNumberOfLines">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="finalLineTrailingInset">
+                                                <real key="value" value="100"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="loadingViewColor">
+                                                <color key="value" red="0.8862745098" green="0.13725490200000001" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="loadingLineHeight">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="loadingLineVerticalSpacing">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="fD7-QG-qKS" firstAttribute="leading" secondItem="w3s-YM-FVq" secondAttribute="leading" id="7gK-Iq-Opc"/>
+                                    <constraint firstItem="oh1-E6-a27" firstAttribute="top" secondItem="fD7-QG-qKS" secondAttribute="bottom" constant="10" id="Jao-eF-hL3"/>
+                                    <constraint firstAttribute="bottom" secondItem="oh1-E6-a27" secondAttribute="bottom" id="N1L-Vz-BbQ"/>
+                                    <constraint firstItem="oh1-E6-a27" firstAttribute="leading" secondItem="w3s-YM-FVq" secondAttribute="leading" id="Of6-s3-oOv"/>
+                                    <constraint firstAttribute="trailing" secondItem="fD7-QG-qKS" secondAttribute="trailing" id="PBV-kx-Pdj"/>
+                                    <constraint firstAttribute="trailing" secondItem="oh1-E6-a27" secondAttribute="trailing" id="zEu-dS-MyE"/>
+                                    <constraint firstItem="fD7-QG-qKS" firstAttribute="top" secondItem="w3s-YM-FVq" secondAttribute="top" id="ztI-XQ-JCU"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ty0-mY-wgs" firstAttribute="trailing" secondItem="gx9-WO-CwS" secondAttribute="trailing" constant="20" id="4y6-4K-hvr"/>
+                            <constraint firstItem="gx9-WO-CwS" firstAttribute="leading" secondItem="Ty0-mY-wgs" secondAttribute="leading" constant="20" id="DON-0z-VdS"/>
+                            <constraint firstItem="6zU-Lg-Pnf" firstAttribute="leading" secondItem="gx9-WO-CwS" secondAttribute="leading" id="Jyh-S1-TOI"/>
+                            <constraint firstItem="w3s-YM-FVq" firstAttribute="trailing" secondItem="gx9-WO-CwS" secondAttribute="trailing" id="MsZ-1E-oDF"/>
+                            <constraint firstItem="wTm-1B-I0o" firstAttribute="trailing" secondItem="gx9-WO-CwS" secondAttribute="trailing" id="VZ6-sN-bdF"/>
+                            <constraint firstItem="wTm-1B-I0o" firstAttribute="leading" secondItem="gx9-WO-CwS" secondAttribute="leading" id="YVF-vz-Bc8"/>
+                            <constraint firstItem="wTm-1B-I0o" firstAttribute="top" secondItem="gx9-WO-CwS" secondAttribute="bottom" constant="20" id="Yfo-bF-t2T"/>
+                            <constraint firstItem="6zU-Lg-Pnf" firstAttribute="trailing" secondItem="gx9-WO-CwS" secondAttribute="trailing" id="a9w-aK-xQ1"/>
+                            <constraint firstItem="gx9-WO-CwS" firstAttribute="top" secondItem="Ty0-mY-wgs" secondAttribute="top" constant="10" id="dq7-Y6-ghk"/>
+                            <constraint firstItem="6zU-Lg-Pnf" firstAttribute="top" secondItem="wTm-1B-I0o" secondAttribute="bottom" constant="20" id="ds4-L8-Hgh"/>
+                            <constraint firstItem="w3s-YM-FVq" firstAttribute="top" secondItem="6zU-Lg-Pnf" secondAttribute="bottom" constant="20" id="gGe-pS-2MO"/>
+                            <constraint firstItem="w3s-YM-FVq" firstAttribute="leading" secondItem="gx9-WO-CwS" secondAttribute="leading" id="utV-RX-cg0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ty0-mY-wgs"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Active Label" id="jz9-gb-AFB"/>
+                    <connections>
+                        <outletCollection property="activeLabels" destination="BOr-6e-7K3" collectionClass="NSMutableArray" id="ZMV-vS-ITd"/>
+                        <outletCollection property="activeLabels" destination="Rxu-jH-172" collectionClass="NSMutableArray" id="4y3-Nx-QK2"/>
+                        <outletCollection property="activeLabels" destination="iUK-6D-d4K" collectionClass="NSMutableArray" id="GZ4-MT-OJ0"/>
+                        <outletCollection property="activeLabels" destination="oh1-E6-a27" collectionClass="NSMutableArray" id="H6m-C9-S2f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="adE-Ow-5Nq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1268" y="193"/>
         </scene>
         <!--Map-->
         <scene sceneID="h1W-dY-xUm">

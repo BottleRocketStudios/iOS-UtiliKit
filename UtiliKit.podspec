@@ -50,4 +50,8 @@ s.subspec 'Container' do |container|
 container.source_files = 'Sources/UtiliKit/Container/**/*.swift'
 end
 
+s.subspec 'ActiveLabel' do |activeLabel|
+activeLabel.source_files = 'Sources/UtiliKit/ActiveLabel/*.swift'
+end
+
 end

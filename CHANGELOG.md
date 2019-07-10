@@ -2,6 +2,10 @@
 
 ##### Enhancements
 
+* Add `ActiveLabel` class to help show activity on a label.
+[Brian Miller](https://github.com/JobsIsMyHomeboy)
+[#55](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/55)
+
 * Add support for `Configurable` types when dequeuing reusable views.
 [Will McGinty](https://github.com/willmcginty)
 [#53](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/58)
