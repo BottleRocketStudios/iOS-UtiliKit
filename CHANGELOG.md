@@ -2,6 +2,17 @@
 
 ##### Enhancements
 
+* None
+
+##### Bug Fixes
+
+* None
+
+
+## 1.5.0 (2019-07-11)
+
+##### Enhancements
+
 * Add `ActiveLabel` class to help show activity on a label.
 [Brian Miller](https://github.com/JobsIsMyHomeboy)
 [#55](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/55)
