@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'UtiliKit'
-s.version          = '1.4.0'
+s.version          = '1.5.0'
 s.summary          = 'All the things you are tired of writing.'
 
 s.description      = <<-DESC
