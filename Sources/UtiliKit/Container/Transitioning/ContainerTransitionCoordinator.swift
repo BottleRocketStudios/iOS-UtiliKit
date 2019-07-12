@@ -18,6 +18,7 @@ public protocol ContainerViewControllerTransitionCoordinator: UIViewControllerTr
     func notifyWhenInteractionChanges(_ handler: @escaping (UIViewControllerTransitionCoordinatorContext) -> Void)
 }
 
+/// This class is internal to the framework. It's concrete class type is never leaked and is instead exposed simply as an object conforming to `ContainerViewControllerTransitionCoordinator`. It's purpose is to function as a drop in replacement for the transition coordinator objects vended by UIKit for presentations. Because the container utilizes it's own child-based transition environment, UIKit will not create a transition coordinator for it's transitions.
 class ContainerTransitionCoordinator: NSObject, ContainerViewControllerTransitionCoordinator {
     
     private static let defaultCompletionVelocity: CGFloat = 1.0
@@ -26,31 +27,31 @@ class ContainerTransitionCoordinator: NSObject, ContainerViewControllerTransitio
     // MARK: Properties
     private let context: ContainerTransitionContext
     private let animator: UIViewControllerAnimatedTransitioning
-    private let interactionController: ContainerPercentDrivenInteractiveTransitioning?
+    private let interactor: ContainerViewControllerInteractiveTransitioning?
     private var interruptibleAnimator: UIViewImplicitlyAnimating
     
     // MARK: Initializers
-    init?(context: ContainerTransitionContext, animator: UIViewControllerAnimatedTransitioning, interactionController: ContainerPercentDrivenInteractiveTransitioning? = nil) {
+    init?(context: ContainerTransitionContext, animator: UIViewControllerAnimatedTransitioning, interactor: ContainerViewControllerInteractiveTransitioning? = nil) {
         guard let interruptibleAnimator = animator.interruptibleAnimator?(using: context) else { return nil }
         
         self.context = context
         self.animator = animator
-        self.interactionController = interactionController
+        self.interactor = interactor
         self.interruptibleAnimator = interruptibleAnimator
-        self.context.isInteractive = (interactionController != nil)
+        self.context.isInteractive = (interactor != nil)
     }
     
     // MARK: UIViewControllerTransitionCoordinatorContext
     var isAnimated: Bool { return context.isAnimated }
     var presentationStyle: UIModalPresentationStyle { return context.presentationStyle }
-    var initiallyInteractive: Bool { return interactionController?.wantsInteractiveStart ?? false }
+    var initiallyInteractive: Bool { return interactor?.wantsInteractiveStart ?? false }
     var isInterruptible: Bool = true //This coordinator requires the usage of an UIViewImplicitlyAnimating interruptible animator, which by default is interruptible.
     var isInteractive: Bool { return context.isInteractive }
     var isCancelled: Bool { return context.transitionWasCancelled }
-    var transitionDuration: TimeInterval { return interactionController?.transitionAnimator?.transitionDuration(using: context) ?? 0 }
+    var transitionDuration: TimeInterval { return interactor?.transitionAnimator?.transitionDuration(using: context) ?? 0 }
     var percentComplete: CGFloat { return context.percentComplete }
-    var completionVelocity: CGFloat { return interactionController?.completionSpeed ?? ContainerTransitionCoordinator.defaultCompletionVelocity }
-    var completionCurve: UIView.AnimationCurve { return interactionController?.completionCurve ?? ContainerTransitionCoordinator.defaultCompletionCurve }
+    var completionVelocity: CGFloat { return interactor?.completionSpeed ?? ContainerTransitionCoordinator.defaultCompletionVelocity }
+    var completionCurve: UIView.AnimationCurve { return interactor?.completionCurve ?? ContainerTransitionCoordinator.defaultCompletionCurve }
     var containerView: UIView { return context.containerView }
     var targetTransform: CGAffineTransform { return context.targetTransform }
     

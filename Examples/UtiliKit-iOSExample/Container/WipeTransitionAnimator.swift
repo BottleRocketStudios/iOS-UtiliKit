@@ -37,7 +37,7 @@ public class WipeTransitionAnimator: NSObject {
 }
 
 //MARK: ContainerViewControllerAnimatedTransitioning
-extension WipeTransitionAnimator: ContainerViewControllerAnimatedTransitioning {
+extension WipeTransitionAnimator: UIViewControllerAnimatedTransitioning {
     
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration

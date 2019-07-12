@@ -106,7 +106,7 @@ extension BaseContainerViewController: ContainerViewControllerDelegate {
     }
     
     func containerViewController(_ container: ContainerViewController, animationControllerForTransitionFrom source: UIViewController,
-                                 to destination: UIViewController) -> ContainerViewControllerAnimatedTransitioning? {
+                                 to destination: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if useCustomAnimator, let sourceIndex = container.index(ofChild: source), let destinationIndex = container.index(ofChild: destination) {
             animationController.configure(forStartIndex: sourceIndex, endIndex: destinationIndex)
             return animationController
@@ -115,7 +115,7 @@ extension BaseContainerViewController: ContainerViewControllerDelegate {
         return nil
     }
     
-    func containerViewController(_ container: ContainerViewController, interactionControllerForTransitionFrom source: UIViewController, to destination: UIViewController) -> ContainerPercentDrivenInteractiveTransitioning? {
+    func containerViewController(_ container: ContainerViewController, interactionControllerForTransitionFrom source: UIViewController, to destination: UIViewController) -> ContainerViewControllerInteractiveTransitioning? {
         return interactionController
     }
 }

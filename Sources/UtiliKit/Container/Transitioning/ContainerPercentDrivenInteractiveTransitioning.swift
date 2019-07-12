@@ -8,18 +8,10 @@
 
 import UIKit
 
-public protocol ContainerPercentDrivenInteractiveTransitioning: UIViewControllerInteractiveTransitioning {
-    var wantsInteractiveStart: Bool { get }
-    var transitionAnimator: ContainerViewControllerAnimatedTransitioning? { get }
-    var transitionContext: UIViewControllerContextTransitioning? { get }
-    
-    func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning, using animator: ContainerViewControllerAnimatedTransitioning)
-}
-
-open class ContainerPercentDrivenInteractiveTransitioner: NSObject, ContainerPercentDrivenInteractiveTransitioning {
+open class ContainerPercentDrivenInteractiveTransitioner: NSObject, ContainerViewControllerInteractiveTransitioning {
 
     // MARK: Properties
-    open var transitionAnimator: ContainerViewControllerAnimatedTransitioning?
+    open var transitionAnimator: UIViewControllerAnimatedTransitioning?
     open private(set) var transitionContext: UIViewControllerContextTransitioning?
     private(set) var interruptibleAnimator: UIViewImplicitlyAnimating?
     
@@ -28,22 +20,21 @@ open class ContainerPercentDrivenInteractiveTransitioner: NSObject, ContainerPer
         didSet { interruptibleAnimator?.fractionComplete = percentComplete }
     }
     
+    open var wantsInteractiveStart: Bool = true
     open var completionSpeed: CGFloat = 1.0
     open var completionCurve: UIView.AnimationCurve = .easeInOut
     open lazy var timingCurve: UITimingCurveProvider = UICubicTimingParameters(animationCurve: completionCurve)
     
-    open var wantsInteractiveStart: Bool = true
-    
     // MARK: ContainerPercentDrivenInteractiveTransitioning
-    public func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
-        assertionFailure("In order to ensure present of the animator, use startInteractiveTransition(_:using:) instead.")
-    }
-    
-    open func startInteractiveTransition(_ context: UIViewControllerContextTransitioning, using animator: ContainerViewControllerAnimatedTransitioning) {
+    open func startInteractiveTransition(_ context: UIViewControllerContextTransitioning, using animator: UIViewControllerAnimatedTransitioning) {
         transitionContext = context
         transitionAnimator = animator
-        interruptibleAnimator = animator.interruptibleAnimator(using: context)
-                
+        
+        guard let animator = animator.interruptibleAnimator?(using: context) else {
+            return debugPrint("In order to fully use the ContainerPercentDrivenInteractiveTransitioner, the animator must provide an object conforming to UIViewImplicitlAnimating.")
+        }
+    
+        interruptibleAnimator = animator
         interruptibleAnimator?.addCompletion? { [weak self] _ in
             self?.interruptibleAnimator = nil
         }
@@ -55,6 +46,8 @@ open class ContainerPercentDrivenInteractiveTransitioner: NSObject, ContainerPer
     }
     
     // MARK: Interface
+    
+    /// Scrub through the interactive transition, updating the context at each step
     open func update(percentComplete complete: CGFloat) {
         let normalized = min(1, max(0, complete))
         

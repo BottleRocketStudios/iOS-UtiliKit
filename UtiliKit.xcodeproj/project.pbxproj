@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E6E8C6D2112551200617815 /* ContainerViewController+ManagedChildren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E8C6C2112551200617815 /* ContainerViewController+ManagedChildren.swift */; };
 		0EC8025C209CE9C90051F732 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC8025B209CE9C90051F732 /* Configurable.swift */; };
+		0ECF481522D946B400CAEB3B /* ContainerViewControllerInteractiveAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECF481422D946B400CAEB3B /* ContainerViewControllerInteractiveAnimatedTransitioning.swift */; };
 		0ED9476420FD473700B642AB /* ContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9476220FD461300B642AB /* ContainerTests.swift */; };
 		0EFAFE8F21F785F5005B2B16 /* InteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE8D21F77568005B2B16 /* InteractiveTransition.swift */; };
 		0EFAFE9A21F81659005B2B16 /* ContainerTransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9921F81659005B2B16 /* ContainerTransitionCoordinator.swift */; };
@@ -109,6 +110,7 @@
 /* Begin PBXFileReference section */
 		0E6E8C6C2112551200617815 /* ContainerViewController+ManagedChildren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContainerViewController+ManagedChildren.swift"; sourceTree = "<group>"; };
 		0EC8025B209CE9C90051F732 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
+		0ECF481422D946B400CAEB3B /* ContainerViewControllerInteractiveAnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewControllerInteractiveAnimatedTransitioning.swift; sourceTree = "<group>"; };
 		0ED9476220FD461300B642AB /* ContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTests.swift; sourceTree = "<group>"; };
 		0EFAFE8D21F77568005B2B16 /* InteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveTransition.swift; sourceTree = "<group>"; };
 		0EFAFE9921F81659005B2B16 /* ContainerTransitionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTransitionCoordinator.swift; sourceTree = "<group>"; };
@@ -211,10 +213,11 @@
 		0EFAFE9021F80CBD005B2B16 /* Transitioning */ = {
 			isa = PBXGroup;
 			children = (
-				0EFAFE9C21F81743005B2B16 /* ContainerTransitionContext.swift */,
-				0EFAFEA021FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioning.swift */,
 				0EFAFE9921F81659005B2B16 /* ContainerTransitionCoordinator.swift */,
+				0EFAFE9C21F81743005B2B16 /* ContainerTransitionContext.swift */,
+				0ECF481422D946B400CAEB3B /* ContainerViewControllerInteractiveAnimatedTransitioning.swift */,
 				8698CFA620619EAD0065AE20 /* ContainerTransitionAnimator.swift */,
+				0EFAFEA021FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioning.swift */,
 			);
 			path = Transitioning;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				0EFAFE9A21F81659005B2B16 /* ContainerTransitionCoordinator.swift in Sources */,
 				B4CCCAEF22D57284001A7A4F /* ContainerTransitionAnimator.swift in Sources */,
 				0EFAFE9D21F81743005B2B16 /* ContainerTransitionContext.swift in Sources */,
+				0ECF481522D946B400CAEB3B /* ContainerViewControllerInteractiveAnimatedTransitioning.swift in Sources */,
 				8698CFBC20619EAD0065AE20 /* ContainerViewControllerDelegate.swift in Sources */,
 				8698CFBB20619EAD0065AE20 /* ContainerViewController.swift in Sources */,
 				0E6E8C6D2112551200617815 /* ContainerViewController+ManagedChildren.swift in Sources */,

@@ -11,6 +11,8 @@ import UIKit
 /// This class is internal to the framework. It's concrete class type is never leaked and is instead exposed simply as an object conforming to `UIViewControllerContextTransitioning`. It's purpose is to function as a drop in replacement for the transition context objects vended by UIKit for presentations. Because the container utilizes it's own child-based transition environment, UIKit will not create a transition context for it's transitions. This context supports both interactive and animated transitions.
 class ContainerTransitionContext: NSObject {
     
+    typealias Completion = (Bool) -> Void
+    
     // MARK: Properties
     var containerView: UIView
     var percentComplete: CGFloat = 0
@@ -23,14 +25,14 @@ class ContainerTransitionContext: NSObject {
     private var viewControllers: [UITransitionContextViewControllerKey: UIViewController]
     private var views: [UITransitionContextViewKey: UIView]
     
-    var completion: ((_ finished: Bool) -> Void)?
+    var completion: Completion?
     
     // MARK: Initializers
     init(containerView: UIView, fromViewController: UIViewController, toViewController: UIViewController) {
         self.containerView = containerView
+        self.presentationStyle = toViewController.modalPresentationStyle
         self.viewControllers = [.from: fromViewController, .to: toViewController]
         self.views = [.from: fromViewController.view, .to: toViewController.view]
-        self.presentationStyle = toViewController.modalPresentationStyle
         super.init()
     }
 }

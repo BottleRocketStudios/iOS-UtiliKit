@@ -99,20 +99,13 @@ private extension ContainerViewController {
         defer { delegate?.containerViewController(self, didBeginTransitioningFrom: source, to: destination) }
         
         let context = configuredTransitionContext(from: source, to: destination)
-        guard let animator = delegate?.containerViewController(self, animationControllerForTransitionFrom: source, to: destination) else  {
-            let animator = ContainerTransitionAnimator()
-            containerTransitionCoordinator = ContainerTransitionCoordinator(context: context, animator: animator)
-            return animator.animateTransition(using: context)
-        }
-        
+        let animator = delegate?.containerViewController(self, animationControllerForTransitionFrom: source, to: destination) ?? ContainerTransitionAnimator()
         let interactor = delegate?.containerViewController(self, interactionControllerForTransitionFrom: source, to: destination)
-        containerTransitionCoordinator = ContainerTransitionCoordinator(context: context, animator: animator, interactionController: interactor)
         
+        containerTransitionCoordinator = ContainerTransitionCoordinator(context: context, animator: animator, interactor: interactor)
         if let interactor = interactor, interactor.wantsInteractiveStart {
-            //We have both an interaction and animation controller - start transitioning interactively
             interactor.startInteractiveTransition(context, using: animator)
         } else {
-            //We either have only an animation controller or an interaction controller that should not start immediately - transition through animation
             animator.animateTransition(using: context)
         }
     }

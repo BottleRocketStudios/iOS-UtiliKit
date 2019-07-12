@@ -7,20 +7,12 @@
 
 import UIKit
 
-public protocol ContainerViewControllerAnimatedTransitioning: UIViewControllerAnimatedTransitioning {
-
-    /// A conforming object implements this method if the transition it creates can
-    /// be interrupted. For example, it could return an instance of a
-    /// UIViewPropertyAnimator. It is expected that this method will return the same
-    /// instance for the life of a transition.
-    func interruptibleAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating
-}
-
-class ContainerTransitionAnimator: NSObject, ContainerViewControllerAnimatedTransitioning {
+/// This class is internal to the framework. It is the internal default transition animator used by the ContainerViewController when it's delegate does not provide one.
+class ContainerTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     // MARK: Properties
     private var interruptibleAnimator: UIViewPropertyAnimator?
-  
+    
     // MARK: ContainerViewControllerAnimatedTransitioning
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3
@@ -31,12 +23,12 @@ class ContainerTransitionAnimator: NSObject, ContainerViewControllerAnimatedTran
     }
     
     func interruptibleAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
-        if let animator = interruptibleAnimator {
-            return animator
+        guard let destination = transitionContext.view(forKey: .to), let source = transitionContext.view(forKey: .from) else {
+            fatalError("The context is improperly configured - requires both a source and destination.")
         }
         
-        guard let destination = transitionContext.view(forKey: .to), let source = transitionContext.view(forKey: .from) else {
-            fatalError("The context is improperly configured - require both a source and destination.")
+        if let animator = interruptibleAnimator {
+            return animator
         }
         
         let duration = transitionDuration(using: transitionContext)
