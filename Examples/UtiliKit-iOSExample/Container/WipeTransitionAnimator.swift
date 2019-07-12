@@ -53,7 +53,7 @@ extension WipeTransitionAnimator: UIViewControllerAnimatedTransitioning {
         }
         
         guard let destination = transitionContext.viewController(forKey: .to), let source = transitionContext.viewController(forKey: .from) else {
-            fatalError("The context is improperly configured - require both a source and destination.")
+            fatalError("The context is improperly configured - requires both a source and destination.")
         }
 
         configureInitialState(for: destination, with: transitionContext)

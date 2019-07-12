@@ -3,11 +3,12 @@
 //  UtiliKit-iOS
 //
 //  Created by Will McGinty on 7/12/19.
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Copyright © 2019 Bottle Rocket Studios. All rights reserved.
 //
 
 import UIKit
 
+/// The `ContainerViewControllerInteractiveTransitioning` protocol is meant to closely mimic the `UIViewControllerInteractiveTransitioning` protocol, but work around some private implementation details used in the traditional interactive transitioning process.
 public protocol ContainerViewControllerInteractiveTransitioning {
     
     var wantsInteractiveStart: Bool { get }

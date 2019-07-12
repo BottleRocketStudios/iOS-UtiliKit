@@ -3,11 +3,12 @@
 //  UtiliKit-iOS
 //
 //  Created by Will McGinty on 1/22/19.
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Copyright © 2019 Bottle Rocket Studios. All rights reserved.
 //
 
 import UIKit
 
+/// The `ContainerViewControllerTransitionCoordinator` is intended to closely mimic the `UIViewControllerTransitionCoordinator` protocol, with the exception that alongside animations must occur in the container of the transition and can not occur outside.
 public protocol ContainerViewControllerTransitionCoordinator: UIViewControllerTransitionCoordinatorContext {
     
     @discardableResult

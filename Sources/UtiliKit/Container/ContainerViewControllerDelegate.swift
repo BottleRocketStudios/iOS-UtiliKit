@@ -20,8 +20,6 @@ public protocol ContainerViewControllerDelegate: class {
     func containerViewController(_ container: ContainerViewController, shouldTransitionFrom source: UIViewController, to destination: UIViewController) -> Bool
     func containerViewController(_ container: ContainerViewController, didBeginTransitioningFrom source: UIViewController, to destination: UIViewController)
     func containerViewController(_ container: ContainerViewController, didFinishTransitioningFrom source: UIViewController, to destination: UIViewController)
-    
-    
 }
 
 public extension ContainerViewControllerDelegate {

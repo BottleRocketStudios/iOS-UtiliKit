@@ -83,7 +83,7 @@ extension BaseContainerViewController: ContainerViewControllerDelegate {
     func containerViewController(_ container: ContainerViewController, didBeginTransitioningFrom source: UIViewController, to destination: UIViewController) {
         container.containerTransitionCoordinator?.animate(alongsideTransition: { context in
             self.aButton.transform = self.aButton.transform == .identity ? CGAffineTransform(scaleX: 2, y: 2) : .identity
-            self.bButton.transform =  self.bButton.transform == .identity ? CGAffineTransform(scaleX: 2, y: 2) : .identity
+            self.bButton.transform = self.bButton.transform == .identity ? CGAffineTransform(scaleX: 2, y: 2) : .identity
         }, completion: nil)
         
         container.containerTransitionCoordinator?.notifyWhenInteractionEnds { [weak self] context in

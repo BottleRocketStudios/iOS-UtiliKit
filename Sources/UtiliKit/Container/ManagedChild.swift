@@ -3,7 +3,7 @@
 //  UtiliKit-iOS
 //
 //  Created by Cuong Ngo on 8/14/18.
-//  Copyright © 2018 CocoaPods. All rights reserved.
+//  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 
 import UIKit

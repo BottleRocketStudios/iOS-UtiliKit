@@ -3,7 +3,7 @@
 //  UtiliKit-iOS
 //
 //  Created by Will McGinty on 1/22/19.
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Copyright © 2019 Bottle Rocket Studios. All rights reserved.
 //
 
 import UIKit
@@ -22,7 +22,7 @@ public class HorizontalPanGestureInteractiveTransition: ContainerPercentDrivenIn
     private var shouldCompleteTransition = false
     private var lastVelocity = CGPoint.zero
     
-    // This block gets run when the gesture recognizer start recognizing a pan. Inside, the start of a transition can be triggered.
+    // This block gets run when the gesture recognizer starts recognizing a pan. Inside, the start of a transition can be triggered.
     private let gestureRecognizedBlock: PanHandler
     
     public init(in view: UIView, progressThreshold: CGFloat = 0.35, velocityOverrideThreshold: CGFloat = 550, recognizedBlock: @escaping PanHandler) {
@@ -46,7 +46,10 @@ public class HorizontalPanGestureInteractiveTransition: ContainerPercentDrivenIn
         switch recognizer.state {
         case .began: gestureRecognizedBlock(recognizer)
         case .changed:
-            guard transitionContext != nil else { return /*If the transition context doesn't exist, we haven't been given it - we aren't using a compatible animator. The container will only ask for an interaction controller and configure it if you provide it with a custom animator. */ }
+            guard transitionContext != nil else {
+                /*If the transition context doesn't exist, we haven't been given it - we aren't using a compatible animator. The container will only ask for an interaction controller and configure it if you provide it with a custom animator. */
+                return
+            }
 
             let translation = gestureRecognizer.translation(in: gestureRecognizer.view)
             lastVelocity = gestureRecognizer.velocity(in: gestureRecognizer.view)

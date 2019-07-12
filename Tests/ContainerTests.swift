@@ -3,7 +3,7 @@
 //  UtiliKit-iOS
 //
 //  Created by Will McGinty on 7/16/18.
-//  Copyright © 2018 CocoaPods. All rights reserved.
+//  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 
 import XCTest
