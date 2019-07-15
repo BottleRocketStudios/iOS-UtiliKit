@@ -9,7 +9,7 @@
 import UIKit
 import UtiliKit
 
-public class HorizontalPanGestureInteractiveTransition: ContainerPercentDrivenInteractiveTransitioner {
+class HorizontalPanGestureInteractiveTransition: ContainerPercentDrivenInteractiveTransitioner {
     
     public typealias PanHandler = (UIPanGestureRecognizer) -> Void
     
@@ -25,17 +25,17 @@ public class HorizontalPanGestureInteractiveTransition: ContainerPercentDrivenIn
     // This block gets run when the gesture recognizer starts recognizing a pan. Inside, the start of a transition can be triggered.
     private let gestureRecognizedBlock: PanHandler
     
-    public init(in view: UIView, progressThreshold: CGFloat = 0.35, velocityOverrideThreshold: CGFloat = 550, recognizedBlock: @escaping PanHandler) {
+    init(in view: UIView, progressThreshold: CGFloat = 0.35, velocityOverrideThreshold: CGFloat = 550, recognizedBlock: @escaping PanHandler) {
         self.progressNeeded = progressThreshold
         self.velocityNeeded = velocityOverrideThreshold
         self.gestureRecognizedBlock = recognizedBlock
         super.init()
         
         gestureRecognizer.addTarget(self, action: #selector(handlePan(recognizer:)))
-        view.addGestureRecognizer(self.gestureRecognizer)
+        view.addGestureRecognizer(gestureRecognizer)
     }
     
-    public override func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning, using animator: UIViewControllerAnimatedTransitioning) {
+    override func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning, using animator: UIViewControllerAnimatedTransitioning) {
         super.startInteractiveTransition(transitionContext, using: animator)
         isLeftToRight = gestureRecognizer.velocity(in: gestureRecognizer.view).x > 0
     }

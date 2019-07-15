@@ -18,7 +18,7 @@ class ContainerTransitionContext: NSObject {
     var percentComplete: CGFloat = 0
     var presentationStyle: UIModalPresentationStyle
     var transitionWasCancelled: Bool = false
-    var targetTransform: CGAffineTransform = CGAffineTransform.identity
+    var targetTransform: CGAffineTransform = .identity
     var isAnimated: Bool = true
     var isInteractive: Bool = false
     

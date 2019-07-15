@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		0E6E8C6D2112551200617815 /* ContainerViewController+ManagedChildren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E8C6C2112551200617815 /* ContainerViewController+ManagedChildren.swift */; };
 		0EC8025C209CE9C90051F732 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC8025B209CE9C90051F732 /* Configurable.swift */; };
-		0ECF481522D946B400CAEB3B /* ContainerViewControllerInteractiveAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECF481422D946B400CAEB3B /* ContainerViewControllerInteractiveAnimatedTransitioning.swift */; };
+		0ECF481522D946B400CAEB3B /* ContainerViewControllerInteractiveTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECF481422D946B400CAEB3B /* ContainerViewControllerInteractiveTransitioning.swift */; };
 		0ED9476420FD473700B642AB /* ContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9476220FD461300B642AB /* ContainerTests.swift */; };
 		0EFAFE8F21F785F5005B2B16 /* InteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE8D21F77568005B2B16 /* InteractiveTransition.swift */; };
-		0EFAFE9A21F81659005B2B16 /* ContainerTransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9921F81659005B2B16 /* ContainerTransitionCoordinator.swift */; };
+		0EFAFE9A21F81659005B2B16 /* ContainerViewControllerTransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9921F81659005B2B16 /* ContainerViewControllerTransitionCoordinator.swift */; };
 		0EFAFE9D21F81743005B2B16 /* ContainerTransitionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9C21F81743005B2B16 /* ContainerTransitionContext.swift */; };
-		0EFAFEA121FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFEA021FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioning.swift */; };
+		0EFAFEA121FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFEA021FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioner.swift */; };
 		0EFAFEA221FBA89C005B2B16 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
 		1D419DBD21235EE100B62D91 /* ManagedChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D419DBC21235EE100B62D91 /* ManagedChild.swift */; };
 		1D419DBF21236CC300B62D91 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
@@ -74,7 +74,7 @@
 		8698D0272061A3930065AE20 /* ViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D0072061A3930065AE20 /* ViewControllerA.swift */; };
 		8698D0282061A3930065AE20 /* ViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D0082061A3930065AE20 /* ViewControllerB.swift */; };
 		8698D0292061A3930065AE20 /* WipeTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D0092061A3930065AE20 /* WipeTransitionAnimator.swift */; };
-		B4CCCAEF22D57284001A7A4F /* ContainerTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFA620619EAD0065AE20 /* ContainerTransitionAnimator.swift */; };
+		B4CCCAEF22D57284001A7A4F /* DefaultContainerTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFA620619EAD0065AE20 /* DefaultContainerTransitionAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,12 +110,12 @@
 /* Begin PBXFileReference section */
 		0E6E8C6C2112551200617815 /* ContainerViewController+ManagedChildren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContainerViewController+ManagedChildren.swift"; sourceTree = "<group>"; };
 		0EC8025B209CE9C90051F732 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
-		0ECF481422D946B400CAEB3B /* ContainerViewControllerInteractiveAnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewControllerInteractiveAnimatedTransitioning.swift; sourceTree = "<group>"; };
+		0ECF481422D946B400CAEB3B /* ContainerViewControllerInteractiveTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewControllerInteractiveTransitioning.swift; sourceTree = "<group>"; };
 		0ED9476220FD461300B642AB /* ContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTests.swift; sourceTree = "<group>"; };
 		0EFAFE8D21F77568005B2B16 /* InteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveTransition.swift; sourceTree = "<group>"; };
-		0EFAFE9921F81659005B2B16 /* ContainerTransitionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTransitionCoordinator.swift; sourceTree = "<group>"; };
+		0EFAFE9921F81659005B2B16 /* ContainerViewControllerTransitionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewControllerTransitionCoordinator.swift; sourceTree = "<group>"; };
 		0EFAFE9C21F81743005B2B16 /* ContainerTransitionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTransitionContext.swift; sourceTree = "<group>"; };
-		0EFAFEA021FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerPercentDrivenInteractiveTransitioning.swift; sourceTree = "<group>"; };
+		0EFAFEA021FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerPercentDrivenInteractiveTransitioner.swift; sourceTree = "<group>"; };
 		1D419DBC21235EE100B62D91 /* ManagedChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedChild.swift; sourceTree = "<group>"; };
 		5C574BF62264EC10003D1641 /* ActiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLabel.swift; sourceTree = "<group>"; };
 		5C574BF82264EC3C003D1641 /* ActiveLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLabelViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 		8698CFA020619EAD0065AE20 /* UtiliKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtiliKit.h; sourceTree = "<group>"; };
 		8698CFA420619EAD0065AE20 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		8698CFA520619EAD0065AE20 /* ContainerViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewControllerDelegate.swift; sourceTree = "<group>"; };
-		8698CFA620619EAD0065AE20 /* ContainerTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerTransitionAnimator.swift; sourceTree = "<group>"; };
+		8698CFA620619EAD0065AE20 /* DefaultContainerTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultContainerTransitionAnimator.swift; sourceTree = "<group>"; };
 		8698CFA820619EAD0065AE20 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		8698CFA920619EAD0065AE20 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		8698CFAB20619EAD0065AE20 /* MKMapView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKMapView+Extensions.swift"; sourceTree = "<group>"; };
@@ -213,11 +213,11 @@
 		0EFAFE9021F80CBD005B2B16 /* Transitioning */ = {
 			isa = PBXGroup;
 			children = (
-				0EFAFE9921F81659005B2B16 /* ContainerTransitionCoordinator.swift */,
 				0EFAFE9C21F81743005B2B16 /* ContainerTransitionContext.swift */,
-				0ECF481422D946B400CAEB3B /* ContainerViewControllerInteractiveAnimatedTransitioning.swift */,
-				8698CFA620619EAD0065AE20 /* ContainerTransitionAnimator.swift */,
-				0EFAFEA021FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioning.swift */,
+				0EFAFE9921F81659005B2B16 /* ContainerViewControllerTransitionCoordinator.swift */,
+				0ECF481422D946B400CAEB3B /* ContainerViewControllerInteractiveTransitioning.swift */,
+				0EFAFEA021FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioner.swift */,
+				8698CFA620619EAD0065AE20 /* DefaultContainerTransitionAnimator.swift */,
 			);
 			path = Transitioning;
 			sourceTree = "<group>";
@@ -636,11 +636,11 @@
 				5C574BF72264EC10003D1641 /* ActiveLabel.swift in Sources */,
 				5C574BF92264EC3C003D1641 /* ActiveLabelViewController.swift in Sources */,
 				1D419DBD21235EE100B62D91 /* ManagedChild.swift in Sources */,
-				0EFAFEA121FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioning.swift in Sources */,
-				0EFAFE9A21F81659005B2B16 /* ContainerTransitionCoordinator.swift in Sources */,
-				B4CCCAEF22D57284001A7A4F /* ContainerTransitionAnimator.swift in Sources */,
+				0EFAFEA121FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioner.swift in Sources */,
+				0EFAFE9A21F81659005B2B16 /* ContainerViewControllerTransitionCoordinator.swift in Sources */,
+				B4CCCAEF22D57284001A7A4F /* DefaultContainerTransitionAnimator.swift in Sources */,
 				0EFAFE9D21F81743005B2B16 /* ContainerTransitionContext.swift in Sources */,
-				0ECF481522D946B400CAEB3B /* ContainerViewControllerInteractiveAnimatedTransitioning.swift in Sources */,
+				0ECF481522D946B400CAEB3B /* ContainerViewControllerInteractiveTransitioning.swift in Sources */,
 				8698CFBC20619EAD0065AE20 /* ContainerViewControllerDelegate.swift in Sources */,
 				8698CFBB20619EAD0065AE20 /* ContainerViewController.swift in Sources */,
 				0E6E8C6D2112551200617815 /* ContainerViewController+ManagedChildren.swift in Sources */,

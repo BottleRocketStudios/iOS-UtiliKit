@@ -99,7 +99,7 @@ private extension ContainerViewController {
         defer { delegate?.containerViewController(self, didBeginTransitioningFrom: source, to: destination) }
         
         let context = configuredTransitionContext(from: source, to: destination)
-        let animator = delegate?.containerViewController(self, animationControllerForTransitionFrom: source, to: destination) ?? ContainerTransitionAnimator()
+        let animator = delegate?.containerViewController(self, animationControllerForTransitionFrom: source, to: destination) ?? DefaultContainerTransitionAnimator()
         let interactor = delegate?.containerViewController(self, interactionControllerForTransitionFrom: source, to: destination)
         
         containerTransitionCoordinator = ContainerTransitionCoordinator(context: context, animator: animator, interactor: interactor)

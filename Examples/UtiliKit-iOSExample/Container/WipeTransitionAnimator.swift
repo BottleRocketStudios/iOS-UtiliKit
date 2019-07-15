@@ -8,9 +8,11 @@
 import UIKit
 import UtiliKit
 
-public class WipeTransitionAnimator: NSObject {
+
+/// The `WipeTransitionAnimator` enables the transition from one `UIViewController` object to another by pushing the source off the screen revealing the destination. The transition supports wiping from both right to left and left to right and is powered by a `UIViewImplicitlyAnimating` object, allowing for interactivity.
+class WipeTransitionAnimator: NSObject {
     
-    public enum Direction {
+    enum Direction {
         case leftToRight
         case rightToLeft
     }
@@ -21,12 +23,12 @@ public class WipeTransitionAnimator: NSObject {
     private let duration = 0.3
     
     //MARK: Initializers
-    public init(direction: Direction) {
+    init(direction: Direction) {
         self.transitionDirection = direction
         super.init()
     }
     
-    public convenience init(startIndex: Int, endIndex: Int) {
+    convenience init(startIndex: Int, endIndex: Int) {
         self.init(direction: startIndex < endIndex ? .rightToLeft : .leftToRight)
     }
     
@@ -36,18 +38,18 @@ public class WipeTransitionAnimator: NSObject {
     }
 }
 
-//MARK: ContainerViewControllerAnimatedTransitioning
+//MARK: UIViewControllerAnimatedTransitioning
 extension WipeTransitionAnimator: UIViewControllerAnimatedTransitioning {
     
-    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
     }
     
-    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         interruptibleAnimator?.startAnimation()
     }
     
-    public func interruptibleAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
+    func interruptibleAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
         if let animator = interruptibleAnimator {
             return animator
         }
