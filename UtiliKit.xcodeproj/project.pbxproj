@@ -540,7 +540,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0930;
-				ORGANIZATIONNAME = CocoaPods;
+				ORGANIZATIONNAME = "Bottle Rocket Studios";
 				TargetAttributes = {
 					8677313820601BB400C54343 = {
 						CreatedOnToolsVersion = 9.2;
