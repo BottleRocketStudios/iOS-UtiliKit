@@ -54,7 +54,7 @@ open class ContainerViewController: UIViewController {
 //MARK: Public Interface
 extension ContainerViewController {
     
-    open func transitionToControllerForChild(with identifier: AnyHashable, completion: ((Bool) -> Void)? = nil) {
+    open func transitionToControllerForChild(withIdentifier identifier: AnyHashable, completion: ((Bool) -> Void)? = nil) {
         managedChildren.first { identifier == $0.identifier }.map { transitionToController(for: $0, completion: completion) }
     }
     

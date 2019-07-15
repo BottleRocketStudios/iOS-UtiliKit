@@ -58,12 +58,12 @@ class BaseContainerViewController: UIViewController {
     
     @IBAction func transitionToA() {
         interactionController?.wantsInteractiveStart = false
-        containerViewController.transitionToControllerForChild(with: "A")
+        containerViewController.transitionToControllerForChild(withIdentifier: "A")
     }
     
     @IBAction func transitionToB() {
         interactionController?.wantsInteractiveStart = false
-        containerViewController.transitionToControllerForChild(with: "B")
+        containerViewController.transitionToControllerForChild(withIdentifier: "B")
     }
     
     @IBAction func logSwitchDidChange(_ sender: UISwitch) {
