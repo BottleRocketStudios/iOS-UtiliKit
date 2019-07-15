@@ -40,9 +40,9 @@ class DefaultContainerTransitionAnimator: NSObject, UIViewControllerAnimatedTran
             }
         }
         
-        propertyAnimator.addCompletion { [unowned self] animatingPosition in
+        propertyAnimator.addCompletion { [weak self] animatingPosition in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-            self.interruptibleAnimator = nil
+            self?.interruptibleAnimator = nil
         }
         
         interruptibleAnimator = propertyAnimator

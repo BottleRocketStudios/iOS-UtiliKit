@@ -61,13 +61,13 @@ extension WipeTransitionAnimator: UIViewControllerAnimatedTransitioning {
         configureInitialState(for: destination, with: transitionContext)
         let timingParameters = UICubicTimingParameters(animationCurve: .easeInOut)
         let propertyAnimator = UIViewPropertyAnimator(duration: transitionDuration(using: transitionContext), timingParameters: timingParameters)
-        propertyAnimator.addAnimations { [unowned self] in
-            self.configureFinalState(forSource: source, destination: destination, context: transitionContext)
+        propertyAnimator.addAnimations { [weak self] in
+            self?.configureFinalState(forSource: source, destination: destination, context: transitionContext)
         }
         
-        propertyAnimator.addCompletion { [unowned self] animatingPosition in
-            self.completeAnimation(successfully: animatingPosition == .end, for: source, destination: destination, with: transitionContext)
-            self.interruptibleAnimator = nil
+        propertyAnimator.addCompletion { [weak self] animatingPosition in
+            self?.completeAnimation(successfully: animatingPosition == .end, for: source, destination: destination, with: transitionContext)
+            self?.interruptibleAnimator = nil
         }
     
         interruptibleAnimator = propertyAnimator
