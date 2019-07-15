@@ -45,13 +45,9 @@ class BaseContainerViewController: UIViewController {
             guard let self = self, let currentController = self.containerViewController.visibleController else { return }
             
             if recognizer.velocity(in: recognizer.view).x > 0 {
-                guard let previousChild = self.containerViewController.child(preceding: currentController) else { return }
-                self.animationController.transitionDirection = .leftToRight
-                self.containerViewController.transitionToController(for: previousChild)
+                self.configureInteractiveTransitionToPrecedingChild(of: currentController)
             } else {
-                guard let nextChild = self.containerViewController.child(following: currentController) else { return }
-                self.animationController.transitionDirection = .rightToLeft
-                self.containerViewController.transitionToController(for: nextChild)
+                self.configureInteractiveTransitionToFollowingChild(of: currentController)
             }
         }
     }
@@ -74,6 +70,22 @@ class BaseContainerViewController: UIViewController {
     
     @IBAction func useCustomAnimatorSwitchDidChange(_ sender: UISwitch) {
         useCustomAnimator = sender.isOn
+    }
+}
+
+// MARK: Helper
+private extension BaseContainerViewController {
+    
+    func configureInteractiveTransitionToPrecedingChild(of visibleController: UIViewController) {
+        guard let previousChild = containerViewController.child(preceding: visibleController) else { return }
+        animationController.transitionDirection = .leftToRight
+        containerViewController.transitionToController(for: previousChild)
+    }
+    
+    func configureInteractiveTransitionToFollowingChild(of visibleController: UIViewController) {
+        guard let nextChild = self.containerViewController.child(following: visibleController) else { return }
+        animationController.transitionDirection = .rightToLeft
+        containerViewController.transitionToController(for: nextChild)
     }
 }
 
