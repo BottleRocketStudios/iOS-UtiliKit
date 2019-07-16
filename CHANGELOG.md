@@ -2,7 +2,9 @@
 
 ##### Enhancements
 
-* None
+* Add interactive transitioning and transition coordination to `ContainerViewController`. This change has bumped the deployment target to iOS 10.0+
+[Will McGinty](https://github.com/willmcginty)
+[#63](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/63)
 
 ##### Bug Fixes
 
