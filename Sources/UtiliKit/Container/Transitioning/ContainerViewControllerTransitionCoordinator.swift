@@ -19,7 +19,7 @@ public protocol ContainerViewControllerTransitionCoordinator: UIViewControllerTr
     func notifyWhenInteractionChanges(_ handler: @escaping (UIViewControllerTransitionCoordinatorContext) -> Void)
 }
 
-/// This class is internal to the framework. It's concrete class type is never leaked and is instead exposed simply as an object conforming to `ContainerViewControllerTransitionCoordinator`. It's purpose is to function as a drop in replacement for the transition coordinator objects vended by UIKit for presentations. Because the container utilizes it's own child-based transition environment, UIKit will not create a transition coordinator for it's transitions.
+/// This class is internal to the framework. Its concrete class type is never leaked and is instead exposed simply as an object conforming to `ContainerViewControllerTransitionCoordinator`. Its purpose is to function as a drop in replacement for the transition coordinator objects vended by UIKit for presentations. Because the container utilizes its own child-based transition environment, UIKit will not create a transition coordinator for its transitions.
 class ContainerTransitionCoordinator: NSObject, ContainerViewControllerTransitionCoordinator {
     
     private static let defaultCompletionVelocity: CGFloat = 1.0

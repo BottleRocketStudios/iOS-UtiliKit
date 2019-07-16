@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// This class is internal to the framework. It is the internal default transition animator used by the ContainerViewController when it's delegate does not provide one.
+/// This class is internal to the framework. It is the internal default transition animator used by the ContainerViewController when its delegate does not provide one.
 class DefaultContainerTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     // MARK: Properties

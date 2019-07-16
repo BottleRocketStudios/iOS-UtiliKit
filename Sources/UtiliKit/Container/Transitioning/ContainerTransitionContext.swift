@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// This class is internal to the framework. It's concrete class type is never leaked and is instead exposed simply as an object conforming to `UIViewControllerContextTransitioning`. It's purpose is to function as a drop in replacement for the transition context objects vended by UIKit for presentations. Because the container utilizes it's own child-based transition environment, UIKit will not create a transition context for it's transitions. This context supports both interactive and animated transitions.
+/// This class is internal to the framework. Its concrete class type is never leaked and is instead exposed simply as an object conforming to `UIViewControllerContextTransitioning`. Its purpose is to function as a drop in replacement for the transition context objects vended by UIKit for presentations. Because the container utilizes its own child-based transition environment, UIKit will not create a transition context for its transitions. This context supports both interactive and animated transitions.
 class ContainerTransitionContext: NSObject {
     
     typealias Completion = (Bool) -> Void

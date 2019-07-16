@@ -55,7 +55,7 @@ open class ContainerPercentDrivenInteractiveTransitioner: NSObject, ContainerVie
         percentComplete = normalized
     }
     
-    /// Cancel the interactive transition, instructing the transition to return to it's initial state.
+    /// Cancel the interactive transition, instructing the transition to return to its initial state.
     open func cancel() {
         transitionContext?.cancelInteractiveTransition()
         
@@ -63,7 +63,7 @@ open class ContainerPercentDrivenInteractiveTransitioner: NSObject, ContainerVie
         interruptibleAnimator?.continueAnimation?(withTimingParameters: timingCurve, durationFactor: percentComplete)
     }
     
-    /// Finish the transition through animation, instructing the transition to complete it's movement to the destination view controller.
+    /// Finish the transition through animation, instructing the transition to complete its movement to the destination view controller.
     open func finish() {
         transitionContext?.finishInteractiveTransition()
         interruptibleAnimator?.continueAnimation?(withTimingParameters: timingCurve, durationFactor: 1 - percentComplete)
