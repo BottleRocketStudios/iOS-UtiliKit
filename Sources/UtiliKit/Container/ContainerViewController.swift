@@ -128,19 +128,11 @@ private extension ContainerViewController {
     func prepareForTransitioning(from source: UIViewController?, to destination: UIViewController, animated: Bool) {
         isTransitioning = true
         
-        #if swift(>=4.2)
         source?.beginAppearanceTransition(false, animated: animated)
-        
         destination.beginAppearanceTransition(true, animated: animated)
+        
         addChild(destination)
         destination.didMove(toParent: self)
-        #else
-        source?.beginAppearanceTransition(false, animated: animated)
-        
-        destination.beginAppearanceTransition(true, animated: animated)
-        addChildViewController(destination)
-        destination.didMove(toParentViewController: self)
-        #endif
     }
     
     func configure(destinationView: UIView, inContainer container: UIView) {
@@ -151,37 +143,18 @@ private extension ContainerViewController {
     }
     
     func finishTransitioning(from source: UIViewController?, to destination: UIViewController, success: Bool, animated: Bool) {
+        destination.endAppearanceTransition()
+        source?.endAppearanceTransition()
+        
         if success {
-            #if swift(>=4.2)
-            destination.endAppearanceTransition()
-
-            source?.endAppearanceTransition()
             source?.willMove(toParent: nil)
             source?.removeFromParent()
-            #else
-            destination.endAppearanceTransition()
-            
-            source?.endAppearanceTransition()
-            source?.willMove(toParentViewController: nil)
-            source?.removeFromParentViewController()
-            #endif
-            
+           
             visibleController = destination
             
         } else {
-            #if swift(>=4.2)
-            destination.endAppearanceTransition()
             destination.willMove(toParent: nil)
             destination.removeFromParent()
-            
-            source?.endAppearanceTransition()
-            #else
-            destination.endAppearanceTransition()
-            destination.willMove(toParentViewController: nil)
-            destination.removeFromParentViewController()
-            
-            source?.endAppearanceTransition()
-            #endif
             
             visibleController = source
         }
