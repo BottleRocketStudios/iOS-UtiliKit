@@ -45,9 +45,9 @@ class BaseContainerViewController: UIViewController {
             guard let self = self, let currentController = self.containerViewController.visibleController else { return }
             
             if recognizer.velocity(in: recognizer.view).x > 0 {
-                self.configureInteractiveTransitionToPrecedingChild(of: currentController)
+                self.configureInteractiveTransitionToChild(preceding: currentController)
             } else {
-                self.configureInteractiveTransitionToFollowingChild(of: currentController)
+                self.configureInteractiveTransitionToChild(following: currentController)
             }
         }
     }
@@ -76,13 +76,13 @@ class BaseContainerViewController: UIViewController {
 // MARK: Helper
 private extension BaseContainerViewController {
     
-    func configureInteractiveTransitionToPrecedingChild(of visibleController: UIViewController) {
+    func configureInteractiveTransitionToChild(preceding visibleController: UIViewController) {
         guard let previousChild = containerViewController.child(preceding: visibleController) else { return }
         animationController.transitionDirection = .leftToRight
         containerViewController.transitionToController(for: previousChild)
     }
     
-    func configureInteractiveTransitionToFollowingChild(of visibleController: UIViewController) {
+    func configureInteractiveTransitionToChild(following visibleController: UIViewController) {
         guard let nextChild = self.containerViewController.child(following: visibleController) else { return }
         animationController.transitionDirection = .rightToLeft
         containerViewController.transitionToController(for: nextChild)
