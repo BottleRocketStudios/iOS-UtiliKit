@@ -126,11 +126,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Qhz-QH-kNc">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Qhz-QH-kNc">
                                 <rect key="frame" x="162.5" y="273" width="50" height="92"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t71-UR-ckV">
-                                        <rect key="frame" x="0.0" y="0.0" width="37" height="30"/>
+                                        <rect key="frame" x="6.5" y="0.0" width="37" height="30"/>
                                         <state key="normal" title="Initial"/>
                                         <connections>
                                             <action selector="didSelectInitialViewController:" destination="GXF-61-Br5" eventType="touchUpInside" id="FTb-qP-E40"/>
@@ -168,7 +168,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gx9-WO-CwS">
-                                <rect key="frame" x="20" y="30" width="335" height="39"/>
+                                <rect key="frame" x="20" y="30" width="335" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Defaults" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odm-z2-vFd">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
@@ -177,7 +177,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOr-6e-7K3" customClass="ActiveLabel" customModule="UtiliKit">
-                                        <rect key="frame" x="0.0" y="31" width="335" height="8"/>
+                                        <rect key="frame" x="0.0" y="31" width="335" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -195,7 +195,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTm-1B-I0o">
-                                <rect key="frame" x="20" y="89" width="335" height="103"/>
+                                <rect key="frame" x="20" y="81" width="335" height="51"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUR-Kq-Egw">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="41"/>
@@ -206,7 +206,7 @@ finalLineTrailingInset = 100</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxu-jH-172" customClass="ActiveLabel" customModule="UtiliKit">
-                                        <rect key="frame" x="0.0" y="51" width="335" height="52"/>
+                                        <rect key="frame" x="0.0" y="51" width="335" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -232,7 +232,7 @@ finalLineTrailingInset = 100</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zU-Lg-Pnf">
-                                <rect key="frame" x="20" y="212" width="335" height="143.5"/>
+                                <rect key="frame" x="20" y="152" width="335" height="91.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5H-fS-3tV">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="81.5"/>
@@ -245,7 +245,7 @@ loadingAnimationDelay = 0</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUK-6D-d4K" customClass="ActiveLabel" customModule="UtiliKit">
-                                        <rect key="frame" x="0.0" y="91.5" width="335" height="52"/>
+                                        <rect key="frame" x="0.0" y="91.5" width="335" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -277,7 +277,7 @@ loadingAnimationDelay = 0</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w3s-YM-FVq">
-                                <rect key="frame" x="20" y="375.5" width="335" height="175.5"/>
+                                <rect key="frame" x="20" y="263.5" width="335" height="111.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fD7-QG-qKS">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="101.5"/>
@@ -291,7 +291,7 @@ loadingLineVerticalSpacing = 8</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oh1-E6-a27" customClass="ActiveLabel" customModule="UtiliKit">
-                                        <rect key="frame" x="0.0" y="111.5" width="335" height="64"/>
+                                        <rect key="frame" x="0.0" y="111.5" width="335" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
