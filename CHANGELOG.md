@@ -6,6 +6,10 @@
 [Tyler Milner](https://github.com/tylermilner)
 [#65](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/65)
 
+* Conform URL to ExpressibleByStringLiteral
+[Will McGinty](https://github.com/willmcginty)
+[#66](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/66)
+
 ##### Bug Fixes
 
 * None
