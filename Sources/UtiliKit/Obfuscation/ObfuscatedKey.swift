@@ -32,6 +32,7 @@ struct ObfuscatedKey {
         }
     }
 
+    // codebeat:disable[TOO_MANY_FUNCTIONS]
     var A: ObfuscatedKey { return ObfuscatedKey(_value + "A") }
     var B: ObfuscatedKey { return ObfuscatedKey(_value + "B") }
     var C: ObfuscatedKey { return ObfuscatedKey(_value + "C") }
@@ -104,4 +105,5 @@ struct ObfuscatedKey {
     func anything(_ extra: String) -> ObfuscatedKey {
         return ObfuscatedKey(_value + extra)
     }
+    // codebeat:enable[TOO_MANY_FUNCTIONS]    
 }
