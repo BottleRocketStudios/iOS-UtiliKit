@@ -2,7 +2,8 @@
 
 ##### Enhancements
 
-* Added obfuscation for keys/passwords to ensure that they don't appear in plaintext.
+* Added the `Obfuscation` subspec, which includes the `ObfuscatedKey` structure for keys/passwords to ensure that 
+they don't appear in plaintext within the source or binary of your app.
 [Russell Mirabelli](https://github.com/rmirabelli)
 [#67](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/67)
 
