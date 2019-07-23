@@ -3,11 +3,11 @@
 //  UtiliKit-iOSTests
 //
 //  Created by Russell Mirabelli on 7/23/19.
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Copyright © 2019 Bottle Rocket Studios. All rights reserved.
 //
 
 import XCTest
-@testable import UtiliKit
+import UtiliKit
 
 class ObfuscationTests: XCTestCase {
 
@@ -36,7 +36,7 @@ class ObfuscationTests: XCTestCase {
     }
 
     func testExtras() {
-        let key = ObfuscatedKey().dot.dash.underscore.anything("=").value
+        let key = ObfuscatedKey().dot.dash.underscore.literal("=").value
         let expected = ".-_="
         XCTAssert(key == expected, "Keys do not match: \(key) is not \(expected)")
     }

@@ -3,7 +3,7 @@
 //  UtiliKit-iOS
 //
 //  Created by Russell Mirabelli on 7/23/19.
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Copyright © 2019 Bottle Rocket Studios. All rights reserved.
 //
 
 // Inspired by https://github.com/onmyway133/Arcane/blob/master/Sources/Arcane/Obfuscator.swift
@@ -15,23 +15,23 @@ import Foundation
 /// By using the ObfuscatedKey struct, you can build a human-readable key that nonetheless
 /// will not appear simply by running "strings" against your compiled code, and will even
 /// not appear as a string within your source code.
-struct ObfuscatedKey {
+public struct ObfuscatedKey {
     private let _value: String
 
-    init() {
+    public init() {
         self._value = ""
     }
 
-    init(_ value: String) {
+    public init(_ value: String) {
         self._value = value
     }
 
-    var value: String {
-        get {
-            return _value
-        }
+    public var value: String {
+        return _value
     }
+}
 
+public extension ObfuscatedKey {
     // codebeat:disable[TOO_MANY_FUNCTIONS]
     var A: ObfuscatedKey { return ObfuscatedKey(_value + "A") }
     var B: ObfuscatedKey { return ObfuscatedKey(_value + "B") }
@@ -102,7 +102,7 @@ struct ObfuscatedKey {
     var dash: ObfuscatedKey { return ObfuscatedKey(_value + "-") }
     var underscore: ObfuscatedKey { return ObfuscatedKey(_value + "_") }
 
-    func anything(_ extra: String) -> ObfuscatedKey {
+    func literal(_ extra: String) -> ObfuscatedKey {
         return ObfuscatedKey(_value + extra)
     }
     // codebeat:enable[TOO_MANY_FUNCTIONS]    
