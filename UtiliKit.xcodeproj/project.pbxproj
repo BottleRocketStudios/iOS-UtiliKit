@@ -71,6 +71,7 @@
 		8698D0272061A3930065AE20 /* ViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D0072061A3930065AE20 /* ViewControllerA.swift */; };
 		8698D0282061A3930065AE20 /* ViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D0082061A3930065AE20 /* ViewControllerB.swift */; };
 		8698D0292061A3930065AE20 /* WipeTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D0092061A3930065AE20 /* WipeTransitionAnimator.swift */; };
+		B4A5231A22E6925B00AB1424 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A5231922E6925B00AB1424 /* URL+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +165,7 @@
 		8698D0072061A3930065AE20 /* ViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerA.swift; sourceTree = "<group>"; };
 		8698D0082061A3930065AE20 /* ViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerB.swift; sourceTree = "<group>"; };
 		8698D0092061A3930065AE20 /* WipeTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WipeTransitionAnimator.swift; sourceTree = "<group>"; };
+		B4A5231922E6925B00AB1424 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +304,7 @@
 			children = (
 				8698CFA820619EAD0065AE20 /* FileManager+Extensions.swift */,
 				8698CFA920619EAD0065AE20 /* UIView+Extensions.swift */,
+				B4A5231922E6925B00AB1424 /* URL+Extensions.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				8698CFBF20619EAD0065AE20 /* UIView+Extensions.swift in Sources */,
 				8698CFBB20619EAD0065AE20 /* ContainerViewController.swift in Sources */,
 				8698CFCA20619EAD0065AE20 /* VersionConfig.swift in Sources */,
+				B4A5231A22E6925B00AB1424 /* URL+Extensions.swift in Sources */,
 				8698CFC420619EAD0065AE20 /* UICollectionView+Extensions.swift in Sources */,
 				0E6E8C6D2112551200617815 /* ContainerViewController+ManagedChildren.swift in Sources */,
 				0EC8025C209CE9C90051F732 /* Configurable.swift in Sources */,
