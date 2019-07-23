@@ -6,7 +6,7 @@
 [Tyler Milner](https://github.com/tylermilner)
 [#65](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/65)
 
-* Conform URL to ExpressibleByStringLiteral
+* Conform URL to ExpressibleByStringLiteral (e.g. `let url: URL = "www.apple.com"`)
 [Will McGinty](https://github.com/willmcginty)
 [#66](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/66)
 
