@@ -10,7 +10,7 @@ import Foundation
 
 extension URL: ExpressibleByStringLiteral {
     
-    /// Creates a `URL` from a string literal object. This initializer will `fatalError` if given an invalid URL string.
+    /// Creates a `URL` from a string literal object. This initializer will `fatalError` if given an invalid URL string. This initializer is intended for pre-defined strings, and should be used with extreme caution.
     ///
     /// - Parameter value: The literal string to which a `URL` object should be initialized, or crash if invalid.
     public init(stringLiteral value: StaticString) {
