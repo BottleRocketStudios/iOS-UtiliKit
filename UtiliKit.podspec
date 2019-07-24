@@ -54,4 +54,8 @@ s.subspec 'ActiveLabel' do |activeLabel|
 activeLabel.source_files = 'Sources/UtiliKit/ActiveLabel/*.swift'
 end
 
+s.subspec 'Obfuscation' do |obfuscation|
+obfuscation.source_files = 'Sources/UtiliKit/Obfuscation/*.swift'
+end
+
 end

@@ -19,6 +19,8 @@
 		5C574BFF22675A51003D1641 /* SnapshotTesting.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5C574BFC22675999003D1641 /* SnapshotTesting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		62F5256D2257F4F50052B8E7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 62F5256C2257F4F50052B8E7 /* README.md */; };
 		62F5256F2257F4FE0052B8E7 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 62F5256E2257F4FE0052B8E7 /* CHANGELOG.md */; };
+		7D5611B822E79AD40017008D /* ObfuscationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5611B722E79AD40017008D /* ObfuscationTests.swift */; };
+		7D5611BA22E79B4C0017008D /* ObfuscatedKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5611B922E79B4C0017008D /* ObfuscatedKey.swift */; };
 		8677314220601BB400C54343 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
 		8677315720601D1A00C54343 /* UtiliKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869826261FE87BFA0024B73D /* UtiliKitTests.swift */; };
 		8677315820601D1A00C54343 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869826271FE87BFA0024B73D /* DateTests.swift */; };
@@ -107,6 +109,8 @@
 		5C574BFC22675999003D1641 /* SnapshotTesting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapshotTesting.framework; path = Carthage/Build/iOS/SnapshotTesting.framework; sourceTree = "<group>"; };
 		62F5256C2257F4F50052B8E7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		62F5256E2257F4FE0052B8E7 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		7D5611B722E79AD40017008D /* ObfuscationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObfuscationTests.swift; sourceTree = "<group>"; };
+		7D5611B922E79B4C0017008D /* ObfuscatedKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObfuscatedKey.swift; sourceTree = "<group>"; };
 		8677313920601BB400C54343 /* UtiliKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UtiliKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8677314120601BB400C54343 /* UtiliKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UtiliKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8677315A20601DD800C54343 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -237,12 +241,21 @@
 			isa = PBXGroup;
 			children = (
 				869826271FE87BFA0024B73D /* DateTests.swift */,
+				7D5611B722E79AD40017008D /* ObfuscationTests.swift */,
 				869826261FE87BFA0024B73D /* UtiliKitTests.swift */,
 				0ED9476220FD461300B642AB /* ContainerTests.swift */,
 				5C574BFA2264ED61003D1641 /* ActiveLabelTests.swift */,
 				8677315920601DD800C54343 /* Supporting Files */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		7D5611B622E79AAE0017008D /* Obfuscation */ = {
+			isa = PBXGroup;
+			children = (
+				7D5611B922E79B4C0017008D /* ObfuscatedKey.swift */,
+			);
+			path = Obfuscation;
 			sourceTree = "<group>";
 		};
 		8677315920601DD800C54343 /* Supporting Files */ = {
@@ -278,6 +291,7 @@
 				8698CFA220619EAD0065AE20 /* Container */,
 				8698CFA720619EAD0065AE20 /* General */,
 				8698CFAA20619EAD0065AE20 /* Instantiation */,
+				7D5611B622E79AAE0017008D /* Obfuscation */,
 				8698CFB220619EAD0065AE20 /* TimelessDate */,
 				8698CFB520619EAD0065AE20 /* Version */,
 			);
@@ -503,7 +517,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0930;
-				ORGANIZATIONNAME = CocoaPods;
+				ORGANIZATIONNAME = "Bottle Rocket Studios";
 				TargetAttributes = {
 					8677313820601BB400C54343 = {
 						CreatedOnToolsVersion = 9.2;
@@ -592,6 +606,7 @@
 				0EC8025C209CE9C90051F732 /* Configurable.swift in Sources */,
 				8698CFC820619EAD0065AE20 /* TimelessDate.swift in Sources */,
 				8698CFC320619EAD0065AE20 /* StoryboardIdentifiable.swift in Sources */,
+				7D5611BA22E79B4C0017008D /* ObfuscatedKey.swift in Sources */,
 				8698CFC920619EAD0065AE20 /* Bundle+Extensions.swift in Sources */,
 				8698CFC520619EAD0065AE20 /* UIStoryboard+Extensions.swift in Sources */,
 				8698CFC220619EAD0065AE20 /* ReuseIdentifiable.swift in Sources */,
@@ -615,6 +630,7 @@
 				0ED9476420FD473700B642AB /* ContainerTests.swift in Sources */,
 				8677315720601D1A00C54343 /* UtiliKitTests.swift in Sources */,
 				8677315820601D1A00C54343 /* DateTests.swift in Sources */,
+				7D5611B822E79AD40017008D /* ObfuscationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
