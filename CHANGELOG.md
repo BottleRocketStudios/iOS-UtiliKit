@@ -6,6 +6,10 @@
 [Will McGinty](https://github.com/willmcginty)
 [#63](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/63)
 
+* Updated initial/named view controller example so that the buttons are horizontally centered in the stack view.
+[Tyler Milner](https://github.com/tylermilner)
+[#65](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/65)
+
 ##### Bug Fixes
 
 * None
