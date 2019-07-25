@@ -6,6 +6,11 @@
 [Will McGinty](https://github.com/willmcginty)
 [#63](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/63)
 
+* Added the `Obfuscation` subspec, which includes the `ObfuscatedKey` structure for keys/passwords to ensure that 
+they don't appear in plaintext within the source or binary of your app.
+[Russell Mirabelli](https://github.com/rmirabelli)
+[#67](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/67)
+
 * Updated initial/named view controller example so that the buttons are horizontally centered in the stack view.
 [Tyler Milner](https://github.com/tylermilner)
 [#65](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/65)

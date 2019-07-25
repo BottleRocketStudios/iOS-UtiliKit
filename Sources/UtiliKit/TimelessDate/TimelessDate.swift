@@ -31,7 +31,9 @@ extension Calendar {
 public struct TimelessDate: Comparable, Equatable, Hashable {
     private(set) var date: Date
     private var calendar = Calendar.current
-    
+
+    // codebeat:disable[TOO_MANY_FUNCTIONS]
+
     /**
      Returns the DateInterval between the TimelessDate and 1 January 2001.
      
@@ -194,6 +196,7 @@ public struct TimelessDate: Comparable, Equatable, Hashable {
     public static func ==(lhs: TimelessDate, rhs: TimelessDate) -> Bool {
         return lhs.dateIntervalSinceReferenceDate == rhs.dateIntervalSinceReferenceDate
     }
+    // codebeat:enable[TOO_MANY_FUNCTIONS]
 }
 
 // MARK: CustomStringConvertable
