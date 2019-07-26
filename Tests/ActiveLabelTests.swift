@@ -2,7 +2,7 @@
 //  ActiveLabelTests.swift
 //  UtiliKit-iOSTests
 //
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Copyright © 2019 Bottle Rocket Studios. All rights reserved.
 //
 
 import XCTest

@@ -11,12 +11,13 @@ UtiliKit
 This library provides several useful and often common additions for iOS applications. These extensions, protocols, and structs are designed to simplify boilerplate code as well as remove common "Stringly-typed" use cases.
 
 ### Key Concepts
-This library is divided into 5 parts.
+This library is divided into 6 parts.
 * Instantiation - This subspec changes "Stringly-typed" view instantiation, view controller instantiation, and reusable view dequeuing into type-safe function calls.
 * General - This subspec includes extensions for both FileManager and UIView. These simplify getting common URLs and programmatically adding views down to simple variables and function calls.
 * Version - This subspec simplifies the display of version and build numbers.
 * TimelessDate - This subspec is an abstraction away from Date and Calendar. It is primarily designed to be used for simple scheduling and day comparisons in which the time is less important that the actual day.
 * Container - This subspec provides a simple ContainerViewController without any built-in navigation construct.
+* Obfuscation - This subspec provides simple routines to remove plaintext passwords or keys from your source code.
 
 ### Usage
 #### Reusable Views
@@ -171,7 +172,7 @@ let child = ...
 containerViewController.transitionToController(for: child)
 ```
 
-The container also has several delegate callback which can help customize it's behavior. Among them, is a function which returns a UIViewControllerAnimatedTransitioning object.
+The container also has several delegate callbacks which can help customize its behavior. Among them, is a function which returns a UIViewControllerAnimatedTransitioning object.
 
 ``` swift
 func containerViewController(_ container: ContainerViewController, animationControllerForTransitionFrom source: UIViewController, to destination: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -225,6 +226,14 @@ label.loadingView.lineVerticalSpacing = 8
 When initializing `ActiveLabel` in Storyboards or Xibs you must set the labels text to `nil` in code because IB initializes labels with an empty string value.
 
 When using `ActiveLabel` for snapshot tests you can center the gradient by calling `configureForSnapshotTest()` on your label.
+
+#### ObfuscatedKey
+
+To use an obfuscated key in your code, create one and use the builder variables to encode your key.
+
+``` swift
+let key = ObfuscatedKey().T.h.i.s.underscore.I.s.dash.o.b.f.u.s.c.a.t.e.d.value
+```
 
 ### Example
 

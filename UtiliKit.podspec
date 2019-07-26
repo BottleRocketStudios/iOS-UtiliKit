@@ -19,10 +19,10 @@ s.homepage          = 'https://github.com/BottleRocketStudios/iOS-UtiliKit'
 s.license           = { :type => 'Apache 2.0', :file => 'LICENSE' }
 s.author            = { 'Bottle Rocket Studios' => 'wilson.turner@bottlerocketstudios.com' }
 s.source            = { :git => 'https://github.com/bottlerocketstudios/iOS-UtiliKit.git', :tag => s.version.to_s }
-
+s.source_files      = 'Sources/UtiliKit/**/*'
+s.ios.deployment_target = '10.0'
 s.swift_version = '5.0'
-s.ios.deployment_target = '9.0'
-s.source_files = 'Sources/UtiliKit/**/*'
+
 s.default_subspec = 'Core'
 
 s.subspec 'Core' do |core|
@@ -47,11 +47,15 @@ version.source_files = 'Sources/UtiliKit/Version/*.swift'
 end
 
 s.subspec 'Container' do |container|
-container.source_files = 'Sources/UtiliKit/Container/*.swift'
+container.source_files = 'Sources/UtiliKit/Container/**/*.swift'
 end
 
 s.subspec 'ActiveLabel' do |activeLabel|
 activeLabel.source_files = 'Sources/UtiliKit/ActiveLabel/*.swift'
+end
+
+s.subspec 'Obfuscation' do |obfuscation|
+obfuscation.source_files = 'Sources/UtiliKit/Obfuscation/*.swift'
 end
 
 end

@@ -15,6 +15,9 @@ import UIKit
 /// - Note: `ActiveLabel` loading indicators do not scale with Dynamic Type at this time. The text in the label does scale as expected.
 @IBDesignable
 class ActiveLabel: UILabel {
+
+    // codebeat:disable[TOO_MANY_FUNCTIONS]
+
     static let loadingGray: UIColor = UIColor(red: 233.0/255.0, green: 231.0/255.0, blue: 237.0/255.0, alpha: 1.0)
     
     /// Struct used to represent how an `ActiveLabel` should be displayed. Should be passed into the `ActiveLabel` convenience initializer.
@@ -382,4 +385,7 @@ private extension ActiveLabel {
         
         return animation
     }
+
+    // codebeat:enable[TOO_MANY_FUNCTIONS]
+
 }

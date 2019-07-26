@@ -14,8 +14,22 @@ class ViewControllerB: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .green
-        
         logEvent("View B Did Load")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        logEvent("View B Will Appear")
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        logEvent("View B Will Layout Subviews")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        logEvent("View B Did Layout Subviews")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,7 +44,7 @@ class ViewControllerB: UIViewController {
     
     func logEvent(_ message: String) {
         if logLifecycleEvents {
-            print(message)
+            debugPrint(message)
         }
     }
 }
