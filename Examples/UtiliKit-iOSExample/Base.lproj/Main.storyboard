@@ -460,6 +460,8 @@ loadingLineVerticalSpacing = 8</string>
                     </view>
                     <navigationItem key="navigationItem" id="qTh-pe-Ufi"/>
                     <connections>
+                        <outlet property="aButton" destination="o6U-Ao-1kc" id="6pU-Yx-mmF"/>
+                        <outlet property="bButton" destination="lkE-0H-vi2" id="YjX-Hz-wFR"/>
                         <outlet property="containerView" destination="lt9-Jb-RKi" id="KEs-cZ-iyN"/>
                     </connections>
                 </viewController>

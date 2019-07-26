@@ -18,16 +18,9 @@ public extension UICollectionView {
         ///
         /// - Parameter kind: The type of supplementary view to be instantiated or dequeued.
         public init?(kind: String) {
-            let headerKind: String
-            let footerKind: String
-            #if swift(>=4.2)
-            headerKind = UICollectionView.elementKindSectionHeader
-            footerKind = UICollectionView.elementKindSectionFooter
-            #else
-            headerKind = UICollectionElementKindSectionHeader
-            footerKind = UICollectionElementKindSectionFooter
-            #endif
-            
+            let headerKind: String = UICollectionView.elementKindSectionHeader
+            let footerKind: String = UICollectionView.elementKindSectionFooter
+
             if kind == headerKind {
                 self = .sectionHeader
             } else if kind == footerKind {
@@ -40,18 +33,8 @@ public extension UICollectionView {
         /// Either UICollectionElementKindSectionHeader or UICollectionElementKindSectionFooter
         public var type: String {
             switch self {
-            case .sectionHeader:
-                #if swift(>=4.2)
-                return UICollectionView.elementKindSectionHeader
-                #else
-                return UICollectionElementKindSectionHeader
-                #endif
-            case .sectionFooter:
-                #if swift(>=4.2)
-                return UICollectionView.elementKindSectionFooter
-                #else
-                return UICollectionElementKindSectionFooter
-                #endif
+            case .sectionHeader: return UICollectionView.elementKindSectionHeader
+            case .sectionFooter: return UICollectionView.elementKindSectionFooter
             }
         }
     }

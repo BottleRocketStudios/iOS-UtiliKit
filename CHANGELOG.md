@@ -2,6 +2,10 @@
 
 ##### Enhancements
 
+* Add interactive transitioning and transition coordination to `ContainerViewController`. This change has bumped the deployment target to iOS 10.0+
+[Will McGinty](https://github.com/willmcginty)
+[#63](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/63)
+
 * Added the `Obfuscation` subspec, which includes the `ObfuscatedKey` structure for keys/passwords to ensure that 
 they don't appear in plaintext within the source or binary of your app.
 [Russell Mirabelli](https://github.com/rmirabelli)
