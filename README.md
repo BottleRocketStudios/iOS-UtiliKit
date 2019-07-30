@@ -262,6 +262,16 @@ use_frameworks!
 
 Then run `pod install` with CocoaPods 0.36 or newer.
 
+### Installation - Carthage
+
+Add the following to your [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile):
+
+```
+github "BottleRocketStudios/iOS-UtiliKit"
+```
+
+Run `carthage update` and follow the steps as described in Carthage's [README](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
+
 ### Contributing
 
 See the [CONTRIBUTING] document. Thank you, [contributors]!

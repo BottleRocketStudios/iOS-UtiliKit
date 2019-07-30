@@ -15,6 +15,10 @@ they don't appear in plaintext within the source or binary of your app.
 [Tyler Milner](https://github.com/tylermilner)
 [#65](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/65)
 
+* Added Carthage support.
+[Ryan Gant](https://github.com/ganttastic)
+[#68](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/68)
+
 ##### Bug Fixes
 
 * None
