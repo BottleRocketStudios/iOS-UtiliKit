@@ -1,7 +1,7 @@
 ---
 name: Release template
 about: Basic release checklist.
-title: Version
+title: Version [version_number]
 labels: ''
 assignees: ''
 
