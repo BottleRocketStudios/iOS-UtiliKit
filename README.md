@@ -8,20 +8,27 @@ UtiliKit
 [![codecov](https://codecov.io/gh/BottleRocketStudios/iOS-UtiliKit/branch/master/graph/badge.svg)](https://codecov.io/gh/BottleRocketStudios/iOS-UtiliKit)
 [![codebeat badge](https://codebeat.co/badges/e47aed79-20ee-4054-b8cd-2bdaceab52dd)](https://codebeat.co/projects/github-com-bottlerocketstudios-ios-utilikit-master)
 
-### Purpose
+## Purpose
+
 This library provides several useful and often common additions for iOS applications. These extensions, protocols, and structs are designed to simplify boilerplate code as well as remove common "Stringly-typed" use cases.
 
-### Key Concepts
-This library is divided into 6 parts.
-* Instantiation - This subspec changes "Stringly-typed" view instantiation, view controller instantiation, and reusable view dequeuing into type-safe function calls.
-* General - This subspec includes extensions for both FileManager and UIView. These simplify getting common URLs and programmatically adding views down to simple variables and function calls.
-* Version - This subspec simplifies the display of version and build numbers.
-* TimelessDate - This subspec is an abstraction away from Date and Calendar. It is primarily designed to be used for simple scheduling and day comparisons in which the time is less important that the actual day.
-* Container - This subspec provides a simple ContainerViewController without any built-in navigation construct.
-* Obfuscation - This subspec provides simple routines to remove plaintext passwords or keys from your source code.
+## Key Concepts
 
-### Usage
+This library is divided into 7 parts, which are available as CocoaPods subspecs.
+* **Instantiation** - This subspec changes "Stringly-typed" view instantiation, view controller instantiation, and reusable view dequeuing into type-safe function calls.
+* **General** - This subspec includes extensions for both `FileManager` and `UIView`. These simplify getting common URLs and programmatically adding views down to simple variables and function calls.
+* **Version** - This subspec simplifies the display of version and build numbers.
+* **TimelessDate** - This subspec is an abstraction away from `Date` and `Calendar`. It is primarily designed to be used for simple scheduling and day comparisons in which the time is less important that the actual day.
+* **Container** - This subspec provides a simple `ContainerViewController` without any built-in navigation construct.
+* **ActiveLabel** - This subspec provides a `UILabel` subclass that renders gradient "loading" animations while the label's `text` property is set to `nil`.
+* **Obfuscation** - This subspec provides simple routines to remove plaintext passwords or keys from your source code.
+
+## Usage
+
+### Instantiation
+
 #### Reusable Views
+
 Registering and dequeuing cells, collection view supplementary views, table view headers and footers, and annotations is as simple as calling register on their presenting view, and dequeuing them in the collectionView(_:, cellForItemAt:) -> UICollectionViewCell, or equivalent, function.
 
 ``` swift
@@ -92,6 +99,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 ```
 
 #### View Controllers
+
 In order to instantiate a view controller from a storyboard you simply need to create a Storyboard.Identifier for the storyboard and define the return type.
 A simple implementation might look like this:
 
@@ -110,7 +118,37 @@ class ViewController: UIViewController {
 }
 ```
 
-#### Version Numbers
+### General
+
+#### FileManager Extensions
+
+There are several convenience methods provided as an extension on `FileManager`:
+
+```swift
+let documentsDirectory = FileManager.default.documentsDirectory
+let cachesDirectory = FileManager.default.cachesDirectory
+let appSupportDirectory = FileManager.default.applicationSupportDirectory
+let sharedContainerURL = FileManager.default.sharedContainerURL(forSecurityApplicationGroupIdentifier: "com.app.group")
+```
+
+#### UIView Extensions
+
+There are several convenience methods provided as an extension on `UIView`, mostly for easily constraining subviews to their parent view:
+
+```swift
+let myView = UIView(frame: .zero)
+view.addSubview(myView, constrainedToSuperview: true)
+
+let anotherView = UIView(frame: .zero)
+anotherView.translatesAutoresizingMaskIntoConstraints = false
+view.addSubview(anotherView)
+
+let insets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+anotherView.constrainEdgesToSuperview(with: insets)
+```
+
+### Version Numbers
+
 Getting version numbers into user facing strings only requires a function call. *Note this function throws an error if the provided version config contains an invalid key.
 A simple implementation might look like this:
 
@@ -130,7 +168,8 @@ func printVersions() {
 }
 ```
 
-#### Timeless Dates
+### Timeless Dates
+
 A Timeless Date is a simple abstraction the removes the time from a Date and uses Calendar for calculations. This is especially useful for calendar and travel use cases as seeing how many days away something is often is more important that the number of hours between them / 24.
 
 ``` swift
@@ -151,7 +190,8 @@ func addOneHourTo(date: Date) -> Date {
 }
 ```
 
-#### ContainerViewController
+### ContainerViewController
+
 A solution for managing multiple child view controllers, the ContainerViewController manages the lifecycle of the child controllers. This allows you to focus on the navigational structure of your views as well as the transitions between them.
 
 ``` swift
@@ -185,7 +225,8 @@ func containerViewController(_ container: ContainerViewController, animationCont
 }
 ``` 
 
-#### ActiveLabel
+### ActiveLabel
+
 `ActiveLabel` is a `UILabel` subclass that adds horizontal activity indicators to your label while its `text` property is set to `nil`. You can customize this view quite a bit in code or in Interface Builder to fit your specific needs. The purpose of this subclass is to have a visual indication at the label level while you are loading data into labels.
 
 Default Configuration
@@ -228,7 +269,7 @@ When initializing `ActiveLabel` in Storyboards or Xibs you must set the labels t
 
 When using `ActiveLabel` for snapshot tests you can center the gradient by calling `configureForSnapshotTest()` on your label.
 
-#### ObfuscatedKey
+### ObfuscatedKey
 
 To use an obfuscated key in your code, create one and use the builder variables to encode your key.
 
@@ -236,16 +277,16 @@ To use an obfuscated key in your code, create one and use the builder variables 
 let key = ObfuscatedKey().T.h.i.s.underscore.I.s.dash.o.b.f.u.s.c.a.t.e.d.value
 ```
 
-### Example
+## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-### Requirements
+## Requirements
 
 * iOS 9.0+
 * Swift 5.0
 
-### Installation - CocoaPods
+## Installation - CocoaPods
 
 [CocoaPods]: http://cocoapods.org
 
@@ -263,7 +304,7 @@ use_frameworks!
 
 Then run `pod install` with CocoaPods 0.36 or newer.
 
-### Installation - Carthage
+## Installation - Carthage
 
 Add the following to your [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile):
 
@@ -273,7 +314,7 @@ github "BottleRocketStudios/iOS-UtiliKit"
 
 Run `carthage update` and follow the steps as described in Carthage's [README](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
 
-### Contributing
+## Contributing
 
 See the [CONTRIBUTING] document. Thank you, [contributors]!
 
