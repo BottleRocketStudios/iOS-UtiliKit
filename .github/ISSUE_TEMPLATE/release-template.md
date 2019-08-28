@@ -13,7 +13,7 @@ Release checklist:
 - [] Update version number in `Podspec`
 - [] Update `README.md` if necessary
 - [] Update `CHANGELOG.md` for the new release
-- [] Create pull request into master
+- [] Create pull request into `master`
 - [] Create version number tag in Git
 - [] Publish release on GitHub
 - [] Publish release on Cocoapods trunk
