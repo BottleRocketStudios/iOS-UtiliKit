@@ -76,8 +76,8 @@
 		8698D0272061A3930065AE20 /* ViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D0072061A3930065AE20 /* ViewControllerA.swift */; };
 		8698D0282061A3930065AE20 /* ViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D0082061A3930065AE20 /* ViewControllerB.swift */; };
 		8698D0292061A3930065AE20 /* WipeTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D0092061A3930065AE20 /* WipeTransitionAnimator.swift */; };
-		B4CCCAEF22D57284001A7A4F /* DefaultContainerTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFA620619EAD0065AE20 /* DefaultContainerTransitionAnimator.swift */; };
 		B4A5231A22E6925B00AB1424 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A5231922E6925B00AB1424 /* URL+Extensions.swift */; };
+		B4CCCAEF22D57284001A7A4F /* DefaultContainerTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFA620619EAD0065AE20 /* DefaultContainerTransitionAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -797,7 +797,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				VERSION = 1.5.0;
+				VERSION = 1.6.0;
 			};
 			name = Debug;
 		};
@@ -847,7 +847,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
-				VERSION = 1.5.0;
+				VERSION = 1.6.0;
 			};
 			name = Release;
 		};
