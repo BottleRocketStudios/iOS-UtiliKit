@@ -98,7 +98,7 @@ private extension ContainerViewController {
         prepareForTransitioning(from: source, to: destination, animated: true)
         defer { delegate?.containerViewController(self, didBeginTransitioningFrom: source, to: destination) }
         
-        let context = configuredTransitionContext(from: source, to: destination)
+        let context = configuredTransitionContext(from: source, to: destination, completion: completion)
         let animator = delegate?.containerViewController(self, animationControllerForTransitionFrom: source, to: destination) ?? DefaultContainerTransitionAnimator()
         let interactor = delegate?.containerViewController(self, interactionControllerForTransitionFrom: source, to: destination)
         
@@ -114,12 +114,13 @@ private extension ContainerViewController {
 //MARK: Helper
 private extension ContainerViewController {
     
-    func configuredTransitionContext(from source: UIViewController, to destination: UIViewController) -> ContainerTransitionContext {
+    func configuredTransitionContext(from source: UIViewController, to destination: UIViewController, completion: ((Bool) -> Void)? = nil) -> ContainerTransitionContext {
         let context = ContainerTransitionContext(containerView: view, fromViewController: source, toViewController: destination)
         context.completion = { [weak self] finished in
             guard let self = self else { return }
             self.finishTransitioning(from: source, to: destination, success: finished, animated: true)
             self.delegate?.containerViewController(self, didFinishTransitioningFrom: source, to: destination)
+            completion?(finished)
         }
         
         return context

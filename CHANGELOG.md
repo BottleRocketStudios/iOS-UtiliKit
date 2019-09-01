@@ -6,7 +6,9 @@
 
 ##### Bug Fixes
 
-* None
+* Fix an issue where the completion handler does not get called when transitioning.
+[Will McGinty](https://github.com/willmcginty)
+[#76](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/76)
 
 ## 1.6.0 (2019-08-29)
 
