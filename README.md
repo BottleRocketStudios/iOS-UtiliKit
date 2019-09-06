@@ -286,6 +286,13 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 * iOS 9.0+
 * Swift 5.0
 
+## Installation - Swift Package Manager
+```swift
+dependencies: [
+    .package(url: "https://github.com/BottleRocketStudios/iOS-UtiliKit.git", from: "1.6.0")
+]
+```
+
 ## Installation - CocoaPods
 
 [CocoaPods]: http://cocoapods.org
