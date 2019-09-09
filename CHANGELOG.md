@@ -11,7 +11,7 @@
 [#76](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/76)
 
 * Added Swift Package Manager support.
-[Brian Miller](https://gitthub.com/jobsismyhomeboy)
+[Brian Miller](https://github.com/jobsismyhomeboy)
 [#64](https://github.com/BottleRocketStudios/iOS-UtiliKit/issues/64)
 
 ## 1.6.0 (2019-08-29)
