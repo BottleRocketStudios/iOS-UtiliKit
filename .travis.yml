@@ -43,11 +43,6 @@ script:
   - if [ $POD_LINT == "YES" ]; then
       pod lib lint;
     fi
-    
-  # Run `swift build` if specified
-  - if [ $SWIFT_BUILD == "YES"]; then
-      swift build;
-    fi
 
   # Run Danger if specified
   - if [ $RUN_DANGER == "YES" ]; then
