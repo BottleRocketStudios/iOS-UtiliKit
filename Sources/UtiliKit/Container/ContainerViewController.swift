@@ -116,9 +116,9 @@ private extension ContainerViewController {
     
     func configuredTransitionContext(from source: UIViewController, to destination: UIViewController, completion: ((Bool) -> Void)? = nil) -> ContainerTransitionContext {
         let context = ContainerTransitionContext(containerView: view, fromViewController: source, toViewController: destination)
-        context.completion = { [weak self] finished in
+        context.completion = { [unowned context, weak self] finished in
             guard let self = self else { return }
-            self.finishTransitioning(from: source, to: destination, success: finished, animated: true)
+            self.finishTransitioning(from: source, to: destination, success: !context.transitionWasCancelled, animated: true)
             self.delegate?.containerViewController(self, didFinishTransitioningFrom: source, to: destination)
             completion?(finished)
         }

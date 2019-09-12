@@ -10,6 +10,10 @@
 [Will McGinty](https://github.com/willmcginty)
 [#76](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/76)
 
+* Fix an issue where the transition was mistakenly marked as a failure.
+[Will McGinty](https://github.com/willmcginty)
+[#77](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/77)
+
 ## 1.6.0 (2019-08-29)
 
 ##### Enhancements
