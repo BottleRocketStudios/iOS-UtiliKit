@@ -9,43 +9,26 @@ import UIKit
 
 /// This class is internal to the framework. It is the internal default transition animator used by the ContainerViewController when its delegate does not provide one.
 class DefaultContainerTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    
-    // MARK: Properties
-    private var interruptibleAnimator: UIViewPropertyAnimator?
-    
-    // MARK: ContainerViewControllerAnimatedTransitioning
+
+    // MARK: UIViewControllerAnimatedTransitioning
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3
     }
     
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        interruptibleAnimator?.startAnimation()
-    }
-    
-    func interruptibleAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
-        guard let destination = transitionContext.view(forKey: .to), let source = transitionContext.view(forKey: .from) else {
+     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let destinationController = transitionContext.viewController(forKey: .to),
+            let destination = destinationController.view, let source = transitionContext.view(forKey: .from) else {
             fatalError("The context is improperly configured - requires both a source and destination.")
         }
         
-        if let animator = interruptibleAnimator {
-            return animator
-        }
-        
-        let duration = transitionDuration(using: transitionContext)
-        let timingParameters = UICubicTimingParameters(animationCurve: .easeInOut)
-        let propertyAnimator = UIViewPropertyAnimator(duration: duration, timingParameters: timingParameters)
-        propertyAnimator.addAnimations {
-            UIView.transition(from: source, to: destination, duration: duration, options: [.transitionCrossDissolve]) { finished in
-                transitionContext.completeTransition(finished)
-            }
-        }
-        
-        propertyAnimator.addCompletion { [weak self] animatingPosition in
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-            self?.interruptibleAnimator = nil
-        }
-        
-        interruptibleAnimator = propertyAnimator
-        return propertyAnimator
+        transitionContext.containerView.addSubview(destination)
+        destination.frame = transitionContext.finalFrame(for: destinationController)
+       
+       UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
+           source.alpha = 0
+           destination.alpha = 1
+       }) { _ in
+           transitionContext.completeTransition(true)
+       }
     }
 }
