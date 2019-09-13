@@ -14,6 +14,10 @@
 [Will McGinty](https://github.com/willmcginty)
 [#77](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/77)
 
+* Fix a transitionting issue where appearance callbacks were unbalanced in iOS 13.
+[Will McGinty](https://github.com/willmcginty)
+[#78](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/78)
+
 ## 1.6.0 (2019-08-29)
 
 ##### Enhancements

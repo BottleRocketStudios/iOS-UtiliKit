@@ -12,23 +12,16 @@ class DefaultContainerTransitionAnimator: NSObject, UIViewControllerAnimatedTran
 
     // MARK: UIViewControllerAnimatedTransitioning
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.3
+        return 0.0
     }
     
-     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let destinationController = transitionContext.viewController(forKey: .to),
-            let destination = destinationController.view, let source = transitionContext.view(forKey: .from) else {
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let destinationController = transitionContext.viewController(forKey: .to), let destination = destinationController.view else {
             fatalError("The context is improperly configured - requires both a source and destination.")
         }
         
         transitionContext.containerView.addSubview(destination)
         destination.frame = transitionContext.finalFrame(for: destinationController)
-       
-       UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {
-           source.alpha = 0
-           destination.alpha = 1
-       }) { _ in
-           transitionContext.completeTransition(true)
-       }
+        transitionContext.completeTransition(true)
     }
 }
