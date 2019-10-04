@@ -18,6 +18,10 @@
 [Will McGinty](https://github.com/willmcginty)
 [#79](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/79)
 
+* Fix an issue where ContainerViewController was not removing source or destination views from the view hierarchy after transitioning
+[Dimitar Milinski](https://github.com/dmilinski)
+[#81](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/81)
+
 ## 1.6.0 (2019-08-29)
 
 ##### Enhancements

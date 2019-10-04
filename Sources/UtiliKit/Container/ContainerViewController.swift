@@ -149,12 +149,14 @@ private extension ContainerViewController {
         
         if success {
             source?.willMove(toParent: nil)
+            source?.view.removeFromSuperview()
             source?.removeFromParent()
            
             visibleController = destination
             
         } else {
             destination.willMove(toParent: nil)
+            destination.view.removeFromSuperview()
             destination.removeFromParent()
             
             visibleController = source
