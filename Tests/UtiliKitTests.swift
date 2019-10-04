@@ -77,4 +77,15 @@ class OpenSourceUtilitiesTests: XCTestCase {
         
         XCTAssertEqual(superview.bounds.inset(by: insets), view.frame)
     }
+    
+    // MARK: SynchronizedValue Tests
+    
+    // Property wrappers aren't supported on local variables yet.
+    @SynchronizedValue
+    var dictionary = [String: String]()
+    
+    func test_synchronizedValue() {
+        dictionary["foo"] = "bar"
+        XCTAssertEqual(dictionary["foo"], "bar")
+    }
 }

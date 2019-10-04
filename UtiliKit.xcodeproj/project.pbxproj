@@ -78,6 +78,7 @@
 		8698D0292061A3930065AE20 /* WipeTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D0092061A3930065AE20 /* WipeTransitionAnimator.swift */; };
 		B4A5231A22E6925B00AB1424 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A5231922E6925B00AB1424 /* URL+Extensions.swift */; };
 		B4CCCAEF22D57284001A7A4F /* DefaultContainerTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFA620619EAD0065AE20 /* DefaultContainerTransitionAnimator.swift */; };
+		CB8A21B52347A3E000D762D1 /* SynchronizedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A21B42347A3E000D762D1 /* SynchronizedValue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +186,7 @@
 		8698D0082061A3930065AE20 /* ViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerB.swift; sourceTree = "<group>"; };
 		8698D0092061A3930065AE20 /* WipeTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WipeTransitionAnimator.swift; sourceTree = "<group>"; };
 		B4A5231922E6925B00AB1424 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
+		CB8A21B42347A3E000D762D1 /* SynchronizedValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizedValue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				8698CFA820619EAD0065AE20 /* FileManager+Extensions.swift */,
+				CB8A21B42347A3E000D762D1 /* SynchronizedValue.swift */,
 				8698CFA920619EAD0065AE20 /* UIView+Extensions.swift */,
 				B4A5231922E6925B00AB1424 /* URL+Extensions.swift */,
 			);
@@ -645,6 +648,7 @@
 				8698CFC420619EAD0065AE20 /* UICollectionView+Extensions.swift in Sources */,
 				0EC8025C209CE9C90051F732 /* Configurable.swift in Sources */,
 				8698CFC820619EAD0065AE20 /* TimelessDate.swift in Sources */,
+				CB8A21B52347A3E000D762D1 /* SynchronizedValue.swift in Sources */,
 				8698CFC320619EAD0065AE20 /* StoryboardIdentifiable.swift in Sources */,
 				7D5611BA22E79B4C0017008D /* ObfuscatedKey.swift in Sources */,
 				8698CFC920619EAD0065AE20 /* Bundle+Extensions.swift in Sources */,
