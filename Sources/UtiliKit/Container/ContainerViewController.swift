@@ -49,11 +49,8 @@ open class ContainerViewController: UIViewController {
         guard shouldAutomaticallyTransitionOnLoad, let initial = managedChildren.first else { return }
         transition(to: initial.viewController)
     }
-}
-
-//MARK: Public Interface
-extension ContainerViewController {
     
+    // MARK: Public Interface
     open func transitionToControllerForChild(withIdentifier identifier: AnyHashable, completion: ((Bool) -> Void)? = nil) {
         managedChildren.first { identifier == $0.identifier }.map { transitionToController(for: $0, completion: completion) }
     }
@@ -74,6 +71,17 @@ extension ContainerViewController {
     open func child(at index: Int) -> ManagedChild? {
         guard index >= managedChildren.startIndex && index < managedChildren.endIndex else { return nil }
         return managedChildren[index]
+    }
+    
+    open func addManagedChildIfNeeded(_ child: ManagedChild) {
+        if !managedChildren.contains { $0.viewController === child.viewController } {
+            managedChildren.insert(child, at: managedChildren.startIndex)
+        }
+        
+        if !isViewLoaded, managedChildren.first?.identifier != child.identifier {
+            managedChildren.removeAll { $0.identifier == child.identifier }
+            managedChildren.insert(child, at: managedChildren.startIndex)
+        }
     }
 }
 
