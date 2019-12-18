@@ -49,16 +49,14 @@ open class ContainerViewController: UIViewController {
         guard shouldAutomaticallyTransitionOnLoad, let initial = managedChildren.first else { return }
         transition(to: initial.viewController)
     }
-}
-
-//MARK: Public Interface
-extension ContainerViewController {
     
-    open func transitionToControllerForChild(withIdentifier identifier: AnyHashable, completion: ((Bool) -> Void)? = nil) {
-        managedChildren.first { identifier == $0.identifier }.map { transitionToController(for: $0, completion: completion) }
+    // MARK: Public Interface
+    open func child(at index: Int) -> ManagedChild? {
+        guard index >= managedChildren.startIndex && index < managedChildren.endIndex else { return nil }
+        return managedChildren[index]
     }
     
-    open func transitionToController(for child: ManagedChild, completion: ((Bool) -> Void)? = nil) {
+    open func addManagedChildIfNeeded(_ child: ManagedChild) {
         if !managedChildren.contains { $0.viewController === child.viewController } {
             managedChildren.insert(child, at: managedChildren.startIndex)
         }
@@ -67,13 +65,15 @@ extension ContainerViewController {
             managedChildren.removeAll { $0.identifier == child.identifier }
             managedChildren.insert(child, at: managedChildren.startIndex)
         }
-        
-        transition(to: child.viewController, completion: completion)
     }
     
-    open func child(at index: Int) -> ManagedChild? {
-        guard index >= managedChildren.startIndex && index < managedChildren.endIndex else { return nil }
-        return managedChildren[index]
+    open func transitionToControllerForChild(withIdentifier identifier: AnyHashable, completion: ((Bool) -> Void)? = nil) {
+        managedChildren.first { identifier == $0.identifier }.map { transitionToController(for: $0, completion: completion) }
+    }
+    
+    open func transitionToController(for child: ManagedChild, completion: ((Bool) -> Void)? = nil) {
+        addManagedChildIfNeeded(child)
+        transition(to: child.viewController, completion: completion)
     }
 }
 
