@@ -6,6 +6,10 @@
 [Will McGinty](https://github.com/willmcginty)
 [#87](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/82)
 
+* Add `postTransitionBehavior` to `ContainerViewController`, automating some common child management scenarios
+[Dimitar Milinski](https://github.com/dmilinski)
+[#88](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/83)
+
 ##### Bug Fixes
 
 * None
