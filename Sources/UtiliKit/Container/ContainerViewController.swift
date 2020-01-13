@@ -174,7 +174,8 @@ private extension ContainerViewController {
             removeAllNonVisibleChildren(except: [])
         case .removeAllNonVisibleChildrenExcept(let identifiers):
             removeAllNonVisibleChildren(except: identifiers)
-        case .none: break
+        case .none:
+            break
         }
         
         containerTransitionContext = nil

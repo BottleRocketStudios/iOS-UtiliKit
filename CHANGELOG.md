@@ -4,11 +4,11 @@
 
 * Make it possible to override functions in container, which aid in `ManagedChild` managemet.
 [Will McGinty](https://github.com/willmcginty)
-[#87](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/82)
+[#87](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/87)
 
 * Add `postTransitionBehavior` to `ContainerViewController`, automating some common child management scenarios
 [Dimitar Milinski](https://github.com/dmilinski)
-[#88](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/83)
+[#88](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/88)
 
 ##### Bug Fixes
 
