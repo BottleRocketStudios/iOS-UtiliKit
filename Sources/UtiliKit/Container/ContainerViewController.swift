@@ -11,8 +11,10 @@ open class ContainerViewController: UIViewController {
     
     // MARK: Subtypes
     public enum PostTransitionBehavior {
-        case removeAllNonVisibleChildren
         case removeAllNonVisibleChildrenExcept([AnyHashable])
+        case none
+        
+        static var removeAllNonVisibleChildren: PostTransitionBehavior { return .removeAllNonVisibleChildrenExcept([]) }
     }
     
     //MARK: Properties
@@ -32,7 +34,7 @@ open class ContainerViewController: UIViewController {
     // MARK: Transitioning
     private var containerTransitionContext: UIViewControllerContextTransitioning?
     open var containerTransitionCoordinator: ContainerViewControllerTransitionCoordinator?
-    open var postTransitionBehavior: PostTransitionBehavior?
+    open var postTransitionBehavior: PostTransitionBehavior = .none
     
     //MARK: Initializers
     public convenience init(managedChildren: [ManagedChild], delegate: ContainerViewControllerDelegate? = nil) {
@@ -170,8 +172,6 @@ private extension ContainerViewController {
         }
         
         switch postTransitionBehavior {
-        case .removeAllNonVisibleChildren:
-            removeAllNonVisibleChildren(except: [])
         case .removeAllNonVisibleChildrenExcept(let identifiers):
             removeAllNonVisibleChildren(except: identifiers)
         case .none:
