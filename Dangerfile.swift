@@ -13,3 +13,5 @@ let sourceChanges = allSourceFiles.first(where: { $0.hasPrefix("Sources") })
 if !changelogChanged && sourceChanges != nil {
     warn("No CHANGELOG entry added.")
 }
+
+message("These files have changed: \(allSourceFiles.joined())")
