@@ -14,4 +14,4 @@ if !changelogChanged && sourceChanges != nil {
     warn("No CHANGELOG entry added.")
 }
 
-message("These files have changed: \(allSourceFiles.joined())")
+message("These files have changed: \(allSourceFiles.joined(separator: ","))")
