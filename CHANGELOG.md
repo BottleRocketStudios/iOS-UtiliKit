@@ -10,6 +10,10 @@
 [Dimitar Milinski](https://github.com/dmilinski)
 [#88](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/88)
 
+* Switch `removeAllNonVisibleChildren` to `public`
+[Dimitar Milinski](https://github.com/dmilinski)
+[#89](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/89)
+
 ##### Bug Fixes
 
 * None
