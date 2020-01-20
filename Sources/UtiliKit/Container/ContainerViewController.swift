@@ -14,7 +14,7 @@ open class ContainerViewController: UIViewController {
         case removeAllNonVisibleChildrenExcept([AnyHashable])
         case none
         
-        static var removeAllNonVisibleChildren: PostTransitionBehavior { return .removeAllNonVisibleChildrenExcept([]) }
+        public static var removeAllNonVisibleChildren: PostTransitionBehavior { return .removeAllNonVisibleChildrenExcept([]) }
     }
     
     //MARK: Properties
