@@ -9,6 +9,14 @@ import UIKit
 
 open class ContainerViewController: UIViewController {
     
+    // MARK: Subtypes
+    public enum PostTransitionBehavior {
+        case removeAllNonVisibleChildrenExcept([AnyHashable])
+        case none
+        
+        static var removeAllNonVisibleChildren: PostTransitionBehavior { return .removeAllNonVisibleChildrenExcept([]) }
+    }
+    
     //MARK: Properties
     open var managedChildren: [ManagedChild] = []
     open var visibleIndex: Int? { return visibleController.flatMap(index(ofChild:)) }
@@ -26,6 +34,7 @@ open class ContainerViewController: UIViewController {
     // MARK: Transitioning
     private var containerTransitionContext: UIViewControllerContextTransitioning?
     open var containerTransitionCoordinator: ContainerViewControllerTransitionCoordinator?
+    open var postTransitionBehavior: PostTransitionBehavior = .none
     
     //MARK: Initializers
     public convenience init(managedChildren: [ManagedChild], delegate: ContainerViewControllerDelegate? = nil) {
@@ -162,7 +171,22 @@ private extension ContainerViewController {
             visibleController = source
         }
         
+        switch postTransitionBehavior {
+        case .removeAllNonVisibleChildrenExcept(let identifiers):
+            removeAllNonVisibleChildren(except: identifiers)
+        case .none:
+            break
+        }
+        
         containerTransitionContext = nil
         isTransitioning = false
+    }
+    
+    func removeAllNonVisibleChildren(except identifiers: [AnyHashable]) {
+        managedChildren.forEach {
+            if $0.viewController != visibleChild?.viewController && !identifiers.contains($0.identifier) {
+                removeChild($0)
+            }
+        }
     }
 }

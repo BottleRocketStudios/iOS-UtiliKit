@@ -60,4 +60,54 @@ class ContainerTests: XCTestCase {
         
         XCTAssertNil(container.child(at: children.count))
     }
+    
+    func test_Container_removeNonVisbleChildren() {
+        let children = [Child(identifier: "title", viewController: UIViewController()),
+                        Child(identifier: "title2", viewController: UIViewController()),
+                        Child(identifier: "title3", viewController: UIViewController()),
+                        Child(identifier: "title4", viewController: UIViewController())]
+        
+        let container = ContainerViewController(managedChildren: children)
+        container.loadViewIfNeeded()
+        container.postTransitionBehavior = .removeAllNonVisibleChildren
+        
+        let transition = expectation(description: "waitForTransition")
+        
+        container.transitionToControllerForChild(withIdentifier: "title3") { (_) in
+            transition.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0) { (_) in
+            XCTAssert(container.managedChildren.count == 1)
+            XCTAssert((container.managedChildren.first?.identifier as? String) == "title3")
+        }
+    }
+    
+    func test_Container_removeNonVisbleChildrenExcept() {
+        let children = [Child(identifier: "title", viewController: UIViewController()),
+                        Child(identifier: "title2", viewController: UIViewController()),
+                        Child(identifier: "title3", viewController: UIViewController()),
+                        Child(identifier: "title4", viewController: UIViewController())]
+        
+        let container = ContainerViewController(managedChildren: children)
+        container.loadViewIfNeeded()
+        container.postTransitionBehavior = .removeAllNonVisibleChildrenExcept(["title2", "title4"])
+        
+        let transition = expectation(description: "waitForTransition")
+        
+        container.transitionToControllerForChild(withIdentifier: "title3") { (_) in
+            transition.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0) { (_) in
+            XCTAssert(container.managedChildren.count == 3)
+            let identifiers: [String] = container.managedChildren.compactMap {
+                return $0.identifier as? String
+            }
+            
+            XCTAssert(identifiers.contains("title2"))
+            XCTAssert(identifiers.contains("title4"))
+            XCTAssert(identifiers.contains("title3"))
+        }
+    }
 }
