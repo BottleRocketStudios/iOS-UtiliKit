@@ -20,8 +20,13 @@ public extension ContainerViewController {
         }
         
         // MARK: Properties
-        let identifier: Identifier
-        let viewController: UIViewController
+        public let identifier: Identifier
+        public let viewController: UIViewController
+        
+        public init(identifier: Identifier, viewController: UIViewController) {
+            self.identifier = identifier
+            self.viewController = viewController
+        }
         
         // MARK: Equatable
         public static func == (lhs: Child, rhs: Child) -> Bool {
@@ -82,42 +87,46 @@ public extension ContainerViewController {
         }
         
         // MARK: Interface
-        func contains(_ child: Child) -> Bool {
+        public func contains(_ child: Child) -> Bool {
             return children.contains(child)
         }
         
-        func existingChild(with identifier: Child.Identifier) -> Child? {
+        public func existingChild(with identifier: Child.Identifier) -> Child? {
             return existingChild(where: { $0.identifier == identifier })
         }
         
-        func existingChild(with viewController: UIViewController) -> Child? {
+        public func existingChild(with viewController: UIViewController) -> Child? {
             return existingChild(where: { $0.viewController == viewController })
         }
         
-        func existingChild(where predicate: @escaping (Child) -> Bool) -> Child? {
+        public func existingChild(where predicate: @escaping (Child) -> Bool) -> Child? {
             return children.first(where: predicate)
         }
         
-        func existingChild(_ direction: TraversalDirection, child: Child) -> Child? {
+        public func existingChild(_ direction: TraversalDirection, child: Child) -> Child? {
             return direction.nextChild(in: children, from: child)
         }
         
-        func index(of child: Child) -> Int? {
+        public func firstIndex(of child: Child) -> Int? {
             return children.firstIndex(of: child)
         }
         
+        public func firstIndex(where predicate: (Child) -> Bool) -> Int? {
+            return children.firstIndex(where: predicate)
+        }
+        
         // MARK: Insertion
-        func insert(_ child: Child) {
+        public func insert(_ child: Child) {
             let updated = insertionBehavior.inserting(new: child, into: children)
             children = updated
         }
         
         // MARK: Removal
-        func remove(_ child: Child) {
+        public func remove(_ child: Child) {
             removeAll(where: { $0.identifier == child.identifier })
         }
         
-        func removeAll(where predicate: @escaping (Child) -> Bool) {
+        public func removeAll(where predicate: @escaping (Child) -> Bool) {
             children.removeAll(where: predicate)
         }
     }

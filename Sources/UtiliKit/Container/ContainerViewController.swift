@@ -14,7 +14,7 @@ open class ContainerViewController: UIViewController {
         case removeAllNonVisibleChildrenExcept(identifiers: [Child.Identifier])
         case none
         
-        func execute(with childManager: ChildManager, for visible: UIViewController?) {
+        fileprivate func execute(with childManager: ChildManager, for visible: UIViewController?) {
             switch self {
             case .none: break
             case .removeAllNonVisibleChildrenExcept(identifiers: let identifiers):

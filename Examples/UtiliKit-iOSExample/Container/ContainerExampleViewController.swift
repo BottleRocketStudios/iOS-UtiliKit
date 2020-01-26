@@ -8,6 +8,11 @@
 import UIKit
 import UtiliKit
 
+extension ContainerViewController.Child.Identifier {
+    static let a = ContainerViewController.Child.Identifier(rawValue: "A")
+    static let b = ContainerViewController.Child.Identifier(rawValue: "B")
+}
+
 class BaseContainerViewController: UIViewController {
     
     @IBOutlet private var containerView: UIView!
@@ -30,8 +35,8 @@ class BaseContainerViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        containerViewController.managedChildren = [Child(identifier: "A", viewController: controllerA),
-                                                   Child(identifier: "B", viewController: controllerB)]
+        containerViewController.childManager.children = [.init(identifier: .a, viewController: controllerA),
+                                                         .init(identifier: .b, viewController: controllerB)]
 
         //Configure the the container view controller
         containerViewController.willMove(toParent: self)
@@ -42,24 +47,24 @@ class BaseContainerViewController: UIViewController {
         
         //Configure the interaction controller for the example
         interactionController = HorizontalPanGestureInteractiveTransition(in: view) { [weak self] recognizer in
-            guard let self = self, let currentController = self.containerViewController.visibleController else { return }
+            guard let self = self, let current = self.containerViewController.visibleChild else { return }
             
             if recognizer.velocity(in: recognizer.view).x > 0 {
-                self.configureInteractiveTransitionToChild(preceding: currentController)
+                self.configureInteractiveTransitionToChild(preceding: current)
             } else {
-                self.configureInteractiveTransitionToChild(following: currentController)
+                self.configureInteractiveTransitionToChild(following: current)
             }
         }
     }
     
     @IBAction func transitionToA() {
         interactionController?.wantsInteractiveStart = false
-        containerViewController.transitionToControllerForChild(withIdentifier: "A")
+        containerViewController.transitionToExistingChild(with: .a)
     }
     
     @IBAction func transitionToB() {
         interactionController?.wantsInteractiveStart = false
-        containerViewController.transitionToControllerForChild(withIdentifier: "B")
+        containerViewController.transitionToExistingChild(with: .b)
     }
     
     @IBAction func logSwitchDidChange(_ sender: UISwitch) {
@@ -76,16 +81,16 @@ class BaseContainerViewController: UIViewController {
 // MARK: Helper
 private extension BaseContainerViewController {
     
-    func configureInteractiveTransitionToChild(preceding visibleController: UIViewController) {
-        guard let previousChild = containerViewController.child(preceding: visibleController) else { return }
+    func configureInteractiveTransitionToChild(preceding visible: ContainerViewController.Child) {
+        guard let previousChild = containerViewController.childManager.existingChild(.preceeding, child: visible) else { return }
         animationController.transitionDirection = .leftToRight
-        containerViewController.transitionToController(for: previousChild)
+        containerViewController.transition(to: previousChild)
     }
     
-    func configureInteractiveTransitionToChild(following visibleController: UIViewController) {
-        guard let nextChild = self.containerViewController.child(following: visibleController) else { return }
+    func configureInteractiveTransitionToChild(following visible: ContainerViewController.Child) {
+        guard let nextChild = containerViewController.childManager.existingChild(.following, child: visible) else { return }
         animationController.transitionDirection = .rightToLeft
-        containerViewController.transitionToController(for: nextChild)
+        containerViewController.transition(to: nextChild)
     }
 }
 
@@ -119,7 +124,9 @@ extension BaseContainerViewController: ContainerViewControllerDelegate {
     
     func containerViewController(_ container: ContainerViewController, animationControllerForTransitionFrom source: UIViewController,
                                  to destination: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if useCustomAnimator, let sourceIndex = container.index(ofChild: source), let destinationIndex = container.index(ofChild: destination) {
+        if useCustomAnimator, let sourceIndex = container.childManager.firstIndex(where: { $0.viewController === source }),
+            let destinationIndex = container.childManager.firstIndex(where: { $0.viewController === destination }) {
+            
             animationController.configure(forStartIndex: sourceIndex, endIndex: destinationIndex)
             return animationController
         }
