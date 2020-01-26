@@ -8,22 +8,15 @@
 
 import UIKit
 
-public protocol ManagedChild {
-    var identifier: AnyHashable { get }
-    var viewController: UIViewController { get }
-}
-
 //MARK: Simple Child Implementation
-public struct Child: ManagedChild {
-    public let identifier: AnyHashable
+public struct Child<Identifier: Hashable> {
+    
+    // MARK: Properties
+    public let identifier: Identifier
     public let viewController: UIViewController
     
-    public init(identifier: AnyHashable, viewController: UIViewController) {
+    public init(identifier: Identifier, viewController: UIViewController) {
         self.identifier = identifier
         self.viewController = viewController
-    }
-    
-    public init<T: RawRepresentable>(title: T, viewController: UIViewController) where T.RawValue == String {
-        self.init(identifier: title.rawValue, viewController: viewController)
     }
 }

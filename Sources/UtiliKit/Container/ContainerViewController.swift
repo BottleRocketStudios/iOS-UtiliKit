@@ -10,16 +10,19 @@ import UIKit
 open class ContainerViewController: UIViewController {
     
     //MARK: Properties
-    open var managedChildren: [ManagedChild] = []
-    open var visibleIndex: Int? { return visibleController.flatMap(index(ofChild:)) }
-    open var visibleChild: ManagedChild? { return managedChildren.first { $0.viewController === visibleController } }
-    
-    open private(set) var isTransitioning: Bool = false
-    open var shouldAutomaticallyTransitionOnLoad: Bool = true
-    
+    public let childManager = ChildManager(children: [])
     open var visibleController: UIViewController? {
         didSet { visibleController.map { transition(to: $0) } }
     }
+    
+    open var shouldAutomaticallyTransitionOnLoad: Bool = true
+    open var insertionBehavior: ChildManager.InsertionBehavior {
+        get { return childManager.insertionBehavior }
+        set { childManager.insertionBehavior = newValue }
+    }
+    
+    open private(set) var isTransitioning: Bool = false
+    open var visibleChild: Child? { return visibleController.flatMap(childManager.existingChild) }
     
     open weak var delegate: ContainerViewControllerDelegate?
     
@@ -28,9 +31,9 @@ open class ContainerViewController: UIViewController {
     open var containerTransitionCoordinator: ContainerViewControllerTransitionCoordinator?
     
     //MARK: Initializers
-    public convenience init(managedChildren: [ManagedChild], delegate: ContainerViewControllerDelegate? = nil) {
+    public convenience init(children: [Child], delegate: ContainerViewControllerDelegate? = nil) {
         self.init(nibName: nil, bundle: nil)
-        self.managedChildren = managedChildren
+        self.childManager.children = children
         self.delegate = delegate
     }
     
@@ -46,34 +49,25 @@ open class ContainerViewController: UIViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard shouldAutomaticallyTransitionOnLoad, let initial = managedChildren.first else { return }
-        transition(to: initial.viewController)
+        if shouldAutomaticallyTransitionOnLoad, let initial = childManager.children.first {
+            transition(to: initial.viewController)
+        }
     }
 }
 
 //MARK: Public Interface
 extension ContainerViewController {
     
-    open func transitionToControllerForChild(withIdentifier identifier: AnyHashable, completion: ((Bool) -> Void)? = nil) {
-        managedChildren.first { identifier == $0.identifier }.map { transitionToController(for: $0, completion: completion) }
+    open func transitionToExistingChild(with identifier: Child.Identifier, completion: ((Bool) -> Void)? = nil) {
+        childManager.existingChild(with: identifier).map { transition(to: $0, completion: completion) }
     }
-    
-    open func transitionToController(for child: ManagedChild, completion: ((Bool) -> Void)? = nil) {
-        if !managedChildren.contains { $0.viewController === child.viewController } {
-            managedChildren.insert(child, at: managedChildren.startIndex)
-        }
-        
-        if !isViewLoaded, managedChildren.first?.identifier != child.identifier {
-            managedChildren.removeAll { $0.identifier == child.identifier }
-            managedChildren.insert(child, at: managedChildren.startIndex)
+   
+    open func transition(to child: Child, completion: ((Bool) -> Void)? = nil) {
+        if !childManager.contains(child) {
+            childManager.insert(child)
         }
         
         transition(to: child.viewController, completion: completion)
-    }
-    
-    open func child(at index: Int) -> ManagedChild? {
-        guard index >= managedChildren.startIndex && index < managedChildren.endIndex else { return nil }
-        return managedChildren[index]
     }
 }
 
