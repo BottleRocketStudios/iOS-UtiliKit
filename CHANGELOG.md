@@ -2,7 +2,17 @@
 
 ##### Enhancements
 
-* None
+* Make it possible to override functions in container, which aid in `ManagedChild` managemet.
+[Will McGinty](https://github.com/willmcginty)
+[#87](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/87)
+
+* Add `postTransitionBehavior` to `ContainerViewController`, automating some common child management scenarios
+[Dimitar Milinski](https://github.com/dmilinski)
+[#88](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/88)
+
+* Switch `removeAllNonVisibleChildren` to `public`
+[Dimitar Milinski](https://github.com/dmilinski)
+[#90](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/90)
 
 ##### Bug Fixes
 

@@ -9,6 +9,24 @@ import UIKit
 
 open class ContainerViewController: UIViewController {
     
+    // MARK: Subtypes
+    public enum PostTransitionBehavior {
+        case removeAllNonVisibleChildrenExcept(identifiers: [Child.Identifier])
+        case none
+        
+        func execute(with childManager: ChildManager, for visible: UIViewController?) {
+            switch self {
+            case .none: break
+            case .removeAllNonVisibleChildrenExcept(identifiers: let identifiers):
+                childManager.removeAll { child in
+                    return child.viewController != visible && !identifiers.contains(child.identifier)
+                }
+            }
+        }
+        
+        public static var removeAllNonVisibleChildren: PostTransitionBehavior { return .removeAllNonVisibleChildrenExcept(identifiers: []) }
+    }
+    
     //MARK: Properties
     public let childManager = ChildManager(children: [])
     open var visibleController: UIViewController? {
@@ -16,6 +34,7 @@ open class ContainerViewController: UIViewController {
     }
     
     open var shouldAutomaticallyTransitionOnLoad: Bool = true
+    open var postTransitionBehavior: PostTransitionBehavior = .none
     open var insertionBehavior: ChildManager.InsertionBehavior {
         get { return childManager.insertionBehavior }
         set { childManager.insertionBehavior = newValue }
@@ -53,10 +72,6 @@ open class ContainerViewController: UIViewController {
             transition(to: initial.viewController)
         }
     }
-}
-
-//MARK: Public Interface
-extension ContainerViewController {
     
     open func transitionToExistingChild(with identifier: Child.Identifier, completion: ((Bool) -> Void)? = nil) {
         childManager.existingChild(with: identifier).map { transition(to: $0, completion: completion) }
@@ -157,6 +172,7 @@ private extension ContainerViewController {
         }
         
         containerTransitionContext = nil
+        postTransitionBehavior.execute(with: childManager, for: visibleController)
         isTransitioning = false
     }
 }
