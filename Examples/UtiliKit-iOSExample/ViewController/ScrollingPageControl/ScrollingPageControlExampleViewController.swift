@@ -13,6 +13,7 @@ class ScrollingPageControlExampleViewController: UIViewController {
     // MARK: Properties
     private var initialConfiguration: Configuration?
     private var pendingOffset: CGFloat?
+    private var favoriteButtons = [UIButton]()
     
     // MARK: Outlets
     @IBOutlet private var scrollView: UIScrollView!
@@ -69,6 +70,14 @@ class ScrollingPageControlExampleViewController: UIViewController {
             self.scrollView.contentOffset.x = CGFloat(index) * self.scrollView.frame.width
         }
         
+        scrollingPageControl.customPageDotAtIndex = { [weak self] index in
+            guard let self = self, index < self.favoriteButtons.count, self.favoriteButtons[index].isSelected else { return nil }
+            let label = TintableLabel(frame: CGRect(origin: .zero, size: initialConfiguration.dotSize))
+            label.font = UIFont.boldSystemFont(ofSize: initialConfiguration.dotSize.height * 1.9)
+            label.text = "♥︎"
+            return label
+        }
+        
         scrollingPageControl.numberOfPages = initialConfiguration.numberOfPages
         scrollingPageControl.currentPage = initialConfiguration.currentPage
         scrollingPageControl.hidesForSinglePage = initialConfiguration.hidesForSinglePage
@@ -84,24 +93,34 @@ class ScrollingPageControlExampleViewController: UIViewController {
     }
     
     private func buildPageView(forPageNumber number: Int) -> UIView {
-        let pageNumberLabel = UILabel()
-        pageNumberLabel.text = "\(number)"
-        pageNumberLabel.font = UIFont.boldSystemFont(ofSize: 35.0)
-        pageNumberLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         let pageView = UIView()
         pageView.backgroundColor = UIColor.white.withAlphaComponent(0.9)
         pageView.layer.borderColor = UIColor.black.cgColor
         pageView.layer.borderWidth = 2.0
         pageView.translatesAutoresizingMaskIntoConstraints = false
-        pageView.addSubview(pageNumberLabel)
-        pageNumberLabel.centerXAnchor.constraint(equalTo: pageView.centerXAnchor).isActive = true
-        pageNumberLabel.centerYAnchor.constraint(equalTo: pageView.centerYAnchor).isActive = true
         
+        let favoriteButton = UIButton(type: .custom)
+        favoriteButton.setTitleColor(.systemBlue, for: .normal)
+        favoriteButton.setTitle("♡ \(number)", for: .normal)
+        favoriteButton.setTitle("♥︎ \(number)", for: .selected)
+        favoriteButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 35.0)
+        favoriteButton.addTarget(self, action: #selector(pressedFavoriteButton(_:)), for: .touchUpInside)
+        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
+        pageView.addSubview(favoriteButton)
+        favoriteButton.centerViewInSuperview()
+        
+        favoriteButtons.append(favoriteButton)
+
         return pageView
     }
     
     // MARK: Actions
+    @objc private func pressedFavoriteButton(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        if let pageNumber = Int(sender.titleLabel?.text?.filter({ "0123456789".contains($0) }) ?? "") {
+            scrollingPageControl.updateDot(at: pageNumber)
+        }
+    }
 }
 
 extension ScrollingPageControlExampleViewController: UIScrollViewDelegate {
@@ -111,5 +130,13 @@ extension ScrollingPageControlExampleViewController: UIScrollViewDelegate {
             let page = Int((scrollView.contentOffset.x / scrollView.frame.width).rounded())
             if scrollingPageControl.currentPage != page { scrollingPageControl.currentPage = page}
         }
+    }
+}
+
+private class TintableLabel: UILabel {
+    
+    override func tintColorDidChange() {
+        super.tintColorDidChange()
+        textColor = tintColor
     }
 }

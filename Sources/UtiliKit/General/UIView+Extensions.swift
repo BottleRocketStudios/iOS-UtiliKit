@@ -105,4 +105,12 @@ public extension UIView {
         superview.addConstraints([centerXAnchor.constraint(equalTo: superview.centerXAnchor),
                                   centerYAnchor.constraint(equalTo: superview.centerYAnchor)])
     }
+    
+    /// Constrains the receiver to the size of its superview. Optionaly width and height scales can be specified, otherwise they will default to 1.0 (no scaling).
+    func constrainSizeToSuperview(widthScale: CGFloat = 1.0, heightScale: CGFloat = 1.0) {
+        guard let superview = superview else { return }
+        
+        superview.addConstraints([widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: widthScale),
+                                  heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: heightScale)])
+    }
 }

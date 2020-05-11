@@ -113,7 +113,7 @@ class ScrollingPageControl: UIView {
         }
     }
     
-    /// Customization point to change the view used per dot. Returning nil will default to ScrollingPageControl.PageDotView.defaultView. Not setting this block, or setting it to nil, will default to ScrollingPageControl.PageDotView.defaultView.
+    /// Customization point to change the view used per dot. Returning nil will default to dots at the specified dotSize. Not setting this block, or setting it to nil, will default to dots at the specified dotSize.
     var customPageDotAtIndex: ((_ index: Int) -> UIView?)? {
         didSet {
             resetDots()
@@ -125,6 +125,7 @@ class ScrollingPageControl: UIView {
     
     // MARK: Private
     private var stackView = UIStackView(arrangedSubviews: [])
+    private var dotContainerViews: [UIView] { return stackView.arrangedSubviews }
     
     private lazy var stackViewWidthConstraint: NSLayoutConstraint = {
         let constraint = stackView.widthAnchor.constraint(equalToConstant: dotRowSize.width)
@@ -162,8 +163,8 @@ class ScrollingPageControl: UIView {
             // Un-scale dots in the middle
             let mainDotRange = (0..<mainDotCount).map { $0 + marginDotCount + pageOffset }
             mainDotRange.forEach {
-                guard 0 <= $0 && $0 < stackView.arrangedSubviews.count else { return }
-                stackView.arrangedSubviews[$0].transform = .identity
+                guard 0 <= $0 && $0 < dotContainerViews.count else { return }
+                dotContainerViews[$0].transform = .identity
             }
             
             // Scale dots in the margins
@@ -171,8 +172,8 @@ class ScrollingPageControl: UIView {
                 (0..<marginDotCount).forEach {
                     let scaleFactor = minimumDotScale + (1.0 - minimumDotScale) * (CGFloat($0 + 1) / CGFloat(marginDotCount + 1))
                     func scaleDot(at index: Int) {
-                        guard index >= 0 && index < stackView.arrangedSubviews.count else { return }
-                        stackView.arrangedSubviews[index].transform = needsToScroll ? CGAffineTransform(scaleX: scaleFactor, y: scaleFactor) : .identity
+                        guard index >= 0 && index < dotContainerViews.count else { return }
+                        dotContainerViews[index].transform = needsToScroll ? CGAffineTransform(scaleX: scaleFactor, y: scaleFactor) : .identity
                     }
                     let marginOffset = marginDotCount - $0
                     scaleDot(at: firstMainDotIndex - marginOffset)
@@ -183,6 +184,14 @@ class ScrollingPageControl: UIView {
     }
     
     // MARK: Public
+    
+    func updateDot(at index: Int) {
+        dotContainerViews[index].subviews.first?.removeFromSuperview()
+        let dotView = customPageDotAtIndex?(index) ?? PageDotView(frame: CGRect(origin: .zero, size: dotSize))
+        dotView.translatesAutoresizingMaskIntoConstraints = false
+        dotContainerViews[index].addSubview(dotView)
+        dotView.centerViewInSuperview()
+    }
     
     // MARK: Initalizers
     required init?(coder aDecoder: NSCoder) {
@@ -275,18 +284,23 @@ class ScrollingPageControl: UIView {
         
         guard numberOfPages > 0 else { return }
         for index in 0..<numberOfPages {
-            let dotView = customPageDotAtIndex?(index) ?? PageDotView.defaultView
-            dotView.tintColor = index == currentPage ? currentPageIndicatorTintColor : pageIndicatorTintColor
-            stackView.addArrangedSubview(dotView)
+            let dotView = customPageDotAtIndex?(index) ?? PageDotView(frame: CGRect(origin: .zero, size: dotSize))
+            dotView.translatesAutoresizingMaskIntoConstraints = false
+            let containerView = UIView(frame: CGRect(origin: .zero, size: dotSize))
+            containerView.translatesAutoresizingMaskIntoConstraints = false
+            containerView.addSubview(dotView)
+            dotView.centerViewInSuperview()
+            containerView.tintColor = index == currentPage ? currentPageIndicatorTintColor : pageIndicatorTintColor
+            stackView.addArrangedSubview(containerView)
         }
         
         pageOffset = nil
     }
     
     private func updateDotColors() {
-        guard !stackView.arrangedSubviews.isEmpty else { return }
-        (0..<stackView.arrangedSubviews.count).forEach {
-            stackView.arrangedSubviews[$0].tintColor = $0 == currentPage ? currentPageIndicatorTintColor : pageIndicatorTintColor
+        guard !dotContainerViews.isEmpty else { return }
+        (0..<dotContainerViews.count).forEach {
+            dotContainerViews[$0].tintColor = $0 == currentPage ? currentPageIndicatorTintColor : pageIndicatorTintColor
         }
     }
     
@@ -314,7 +328,7 @@ class ScrollingPageControl: UIView {
     }
 }
 
-extension ScrollingPageControl {
+private extension ScrollingPageControl {
     
     /// The default class used by ScrollingPageControl to represent pages.
     class PageDotView: UIView {
@@ -338,12 +352,7 @@ extension ScrollingPageControl {
         // MARK: UIView
         override var backgroundColor: UIColor? {
             set { _ = newValue }
-            get { return nil }
-        }
-        
-        override var tintColor: UIColor! {
-            set { super.backgroundColor = newValue }
-            get { return super.backgroundColor ?? super.tintColor }
+            get { return super.backgroundColor }
         }
         
         override var frame: CGRect {
@@ -359,13 +368,13 @@ extension ScrollingPageControl {
             get { return false }
         }
         
-        // MARK: Public
-        class var defaultView: PageDotView {
-            return PageDotView(frame: CGRect(origin: .zero, size: CGSize(width: 7.0, height: 7.0)))
+        override func tintColorDidChange() {
+            super.tintColorDidChange()
+            super.backgroundColor = tintColor
         }
         
         // MARK: Private
-        func updateCornerRadiusIfNeeded() {
+        private func updateCornerRadiusIfNeeded() {
             let cornerRadius = min(contentSize.width, contentSize.height) / 2.0
             if layer.cornerRadius != cornerRadius {
                 layer.cornerRadius = cornerRadius
