@@ -139,7 +139,7 @@ class ScrollingPageControlSetupViewController: UIViewController {
         currentPageIndexStepper.value = 0
         currentPageIndexStepper.maximumValue = 9
         
-        hidesForSinglePageSwitch.isOn = true
+        hidesForSinglePageSwitch.isOn = false
         
         pageIndicatorTintColorButton.setTitle("gray", for: .normal)
         selectedPageIndicatorTintColorIndex = colorKeys.firstIndex(of: "gray") ?? 0

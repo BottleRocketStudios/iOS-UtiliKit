@@ -9,13 +9,15 @@
 import UIKit
 
 // MARK: -
+@IBDesignable
 class ScrollingPageControl: UIView {
     
     // MARK: Properties
     
     // MARK: Modeled Off UIPageControl
-    /// The total number of pages represented
-    var numberOfPages: Int {
+    
+    /// The total number of pages represented, Default is 0
+    @IBInspectable var numberOfPages: Int {
         set { _numberOfPages = max(0, newValue) } // prevent a negative number of pages
         get { return _numberOfPages }
     }
@@ -27,8 +29,8 @@ class ScrollingPageControl: UIView {
         }
     }
     
-    /// The index of the currently selected page
-    var currentPage: Int {
+    /// The index of the currently selected page. Default is 0. Value pinned to 0..numberOfPages-1
+    @IBInspectable var currentPage: Int {
         set {
             _currentPage = max(0, min(newValue, numberOfPages - 1)) // clamp the newValue between 0 and numberOfPages
         }
@@ -46,24 +48,24 @@ class ScrollingPageControl: UIView {
         }
     }
     
-    /// If true, the ScrollingPageControl will hide itself when numberOfPages is 1
-    var hidesForSinglePage: Bool = true {
+    /// Hide the the indicator if there is only one page. Default is false.
+    @IBInspectable var hidesForSinglePage: Bool = false {
         didSet { evaluateSelfHiding() }
     }
     
-    /// Tine color used to represent pages other than the current page
-    var pageIndicatorTintColor: UIColor? = .lightGray {
+    /// Tint color used to represent pages other than the current page
+    @IBInspectable var pageIndicatorTintColor: UIColor? = .systemGray {
         didSet { updateDotColors() }
     }
     
     /// Tint color used to represent the current page
-    var currentPageIndicatorTintColor: UIColor? = .systemBlue {
+    @IBInspectable var currentPageIndicatorTintColor: UIColor? = .systemBlue {
         didSet { updateDotColors() }
     }
     
     // MARK: Visual Customization
     /// The number of dots between the margins that will not scale. This cannot be set to a value less than 1.
-    var mainDotCount: Int {
+    @IBInspectable var mainDotCount: Int {
         set { _mainDotCount = max(1, newValue) }
         get { return _mainDotCount }
     }
@@ -73,7 +75,7 @@ class ScrollingPageControl: UIView {
     }
     
     /// The number of dots on each side that will scale if numberOfPages is greater than maxVisibleDots. This cannot be set to a value less that 0.
-    var marginDotCount: Int {
+    @IBInspectable var marginDotCount: Int {
         set { _marginDotCount = max(0, newValue) }
         get { return _marginDotCount }
     }
@@ -86,12 +88,23 @@ class ScrollingPageControl: UIView {
     var maxVisibleDots: Int { return max(1, marginDotCount + mainDotCount + marginDotCount) }
     
     /// The size of each dot view when it's index is in the main area of the control
-    var dotSize = CGSize(width: 7.0, height: 7.0) {
-        didSet { refreshDotLayout() }
+    var dotSize: CGSize {
+        set {
+            _dotWidth = newValue.width
+            _dotHeight = newValue.height
+            refreshDotLayout()
+        }
+        get { return CGSize(width: _dotWidth, height: _dotHeight) }
     }
     
+    @available(*, message: "This only exists since dotSize can't be IBInspectable as a CGSize. Use dotSize.width instead")
+    @IBInspectable private var _dotWidth: CGFloat = 7.0
+    
+    @available(*, message: "This only exists since dotSize can't be IBInspectable as a CGSize. Use dotSize.width instead")
+    @IBInspectable private var _dotHeight: CGFloat = 7.0
+    
     /// The amount of space between each page dot view
-    var dotSpacing: CGFloat = 9.0 {
+    @IBInspectable var dotSpacing: CGFloat = 9.0 {
         didSet {
             stackView.spacing = dotSpacing
             invalidateIntrinsicContentSize()
@@ -99,7 +112,7 @@ class ScrollingPageControl: UIView {
     }
     
     /// The scale factor for the dots in the outtermost position before scrolling out of frame. Used when numberOfPages is greater than maxVisibleDots, else the dots do not scale.
-    var minimumDotScale: CGFloat = 0.4 {
+    @IBInspectable var minimumDotScale: CGFloat = 0.4 {
         didSet {
             guard minimumDotScale >= 0.0 else {
                 minimumDotScale = 0.0
@@ -184,7 +197,6 @@ class ScrollingPageControl: UIView {
     }
     
     // MARK: Public
-    
     func updateDot(at index: Int) {
         dotContainerViews[index].subviews.first?.removeFromSuperview()
         let dotView = customPageDotAtIndex?(index) ?? PageDotView(frame: CGRect(origin: .zero, size: dotSize))
@@ -214,9 +226,9 @@ class ScrollingPageControl: UIView {
         return CGSize(width: (visibleDots * dotSize.width) + ((visibleDots - 1.0) * dotSpacing), height: max(37.0, dotSize.height))
     }
     
-    override var tintColor: UIColor! {
-        set { currentPageIndicatorTintColor = newValue }
-        get { return currentPageIndicatorTintColor }
+    override func tintColorDidChange() {
+        super.tintColorDidChange()
+        currentPageIndicatorTintColor = tintColor
     }
     
     override func accessibilityDecrement() {
@@ -325,6 +337,10 @@ class ScrollingPageControl: UIView {
         resetDots()
         updateOffsetIfNeeded()
         invalidateIntrinsicContentSize()
+    }
+    
+    override class func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
     }
 }
 
