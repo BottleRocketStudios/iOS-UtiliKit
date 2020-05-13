@@ -16,7 +16,7 @@ class ScrollingPageControl: UIView {
     
     // MARK: Modeled Off UIPageControl
     
-    /// The total number of pages represented, Default is 0
+    /// The total number of pages represented, Default is `0`
     @IBInspectable var numberOfPages: Int {
         set { _numberOfPages = max(0, newValue) } // prevent a negative number of pages
         get { return _numberOfPages }
@@ -29,7 +29,7 @@ class ScrollingPageControl: UIView {
         }
     }
     
-    /// The index of the currently selected page. Default is 0. Value pinned to 0..numberOfPages-1
+    /// The index of the currently selected page. Default is `0`. Value pinned to `0..numberOfPages-1`
     @IBInspectable var currentPage: Int {
         set {
             _currentPage = max(0, min(newValue, numberOfPages - 1)) // clamp the newValue between 0 and numberOfPages
@@ -48,17 +48,17 @@ class ScrollingPageControl: UIView {
         }
     }
     
-    /// Hide the the indicator if there is only one page. Default is false.
+    /// Hide the the indicator if there is only one page. Default is `false`.
     @IBInspectable var hidesForSinglePage: Bool = false {
         didSet { evaluateSelfHiding() }
     }
     
-    /// Tint color used to represent pages other than the current page
+    /// Tint color used to represent pages other than the `currentPage`
     @IBInspectable var pageIndicatorTintColor: UIColor? = .systemGray {
         didSet { updateDotColors() }
     }
     
-    /// Tint color used to represent the current page
+    /// Tint color used to represent the `currentPage`
     @IBInspectable var currentPageIndicatorTintColor: UIColor? = .systemBlue {
         didSet { updateDotColors() }
     }
@@ -74,7 +74,7 @@ class ScrollingPageControl: UIView {
         didSet { refreshDotLayout() }
     }
     
-    /// The number of dots on each side that will scale if numberOfPages is greater than maxVisibleDots. This cannot be set to a value less that 0.
+    /// The number of dots on each side that will scale if `numberOfPages` is greater than `maxVisibleDots`. This cannot be set to a value less that 0.
     @IBInspectable var marginDotCount: Int {
         set { _marginDotCount = max(0, newValue) }
         get { return _marginDotCount }
@@ -84,7 +84,7 @@ class ScrollingPageControl: UIView {
         didSet { refreshDotLayout() }
     }
     
-    /// The maximum number of dots that are visible at once- includes the number of dots each margin and the main area can contain. Dependant on the mainDotCount and marginDotCount variables
+    /// The maximum number of dots that are visible at once- includes the number of dots each margin and the main area can contain. Dependant on the `mainDotCount` and `marginDotCount` variables
     var maxVisibleDots: Int { return max(1, marginDotCount + mainDotCount + marginDotCount) }
     
     /// The size of each dot view when it's index is in the main area of the control
@@ -107,11 +107,11 @@ class ScrollingPageControl: UIView {
     @IBInspectable var dotSpacing: CGFloat = 9.0 {
         didSet {
             stackView.spacing = dotSpacing
-            invalidateIntrinsicContentSize()
+            refreshDotLayout()
         }
     }
     
-    /// The scale factor for the dots in the outtermost position before scrolling out of frame. Used when numberOfPages is greater than maxVisibleDots, else the dots do not scale.
+    /// The scale factor for the dots in the outtermost position before scrolling out of frame. Used when `numberOfPages` is greater than `maxVisibleDots`, else the dots do not scale.
     @IBInspectable var minimumDotScale: CGFloat = 0.4 {
         didSet {
             guard minimumDotScale >= 0.0 else {
@@ -126,14 +126,14 @@ class ScrollingPageControl: UIView {
         }
     }
     
-    /// Customization point to change the view used per dot. Returning nil will default to dots at the specified dotSize. Not setting this block, or setting it to nil, will default to dots at the specified dotSize.
+    /// Customization point to change the view used per dot. Returning `nil` will default to dots at the specified `dotSize`. Not setting this block, or setting it to `nil`, will default to all dots at the specified `dotSize`.
     var customPageDotAtIndex: ((_ index: Int) -> UIView?)? {
         didSet {
             resetDots()
         }
     }
     
-    /// A block used to respond to changes to currentPage- either setting that value programatically, or through control interation
+    /// A block used to respond to changes to `currentPage`- either setting that value programatically, or through control interation
     var didSetCurrentPage: ((_ index: Int) -> Void)?
     
     // MARK: Private
@@ -197,12 +197,18 @@ class ScrollingPageControl: UIView {
     }
     
     // MARK: Public
+    /// Call to update the appearance of the dot at the specified `index`. Uses `customPageDotAtIndex` to get the new view for `index`.
     func updateDot(at index: Int) {
         dotContainerViews[index].subviews.first?.removeFromSuperview()
         let dotView = customPageDotAtIndex?(index) ?? PageDotView(frame: CGRect(origin: .zero, size: dotSize))
         dotView.translatesAutoresizingMaskIntoConstraints = false
         dotContainerViews[index].addSubview(dotView)
         dotView.centerViewInSuperview()
+    }
+    
+    /// Call to update the appearance of the dot at the specified `indices`. Uses `customPageDotAtIndex` to get the new view for each index in `indices`.
+    func updateDots(at indices: [Int]) {
+        indices.forEach { updateDot(at: $0) }
     }
     
     // MARK: Initalizers
@@ -292,6 +298,7 @@ class ScrollingPageControl: UIView {
             guard let nextView = stackView.arrangedSubviews.last else { break }
             stackView.removeArrangedSubview(nextView)
             nextView.removeFromSuperview()
+            
         }
         
         guard numberOfPages > 0 else { return }
@@ -346,7 +353,7 @@ class ScrollingPageControl: UIView {
 
 private extension ScrollingPageControl {
     
-    /// The default class used by ScrollingPageControl to represent pages.
+    /// The default class used by `ScrollingPageControl` to represent pages.
     class PageDotView: UIView {
         
         // MARK: Properties

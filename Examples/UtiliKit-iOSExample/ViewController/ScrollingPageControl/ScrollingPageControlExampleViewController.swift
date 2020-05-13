@@ -73,7 +73,7 @@ class ScrollingPageControlExampleViewController: UIViewController {
         scrollingPageControl.customPageDotAtIndex = { [weak self] index in
             guard let self = self, index < self.favoriteButtons.count, self.favoriteButtons[index].isSelected else { return nil }
             let label = TintableLabel(frame: CGRect(origin: .zero, size: initialConfiguration.dotSize))
-            label.font = UIFont.boldSystemFont(ofSize: initialConfiguration.dotSize.height * 1.9)
+            label.font = UIFont.boldSystemFont(ofSize: initialConfiguration.dotSize.height * 1.5)
             label.text = "♥︎"
             return label
         }

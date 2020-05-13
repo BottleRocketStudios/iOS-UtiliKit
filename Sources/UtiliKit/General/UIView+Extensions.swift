@@ -113,4 +113,15 @@ public extension UIView {
         superview.addConstraints([widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: widthScale),
                                   heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: heightScale)])
     }
+    
+    /// Constrains the receiver to the specified size.
+    func constrainSize(to size: CGSize) {
+        constrainSize(toWidth: size.width, height: size.height)
+    }
+    
+    /// Constrains the receiver to the specified wdith and height.
+    func constrainSize(toWidth width: CGFloat, height: CGFloat) {
+        addConstraints([widthAnchor.constraint(equalToConstant: width),
+                        heightAnchor.constraint(equalToConstant: height)])
+    }
 }
