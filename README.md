@@ -279,7 +279,7 @@ let key = ObfuscatedKey().T.h.i.s.underscore.I.s.dash.o.b.f.u.s.c.a.t.e.d.value
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repo, open `UtiliKit.xcworkspace`, and run the "UtiliKit-iOSExample" project.
 
 ## Requirements
 
