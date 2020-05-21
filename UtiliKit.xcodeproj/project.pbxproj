@@ -19,6 +19,7 @@
 		1D419DBD21235EE100B62D91 /* ManagedChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D419DBC21235EE100B62D91 /* ManagedChild.swift */; };
 		1D419DBF21236CC300B62D91 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
 		5936A29324632D9B006E3FA6 /* ScrollingPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5936A29224632D9B006E3FA6 /* ScrollingPageControl.swift */; };
+		59637C5C24772F7B00ECC484 /* ScrollingPageControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59637C5A24772F5000ECC484 /* ScrollingPageControlTests.swift */; };
 		59E8D9A4246361DB0016A447 /* ScrollingPageControlSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E8D9A3246361DB0016A447 /* ScrollingPageControlSetupViewController.swift */; };
 		59E8D9A6246361F50016A447 /* ScrollingPageControlExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E8D9A5246361F50016A447 /* ScrollingPageControlExampleViewController.swift */; };
 		59E8D9A92464720E0016A447 /* ScrollingPageControl.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E8D9A724644B410016A447 /* ScrollingPageControl.storyboard */; };
@@ -125,6 +126,7 @@
 		0EFAFEA021FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerPercentDrivenInteractiveTransitioner.swift; sourceTree = "<group>"; };
 		1D419DBC21235EE100B62D91 /* ManagedChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedChild.swift; sourceTree = "<group>"; };
 		5936A29224632D9B006E3FA6 /* ScrollingPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingPageControl.swift; sourceTree = "<group>"; };
+		59637C5A24772F5000ECC484 /* ScrollingPageControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingPageControlTests.swift; sourceTree = "<group>"; };
 		59E8D9A3246361DB0016A447 /* ScrollingPageControlSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingPageControlSetupViewController.swift; sourceTree = "<group>"; };
 		59E8D9A5246361F50016A447 /* ScrollingPageControlExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingPageControlExampleViewController.swift; sourceTree = "<group>"; };
 		59E8D9A724644B410016A447 /* ScrollingPageControl.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScrollingPageControl.storyboard; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				869826261FE87BFA0024B73D /* UtiliKitTests.swift */,
 				0ED9476220FD461300B642AB /* ContainerTests.swift */,
 				5C574BFA2264ED61003D1641 /* ActiveLabelTests.swift */,
+				59637C5A24772F5000ECC484 /* ScrollingPageControlTests.swift */,
 				8677315920601DD800C54343 /* Supporting Files */,
 			);
 			path = Tests;
@@ -704,6 +707,7 @@
 			files = (
 				5C574BFB2264ED61003D1641 /* ActiveLabelTests.swift in Sources */,
 				0ED9476420FD473700B642AB /* ContainerTests.swift in Sources */,
+				59637C5C24772F7B00ECC484 /* ScrollingPageControlTests.swift in Sources */,
 				8677315720601D1A00C54343 /* UtiliKitTests.swift in Sources */,
 				8677315820601D1A00C54343 /* DateTests.swift in Sources */,
 				7D5611B822E79AD40017008D /* ObfuscationTests.swift in Sources */,
