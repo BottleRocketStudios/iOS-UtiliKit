@@ -74,7 +74,7 @@ class ScrollingPageControl: UIView {
         didSet { refreshDotLayout() }
     }
     
-    /// The number of dots on each side that will scale if `numberOfPages` is greater than `maxVisibleDots`. This cannot be set to a value less that 0.
+    /// The number of dots on each side that will scale if `numberOfPages` is greater than `maxVisibleDots`. This cannot be set to a value less than 0.
     @IBInspectable var marginDotCount: Int {
         set { _marginDotCount = max(0, newValue) }
         get { return _marginDotCount }
@@ -408,5 +408,4 @@ private extension ScrollingPageControl {
         }
     }
 }
-
 
