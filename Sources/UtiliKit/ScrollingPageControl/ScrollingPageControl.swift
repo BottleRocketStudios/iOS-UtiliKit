@@ -122,6 +122,8 @@ class ScrollingPageControl: UIView {
                 minimumDotScale = 1.0
                 return
             }
+            
+            // Rescale margin dots if needed
             if let pageOffset = pageOffset { self.pageOffset = pageOffset }
         }
     }
@@ -229,7 +231,8 @@ class ScrollingPageControl: UIView {
     // MARK: UIView
     override var intrinsicContentSize: CGSize {
         let visibleDots = CGFloat(min(numberOfPages, maxVisibleDots))
-        return CGSize(width: (visibleDots * dotSize.width) + ((visibleDots - 1.0) * dotSpacing), height: max(37.0, dotSize.height))
+        let minimumControlHeight:CGFloat = 37.0
+        return CGSize(width: (visibleDots * dotSize.width) + ((visibleDots - 1.0) * dotSpacing), height: max(minimumControlHeight, dotSize.height))
     }
     
     override func tintColorDidChange() {

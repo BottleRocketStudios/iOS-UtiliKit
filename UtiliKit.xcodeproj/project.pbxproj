@@ -127,7 +127,7 @@
 		5936A29224632D9B006E3FA6 /* ScrollingPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingPageControl.swift; sourceTree = "<group>"; };
 		59E8D9A3246361DB0016A447 /* ScrollingPageControlSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingPageControlSetupViewController.swift; sourceTree = "<group>"; };
 		59E8D9A5246361F50016A447 /* ScrollingPageControlExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingPageControlExampleViewController.swift; sourceTree = "<group>"; };
-		59E8D9A724644B410016A447 /* ScrollingPageControl.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ScrollingPageControl.storyboard; path = "/Users/nathan.chiu/Developer/GitHub/iOS-UtiliKit/Examples/UtiliKit-iOSExample/ViewController/ScrollingPageControl/ScrollingPageControl.storyboard"; sourceTree = "<absolute>"; };
+		59E8D9A724644B410016A447 /* ScrollingPageControl.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScrollingPageControl.storyboard; sourceTree = "<group>"; };
 		5C574BF62264EC10003D1641 /* ActiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLabel.swift; sourceTree = "<group>"; };
 		5C574BF82264EC3C003D1641 /* ActiveLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLabelViewController.swift; sourceTree = "<group>"; };
 		5C574BFA2264ED61003D1641 /* ActiveLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLabelTests.swift; sourceTree = "<group>"; };
