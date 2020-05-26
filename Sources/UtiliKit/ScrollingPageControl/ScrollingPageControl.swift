@@ -250,12 +250,16 @@ class ScrollingPageControl: UIView {
     
     override var accessibilityLabel: String? {
         set { _ = newValue }
-        get { return "page \(currentPage + 1) of \(numberOfPages)" }
+        get {
+            return numberOfPages == 0 ? "no pages" : "page \(currentPage + 1) of \(numberOfPages)"
+        }
     }
     
     override var accessibilityValue: String? {
         set { _ = newValue }
-        get { return "\(currentPage + 1)" }
+        get {
+            return numberOfPages == 0 ? "" : "\(currentPage + 1)"
+        }
     }
     
     override var isAccessibilityElement: Bool {

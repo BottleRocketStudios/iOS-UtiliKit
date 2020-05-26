@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScrollingPageControlExampleViewController: UIViewController {
+class ScrollingPageControlExampleViewController: UIViewController, Configurable {
     
     // MARK: Properties
     private var initialConfiguration: Configuration?
@@ -34,14 +34,13 @@ class ScrollingPageControlExampleViewController: UIViewController {
         let minimumDotScale: CGFloat
     }
     
-    func configure(with configuration: Configuration) {
-        print(configuration)
-        initialConfiguration = configuration
+    func configure(with element: Configuration) {
+        initialConfiguration = element
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        applyInitialConfifuration()
+        applyInitialConfiguration()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,7 +52,7 @@ class ScrollingPageControlExampleViewController: UIViewController {
     }
     
     // MARK: Private
-    private func applyInitialConfifuration() {
+    private func applyInitialConfiguration() {
         guard let initialConfiguration = initialConfiguration,
             let scrollingPageControl = scrollingPageControl else { return }
         

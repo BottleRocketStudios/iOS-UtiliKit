@@ -66,7 +66,7 @@ open class ContainerViewController: UIViewController {
     }
     
     open func addManagedChildIfNeeded(_ child: ManagedChild) {
-        if !managedChildren.contains { $0.viewController === child.viewController } {
+        if !managedChildren.contains(where: { $0.viewController === child.viewController }) {
             managedChildren.insert(child, at: managedChildren.startIndex)
         }
         
