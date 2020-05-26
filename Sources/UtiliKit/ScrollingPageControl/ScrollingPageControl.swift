@@ -39,11 +39,11 @@ class ScrollingPageControl: UIView {
     
     private var _currentPage: Int = 0 {
         didSet {
-            UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: .beginFromCurrentState, animations: { [weak self] in
-                self?.updateOffsetIfNeeded()
-                self?.layoutIfNeeded()
-                self?.updateDotColors()
-                self?.didSetCurrentPage?(self?._currentPage ?? 0)
+            UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: .beginFromCurrentState, animations: {
+                self.updateOffsetIfNeeded()
+                self.layoutIfNeeded()
+                self.updateDotColors()
+                self.didSetCurrentPage?(self._currentPage)
             })
         }
     }
