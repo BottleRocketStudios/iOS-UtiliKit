@@ -231,7 +231,7 @@ class ScrollingPageControl: UIView {
     // MARK: UIView
     override var intrinsicContentSize: CGSize {
         let visibleDots = CGFloat(min(numberOfPages, maxVisibleDots))
-        let minimumControlHeight:CGFloat = 37.0
+        let minimumControlHeight: CGFloat = 37.0
         return CGSize(width: (visibleDots * dotSize.width) + ((visibleDots - 1.0) * dotSpacing), height: max(minimumControlHeight, dotSize.height))
     }
     
@@ -412,4 +412,3 @@ private extension ScrollingPageControl {
         }
     }
 }
-
