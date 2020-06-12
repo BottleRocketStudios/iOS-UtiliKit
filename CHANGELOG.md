@@ -16,7 +16,7 @@
 
 * Add `ScrollingPageControl`
 [Nathan Chiu](https://github.com/BR-Nathan-Chiu)
-[#90](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/95)
+[#95](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/95)
 
 ##### Bug Fixes
 
