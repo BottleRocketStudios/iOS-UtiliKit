@@ -82,7 +82,7 @@ public extension UIView {
     }
     
     /**
-     Constrains the receiver to the edges of its superview with insets.
+     Constrains the receiver to the center of its superview or superview's safe area.
      
      - Parameter isUsingSafeArea: A Bool value used to determine the use of safeAreaLayoutGuides or superview anchors
      */
@@ -98,7 +98,7 @@ public extension UIView {
         }
     }
     
-    /// Constrains the receiver to the edges of its superview with insets.
+    /// Constrains the receiver to the center of its superview.
     func centerViewInSuperview() {
         guard let superview = superview else { return }
         

@@ -60,7 +60,10 @@ class ScrollingPageControl: UIView {
     
     /// Tint color used to represent the `currentPage`
     @IBInspectable var currentPageIndicatorTintColor: UIColor? = .systemBlue {
-        didSet { updateDotColors() }
+        didSet {
+            tintColor = currentPageIndicatorTintColor
+            updateDotColors()
+        }
     }
     
     // MARK: Visual Customization
@@ -231,6 +234,8 @@ class ScrollingPageControl: UIView {
     // MARK: UIView
     override var intrinsicContentSize: CGSize {
         let visibleDots = CGFloat(min(numberOfPages, maxVisibleDots))
+        guard visibleDots > 0 else { return .zero }
+        
         let minimumControlHeight:CGFloat = 37.0
         return CGSize(width: (visibleDots * dotSize.width) + ((visibleDots - 1.0) * dotSpacing), height: max(minimumControlHeight, dotSize.height))
     }
@@ -269,7 +274,9 @@ class ScrollingPageControl: UIView {
     
     override var accessibilityTraits: UIAccessibilityTraits {
         set { _ = newValue }
-        get { return .adjustable }
+        get {
+            return [.adjustable, .updatesFrequently]
+        }
     }
     
     // MARK: Private
