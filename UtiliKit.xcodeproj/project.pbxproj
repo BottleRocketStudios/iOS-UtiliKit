@@ -15,7 +15,6 @@
 		0EFAFE9A21F81659005B2B16 /* ContainerViewControllerTransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9921F81659005B2B16 /* ContainerViewControllerTransitionCoordinator.swift */; };
 		0EFAFE9D21F81743005B2B16 /* ContainerTransitionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFE9C21F81743005B2B16 /* ContainerTransitionContext.swift */; };
 		0EFAFEA121FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAFEA021FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioner.swift */; };
-		0EFAFEA221FBA89C005B2B16 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
 		1D419DBD21235EE100B62D91 /* ManagedChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D419DBC21235EE100B62D91 /* ManagedChild.swift */; };
 		1D419DBF21236CC300B62D91 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
 		5C574BF72264EC10003D1641 /* ActiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574BF62264EC10003D1641 /* ActiveLabel.swift */; };
@@ -27,6 +26,8 @@
 		62F5256F2257F4FE0052B8E7 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 62F5256E2257F4FE0052B8E7 /* CHANGELOG.md */; };
 		7D5611B822E79AD40017008D /* ObfuscationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5611B722E79AD40017008D /* ObfuscationTests.swift */; };
 		7D5611BA22E79B4C0017008D /* ObfuscatedKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5611B922E79B4C0017008D /* ObfuscatedKey.swift */; };
+		7D97C3C7249CF11600CB0E21 /* String+LanguageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D97C3C6249CF11600CB0E21 /* String+LanguageFilter.swift */; };
+		7D97C3C9249CF21100CB0E21 /* LanguageFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D97C3C8249CF21100CB0E21 /* LanguageFilterTests.swift */; };
 		8677314220601BB400C54343 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8677313920601BB400C54343 /* UtiliKit.framework */; };
 		8677315720601D1A00C54343 /* UtiliKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869826261FE87BFA0024B73D /* UtiliKitTests.swift */; };
 		8677315820601D1A00C54343 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869826271FE87BFA0024B73D /* DateTests.swift */; };
@@ -128,6 +129,8 @@
 		62F5256E2257F4FE0052B8E7 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		7D5611B722E79AD40017008D /* ObfuscationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObfuscationTests.swift; sourceTree = "<group>"; };
 		7D5611B922E79B4C0017008D /* ObfuscatedKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObfuscatedKey.swift; sourceTree = "<group>"; };
+		7D97C3C6249CF11600CB0E21 /* String+LanguageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+LanguageFilter.swift"; sourceTree = "<group>"; };
+		7D97C3C8249CF21100CB0E21 /* LanguageFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageFilterTests.swift; sourceTree = "<group>"; };
 		8677313920601BB400C54343 /* UtiliKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UtiliKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8677314120601BB400C54343 /* UtiliKit-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UtiliKit-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8677315A20601DD800C54343 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -209,7 +212,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D419DBF21236CC300B62D91 /* UtiliKit.framework in Frameworks */,
-				0EFAFEA221FBA89C005B2B16 /* UtiliKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +286,7 @@
 			children = (
 				869826271FE87BFA0024B73D /* DateTests.swift */,
 				7D5611B722E79AD40017008D /* ObfuscationTests.swift */,
+				7D97C3C8249CF21100CB0E21 /* LanguageFilterTests.swift */,
 				869826261FE87BFA0024B73D /* UtiliKitTests.swift */,
 				0ED9476220FD461300B642AB /* ContainerTests.swift */,
 				5C574BFA2264ED61003D1641 /* ActiveLabelTests.swift */,
@@ -298,6 +301,14 @@
 				7D5611B922E79B4C0017008D /* ObfuscatedKey.swift */,
 			);
 			path = Obfuscation;
+			sourceTree = "<group>";
+		};
+		7D97C3C5249CEF8900CB0E21 /* LanguageFilter */ = {
+			isa = PBXGroup;
+			children = (
+				7D97C3C6249CF11600CB0E21 /* String+LanguageFilter.swift */,
+			);
+			path = LanguageFilter;
 			sourceTree = "<group>";
 		};
 		8677315920601DD800C54343 /* Supporting Files */ = {
@@ -333,6 +344,7 @@
 				8698CFA220619EAD0065AE20 /* Container */,
 				8698CFA720619EAD0065AE20 /* General */,
 				8698CFAA20619EAD0065AE20 /* Instantiation */,
+				7D97C3C5249CEF8900CB0E21 /* LanguageFilter */,
 				7D5611B622E79AAE0017008D /* Obfuscation */,
 				8698CFB220619EAD0065AE20 /* TimelessDate */,
 				8698CFB520619EAD0065AE20 /* Version */,
@@ -556,7 +568,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Bottle Rocket Studios";
 				TargetAttributes = {
 					8677313820601BB400C54343 = {
@@ -648,6 +660,7 @@
 				8698CFC320619EAD0065AE20 /* StoryboardIdentifiable.swift in Sources */,
 				7D5611BA22E79B4C0017008D /* ObfuscatedKey.swift in Sources */,
 				8698CFC920619EAD0065AE20 /* Bundle+Extensions.swift in Sources */,
+				7D97C3C7249CF11600CB0E21 /* String+LanguageFilter.swift in Sources */,
 				8698CFC520619EAD0065AE20 /* UIStoryboard+Extensions.swift in Sources */,
 				8698CFC220619EAD0065AE20 /* ReuseIdentifiable.swift in Sources */,
 				8698CFC620619EAD0065AE20 /* UITableView+Extensions.swift in Sources */,
@@ -671,6 +684,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C574BFB2264ED61003D1641 /* ActiveLabelTests.swift in Sources */,
+				7D97C3C9249CF21100CB0E21 /* LanguageFilterTests.swift in Sources */,
 				0ED9476420FD473700B642AB /* ContainerTests.swift in Sources */,
 				8677315720601D1A00C54343 /* UtiliKitTests.swift in Sources */,
 				8677315820601D1A00C54343 /* DateTests.swift in Sources */,
@@ -860,7 +874,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -894,7 +908,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

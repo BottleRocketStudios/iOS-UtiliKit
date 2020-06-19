@@ -22,6 +22,7 @@ This library is divided into 7 parts, which are available as CocoaPods subspecs.
 * **Container** - This subspec provides a simple `ContainerViewController` without any built-in navigation construct.
 * **ActiveLabel** - This subspec provides a `UILabel` subclass that renders gradient "loading" animations while the label's `text` property is set to `nil`.
 * **Obfuscation** - This subspec provides simple routines to remove plaintext passwords or keys from your source code.
+* **LanguageFilter** - This subspec provides an extension on `String` that can check if a given string has potentially offensive language in it. It can also replace potentially offensive language using a provided character. The offensive word list is ROT13ed so that this language won't appear in your codebase directly.
 
 ## Usage
 
@@ -275,6 +276,20 @@ To use an obfuscated key in your code, create one and use the builder variables 
 
 ``` swift
 let key = ObfuscatedKey().T.h.i.s.underscore.I.s.dash.o.b.f.u.s.c.a.t.e.d.value
+```
+
+### LanguageFilter
+
+To find if a string contains potentially objectionable input, create a filter and place a query.
+
+``` swift
+// TODO
+```
+
+To replace all instances of potentially objectionable input within a string, create a filter and request a substitution
+
+``` swift
+// TODO
 ```
 
 ## Example
