@@ -9,6 +9,7 @@
 import UIKit
 
 // MARK: -
+@available(iOS, deprecated: 14.0, message: "Functionality is available with UIKit UIPageControls starting with iOS 14")
 @IBDesignable
 class ScrollingPageControl: UIView {
     
