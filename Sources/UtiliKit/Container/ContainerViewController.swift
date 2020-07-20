@@ -9,6 +9,14 @@ import UIKit
 
 open class ContainerViewController: UIViewController {
     
+    // MARK: Subtypes
+    public enum PostTransitionBehavior {
+        case removeAllNonVisibleChildrenExcept([AnyHashable])
+        case none
+        
+        public static var removeAllNonVisibleChildren: PostTransitionBehavior { return .removeAllNonVisibleChildrenExcept([]) }
+    }
+    
     //MARK: Properties
     open var managedChildren: [ManagedChild] = []
     open var visibleIndex: Int? { return visibleController.flatMap(index(ofChild:)) }
@@ -26,6 +34,7 @@ open class ContainerViewController: UIViewController {
     // MARK: Transitioning
     private var containerTransitionContext: UIViewControllerContextTransitioning?
     open var containerTransitionCoordinator: ContainerViewControllerTransitionCoordinator?
+    open var postTransitionBehavior: PostTransitionBehavior = .none
     
     //MARK: Initializers
     public convenience init(managedChildren: [ManagedChild], delegate: ContainerViewControllerDelegate? = nil) {
@@ -49,16 +58,14 @@ open class ContainerViewController: UIViewController {
         guard shouldAutomaticallyTransitionOnLoad, let initial = managedChildren.first else { return }
         transition(to: initial.viewController)
     }
-}
-
-//MARK: Public Interface
-extension ContainerViewController {
     
-    open func transitionToControllerForChild(withIdentifier identifier: AnyHashable, completion: ((Bool) -> Void)? = nil) {
-        managedChildren.first { identifier == $0.identifier }.map { transitionToController(for: $0, completion: completion) }
+    // MARK: Public Interface
+    open func child(at index: Int) -> ManagedChild? {
+        guard index >= managedChildren.startIndex && index < managedChildren.endIndex else { return nil }
+        return managedChildren[index]
     }
     
-    open func transitionToController(for child: ManagedChild, completion: ((Bool) -> Void)? = nil) {
+    open func addManagedChildIfNeeded(_ child: ManagedChild) {
         if !managedChildren.contains { $0.viewController === child.viewController } {
             managedChildren.insert(child, at: managedChildren.startIndex)
         }
@@ -67,13 +74,15 @@ extension ContainerViewController {
             managedChildren.removeAll { $0.identifier == child.identifier }
             managedChildren.insert(child, at: managedChildren.startIndex)
         }
-        
-        transition(to: child.viewController, completion: completion)
     }
     
-    open func child(at index: Int) -> ManagedChild? {
-        guard index >= managedChildren.startIndex && index < managedChildren.endIndex else { return nil }
-        return managedChildren[index]
+    open func transitionToControllerForChild(withIdentifier identifier: AnyHashable, completion: ((Bool) -> Void)? = nil) {
+        managedChildren.first { identifier == $0.identifier }.map { transitionToController(for: $0, completion: completion) }
+    }
+    
+    open func transitionToController(for child: ManagedChild, completion: ((Bool) -> Void)? = nil) {
+        addManagedChildIfNeeded(child)
+        transition(to: child.viewController, completion: completion)
     }
 }
 
@@ -162,7 +171,22 @@ private extension ContainerViewController {
             visibleController = source
         }
         
+        switch postTransitionBehavior {
+        case .removeAllNonVisibleChildrenExcept(let identifiers):
+            removeAllNonVisibleChildren(except: identifiers)
+        case .none:
+            break
+        }
+        
         containerTransitionContext = nil
         isTransitioning = false
+    }
+    
+    func removeAllNonVisibleChildren(except identifiers: [AnyHashable]) {
+        managedChildren.forEach {
+            if $0.viewController != visibleChild?.viewController && !identifiers.contains($0.identifier) {
+                removeChild($0)
+            }
+        }
     }
 }
