@@ -47,6 +47,10 @@
 
 ##### Enhancements
 
+* Added Swift Package Manager support.
+[Brian Miller](https://github.com/jobsismyhomeboy)
+[#64](https://github.com/BottleRocketStudios/iOS-UtiliKit/issues/64)
+
 * Add interactive transitioning and transition coordination to `ContainerViewController`. This change has bumped the deployment target to iOS 10.0+
 [Will McGinty](https://github.com/willmcginty)
 [#63](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/63)

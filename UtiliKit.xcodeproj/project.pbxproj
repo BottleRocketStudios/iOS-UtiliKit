@@ -120,6 +120,7 @@
 		0EFAFE9C21F81743005B2B16 /* ContainerTransitionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerTransitionContext.swift; sourceTree = "<group>"; };
 		0EFAFEA021FA0FA2005B2B16 /* ContainerPercentDrivenInteractiveTransitioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerPercentDrivenInteractiveTransitioner.swift; sourceTree = "<group>"; };
 		1D419DBC21235EE100B62D91 /* ManagedChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedChild.swift; sourceTree = "<group>"; };
+		5C5286002322E81900A25962 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		5C574BF62264EC10003D1641 /* ActiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLabel.swift; sourceTree = "<group>"; };
 		5C574BF82264EC3C003D1641 /* ActiveLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLabelViewController.swift; sourceTree = "<group>"; };
 		5C574BFA2264ED61003D1641 /* ActiveLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLabelTests.swift; sourceTree = "<group>"; };
@@ -261,6 +262,7 @@
 			children = (
 				62F5256C2257F4F50052B8E7 /* README.md */,
 				62F5256E2257F4FE0052B8E7 /* CHANGELOG.md */,
+				5C5286002322E81900A25962 /* Package.swift */,
 				8698CFCB2061A0FB0065AE20 /* Examples */,
 				8698CF9D20619EAD0065AE20 /* Sources */,
 				607FACE81AFB9204008FA782 /* Tests */,
