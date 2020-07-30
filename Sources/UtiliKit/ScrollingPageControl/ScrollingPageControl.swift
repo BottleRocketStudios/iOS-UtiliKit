@@ -256,7 +256,7 @@ class ScrollingPageControl: UIView {
     override var accessibilityLabel: String? {
         set { _ = newValue }
         get {
-            return numberOfPages == 0 ? "no pages" : "page \(currentPage + 1) of \(numberOfPages)"
+            return numberOfPages == 0 ? NSLocalizedString("no pages", comment: "ScrollingPageControl - empty state accessibility label") : String.localizedStringWithFormat(NSLocalizedString("page %d of %d", comment: "ScrollingPageControl - current page accessibility label"), currentPage + 1, numberOfPages)
         }
     }
     
