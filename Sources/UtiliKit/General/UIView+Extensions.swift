@@ -82,7 +82,7 @@ public extension UIView {
     }
     
     /**
-     Constrains the receiver to the edges of its superview with insets.
+     Constrains the receiver to the center of its superview or superview's safe area.
      
      - Parameter isUsingSafeArea: A Bool value used to determine the use of safeAreaLayoutGuides or superview anchors
      */
@@ -98,11 +98,30 @@ public extension UIView {
         }
     }
     
-    /// Constrains the receiver to the edges of its superview with insets.
+    /// Constrains the receiver to the center of its superview.
     func centerViewInSuperview() {
         guard let superview = superview else { return }
         
         superview.addConstraints([centerXAnchor.constraint(equalTo: superview.centerXAnchor),
                                   centerYAnchor.constraint(equalTo: superview.centerYAnchor)])
+    }
+    
+    /// Constrains the receiver to the size of its superview. Optionaly width and height scales can be specified, otherwise they will default to 1.0 (no scaling).
+    func constrainSizeToSuperview(widthScale: CGFloat = 1.0, heightScale: CGFloat = 1.0) {
+        guard let superview = superview else { return }
+        
+        superview.addConstraints([widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: widthScale),
+                                  heightAnchor.constraint(equalTo: superview.heightAnchor, multiplier: heightScale)])
+    }
+    
+    /// Constrains the receiver to the specified size.
+    func constrainSize(to size: CGSize) {
+        constrainSize(toWidth: size.width, height: size.height)
+    }
+    
+    /// Constrains the receiver to the specified wdith and height.
+    func constrainSize(toWidth width: CGFloat, height: CGFloat) {
+        addConstraints([widthAnchor.constraint(equalToConstant: width),
+                        heightAnchor.constraint(equalToConstant: height)])
     }
 }
