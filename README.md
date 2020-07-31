@@ -327,12 +327,20 @@ let key = ObfuscatedKey().T.h.i.s.underscore.I.s.dash.o.b.f.u.s.c.a.t.e.d.value
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repo, open `UtiliKit.xcworkspace`, and run the "UtiliKit-iOSExample" project.
 
 ## Requirements
 
-* iOS 9.0+
+* iOS 10.0+
 * Swift 5.0
+
+## Installation - Swift Package Manager
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/BottleRocketStudios/iOS-UtiliKit.git", from: "1.6.0")
+]
+```
 
 ## Installation - CocoaPods
 
