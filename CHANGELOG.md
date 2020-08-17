@@ -2,6 +2,16 @@
 
 ##### Enhancements
 
+* None
+
+##### Bug Fixes
+
+* None
+
+## 1.7.0 (2020-08-17)
+
+##### Enhancements
+
 * Make it possible to override functions in container, which aid in `ManagedChild` managemet.
 [Will McGinty](https://github.com/willmcginty)
 [#87](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/87)
