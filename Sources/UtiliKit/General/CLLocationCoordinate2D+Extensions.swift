@@ -6,7 +6,7 @@
 //  Copyright © 2021 Bottle Rocket Studios. All rights reserved.
 //
 
-import MapKit
+import CoreLocation
 
 public extension CLLocationCoordinate2D {
 
