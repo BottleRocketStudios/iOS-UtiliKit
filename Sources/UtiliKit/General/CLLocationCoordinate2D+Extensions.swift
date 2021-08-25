@@ -23,11 +23,10 @@ public extension CLLocationCoordinate2D {
     var isValid: Bool {
         if CLLocationCoordinate2DIsValid(self) {
             return true
-        } else {
-            debugPrint("================================================")
-            debugPrint("Invalid CLLocationCoordinate2D Detected: \(self)")
-            debugPrint("================================================")
-            return false
         }
+        debugPrint("================================================")
+        debugPrint("Invalid CLLocationCoordinate2D Detected: \(self)")
+        debugPrint("================================================")
+        return false
     }
 }
