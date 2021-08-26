@@ -2,7 +2,9 @@
 
 ##### Enhancements
 
-* None
+* Extend CLLocationCoordinate2D with isValid computed property
+[Andrew Winn](https://github.com/andrew-winn-br)
+[#102](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/102)
 
 ##### Bug Fixes
 
