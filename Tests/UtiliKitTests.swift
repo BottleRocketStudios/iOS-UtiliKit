@@ -95,7 +95,7 @@ class OpenSourceUtilitiesTests: XCTestCase {
                                                   longitude: CLLocationDegrees(-180))
         ]
 
-        XCTAssertNil(coordinates.first { !$0.isValid })
+        XCTAssertTrue(coordinates.allSatisfy { $0.isValid }, "All test coordinates should be valid")
     }
 
     func test_CLLocationCoordinate2d_Invalid() {
@@ -117,7 +117,6 @@ class OpenSourceUtilitiesTests: XCTestCase {
                                                   longitude: CLLocationDegrees(-185))
         ]
 
-        let invalidCoordinates = coordinates.filter { !$0.isValid}
-        XCTAssertTrue(coordinates.count == invalidCoordinates.count, "All test coordinates should be invalid")
+        XCTAssertTrue(coordinates.allSatisfy { !$0.isValid }, "All test coordinates should be invalid")
     }
 }
