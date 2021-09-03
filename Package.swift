@@ -9,26 +9,26 @@ let package = Package(
     products: [
         .library(
             name: "UtiliKit",
-            targets: ["Instantiate", "TimelessDate", "General", "Version", "Container", "ActiveLabel", "Obfuscation"]),
+            targets: ["GeneralUtilities", "InstantiationUtilities", "TimelessDate", "VersionUtilities", "Container", "ActiveLabel", "ObfuscationUtilities"]),
         .library(
             name: "UtiliKitContainer",
             targets: ["Container"]),
         .library(
             name: "UtiliKitCore",
-            targets: ["Instantiate", "General"]),
+            targets: ["InstantiationUtilities", "GeneralUtilities"]),
         ],
     targets: [
         .target(
-            name: "General",
+            name: "GeneralUtilities",
             path: "Sources/UtiliKit/General"),
         .target(
-            name: "Instantiate",
+            name: "InstantiationUtilities",
             path: "Sources/UtiliKit/Instantiation"),
         .target(
             name: "TimelessDate",
             path: "Sources/UtiliKit/TimelessDate"),
         .target(
-            name: "Version",
+            name: "VersionUtilities",
             path: "Sources/UtiliKit/Version"),
         .target(
             name: "Container",
@@ -37,7 +37,7 @@ let package = Package(
             name: "ActiveLabel",
             path: "Sources/UtiliKit/ActiveLabel"),
         .target(
-            name: "Obfuscation",
+            name: "ObfuscationUtilities",
             path: "Sources/UtiliKit/Obfuscation")
     ]
 )
