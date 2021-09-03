@@ -11,10 +11,10 @@ let package = Package(
             name: "UtiliKit",
             targets: ["Instantiate", "TimelessDate", "General", "Version", "Container", "ActiveLabel", "Obfuscation"]),
         .library(
-            name: "UtiliKit-Container",
+            name: "UtiliKitContainer",
             targets: ["Container"]),
         .library(
-            name: "UtiliKit-Core",
+            name: "UtiliKitCore",
             targets: ["Instantiate", "General"]),
         ],
     targets: [
