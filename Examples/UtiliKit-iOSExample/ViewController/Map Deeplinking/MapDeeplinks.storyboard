@@ -258,10 +258,10 @@
                                                             <segmentedControl opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GIv-JH-UvF">
                                                                 <rect key="frame" x="57" y="0.0" width="341" height="32"/>
                                                                 <segments>
-                                                                    <segment title="" image="bicycle" catalog="system"/>
-                                                                    <segment title="" image="car" catalog="system"/>
-                                                                    <segment title="" image="cablecar" catalog="system"/>
-                                                                    <segment title="" image="figure.walk" catalog="system"/>
+                                                                    <segment title="Bike"/>
+                                                                    <segment title="Car"/>
+                                                                    <segment title="Transit"/>
+                                                                    <segment title="Walk"/>
                                                                 </segments>
                                                             </segmentedControl>
                                                         </subviews>
@@ -332,10 +332,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bicycle" catalog="system" width="128" height="78"/>
-        <image name="cablecar" catalog="system" width="122" height="128"/>
-        <image name="car" catalog="system" width="128" height="93"/>
-        <image name="figure.walk" catalog="system" width="95" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

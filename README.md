@@ -248,9 +248,9 @@ ExternalMappingURLBuilder.MapApp.waze.title   // "Waze"
 ExternalMappingURLBuilder.displayLocation(at:zoomPercent:style:) will make links to show a location on a map.
 ```swift
 urlBuilder.displayLocation(at: .init(latitude: 32.949447, longitude: -96.823948), zoomPercent: 30.0, style: .satellite)
-// returns [.apple: maps://?t=k&ll=32.949447,-96.823948&z=7.731287,
-//          .google: comgooglemaps://?center=32.949447,-96.823948&views=satellite&zoom=6.937874,
-//          .waze: waze://?ll=32.949447,-96.823948&z=2475.2798]
+// returns [.apple: maps://?t=k&ll=32.949447,-96.823948&z=7.7000003,
+//          .google: comgooglemaps://?center=32.949447,-96.823948&views=satellite&zoom=6.9,
+//          .waze: waze://?ll=32.949447,-96.823948&z=2461.8]
 ```
 
 ExternalMappingURLBuilder.search(for:near:style:) will make links to search for a phrase on the map.
@@ -264,8 +264,8 @@ urlBuilder.search(for: "pizza", near: .init(latitude: 32.949447, longitude: -96.
 ExternalMappingURLBuilder.navigate(to:from:via:style:) will make links to get directions on the map.
 ```swift
 urlBuilder.navigate(to: "14841 Dallas Parkway", from: "4970 Addison Circle", via: .walk, style: .transit)
-// returns [.apple: maps://?t=r&daddr=14841+Dallas+Parkway&saddr=4970+Addison+Circle,
-//          .google: comgooglemaps://?daddr=14841+Dallas+Parkway&saddr=4970+Addison+Circle,
+// returns [.apple: maps://?t=m&daddr=14841+Dallas+Parkway&saddr=4970+Addison+Circle&dirflg=w,
+//          .google: comgooglemaps://?views=&daddr=14841+Dallas+Parkway&saddr=4970+Addison+Circle&directionsmode=walking,
 //          .waze: waze://?q=14841+Dallas+Parkway&navigate=yes]
 ```
 

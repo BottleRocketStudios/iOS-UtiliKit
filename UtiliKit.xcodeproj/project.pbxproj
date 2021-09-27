@@ -35,6 +35,7 @@
 		59D8FE1E270117C9009B9F05 /* MapDeeplinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8FE1B270107BB009B9F05 /* MapDeeplinksViewController.swift */; };
 		59D8FE2127012F13009B9F05 /* UISegmentedControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8FE1F27012CFD009B9F05 /* UISegmentedControl+Extensions.swift */; };
 		59D8FE2427015986009B9F05 /* URLComponents+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8FE2227015978009B9F05 /* URLComponents+Extensions.swift */; };
+		59D8FE28270218BF009B9F05 /* ExternalMappingURLBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8FE27270218BF009B9F05 /* ExternalMappingURLBuilderTests.swift */; };
 		59E8D9A4246361DB0016A447 /* ScrollingPageControlSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E8D9A3246361DB0016A447 /* ScrollingPageControlSetupViewController.swift */; };
 		59E8D9A6246361F50016A447 /* ScrollingPageControlExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E8D9A5246361F50016A447 /* ScrollingPageControlExampleViewController.swift */; };
 		59E8D9A92464720E0016A447 /* ScrollingPageControl.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E8D9A724644B410016A447 /* ScrollingPageControl.storyboard */; };
@@ -155,6 +156,7 @@
 		59D8FE1B270107BB009B9F05 /* MapDeeplinksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDeeplinksViewController.swift; sourceTree = "<group>"; };
 		59D8FE1F27012CFD009B9F05 /* UISegmentedControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extensions.swift"; sourceTree = "<group>"; };
 		59D8FE2227015978009B9F05 /* URLComponents+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLComponents+Extensions.swift"; sourceTree = "<group>"; };
+		59D8FE27270218BF009B9F05 /* ExternalMappingURLBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalMappingURLBuilderTests.swift; sourceTree = "<group>"; };
 		59E8D9A3246361DB0016A447 /* ScrollingPageControlSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingPageControlSetupViewController.swift; sourceTree = "<group>"; };
 		59E8D9A5246361F50016A447 /* ScrollingPageControlExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingPageControlExampleViewController.swift; sourceTree = "<group>"; };
 		59E8D9A724644B410016A447 /* ScrollingPageControl.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScrollingPageControl.storyboard; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 			children = (
 				59D8FE1426FFFB2A009B9F05 /* ClosedRangeTests.swift */,
 				869826271FE87BFA0024B73D /* DateTests.swift */,
+				59D8FE27270218BF009B9F05 /* ExternalMappingURLBuilderTests.swift */,
 				7D5611B722E79AD40017008D /* ObfuscationTests.swift */,
 				869826261FE87BFA0024B73D /* UtiliKitTests.swift */,
 				0ED9476220FD461300B642AB /* ContainerTests.swift */,
@@ -804,6 +807,7 @@
 				59D8FE1727003DCC009B9F05 /* ScrollingPageControlTests.swift in Sources */,
 				59D8FE1526FFFB2A009B9F05 /* ClosedRangeTests.swift in Sources */,
 				0ED9476420FD473700B642AB /* ContainerTests.swift in Sources */,
+				59D8FE28270218BF009B9F05 /* ExternalMappingURLBuilderTests.swift in Sources */,
 				8677315720601D1A00C54343 /* UtiliKitTests.swift in Sources */,
 				8677315820601D1A00C54343 /* DateTests.swift in Sources */,
 				59D8FE1627003DC9009B9F05 /* ActiveLabelTests.swift in Sources */,

@@ -108,7 +108,7 @@ extension GoogleMapsURLBuilder: MapAppURLBuilder {
         if let fromAddress = fromAddress {
             fromNavPoint = .address(fromAddress)
         }
-        return directions(to: .address(toAddress), from: fromNavPoint, transportationMode: .init(navigationMode: navigationMode))
+        return directions(to: .address(toAddress), from: fromNavPoint, transportationMode: .init(navigationMode: navigationMode), overlays: MapOverlay.from(style: style))
     }
 }
 
