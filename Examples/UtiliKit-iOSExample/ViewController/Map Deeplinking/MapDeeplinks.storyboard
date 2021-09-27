@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="2g7-0w-pSo">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="717.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="714.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="APU-wu-YaI">
                                                 <rect key="frame" x="8" y="8" width="398" height="31"/>
@@ -44,7 +44,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LC0-TT-kpf">
-                                                <rect key="frame" x="8" y="79" width="398" height="182.5"/>
+                                                <rect key="frame" x="8" y="79" width="398" height="181.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cew-Jt-DD5">
                                                         <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
@@ -60,7 +60,7 @@
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Latitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sil-HS-RUL">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="34"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="350" height="34"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                                         <connections>
@@ -68,9 +68,9 @@
                                                                         </connections>
                                                                     </textField>
                                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysk-iy-q5q">
-                                                                        <rect key="frame" x="337" y="0.0" width="61" height="34"/>
-                                                                        <state key="normal" title="Button"/>
-                                                                        <buttonConfiguration key="configuration" style="plain" title="North"/>
+                                                                        <rect key="frame" x="358" y="0.0" width="40" height="34"/>
+                                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                        <state key="normal" title="North"/>
                                                                         <connections>
                                                                             <action selector="toggleNorthSouth:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Deu-R8-87W"/>
                                                                         </connections>
@@ -81,7 +81,7 @@
                                                                 <rect key="frame" x="0.0" y="42" width="398" height="34"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Longitude" textAlignment="natural" minimumFontSize="17" id="eHd-Xc-4Ny">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="338" height="34"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="360" height="34"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -90,9 +90,9 @@
                                                                         </connections>
                                                                     </textField>
                                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eri-VR-33R">
-                                                                        <rect key="frame" x="346" y="0.0" width="52" height="34"/>
-                                                                        <state key="normal" title="Button"/>
-                                                                        <buttonConfiguration key="configuration" style="plain" title="East"/>
+                                                                        <rect key="frame" x="368" y="0.0" width="30" height="34"/>
+                                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                        <state key="normal" title="East"/>
                                                                         <connections>
                                                                             <action selector="toggleEastWest:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Oj2-OJ-QCJ"/>
                                                                         </connections>
@@ -122,9 +122,9 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pfd-51-CwP">
-                                                        <rect key="frame" x="0.0" y="151.5" width="398" height="31"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="tinted" title="Build"/>
+                                                        <rect key="frame" x="0.0" y="151.5" width="398" height="30"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Build"/>
                                                         <connections>
                                                             <action selector="pressedBuildURLButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nay-0t-DtA"/>
                                                         </connections>
@@ -132,7 +132,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jEf-iE-UDx">
-                                                <rect key="frame" x="8" y="301.5" width="398" height="185.5"/>
+                                                <rect key="frame" x="8" y="300.5" width="398" height="184.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HUv-jO-y1V">
                                                         <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
@@ -166,7 +166,7 @@
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Latitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6F7-PT-sof">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="284.5" height="34"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="305.5" height="34"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                                                 <connections>
@@ -174,9 +174,9 @@
                                                                                 </connections>
                                                                             </textField>
                                                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6V-ff-QCR">
-                                                                                <rect key="frame" x="292.5" y="0.0" width="61" height="34"/>
-                                                                                <state key="normal" title="Button"/>
-                                                                                <buttonConfiguration key="configuration" style="plain" title="North"/>
+                                                                                <rect key="frame" x="313.5" y="0.0" width="40" height="34"/>
+                                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                                <state key="normal" title="North"/>
                                                                                 <connections>
                                                                                     <action selector="toggleNorthSouth:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="5SN-G6-23o"/>
                                                                                 </connections>
@@ -187,7 +187,7 @@
                                                                         <rect key="frame" x="0.0" y="42" width="353.5" height="34"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Longitude" textAlignment="natural" minimumFontSize="17" id="Vik-II-ZgT">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="293.5" height="34"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="315.5" height="34"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -196,9 +196,9 @@
                                                                                 </connections>
                                                                             </textField>
                                                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMp-iB-vGB">
-                                                                                <rect key="frame" x="301.5" y="0.0" width="52" height="34"/>
-                                                                                <state key="normal" title="Button"/>
-                                                                                <buttonConfiguration key="configuration" style="plain" title="East"/>
+                                                                                <rect key="frame" x="323.5" y="0.0" width="30" height="34"/>
+                                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                                <state key="normal" title="East"/>
                                                                                 <connections>
                                                                                     <action selector="toggleEastWest:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="bx3-o7-9hE"/>
                                                                                 </connections>
@@ -210,9 +210,9 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ga3-ND-gSm">
-                                                        <rect key="frame" x="0.0" y="154.5" width="398" height="31"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="tinted" title="Build"/>
+                                                        <rect key="frame" x="0.0" y="154.5" width="398" height="30"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Build"/>
                                                         <connections>
                                                             <action selector="pressedBuildURLButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="YbV-bd-dRs"/>
                                                         </connections>
@@ -220,7 +220,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OJT-8s-AMS">
-                                                <rect key="frame" x="8" y="527" width="398" height="182.5"/>
+                                                <rect key="frame" x="8" y="525" width="398" height="181.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Navigation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bNi-9V-YoA">
                                                         <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
@@ -267,9 +267,9 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svu-7d-doJ">
-                                                        <rect key="frame" x="0.0" y="151.5" width="398" height="31"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="tinted" title="Build"/>
+                                                        <rect key="frame" x="0.0" y="151.5" width="398" height="30"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Build"/>
                                                         <connections>
                                                             <action selector="pressedBuildURLButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="KZM-7H-otX"/>
                                                         </connections>

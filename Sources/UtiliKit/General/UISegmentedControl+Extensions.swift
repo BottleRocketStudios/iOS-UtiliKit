@@ -9,8 +9,9 @@
 import UIKit
 
 public extension UISegmentedControl {
-    
-    public var titleOfSelectedSegment: String? {
+
+    /// Returns the `titleForSegment` at the `selectedSegmentIndex`
+    var titleOfSelectedSegment: String? {
         titleForSegment(at: selectedSegmentIndex)
     }
 }
