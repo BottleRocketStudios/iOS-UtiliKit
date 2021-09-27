@@ -44,17 +44,6 @@ class MapDeeplinksViewController: UIViewController {
     @IBOutlet private var navigationEnableNavTypeToggle: UISwitch!
     @IBOutlet private var navigationTypePicker: UISegmentedControl!
     @IBOutlet private var navigationBuildButton: UIButton!
-
-    @IBOutlet private var appleButton: UIButton!
-    @IBOutlet private var googleButton: UIButton!
-    @IBOutlet private var wazeButton: UIButton!
-
-    // MARK: UIViewController
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configureAppButtons()
-    }
 }
 
 // MARK: UITextFieldDelegate
@@ -122,9 +111,6 @@ private extension MapDeeplinksViewController {
         return NavigationMode(rawValue: (navigationTypePicker.titleOfSelectedSegment ?? "").lowercased())
     }
 
-    var allAppButtons: [UIButton] {
-        [appleButton, googleButton, wazeButton]
-    }
     var allTextFields: [UITextField] {
         [locationLatitudeTextField, locationLongitudeTextField,
          searchQueryTextField, searchLatitudeTextField, searchLongitudeTextField,
@@ -146,22 +132,6 @@ private extension MapDeeplinksViewController {
         }
         if let longitude = Float(searchLongitudeTextField.text ?? "") {
             searchLongitudeTextField.text = "\((Float(0)...180).clamp(value: longitude))"
-        }
-    }
-
-    func configureAppButtons() {
-        allAppButtons.forEach { $0.isEnabled = false }
-        let mapUrls = urlBuilder.search(for: "", near: nil, style: nil)
-        mapUrls.forEach {
-            guard UIApplication.shared.canOpenURL($0.value) else { return }
-            switch $0.key {
-            case .apple:
-                appleButton.isEnabled = true
-            case .google:
-                googleButton.isEnabled = true
-            case .waze:
-                wazeButton.isEnabled = true
-            }
         }
     }
 
