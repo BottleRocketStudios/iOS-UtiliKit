@@ -12,35 +12,56 @@ public struct ExternalMappingURLBuilder {
 
     // MARK: Properties
 
-    let supportedApps: [MapApp]
+    private let apps: [MapApp]
 
     // MARK: Initializers
 
-    public init(supportedApps: [MapApp]) {
-        self.supportedApps = supportedApps
+    /// Create an instance with the external mapping apps
+    /// - Parameter apps: The apps the builder will build links to. Optional, defaults to all supported apps.
+    public init(apps: [MapApp] = MapApp.allCases) {
+        self.apps = apps
     }
 
     // MARK: Public
 
+    /// Creates links to display a specific location on the map.
+    /// - Parameters:
+    ///   - coordinate: The location on the map to display.
+    ///   - zoomPercent: The zoom level specified on a `0...100` scale. `100` represents fully zoomed in on the location. Optional, defaults to `nil`.
+    ///   - style: The map style to display. Optional, defaults to `nil`.
+    /// - Returns: URLs to display the location in each of the supported map apps.
     public func displayLocation(at coordinate: MappingCoordinate, zoomPercent: Float?, style: MapStyle?) -> [MapApp: URL] {
         var returnDictionary = [MapApp: URL]()
-        supportedApps.forEach {
+        apps.forEach {
             returnDictionary[$0] = $0.interface.displayLocation(at: coordinate, zoomPercent: zoomPercent, style: style)
         }
         return returnDictionary
     }
 
+    /// Creates links to search the map.
+    /// - Parameters:
+    ///   - query: What to search for; can be a term like `"pizza"`  or a partial address like `"14841 Dallas Parkway"` or `"Addison, TX"`.
+    ///   - coordinate: Specify a location to perform the search at. Optional, defaults to `nil`.
+    ///   - style: The map style to display. Optional, defaults to `nil`.
+    /// - Returns: URLs to search for the `query` in each of the supported map apps.
     public func search(for query: String, near coordinate: MappingCoordinate?, style: MapStyle?) -> [MapApp: URL] {
         var returnDictionary = [MapApp: URL]()
-        supportedApps.forEach {
+        apps.forEach {
             returnDictionary[$0] = $0.interface.search(for: query, near: coordinate, style: style)
         }
         return returnDictionary
     }
 
+    /// Creates links to get directions on the map.
+    /// - Parameters:
+    ///   - toAddress: The destination location.
+    ///   - fromAddress: The starting location. Optional, defaults to `nil`.
+    ///   - navigationMode: The method of travel to get directions for.
+    ///   - style: The map style to display. Optional, defaults to `nil`.
+    /// - Returns: URLs to get directions to the `toAddress` in each of the supported map apps.
     public func navigate(to toAddress: String, from fromAddress: String?, via navigationMode: NavigationMode?, style: MapStyle?) -> [MapApp: URL] {
         var returnDictionary = [MapApp: URL]()
-        supportedApps.forEach {
+        apps.forEach {
             returnDictionary[$0] = $0.interface.navigate(to: toAddress, from: fromAddress, via: navigationMode, style: style)
         }
         return returnDictionary
@@ -69,10 +90,6 @@ public extension ExternalMappingURLBuilder {
 }
 
 // MARK: - Private
-
-//private extension ExternalMappingURLBuilder {
-//
-//}
 
 private extension ExternalMappingURLBuilder.MapApp {
     var interface: MapAppURLBuilder.Type {

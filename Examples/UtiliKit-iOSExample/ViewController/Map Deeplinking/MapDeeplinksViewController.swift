@@ -17,7 +17,7 @@ class MapDeeplinksViewController: UIViewController {
 
     // MARK: Properties
 
-    let urlBuilder = ExternalMappingURLBuilder(supportedApps: MapApp.allCases)
+    let urlBuilder = ExternalMappingURLBuilder(apps: MapApp.allCases)
 
     // MARK: IBOutlets
 
@@ -188,10 +188,12 @@ private extension MapDeeplinksViewController {
 
     func buildAlert(from mapUrls: [MapApp: URL]) {
         let actionSheet = UIAlertController(title: "Open in...", message: "Choose the map app to use", preferredStyle: .actionSheet)
-        mapUrls.forEach { mapUrl in
-            guard UIApplication.shared.canOpenURL(mapUrl.value) else { return }
-            actionSheet.addAction(.init(title: mapUrl.key.title, style: .default) { _ in
-                UIApplication.shared.open(mapUrl.value, options: [:], completionHandler: nil)
+        mapUrls.forEach {
+            let url = $0.value
+            let title = $0.key.title
+            guard UIApplication.shared.canOpenURL(url) else { return }
+            actionSheet.addAction(.init(title: title, style: .default) { _ in
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             })
         }
         actionSheet.addAction(.init(title: "Cancel", style: .cancel))
