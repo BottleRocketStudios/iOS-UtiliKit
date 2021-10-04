@@ -9,7 +9,7 @@ let package = Package(
     products: [
         .library(
             name: "UtiliKit",
-            targets: ["GeneralUtilities", "Instantiation", "TimelessDate", "Versioning", "Container", "ActiveLabel", "Obfuscation"]),
+            targets: ["GeneralUtilities", "Instantiation", "TimelessDate", "Versioning", "ContainerViewController", "ActiveLabel", "Obfuscation"]),
         .library(
             name: "GeneralUtilities",
             targets: ["GeneralUtilities"]),
@@ -23,8 +23,8 @@ let package = Package(
             name: "Versioning",
             targets: ["Versioning"]),
         .library(
-            name: "Container",
-            targets: ["Container"]),
+            name: "ContainerViewController",
+            targets: ["ContainerViewController"]),
         .library(
             name: "ActiveLabel",
             targets: ["ActiveLabel"]),
@@ -46,7 +46,7 @@ let package = Package(
             name: "Versioning",
             path: "Sources/UtiliKit/Version"),
         .target(
-            name: "Container",
+            name: "ContainerViewController",
             path: "Sources/UtiliKit/Container"),
         .target(
             name: "ActiveLabel",
