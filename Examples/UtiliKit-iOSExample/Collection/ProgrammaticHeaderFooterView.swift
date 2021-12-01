@@ -43,6 +43,9 @@ class ProgrammaticHeaderFooterView: UICollectionReusableView {
         case .sectionFooter:
             label.text = "Footer"
             backgroundView.backgroundColor = .blue
+        default:
+            label.text = "Other"
+            backgroundView.backgroundColor = .yellow
         }
     }
 }

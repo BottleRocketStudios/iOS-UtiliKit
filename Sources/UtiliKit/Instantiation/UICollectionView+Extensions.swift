@@ -10,25 +10,25 @@ import UIKit
 public extension UICollectionView {
     
     /// Struct defining UICollectionElementKind
-    struct SupplementaryElementKind: RawRepresentable {
+    struct SupplementaryElementKind: RawRepresentable, Equatable {
         public let rawValue: String
 
-        init(rawValue: String) {
-            self.rawValue
+        public init(rawValue: String) {
+            self.rawValue = rawValue
         }
 
-        @available(*, deprecated: "Prefer `rawValue` instead.")
+        @available(*, deprecated, message: "Prefer `rawValue` instead.")
         public var type: String {
             return rawValue
-            switch self {
-            case .sectionHeader: return UICollectionView.elementKindSectionHeader
-            case .sectionFooter: return UICollectionView.elementKindSectionFooter
-            }
+        }
+
+        public static func ~=(lhs: SupplementaryElementKind, rhs: SupplementaryElementKind) -> Bool {
+            return lhs.rawValue ~= rhs.rawValue
         }
 
         // MARK: - Preset
-        static let sectionHeader = SupplementaryElementKind(rawValue: UICollectionView.elementKindSectionHeader)
-        static let sectionFooter = SupplementaryElementKind(rawValue: UICollectionView.elementKindSectionFooter)
+        public static let sectionHeader = SupplementaryElementKind(rawValue: UICollectionView.elementKindSectionHeader)
+        public static let sectionFooter = SupplementaryElementKind(rawValue: UICollectionView.elementKindSectionFooter)
     }
     
     //MARK: Registration
@@ -56,7 +56,7 @@ public extension UICollectionView {
      - Parameter type: The type of the view being registered.
      */
 
-    @available(*, deprecated: "Prefer `register(_:forSupplementaryViewOfKind:) instead.")
+    @available(*, deprecated, message: "Prefer `register(_:forSupplementaryViewOfKind:) instead.")
     func registerHeaderFooter<T: UICollectionReusableView>(_ type: T.Type) {
         register(type, forSupplementaryViewOfKind: .sectionHeader)
         register(type, forSupplementaryViewOfKind: .sectionFooter)
@@ -69,7 +69,7 @@ public extension UICollectionView {
      - Parameter kind: The kind of supplementary view to make.
     */
     func register<T: UICollectionReusableView>(_ type: T.Type, forSupplementaryViewOfKind kind: SupplementaryElementKind) {
-        register(type, forSupplementaryViewOfKind: kind.type, withReuseIdentifier: T.reuseIdentifier)
+        register(type, forSupplementaryViewOfKind: kind.rawValue, withReuseIdentifier: T.reuseIdentifier)
     }
     
     /**
@@ -89,7 +89,7 @@ public extension UICollectionView {
      - Parameter kind: The kind of supplementary view to make.
     */
     func registerNib<T: UICollectionReusableView>(forHeaderFooterView type: T.Type, forSupplementaryViewOfKind kind: SupplementaryElementKind) {
-        register(UINib(nibName: T.nibName, bundle: Bundle(for: type)), forSupplementaryViewOfKind: kind.type, withReuseIdentifier: T.reuseIdentifier)
+        register(UINib(nibName: T.nibName, bundle: Bundle(for: type)), forSupplementaryViewOfKind: kind.rawValue, withReuseIdentifier: T.reuseIdentifier)
     }
 
     //MARK: Dequeue
@@ -129,7 +129,7 @@ public extension UICollectionView {
      - Returns: A collection view cell of type T.
     */
     func dequeueReusableSupplementaryView<T: UICollectionReusableView>(of kind: SupplementaryElementKind, for indexPath: IndexPath) -> T {
-        guard let reusableView = dequeueReusableSupplementaryView(ofKind: kind.type, withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
+        guard let reusableView = dequeueReusableSupplementaryView(ofKind: kind.rawValue, withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("Could not dequeue a reusable supplementary view of type \(T.self) with identifier \(T.reuseIdentifier) for use in \(self)")
         }
         
