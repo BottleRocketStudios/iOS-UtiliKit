@@ -179,8 +179,8 @@ public extension UICollectionViewLayout {
 @available(iOSApplicationExtension 13.0, *)
 public extension NSCollectionLayoutDecorationItem {
 
-    class func background(for elementKind: UICollectionView.ElementKind) -> NSCollectionLayoutDecorationItem {
-        return .background(elementKind: elementKind.rawValue)
+    class func background<T: UICollectionReusableView>(forDecorationView type: T.Type) -> NSCollectionLayoutDecorationItem {
+        return .background(elementKind: T.reuseIdentifier)
     }
 }
 
