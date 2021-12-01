@@ -168,7 +168,7 @@ public extension UICollectionViewLayout {
 
      - Parameter type: The class of the nib being registered. This should match its reuse identifier.
     */
-    func registerib<T: UICollectionReusableView>(forDecorationView type: T.Type) {
+    func registerNib<T: UICollectionReusableView>(forDecorationView type: T.Type) {
         register(UINib(nibName: T.nibName, bundle: Bundle(for: type)), forDecorationViewOfKind: T.reuseIdentifier)
     }
 }
