@@ -151,3 +151,24 @@ public extension UICollectionView {
         return reusableView
     }
 }
+
+public extension UICollectionViewLayout {
+
+    /**
+     Registers a decoration view for use with a collection view layout.
+
+     - Parameter type: The type of the decoration view being registered.
+    */
+    func register<T: UICollectionReusableView>(_ type: T.Type) {
+        register(type, forDecorationViewOfKind: T.reuseIdentifier)
+    }
+
+    /**
+     Registers a nib for use as a decoration view with a collection view layout.
+
+     - Parameter type: The class of the nib being registered. This should match its reuse identifier.
+    */
+    func registerib<T: UICollectionReusableView>(forDecorationView type: T.Type) {
+        register(UINib(nibName: T.nibName, bundle: Bundle(for: type)), forDecorationViewOfKind: T.reuseIdentifier)
+    }
+}
