@@ -9,34 +9,26 @@ import UIKit
 
 public extension UICollectionView {
     
-    /// Enum defining UICollectionElementKind
-    enum SupplementaryElementKind {
-        case sectionHeader
-        case sectionFooter
-        
-        /// Attempt to create a `UICollectionView.SupplementaryElementKind` from the given string.
-        ///
-        /// - Parameter kind: The type of supplementary view to be instantiated or dequeued.
-        public init?(kind: String) {
-            let headerKind: String = UICollectionView.elementKindSectionHeader
-            let footerKind: String = UICollectionView.elementKindSectionFooter
+    /// Struct defining UICollectionElementKind
+    struct SupplementaryElementKind: RawRepresentable {
+        public let rawValue: String
 
-            if kind == headerKind {
-                self = .sectionHeader
-            } else if kind == footerKind {
-                self = .sectionFooter
-            } else {
-                return nil
-            }
+        init(rawValue: String) {
+            self.rawValue
         }
-    
-        /// Either UICollectionElementKindSectionHeader or UICollectionElementKindSectionFooter
+
+        @available(*, deprecated: "Prefer `rawValue` instead.")
         public var type: String {
+            return rawValue
             switch self {
             case .sectionHeader: return UICollectionView.elementKindSectionHeader
             case .sectionFooter: return UICollectionView.elementKindSectionFooter
             }
         }
+
+        // MARK: - Preset
+        static let sectionHeader = SupplementaryElementKind(rawValue: UICollectionView.elementKindSectionHeader)
+        static let sectionFooter = SupplementaryElementKind(rawValue: UICollectionView.elementKindSectionFooter)
     }
     
     //MARK: Registration
@@ -63,6 +55,8 @@ public extension UICollectionView {
     
      - Parameter type: The type of the view being registered.
      */
+
+    @available(*, deprecated: "Prefer `register(_:forSupplementaryViewOfKind:) instead.")
     func registerHeaderFooter<T: UICollectionReusableView>(_ type: T.Type) {
         register(type, forSupplementaryViewOfKind: .sectionHeader)
         register(type, forSupplementaryViewOfKind: .sectionFooter)
@@ -97,7 +91,7 @@ public extension UICollectionView {
     func registerNib<T: UICollectionReusableView>(forHeaderFooterView type: T.Type, forSupplementaryViewOfKind kind: SupplementaryElementKind) {
         register(UINib(nibName: T.nibName, bundle: Bundle(for: type)), forSupplementaryViewOfKind: kind.type, withReuseIdentifier: T.reuseIdentifier)
     }
-    
+
     //MARK: Dequeue
     /**
      Returns a reusable collection view cell of type T.
