@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E6A7E332758332100431FDC /* BadgeSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A7E322758332100431FDC /* BadgeSupplementaryView.swift */; };
+		0E6A7E36275834E900431FDC /* NibDrivenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A7E35275834E900431FDC /* NibDrivenCell.swift */; };
+		0E6A7E38275834F000431FDC /* NibDrivenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E6A7E37275834F000431FDC /* NibDrivenCell.xib */; };
+		0E6A7E3A2758373E00431FDC /* BlueDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A7E392758373E00431FDC /* BlueDecorationView.swift */; };
+		0E6A7E3C2758390300431FDC /* YellowDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A7E3B2758390300431FDC /* YellowDecorationView.swift */; };
+		0E6A7E3E27583AF000431FDC /* NibDrivenHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A7E3D27583AF000431FDC /* NibDrivenHeaderFooterView.swift */; };
+		0E6A7E4027583AF800431FDC /* NibDrivenHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E6A7E3F27583AF800431FDC /* NibDrivenHeaderFooterView.xib */; };
 		0E6E8C6D2112551200617815 /* ContainerViewController+ManagedChildren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E8C6C2112551200617815 /* ContainerViewController+ManagedChildren.swift */; };
 		0EC8025C209CE9C90051F732 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC8025B209CE9C90051F732 /* Configurable.swift */; };
 		0ECF481522D946B400CAEB3B /* ContainerViewControllerInteractiveTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECF481422D946B400CAEB3B /* ContainerViewControllerInteractiveTransitioning.swift */; };
@@ -56,20 +63,11 @@
 		8698D00D2061A3930065AE20 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFE92061A3930065AE20 /* CollectionViewController.swift */; };
 		8698D00E2061A3930065AE20 /* ProgrammaticCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFEA2061A3930065AE20 /* ProgrammaticCell.swift */; };
 		8698D00F2061A3930065AE20 /* ProgrammaticHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFEB2061A3930065AE20 /* ProgrammaticHeaderFooterView.swift */; };
-		8698D0102061A3930065AE20 /* ProgrammaticViewsCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFEC2061A3930065AE20 /* ProgrammaticViewsCollectionController.swift */; };
 		8698D0112061A3930065AE20 /* ContainerExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFED2061A3930065AE20 /* ContainerExampleViewController.swift */; };
 		8698D0122061A3930065AE20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8698CFEE2061A3930065AE20 /* Images.xcassets */; };
 		8698D0142061A3930065AE20 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFF12061A3930065AE20 /* CustomAnnotation.swift */; };
 		8698D0152061A3930065AE20 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFF22061A3930065AE20 /* MapController.swift */; };
 		8698D0162061A3930065AE20 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFF32061A3930065AE20 /* MapViewController.swift */; };
-		8698D0172061A3930065AE20 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFF52061A3930065AE20 /* TableViewController.swift */; };
-		8698D0182061A3930065AE20 /* XibFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFF62061A3930065AE20 /* XibFooterView.swift */; };
-		8698D0192061A3930065AE20 /* XibFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8698CFF72061A3930065AE20 /* XibFooterView.xib */; };
-		8698D01A2061A3930065AE20 /* XibHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFF82061A3930065AE20 /* XibHeaderView.swift */; };
-		8698D01B2061A3930065AE20 /* XibHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8698CFF92061A3930065AE20 /* XibHeaderView.xib */; };
-		8698D01C2061A3930065AE20 /* XibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFFA2061A3930065AE20 /* XibTableViewCell.swift */; };
-		8698D01D2061A3930065AE20 /* XibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8698CFFB2061A3930065AE20 /* XibTableViewCell.xib */; };
-		8698D01E2061A3930065AE20 /* XibViewsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFFC2061A3930065AE20 /* XibViewsTableController.swift */; };
 		8698D01F2061A3930065AE20 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFFE2061A3930065AE20 /* ViewController.swift */; };
 		8698D0202061A3930065AE20 /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698CFFF2061A3930065AE20 /* XibView.swift */; };
 		8698D0212061A3930065AE20 /* XibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8698D0002061A3930065AE20 /* XibView.xib */; };
@@ -116,6 +114,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E6A7E322758332100431FDC /* BadgeSupplementaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeSupplementaryView.swift; sourceTree = "<group>"; };
+		0E6A7E35275834E900431FDC /* NibDrivenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibDrivenCell.swift; sourceTree = "<group>"; };
+		0E6A7E37275834F000431FDC /* NibDrivenCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibDrivenCell.xib; sourceTree = "<group>"; };
+		0E6A7E392758373E00431FDC /* BlueDecorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueDecorationView.swift; sourceTree = "<group>"; };
+		0E6A7E3B2758390300431FDC /* YellowDecorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowDecorationView.swift; sourceTree = "<group>"; };
+		0E6A7E3D27583AF000431FDC /* NibDrivenHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibDrivenHeaderFooterView.swift; sourceTree = "<group>"; };
+		0E6A7E3F27583AF800431FDC /* NibDrivenHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibDrivenHeaderFooterView.xib; sourceTree = "<group>"; };
 		0E6E8C6C2112551200617815 /* ContainerViewController+ManagedChildren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContainerViewController+ManagedChildren.swift"; sourceTree = "<group>"; };
 		0EC8025B209CE9C90051F732 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		0ECF481422D946B400CAEB3B /* ContainerViewControllerInteractiveTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewControllerInteractiveTransitioning.swift; sourceTree = "<group>"; };
@@ -169,21 +174,12 @@
 		8698CFE92061A3930065AE20 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		8698CFEA2061A3930065AE20 /* ProgrammaticCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammaticCell.swift; sourceTree = "<group>"; };
 		8698CFEB2061A3930065AE20 /* ProgrammaticHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammaticHeaderFooterView.swift; sourceTree = "<group>"; };
-		8698CFEC2061A3930065AE20 /* ProgrammaticViewsCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgrammaticViewsCollectionController.swift; sourceTree = "<group>"; };
 		8698CFED2061A3930065AE20 /* ContainerExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerExampleViewController.swift; sourceTree = "<group>"; };
 		8698CFEE2061A3930065AE20 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8698CFEF2061A3930065AE20 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8698CFF12061A3930065AE20 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		8698CFF22061A3930065AE20 /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		8698CFF32061A3930065AE20 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		8698CFF52061A3930065AE20 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		8698CFF62061A3930065AE20 /* XibFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibFooterView.swift; sourceTree = "<group>"; };
-		8698CFF72061A3930065AE20 /* XibFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XibFooterView.xib; sourceTree = "<group>"; };
-		8698CFF82061A3930065AE20 /* XibHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibHeaderView.swift; sourceTree = "<group>"; };
-		8698CFF92061A3930065AE20 /* XibHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XibHeaderView.xib; sourceTree = "<group>"; };
-		8698CFFA2061A3930065AE20 /* XibTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibTableViewCell.swift; sourceTree = "<group>"; };
-		8698CFFB2061A3930065AE20 /* XibTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XibTableViewCell.xib; sourceTree = "<group>"; };
-		8698CFFC2061A3930065AE20 /* XibViewsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibViewsTableController.swift; sourceTree = "<group>"; };
 		8698CFFE2061A3930065AE20 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8698CFFF2061A3930065AE20 /* XibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		8698D0002061A3930065AE20 /* XibView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XibView.xib; sourceTree = "<group>"; };
@@ -227,6 +223,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E6A7E34275834D700431FDC /* Cells, Supplementaries and Decorations */ = {
+			isa = PBXGroup;
+			children = (
+				0E6A7E4127583C6500431FDC /* Cells */,
+				0E6A7E4327583C6C00431FDC /* Supplementaries */,
+				0E6A7E4227583C6800431FDC /* Decorations */,
+			);
+			path = "Cells, Supplementaries and Decorations";
+			sourceTree = "<group>";
+		};
+		0E6A7E4127583C6500431FDC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8698CFEA2061A3930065AE20 /* ProgrammaticCell.swift */,
+				0E6A7E35275834E900431FDC /* NibDrivenCell.swift */,
+				0E6A7E37275834F000431FDC /* NibDrivenCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		0E6A7E4227583C6800431FDC /* Decorations */ = {
+			isa = PBXGroup;
+			children = (
+				0E6A7E392758373E00431FDC /* BlueDecorationView.swift */,
+				0E6A7E3B2758390300431FDC /* YellowDecorationView.swift */,
+			);
+			path = Decorations;
+			sourceTree = "<group>";
+		};
+		0E6A7E4327583C6C00431FDC /* Supplementaries */ = {
+			isa = PBXGroup;
+			children = (
+				8698CFEB2061A3930065AE20 /* ProgrammaticHeaderFooterView.swift */,
+				0E6A7E3D27583AF000431FDC /* NibDrivenHeaderFooterView.swift */,
+				0E6A7E3F27583AF800431FDC /* NibDrivenHeaderFooterView.xib */,
+				0E6A7E322758332100431FDC /* BadgeSupplementaryView.swift */,
+			);
+			path = Supplementaries;
+			sourceTree = "<group>";
+		};
 		0EFAFE9021F80CBD005B2B16 /* Transitioning */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,13 +478,12 @@
 				8698CFE42061A3930065AE20 /* LaunchScreen.xib */,
 				8698CFE62061A3930065AE20 /* Main.storyboard */,
 				8698CFE82061A3930065AE20 /* Collection */,
+				8698CFF02061A3930065AE20 /* Map */,
+				8698CFFD2061A3930065AE20 /* View */,
+				0EFAFEA721FBB6ED005B2B16 /* Container */,
+				8698D0012061A3930065AE20 /* ViewController */,
 				8698CFEE2061A3930065AE20 /* Images.xcassets */,
 				8698CFEF2061A3930065AE20 /* Info.plist */,
-				8698CFF02061A3930065AE20 /* Map */,
-				8698CFF42061A3930065AE20 /* Table */,
-				8698CFFD2061A3930065AE20 /* View */,
-				8698D0012061A3930065AE20 /* ViewController */,
-				0EFAFEA721FBB6ED005B2B16 /* Container */,
 			);
 			path = "UtiliKit-iOSExample";
 			sourceTree = "<group>";
@@ -457,9 +492,7 @@
 			isa = PBXGroup;
 			children = (
 				8698CFE92061A3930065AE20 /* CollectionViewController.swift */,
-				8698CFEA2061A3930065AE20 /* ProgrammaticCell.swift */,
-				8698CFEB2061A3930065AE20 /* ProgrammaticHeaderFooterView.swift */,
-				8698CFEC2061A3930065AE20 /* ProgrammaticViewsCollectionController.swift */,
+				0E6A7E34275834D700431FDC /* Cells, Supplementaries and Decorations */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -472,21 +505,6 @@
 				8698CFF32061A3930065AE20 /* MapViewController.swift */,
 			);
 			path = Map;
-			sourceTree = "<group>";
-		};
-		8698CFF42061A3930065AE20 /* Table */ = {
-			isa = PBXGroup;
-			children = (
-				8698CFF52061A3930065AE20 /* TableViewController.swift */,
-				8698CFF62061A3930065AE20 /* XibFooterView.swift */,
-				8698CFF72061A3930065AE20 /* XibFooterView.xib */,
-				8698CFF82061A3930065AE20 /* XibHeaderView.swift */,
-				8698CFF92061A3930065AE20 /* XibHeaderView.xib */,
-				8698CFFA2061A3930065AE20 /* XibTableViewCell.swift */,
-				8698CFFB2061A3930065AE20 /* XibTableViewCell.xib */,
-				8698CFFC2061A3930065AE20 /* XibViewsTableController.swift */,
-			);
-			path = Table;
 			sourceTree = "<group>";
 		};
 		8698CFFD2061A3930065AE20 /* View */ = {
@@ -652,12 +670,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8698D01D2061A3930065AE20 /* XibTableViewCell.xib in Resources */,
+				0E6A7E4027583AF800431FDC /* NibDrivenHeaderFooterView.xib in Resources */,
 				8698D0212061A3930065AE20 /* XibView.xib in Resources */,
-				8698D01B2061A3930065AE20 /* XibHeaderView.xib in Resources */,
 				8698D0122061A3930065AE20 /* Images.xcassets in Resources */,
 				8698D00B2061A3930065AE20 /* LaunchScreen.xib in Resources */,
-				8698D0192061A3930065AE20 /* XibFooterView.xib in Resources */,
+				0E6A7E38275834F000431FDC /* NibDrivenCell.xib in Resources */,
 				8698D0252061A3930065AE20 /* VCTest.storyboard in Resources */,
 				8698D00C2061A3930065AE20 /* Main.storyboard in Resources */,
 				59E8D9A92464720E0016A447 /* ScrollingPageControl.storyboard in Resources */,
@@ -724,23 +741,22 @@
 				8698D0232061A3930065AE20 /* NamedViewController.swift in Sources */,
 				8698D01F2061A3930065AE20 /* ViewController.swift in Sources */,
 				8698D0152061A3930065AE20 /* MapController.swift in Sources */,
-				8698D01C2061A3930065AE20 /* XibTableViewCell.swift in Sources */,
 				8698D00E2061A3930065AE20 /* ProgrammaticCell.swift in Sources */,
 				8698D00D2061A3930065AE20 /* CollectionViewController.swift in Sources */,
-				8698D0172061A3930065AE20 /* TableViewController.swift in Sources */,
+				0E6A7E3A2758373E00431FDC /* BlueDecorationView.swift in Sources */,
 				8698D0202061A3930065AE20 /* XibView.swift in Sources */,
 				8698D0292061A3930065AE20 /* WipeTransitionAnimator.swift in Sources */,
 				8698D0222061A3930065AE20 /* InitialViewController.swift in Sources */,
 				8698D0262061A3930065AE20 /* VCViewController.swift in Sources */,
 				8698D00F2061A3930065AE20 /* ProgrammaticHeaderFooterView.swift in Sources */,
-				8698D01A2061A3930065AE20 /* XibHeaderView.swift in Sources */,
-				8698D01E2061A3930065AE20 /* XibViewsTableController.swift in Sources */,
 				8698D0162061A3930065AE20 /* MapViewController.swift in Sources */,
-				8698D0102061A3930065AE20 /* ProgrammaticViewsCollectionController.swift in Sources */,
 				8698D00A2061A3930065AE20 /* AppDelegate.swift in Sources */,
-				8698D0182061A3930065AE20 /* XibFooterView.swift in Sources */,
+				0E6A7E3E27583AF000431FDC /* NibDrivenHeaderFooterView.swift in Sources */,
 				8698D0112061A3930065AE20 /* ContainerExampleViewController.swift in Sources */,
 				8698D0242061A3930065AE20 /* UIStoryboardIdentifier+Extensions.swift in Sources */,
+				0E6A7E36275834E900431FDC /* NibDrivenCell.swift in Sources */,
+				0E6A7E332758332100431FDC /* BadgeSupplementaryView.swift in Sources */,
+				0E6A7E3C2758390300431FDC /* YellowDecorationView.swift in Sources */,
 				8698D0272061A3930065AE20 /* ViewControllerA.swift in Sources */,
 				8698D0142061A3930065AE20 /* CustomAnnotation.swift in Sources */,
 				8698D0282061A3930065AE20 /* ViewControllerB.swift in Sources */,
@@ -1025,7 +1041,7 @@
 				DEVELOPMENT_TEAM = 2UAV38D2MU;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Examples/UtiliKit-iOSExample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "bottlerocketstudios.UtiliKit-iOSExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1050,7 +1066,7 @@
 				DEVELOPMENT_TEAM = 2UAV38D2MU;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Examples/UtiliKit-iOSExample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "bottlerocketstudios.UtiliKit-iOSExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
