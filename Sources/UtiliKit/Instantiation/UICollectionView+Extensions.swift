@@ -8,9 +8,12 @@
 import UIKit
 
 public extension UICollectionView {
+
+    @available(*, deprecated, message: "Prefer `ElementKind` instead.")
+    typealias SupplementaryElementKind = ElementKind
     
-    /// Struct defining UICollectionElementKind
-    struct SupplementaryElementKind: RawRepresentable, Equatable {
+    /// Struct defining UICollection.ElementKind
+    struct ElementKind: RawRepresentable, Equatable {
         public let rawValue: String
 
         public init(rawValue: String) {
@@ -22,13 +25,13 @@ public extension UICollectionView {
             return rawValue
         }
 
-        public static func ~=(lhs: SupplementaryElementKind, rhs: SupplementaryElementKind) -> Bool {
+        public static func ~=(lhs: ElementKind, rhs: ElementKind) -> Bool {
             return lhs.rawValue ~= rhs.rawValue
         }
 
         // MARK: - Preset
-        public static let sectionHeader = SupplementaryElementKind(rawValue: UICollectionView.elementKindSectionHeader)
-        public static let sectionFooter = SupplementaryElementKind(rawValue: UICollectionView.elementKindSectionFooter)
+        public static let sectionHeader = ElementKind(rawValue: UICollectionView.elementKindSectionHeader)
+        public static let sectionFooter = ElementKind(rawValue: UICollectionView.elementKindSectionFooter)
     }
     
     //MARK: Registration
@@ -68,7 +71,7 @@ public extension UICollectionView {
      - Parameter type: The type of the view being registered.
      - Parameter kind: The kind of supplementary view to make.
     */
-    func register<T: UICollectionReusableView>(_ type: T.Type, forSupplementaryViewOfKind kind: SupplementaryElementKind) {
+    func register<T: UICollectionReusableView>(_ type: T.Type, forSupplementaryViewOfKind kind: ElementKind) {
         register(type, forSupplementaryViewOfKind: kind.rawValue, withReuseIdentifier: T.reuseIdentifier)
     }
     
@@ -88,7 +91,7 @@ public extension UICollectionView {
      - Parameter type: The type of the view being registered.
      - Parameter kind: The kind of supplementary view to make.
     */
-    func registerNib<T: UICollectionReusableView>(forHeaderFooterView type: T.Type, forSupplementaryViewOfKind kind: SupplementaryElementKind) {
+    func registerNib<T: UICollectionReusableView>(forHeaderFooterView type: T.Type, forSupplementaryViewOfKind kind: ElementKind) {
         register(UINib(nibName: T.nibName, bundle: Bundle(for: type)), forSupplementaryViewOfKind: kind.rawValue, withReuseIdentifier: T.reuseIdentifier)
     }
 
@@ -128,7 +131,7 @@ public extension UICollectionView {
      - Parameter indexPath: The index path of the cell.
      - Returns: A collection view cell of type T.
     */
-    func dequeueReusableSupplementaryView<T: UICollectionReusableView>(of kind: SupplementaryElementKind, for indexPath: IndexPath) -> T {
+    func dequeueReusableSupplementaryView<T: UICollectionReusableView>(of kind: ElementKind, for indexPath: IndexPath) -> T {
         guard let reusableView = dequeueReusableSupplementaryView(ofKind: kind.rawValue, withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("Could not dequeue a reusable supplementary view of type \(T.self) with identifier \(T.reuseIdentifier) for use in \(self)")
         }
@@ -144,7 +147,7 @@ public extension UICollectionView {
      - Parameter element: An object used to configure the newly dequeued cell.
      - Returns: A collection reusable view of type T configured with `element`.
      */
-    func dequeueReusableSupplementaryView<T: UICollectionReusableView & Configurable>(of kind: SupplementaryElementKind, for indexPath: IndexPath, configuredWith element: T.ConfiguringType) -> T {
+    func dequeueReusableSupplementaryView<T: UICollectionReusableView & Configurable>(of kind: ElementKind, for indexPath: IndexPath, configuredWith element: T.ConfiguringType) -> T {
         let reusableView: T = dequeueReusableSupplementaryView(of: kind, for: indexPath)
         reusableView.configure(with: element)
         
@@ -172,3 +175,24 @@ public extension UICollectionViewLayout {
         register(UINib(nibName: T.nibName, bundle: Bundle(for: type)), forDecorationViewOfKind: T.reuseIdentifier)
     }
 }
+
+@available(iOSApplicationExtension 13.0, *)
+public extension NSCollectionLayoutDecorationItem {
+
+    class func background(for elementKind: UICollectionView.ElementKind) -> NSCollectionLayoutDecorationItem {
+        return .background(elementKind: elementKind.rawValue)
+    }
+}
+
+@available(iOSApplicationExtension 13.0, *)
+public extension NSCollectionLayoutBoundarySupplementaryItem {
+
+    convenience init(layoutSize: NSCollectionLayoutSize, elementKind: UICollectionView.ElementKind, alignment: NSRectAlignment) {
+        self.init(layoutSize: layoutSize, elementKind: elementKind.rawValue, alignment: alignment)
+    }
+
+    convenience init(layoutSize: NSCollectionLayoutSize, elementKind: UICollectionView.ElementKind, alignment: NSRectAlignment, absoluteOffset: CGPoint) {
+        self.init(layoutSize: layoutSize, elementKind: elementKind.rawValue, alignment: alignment, absoluteOffset: absoluteOffset)
+    }
+}
+

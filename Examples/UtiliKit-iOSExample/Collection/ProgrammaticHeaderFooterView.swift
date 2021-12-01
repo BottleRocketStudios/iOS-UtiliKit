@@ -11,7 +11,7 @@ import UIKit
 class ProgrammaticHeaderFooterView: UICollectionReusableView {
     private var backgroundView = UIView()
     private var label = UILabel()
-    var kind: UICollectionView.SupplementaryElementKind = .sectionHeader
+    var kind: UICollectionView.ElementKind = .sectionHeader
     
     override init(frame: CGRect) {
         super.init(frame: frame)
