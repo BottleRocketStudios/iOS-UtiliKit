@@ -31,7 +31,8 @@ class ProgrammaticViewsCollectionController: NSObject {
 		// Notice how the type of the cell or header/footer view is all that's needed to register your class with the collection view.
 		// The extension on UICollectionView will automatically use the name of the class to the view from the bundle and register it with the collection view.
         collectionView.register(ProgrammaticCell.self)
-        collectionView.registerHeaderFooter(ProgrammaticHeaderFooterView.self)
+        collectionView.register(ProgrammaticHeaderFooterView.self, forSupplementaryViewOfKind: .sectionHeader)
+        collectionView.register(ProgrammaticHeaderFooterView.self, forSupplementaryViewOfKind: .sectionFooter)
         
         collectionView.delegate = self
         collectionView.dataSource = self
