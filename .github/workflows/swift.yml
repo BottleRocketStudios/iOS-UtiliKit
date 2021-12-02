@@ -23,7 +23,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build and Test
       run: >
-        carthage bootstrap --use-xcframeworks --platform ios
+        carthage bootstrap --use-xcframeworks --platform ios \
         if [[ ${{ matrix.test }} == true ]]; then
           xcodebuild test \
             -workspace ${{ env.workspace }} \
