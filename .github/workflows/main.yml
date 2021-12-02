@@ -31,7 +31,7 @@ jobs:
         path: Carthage
         key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
 
-    - name: Carthage
+    - name: Dependencies
       if: steps.carthage-cache.outputs.cache-hit != 'true'
       run: carthage bootstrap --use-xcframeworks --no-use-binaries --platform iOS --cache-builds --verbose
 
