@@ -19,6 +19,7 @@ jobs:
               scheme: "UtiliKit-iOS"
               destination: "platform=iOS Simulator,OS=15.0,name=iPhone 12 Pro"
               test: true
+              lint: true
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -32,7 +33,7 @@ jobs:
 
     - name: Carthage
       if: steps.carthage-cache.outputs.cache-hit != 'true'
-      run: carthage bootstrap --use-xcframeworks --no-use-binaries --platform iOS --cache-builds
+      run: carthage bootstrap --use-xcframeworks --no-use-binaries --platform iOS --cache-builds --verbose
 
     - name: Build and Test
       run: >
@@ -49,3 +50,9 @@ jobs:
             -destination "${{ matrix.destination }}" \
             ONLY_ACTIVE_ARCH=NO || exit 1
         fi
+
+      - name: Lint
+        run: >
+          if [[ ${{ matrix.lint }} == true ]]; then
+            pod lib lint
+          fi
