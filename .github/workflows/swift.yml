@@ -51,8 +51,8 @@ jobs:
             ONLY_ACTIVE_ARCH=NO || exit 1
         fi
 
-      - name: Lint
-        run: >
-          if [[ ${{ matrix.lint }} == true ]]; then
-            pod lib lint
-          fi
+    - name: Lint
+      run: >
+        if [[ ${{ matrix.lint }} == true ]]; then
+          pod lib lint
+        fi
