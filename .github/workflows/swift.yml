@@ -1,0 +1,41 @@
+name: Swift
+
+on:
+  push:
+    branches: [ main, release/*]
+  pull_request:
+
+jobs:
+  Build:
+    runs-on: macos-11
+    env:
+      workspace: "UtiliKit.xcworkspace"
+    strategy:
+      fail-fast: false
+      matrix:
+        name: ["iOS", "tvOS", "watchOS"]
+        include:
+            - name: "iOS"
+              scheme: "UtiliKit-iOS"
+              destination: "platform=iOS Simulator,OS=15.0,name=iPhone 12 Pro"
+              test: true
+    steps:
+    - name: Dependencies
+      run: carthage bootstrap --use-xcframeworks --platform ios
+      
+    - uses: actions/checkout@v2
+    - name: Build and Test
+      run: >
+        if [[ ${{ matrix.test }} == true ]]; then
+          xcodebuild test \
+            -workspace ${{ env.workspace }} \
+            -scheme "${{ matrix.scheme }}" \
+            -destination "${{ matrix.destination }}" \
+            ONLY_ACTIVE_ARCH=NO -enableCodeCoverage YES || exit 1
+        else
+          xcodebuild \
+            -workspace ${{ env.workspace }} \
+            -scheme "${{ matrix.scheme }}" \
+            -destination "${{ matrix.destination }}" \
+            ONLY_ACTIVE_ARCH=NO || exit 1
+        fi
