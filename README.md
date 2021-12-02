@@ -1,6 +1,6 @@
 UtiliKit
 ============
-[![CI Status](http://img.shields.io/travis/BottleRocketStudios/iOS-UtiliKit.svg?style=flat)](https://travis-ci.org/BottleRocketStudios/iOS-UtiliKit)
+![CI Status](https://github.com/BottleRocketStudios/iOS-UtiliKit/actions/workflows/main.yml/badge.svg)
 [![Version](https://img.shields.io/cocoapods/v/UtiliKit.svg?style=flat)](http://cocoapods.org/pods/UtiliKit)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/UtiliKit.svg?style=flat)](http://cocoapods.org/pods/UtiliKit)
@@ -223,7 +223,7 @@ func containerViewController(_ container: ContainerViewController, animationCont
 
     return nil
 }
-``` 
+```
 
 ### ActiveLabel
 
@@ -310,7 +310,7 @@ pageControl.customPageDotAtIndex = { [weak self] (index) in
     return FavoriteIconView()
 }
 ```
-Usage notes: 
+Usage notes:
 - Returning `nil` for an `index` in the `customPageDotAtIndex` block will default to the standard page dot at the specified `dotSize` for that index.
 - It's advised that any custom view returned from this block should respond to `tintColorDidChange()` in a way that makes it clear when it is/is not the `currentPage`.
 - It's advised that any custom view returned from this block should take `dotSize` and `dotSpacing` into account to maintain a uniform look and feel.
