@@ -8,11 +8,7 @@
 import UIKit
 import UtiliKit
 
-class ProgrammaticCell: UICollectionViewCell {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-}
+class ProgrammaticCell: UICollectionViewCell { }
 
 // MARK: - Configurable
 extension ProgrammaticCell: Configurable {
