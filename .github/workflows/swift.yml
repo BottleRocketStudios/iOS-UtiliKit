@@ -20,10 +20,20 @@ jobs:
               destination: "platform=iOS Simulator,OS=15.0,name=iPhone 12 Pro"
               test: true
     steps:
-    - uses: actions/checkout@v2
-    - name: Dependencies
-      run: carthage bootstrap --use-xcframeworks --platform ios
-      
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Cache
+      uses: actions/cache@v1
+      id: carthage-cache
+      with:
+        path: Carthage
+        key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+
+    - name: Carthage
+      if: steps.carthage-cache.outputs.cache-hit != 'true'
+      run: carthage bootstrap --use-xcframeworks --no-use-binaries --platform iOS --cache-builds
+
     - name: Build and Test
       run: >
         if [[ ${{ matrix.test }} == true ]]; then
