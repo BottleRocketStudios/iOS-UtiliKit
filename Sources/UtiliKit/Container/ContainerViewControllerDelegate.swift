@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol ContainerViewControllerDelegate: class {
+public protocol ContainerViewControllerDelegate: AnyObject {
     
     func containerViewController(_ container: ContainerViewController,
                                  animationControllerForTransitionFrom source: UIViewController,
