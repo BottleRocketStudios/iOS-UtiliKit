@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,8 @@
 		0E6A7E3C2758390300431FDC /* YellowDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A7E3B2758390300431FDC /* YellowDecorationView.swift */; };
 		0E6A7E3E27583AF000431FDC /* NibDrivenHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A7E3D27583AF000431FDC /* NibDrivenHeaderFooterView.swift */; };
 		0E6A7E4027583AF800431FDC /* NibDrivenHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E6A7E3F27583AF800431FDC /* NibDrivenHeaderFooterView.xib */; };
+		0E6A7E47275931C300431FDC /* SnapshotTesting.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6A7E46275931C300431FDC /* SnapshotTesting.xcframework */; };
+		0E6A7E492759322400431FDC /* SnapshotTesting.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E6A7E482759322400431FDC /* SnapshotTesting.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E6E8C6D2112551200617815 /* ContainerViewController+ManagedChildren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E8C6C2112551200617815 /* ContainerViewController+ManagedChildren.swift */; };
 		0EC8025C209CE9C90051F732 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC8025B209CE9C90051F732 /* Configurable.swift */; };
 		0ECF481522D946B400CAEB3B /* ContainerViewControllerInteractiveTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECF481422D946B400CAEB3B /* ContainerViewControllerInteractiveTransitioning.swift */; };
@@ -33,8 +35,6 @@
 		5C574BF72264EC10003D1641 /* ActiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574BF62264EC10003D1641 /* ActiveLabel.swift */; };
 		5C574BF92264EC3C003D1641 /* ActiveLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574BF82264EC3C003D1641 /* ActiveLabelViewController.swift */; };
 		5C574BFB2264ED61003D1641 /* ActiveLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574BFA2264ED61003D1641 /* ActiveLabelTests.swift */; };
-		5C574BFD22675999003D1641 /* SnapshotTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C574BFC22675999003D1641 /* SnapshotTesting.framework */; };
-		5C574BFF22675A51003D1641 /* SnapshotTesting.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5C574BFC22675999003D1641 /* SnapshotTesting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		62F5256D2257F4F50052B8E7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 62F5256C2257F4F50052B8E7 /* README.md */; };
 		62F5256F2257F4FE0052B8E7 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 62F5256E2257F4FE0052B8E7 /* CHANGELOG.md */; };
 		7D5611B822E79AD40017008D /* ObfuscationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5611B722E79AD40017008D /* ObfuscationTests.swift */; };
@@ -107,7 +107,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5C574BFF22675A51003D1641 /* SnapshotTesting.framework in CopyFiles */,
+				0E6A7E492759322400431FDC /* SnapshotTesting.xcframework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +121,8 @@
 		0E6A7E3B2758390300431FDC /* YellowDecorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowDecorationView.swift; sourceTree = "<group>"; };
 		0E6A7E3D27583AF000431FDC /* NibDrivenHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibDrivenHeaderFooterView.swift; sourceTree = "<group>"; };
 		0E6A7E3F27583AF800431FDC /* NibDrivenHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibDrivenHeaderFooterView.xib; sourceTree = "<group>"; };
+		0E6A7E46275931C300431FDC /* SnapshotTesting.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SnapshotTesting.xcframework; path = Carthage/Build/SnapshotTesting.xcframework; sourceTree = "<group>"; };
+		0E6A7E482759322400431FDC /* SnapshotTesting.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SnapshotTesting.xcframework; path = Carthage/Build/SnapshotTesting.xcframework; sourceTree = "<group>"; };
 		0E6E8C6C2112551200617815 /* ContainerViewController+ManagedChildren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContainerViewController+ManagedChildren.swift"; sourceTree = "<group>"; };
 		0EC8025B209CE9C90051F732 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		0ECF481422D946B400CAEB3B /* ContainerViewControllerInteractiveTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewControllerInteractiveTransitioning.swift; sourceTree = "<group>"; };
@@ -206,7 +208,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C574BFD22675999003D1641 /* SnapshotTesting.framework in Frameworks */,
+				0E6A7E47275931C300431FDC /* SnapshotTesting.xcframework in Frameworks */,
 				8677314220601BB400C54343 /* UtiliKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +300,7 @@
 		1D419DBE21236CC300B62D91 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E6A7E46275931C300431FDC /* SnapshotTesting.xcframework */,
 				5C574BFC22675999003D1641 /* SnapshotTesting.framework */,
 			);
 			name = Frameworks;
@@ -332,6 +335,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				0E6A7E482759322400431FDC /* SnapshotTesting.xcframework */,
 				62F5256C2257F4F50052B8E7 /* README.md */,
 				62F5256E2257F4FE0052B8E7 /* CHANGELOG.md */,
 				5C5286002322E81900A25962 /* Package.swift */,
@@ -906,7 +910,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 				VERSION = 1.7.0;
@@ -935,7 +940,11 @@
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "bottlerocketstudios.UtiliKit-iOS";
 				PRODUCT_NAME = UtiliKit;
 				SKIP_INSTALL = YES;
@@ -968,7 +977,11 @@
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "bottlerocketstudios.UtiliKit-iOS";
 				PRODUCT_NAME = UtiliKit;
 				SKIP_INSTALL = YES;
@@ -991,14 +1004,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "bottlerocketstudios.UtiliKit-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1018,14 +1031,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Tests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "bottlerocketstudios.UtiliKit-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1050,7 +1063,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Examples/UtiliKit-iOSExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "bottlerocketstudios.UtiliKit-iOSExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1075,7 +1091,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Examples/UtiliKit-iOSExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "bottlerocketstudios.UtiliKit-iOSExample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
