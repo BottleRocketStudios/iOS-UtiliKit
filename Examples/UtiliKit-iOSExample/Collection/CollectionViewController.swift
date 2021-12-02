@@ -65,10 +65,10 @@ extension CollectionViewController {
 
     func cell(in collectionView: UICollectionView, for indexPath: IndexPath, item: Item) -> UICollectionViewCell? {
         if item.index % 2 == 0 {
-            let cell: ProgrammaticCell = collectionView.dequeueReusableCell(for: indexPath, configuredWith: .green)
+            let cell: ProgrammaticCell = collectionView.dequeueReusableCell(for: indexPath, configuredWith: .init(backgroundColor: .green))
             return cell
         } else {
-            let cell: NibDrivenCell = collectionView.dequeueReusableCell(for: indexPath, configuredWith: .purple)
+            let cell: NibDrivenCell = collectionView.dequeueReusableCell(for: indexPath, configuredWith: .init(backgroundColor: .purple))
             return cell
         }
     }
@@ -84,12 +84,12 @@ extension CollectionViewController {
 
         case .sectionHeader:
             let headerView: ProgrammaticHeaderFooterView = collectionView.dequeueReusableSupplementaryView(of: .sectionHeader,
-                                                                                                           for: indexPath, configuredWith: "header")
+                                                                                                           for: indexPath, configuredWith: .init(title: "header"))
             return headerView
 
         case .sectionFooter:
             let footerView: NibDrivenHeaderFooterView = collectionView.dequeueReusableSupplementaryView(of: .sectionFooter,
-                                                                                                        for: indexPath, configuredWith: "footer")
+                                                                                                        for: indexPath, configuredWith: .init(title: "footer"))
             return footerView
 
         default: return nil

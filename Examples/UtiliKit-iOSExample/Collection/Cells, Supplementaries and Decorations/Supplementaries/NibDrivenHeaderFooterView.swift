@@ -16,7 +16,11 @@ class NibDrivenHeaderFooterView: UICollectionReusableView {
 // MARK: - Configurable
 extension NibDrivenHeaderFooterView: Configurable {
 
-    func configure(with text: String) {
-        label.text = text
+    struct Configuration {
+        let title: String
+    }
+
+    func configure(with element: Configuration) {
+        label.text = element.title
     }
 }

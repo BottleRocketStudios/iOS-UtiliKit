@@ -15,7 +15,7 @@ When the collection view gets to the point where it needs to request a supplemen
 
 UtiliKit aims to make this process as foolproof as possible. As always, there are 3 steps to correctly implementing the supplementary dequeue process- definition, registration, and dequeue. As an example, we'll walk through a case using a diffable data source and a compositional layout.
 
-1. Definition
+#### 1. Definition
 
 This occurs in the layout. In our case, when we are defining our `NSCollectionLayoutSection`. For example, a badge supplementary item on each of our cells may be defined something like this, where `UtiliKit` provides a small convenience here by providing some type-safety over the `String` implementation of `UIKit`:
 
@@ -37,13 +37,15 @@ func makeLayout() {
 }
 ```
 
-2. Registration
+#### 2. Registration
 
 The next step is then registering the class(es) or nib(s) that will fulfill this element kind in the collection view. In this example, there is only one, that we register in `viewDidLoad`, ensuring we pass the same `UICollectionView.ElementKind` in to the registration.
 
-`collectionView.register(BadgeSupplementaryView.self, forSupplementaryViewOfKind: .badge)`
+```swift
+collectionView.register(BadgeSupplementaryView.self, forSupplementaryViewOfKind: .badge)
+```
 
-3. Dequeue
+#### 3. Dequeue
 
 The final step occurs when the collection view first requests a supplementary view for this element kind. In our case, it will use our `supplementaryViewProvider`, which is defined below.
 
@@ -53,8 +55,7 @@ func supplementaryView(in collectionView: UICollectionView, for kind: String, in
 
         switch elementKind {
         case .badge:
-            let badgeView: BadgeSupplementaryView = collectionView.dequeueReusableSupplementaryView(of: .badge,
-                                                                                                    for: indexPath, configuredWith: String(Int.random(in: 0..<10)))
+            let badgeView: BadgeSupplementaryView = collectionView.dequeueReusableSupplementaryView(of: .badge, for: indexPath, configuredWith: String(Int.random(in: 0..<10)))
             return badgeView
 
         default: return nil
@@ -62,7 +63,7 @@ func supplementaryView(in collectionView: UICollectionView, for kind: String, in
     }
 ```
 
-We check to see the `ElementKind` that is being requested by the `UICollectionView`, before dequeuing the appropriate view based on that kind. The re-use identifier is handled by `UtiliKit`, and so the only information required here is the `ElementKind`. In the case that we receive an `ElementKind` that we do not recognize, we will return nil from our provider.
+We check to see the `ElementKind` that is being requested by the `UICollectionView`, before dequeuing the appropriate view based on that kind. The re-use identifier is handled by `UtiliKit`, and so the only information required here is the `ElementKind`. In the case that we receive an `ElementKind` that we do not recognize, we will return nil from our provider. Keep in mind that regardless of what you return in this case (whether it's `nil` or `fatalError()` or even `UICollectionReusableView()`, UIKit will throw an `NSInternalInconsistencyException` if it doesn't satisfy the internal requirements for that supplementary view.
 
 This will complete the process of implementing this supplementary view and is entirely repeatable - you can have many supplementary views for a single section (see the example project, which contains a header, footer and badge supplementary for a single section).
 

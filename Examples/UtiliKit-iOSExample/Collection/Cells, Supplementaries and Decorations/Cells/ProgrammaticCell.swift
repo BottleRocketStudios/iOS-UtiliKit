@@ -13,7 +13,11 @@ class ProgrammaticCell: UICollectionViewCell { }
 // MARK: - Configurable
 extension ProgrammaticCell: Configurable {
 
-    func configure(with color: UIColor) {
-        backgroundColor = color
+    struct Configuration {
+        let backgroundColor: UIColor
+    }
+
+    func configure(with element: Configuration) {
+        backgroundColor = element.backgroundColor
     }
 }

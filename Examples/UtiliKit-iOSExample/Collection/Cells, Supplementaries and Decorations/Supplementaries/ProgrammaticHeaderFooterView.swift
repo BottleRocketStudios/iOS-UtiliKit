@@ -34,7 +34,11 @@ class ProgrammaticHeaderFooterView: UICollectionReusableView {
 // MARK: - Configurable
 extension ProgrammaticHeaderFooterView: Configurable {
 
-    func configure(with text: String) {
-        label.text = text
+    struct Configuration {
+        let title: String
+    }
+
+    func configure(with element: Configuration) {
+        label.text = element.title
     }
 }
