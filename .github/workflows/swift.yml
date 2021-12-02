@@ -20,12 +20,10 @@ jobs:
               destination: "platform=iOS Simulator,OS=15.0,name=iPhone 12 Pro"
               test: true
     steps:
-    - name: Dependencies
-      run: ls -a
-
     - uses: actions/checkout@v2
     - name: Build and Test
       run: >
+        carthage bootstrap --use-xcframeworks --platform ios
         if [[ ${{ matrix.test }} == true ]]; then
           xcodebuild test \
             -workspace ${{ env.workspace }} \
