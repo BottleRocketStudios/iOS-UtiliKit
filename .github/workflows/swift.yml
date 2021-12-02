@@ -2,7 +2,7 @@ name: Swift
 
 on:
   push:
-    branches: [ main, release/*]
+    branches: [ main, release/*, feature/githubActions]
   pull_request:
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
     steps:
     - name: Dependencies
       run: carthage bootstrap --use-xcframeworks --platform ios
-      
+
     - uses: actions/checkout@v2
     - name: Build and Test
       run: >
