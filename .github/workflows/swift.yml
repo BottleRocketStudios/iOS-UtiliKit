@@ -21,7 +21,7 @@ jobs:
               test: true
     steps:
     - name: Dependencies
-      run: ls; carthage bootstrap --use-xcframeworks --platform ios
+      run: ls -a
 
     - uses: actions/checkout@v2
     - name: Build and Test
