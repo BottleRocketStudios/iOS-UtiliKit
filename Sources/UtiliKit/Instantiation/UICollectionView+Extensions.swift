@@ -143,7 +143,7 @@ public extension UICollectionViewLayout {
     }
 }
 
-@available(iOSApplicationExtension 13.0, *)
+@available(iOS 13.0, *)
 public extension NSCollectionLayoutDecorationItem {
 
     /// Creates a section background with an `ElementKind` instance to identify the kind of decoration
@@ -152,7 +152,7 @@ public extension NSCollectionLayoutDecorationItem {
     }
 }
 
-@available(iOSApplicationExtension 13.0, *)
+@available(iOS 13.0, *)
 public extension NSCollectionLayoutBoundarySupplementaryItem {
 
     /// Creates a boundary supplementary item of the specified size, with an `ElementKind` to identify the element kind and an alignment relative to a section or layout.
@@ -166,7 +166,7 @@ public extension NSCollectionLayoutBoundarySupplementaryItem {
     }
 }
 
-@available(iOSApplicationExtension 13.0, *)
+@available(iOS 13.0, *)
 public extension NSCollectionLayoutSupplementaryItem {
 
     /// Creates a supplementary item of the specified size, with an `ElementKind` to identify the element kind and an anchor relative to a container.
