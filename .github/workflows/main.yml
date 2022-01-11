@@ -9,6 +9,7 @@ jobs:
   Build:
     runs-on: macos-11
     env:
+      DEVELOPER_DIR: /Applications/Xcode_13.2.app/Contents/Developer
       workspace: "UtiliKit.xcworkspace"
     strategy:
       fail-fast: false
@@ -17,7 +18,7 @@ jobs:
         include:
             - name: "iOS"
               scheme: "UtiliKit-iOS"
-              destination: "platform=iOS Simulator,OS=15.0,name=iPhone 12 Pro"
+              destination: "platform=iOS Simulator,OS=15.2,name=iPhone 12 Pro"
               test: true
               lint: true
     steps:
