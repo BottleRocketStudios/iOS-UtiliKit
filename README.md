@@ -342,6 +342,17 @@ dependencies: [
 ]
 ```
 
+You will then need to choose from the available libraries to add to your project. These libraries should match up with the subspecs available through Cocoapods.
+
+* `UtiliKit` - Imports all of the below libraries available individually.
+* `GeneralUtilities` - This subspec includes extensions for both `FileManager` and `UIView`. These simplify getting common URLs and programmatically adding views down to simple variables and function calls.
+* `Instantiation` - This subspec changes "Stringly-typed" view instantiation, view controller instantiation, and reusable view dequeuing into type-safe function calls.
+* `TimelessDate` - This subspec is an abstraction away from `Date` and `Calendar`. It is primarily designed to be used for simple scheduling and day comparisons in which the time is less important that the actual day.
+* `Versioning` - This subspec simplifies the display of version and build numbers.
+* `ContainerViewController` - This subspec provides a simple `ContainerViewController` without any built-in navigation construct.
+* `ActiveLabel` - This subspec provides a `UILabel` subclass that renders gradient "loading" animations while the label's `text` property is set to `nil`.
+* `Obfuscation` - This subspec provides simple routines to remove plaintext passwords or keys from your source code.
+
 ## Installation - CocoaPods
 
 [CocoaPods]: http://cocoapods.org
