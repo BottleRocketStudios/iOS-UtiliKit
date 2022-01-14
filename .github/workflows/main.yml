@@ -1,0 +1,59 @@
+name: Main
+
+on:
+  push:
+    branches: [ main, release/*]
+  pull_request:
+
+jobs:
+  Build:
+    runs-on: macos-11
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_13.2.app/Contents/Developer
+      workspace: "UtiliKit.xcworkspace"
+    strategy:
+      fail-fast: false
+      matrix:
+        name: ["iOS"]
+        include:
+            - name: "iOS"
+              scheme: "UtiliKit-iOS"
+              destination: "platform=iOS Simulator,OS=15.2,name=iPhone 12 Pro"
+              test: true
+              lint: true
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Cache
+      uses: actions/cache@v1
+      id: carthage-cache
+      with:
+        path: Carthage
+        key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+
+    - name: Dependencies
+      if: steps.carthage-cache.outputs.cache-hit != 'true'
+      run: carthage bootstrap --use-xcframeworks --no-use-binaries --platform iOS --cache-builds --verbose
+
+    - name: Build and Test
+      run: >
+        if [[ ${{ matrix.test }} == true ]]; then
+          xcodebuild test \
+            -workspace ${{ env.workspace }} \
+            -scheme "${{ matrix.scheme }}" \
+            -destination "${{ matrix.destination }}" \
+            ONLY_ACTIVE_ARCH=NO -enableCodeCoverage YES || exit 1
+        else
+          xcodebuild \
+            -workspace ${{ env.workspace }} \
+            -scheme "${{ matrix.scheme }}" \
+            -destination "${{ matrix.destination }}" \
+            ONLY_ACTIVE_ARCH=NO || exit 1
+        fi
+
+    - name: Lint
+      run: >
+        if [[ ${{ matrix.lint }} == true ]]; then
+          pod lib lint
+        fi
