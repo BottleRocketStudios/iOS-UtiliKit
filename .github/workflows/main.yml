@@ -20,7 +20,7 @@ jobs:
               scheme: "UtiliKit-iOS"
               destination: "platform=iOS Simulator,OS=15.2,name=iPhone 12 Pro"
               test: true
-              lint: true
+              
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -52,8 +52,23 @@ jobs:
             ONLY_ACTIVE_ARCH=NO || exit 1
         fi
 
+  Lint:
+    runs-on: macos-11
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_13.2.app/Contents/Developer
+      cocoapods: true
+      spm: true
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
     - name: Lint
       run: >
-        if [[ ${{ matrix.lint }} == true ]]; then
+        if [[ ${{ env.spm }} == true ]]; then
+          swift package describe
+        fi
+
+        if [[ ${{ env.cocoapods }} == true ]]; then
           pod lib lint
         fi

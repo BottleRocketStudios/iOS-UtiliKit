@@ -51,6 +51,7 @@
 		0EC7F0A8279231D500F712F3 /* ContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC7F033279231A300F712F3 /* ContainerTests.swift */; };
 		0EC7F0A9279231D500F712F3 /* UtiliKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC7F031279231A300F712F3 /* UtiliKitTests.swift */; };
 		0EC7F0AA279231D500F712F3 /* ObfuscationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC7F034279231A300F712F3 /* ObfuscationTests.swift */; };
+		0EC7F0ED27923DD400F712F3 /* SnapshotTesting.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC7F0EC27923DD400F712F3 /* SnapshotTesting.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		0EC7F0A2279231C600F712F3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		0EC7F0A3279231C600F712F3 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = SOURCE_ROOT; };
 		0EC7F0A4279231C600F712F3 /* Dangerfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dangerfile.swift; sourceTree = SOURCE_ROOT; };
+		0EC7F0EC27923DD400F712F3 /* SnapshotTesting.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SnapshotTesting.xcframework; path = Carthage/Build/SnapshotTesting.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EC7F0ED27923DD400F712F3 /* SnapshotTesting.xcframework in Frameworks */,
 				0EC7EFEC2792317600F712F3 /* UtiliKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +150,7 @@
 				0EC7EFFB279231A300F712F3 /* Sources */,
 				0EC7F02E279231A300F712F3 /* Tests */,
 				0EC7EFE42792317600F712F3 /* Products */,
+				0EC7F0EB27923DD400F712F3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -333,6 +337,14 @@
 				0EC7F09C279231BB00F712F3 /* UtiliKit.podspec */,
 			);
 			name = Deployment;
+			sourceTree = "<group>";
+		};
+		0EC7F0EB27923DD400F712F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0EC7F0EC27923DD400F712F3 /* SnapshotTesting.xcframework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
