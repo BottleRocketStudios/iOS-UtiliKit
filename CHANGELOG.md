@@ -2,6 +2,17 @@
 
 ##### Enhancements
 
+* None
+
+##### Bug Fixes
+
+* None
+
+
+## 1.8.0 (2022-01-19)
+
+##### Enhancements
+
 * Improve support for registering supplementary and decoration views with UICollectionView.
 [Will McGinty](https://github.com/willmcginty)
 [#110](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/110)
