@@ -4,4 +4,7 @@
    <FileRef
       location = "group:UtiliKit.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Example/Example.xcodeproj">
+   </FileRef>
 </Workspace>
