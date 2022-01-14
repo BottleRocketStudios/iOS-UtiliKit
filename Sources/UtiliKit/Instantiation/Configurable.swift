@@ -1,8 +1,7 @@
 //
 //  Configurable.swift
-//  UtiliKit-iOS
+//  UtiliKit
 //
-//  Created by Will McGinty on 5/4/18.
 //  Copyright © 2018 Bottle Rocket Studios. All rights reserved.
 //
 

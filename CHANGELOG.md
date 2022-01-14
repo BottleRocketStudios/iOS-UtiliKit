@@ -6,6 +6,10 @@
 [Andrew Winn](https://github.com/andrew-winn-br)
 [#102](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/102)
 
+* Improve support for registering supplementary and decoration views with UICollectionView.
+[Will McGinty](https://github.com/willmcginty)
+[#110](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/110)
+
 ##### Bug Fixes
 
 * None
@@ -14,7 +18,7 @@
 
 ##### Enhancements
 
-* Make it possible to override functions in container, which aid in `ManagedChild` managemet.
+* Make it possible to override functions in container, which aid in `ManagedChild` management.
 [Will McGinty](https://github.com/willmcginty)
 [#87](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/87)
 
