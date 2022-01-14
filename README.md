@@ -223,7 +223,7 @@ func containerViewController(_ container: ContainerViewController, animationCont
 
     return nil
 }
-``` 
+```
 
 ### ActiveLabel
 
@@ -310,7 +310,7 @@ pageControl.customPageDotAtIndex = { [weak self] (index) in
     return FavoriteIconView()
 }
 ```
-Usage notes: 
+Usage notes:
 - Returning `nil` for an `index` in the `customPageDotAtIndex` block will default to the standard page dot at the specified `dotSize` for that index.
 - It's advised that any custom view returned from this block should respond to `tintColorDidChange()` in a way that makes it clear when it is/is not the `currentPage`.
 - It's advised that any custom view returned from this block should take `dotSize` and `dotSpacing` into account to maintain a uniform look and feel.
@@ -341,6 +341,17 @@ dependencies: [
     .package(url: "https://github.com/BottleRocketStudios/iOS-UtiliKit.git", from: "1.6.0")
 ]
 ```
+
+You will then need to choose from the available libraries to add to your project. These libraries should match up with the subspecs available through Cocoapods.
+
+* `UtiliKit` - Imports all of the below libraries available individually.
+* `GeneralUtilities` - This subspec includes extensions for both `FileManager` and `UIView`. These simplify getting common URLs and programmatically adding views down to simple variables and function calls.
+* `Instantiation` - This subspec changes "Stringly-typed" view instantiation, view controller instantiation, and reusable view dequeuing into type-safe function calls.
+* `TimelessDate` - This subspec is an abstraction away from `Date` and `Calendar`. It is primarily designed to be used for simple scheduling and day comparisons in which the time is less important that the actual day.
+* `Versioning` - This subspec simplifies the display of version and build numbers.
+* `ContainerViewController` - This subspec provides a simple `ContainerViewController` without any built-in navigation construct.
+* `ActiveLabel` - This subspec provides a `UILabel` subclass that renders gradient "loading" animations while the label's `text` property is set to `nil`.
+* `Obfuscation` - This subspec provides simple routines to remove plaintext passwords or keys from your source code.
 
 ## Installation - CocoaPods
 
