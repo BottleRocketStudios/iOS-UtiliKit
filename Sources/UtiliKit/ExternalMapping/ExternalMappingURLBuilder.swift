@@ -31,11 +31,9 @@ public struct ExternalMappingURLBuilder {
     ///   - style: The map style to display. Optional, defaults to `nil`.
     /// - Returns: URLs to display the location in each of the supported map apps.
     public func displayLocation(at coordinate: MappingCoordinate, zoomPercent: Float?, style: MapStyle?) -> [MapApp: URL] {
-        var returnDictionary = [MapApp: URL]()
-        apps.forEach {
-            returnDictionary[$0] = $0.interface.displayLocation(at: coordinate, zoomPercent: zoomPercent, style: style)
+        apps.reduce(into: [:]) { partialResult, app in
+            partialResult[app] = app.interface.displayLocation(at: coordinate, zoomPercent: zoomPercent, style: style)
         }
-        return returnDictionary
     }
 
     /// Creates links to search the map.
@@ -45,11 +43,9 @@ public struct ExternalMappingURLBuilder {
     ///   - style: The map style to display. Optional, defaults to `nil`.
     /// - Returns: URLs to search for the `query` in each of the supported map apps.
     public func search(for query: String, near coordinate: MappingCoordinate?, style: MapStyle?) -> [MapApp: URL] {
-        var returnDictionary = [MapApp: URL]()
-        apps.forEach {
-            returnDictionary[$0] = $0.interface.search(for: query, near: coordinate, style: style)
+        apps.reduce(into: [:]) { partialResult, app in
+            partialResult[app] = app.interface.search(for: query, near: coordinate, style: style)
         }
-        return returnDictionary
     }
 
     /// Creates links to get directions on the map.
@@ -60,11 +56,9 @@ public struct ExternalMappingURLBuilder {
     ///   - style: The map style to display. Optional, defaults to `nil`.
     /// - Returns: URLs to get directions to the `toAddress` in each of the supported map apps.
     public func navigate(to toAddress: String, from fromAddress: String?, via navigationMode: NavigationMode?, style: MapStyle?) -> [MapApp: URL] {
-        var returnDictionary = [MapApp: URL]()
-        apps.forEach {
-            returnDictionary[$0] = $0.interface.navigate(to: toAddress, from: fromAddress, via: navigationMode, style: style)
+        apps.reduce(into: [:]) { partialResult, app in
+            partialResult[app] = app.interface.navigate(to: toAddress, from: fromAddress, via: navigationMode, style: style)
         }
-        return returnDictionary
     }
 }
 
