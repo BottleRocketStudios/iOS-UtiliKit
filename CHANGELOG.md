@@ -2,6 +2,10 @@
 
 ##### Enhancements
 
+* Extend CLLocationCoordinate2D with isValid computed property
+[Andrew Winn](https://github.com/andrew-winn-br)
+[#102](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/102)
+
 * Improve support for registering supplementary and decoration views with UICollectionView.
 [Will McGinty](https://github.com/willmcginty)
 [#110](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/110)
