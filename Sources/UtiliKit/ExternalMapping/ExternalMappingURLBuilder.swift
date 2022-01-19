@@ -64,8 +64,8 @@ public struct ExternalMappingURLBuilder {
 
 // MARK: - ExternalMappingURLBuilder.MapApp
 
-public extension ExternalMappingURLBuilder {
-    enum MapApp: CaseIterable {
+extension ExternalMappingURLBuilder {
+    public enum MapApp: CaseIterable {
         case apple
         case google
         case waze
