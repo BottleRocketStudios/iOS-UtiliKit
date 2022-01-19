@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import CoreLocation
 @testable import UtiliKit
 
 class OpenSourceUtilitiesTests: XCTestCase {
@@ -76,5 +77,46 @@ class OpenSourceUtilitiesTests: XCTestCase {
         superview.layoutIfNeeded()
         
         XCTAssertEqual(superview.bounds.inset(by: insets), view.frame)
+    }
+
+    //MARK: - CLLocationCoordinate2D Tests
+    func test_CLLocationCoordinate2D_Valid() {
+        let coordinates = [CLLocationCoordinate2D(latitude: CLLocationDegrees(0),
+                                                  longitude: CLLocationDegrees(0)),
+                           CLLocationCoordinate2D(latitude: CLLocationDegrees(-0),
+                                                  longitude: CLLocationDegrees(-0)),
+                           CLLocationCoordinate2D(latitude: CLLocationDegrees(90),
+                                                  longitude: CLLocationDegrees(180)),
+                           CLLocationCoordinate2D(latitude: CLLocationDegrees(-90),
+                                                  longitude: CLLocationDegrees(180)),
+                           CLLocationCoordinate2D(latitude: CLLocationDegrees(90),
+                                                  longitude: CLLocationDegrees(-180)),
+                           CLLocationCoordinate2D(latitude: CLLocationDegrees(-90),
+                                                  longitude: CLLocationDegrees(-180))
+        ]
+
+        XCTAssertTrue(coordinates.allSatisfy { $0.isValid }, "All test coordinates should be valid")
+    }
+
+    func test_CLLocationCoordinate2d_Invalid() {
+        let coordinates = [CLLocationCoordinate2D(latitude: CLLocationDegrees(95),
+                                                  longitude: CLLocationDegrees(0)),
+                           CLLocationCoordinate2D(latitude: CLLocationDegrees(-95),
+                                                  longitude: CLLocationDegrees(0)),
+                           CLLocationCoordinate2D(latitude: CLLocationDegrees(0),
+                                                  longitude: CLLocationDegrees(185)),
+                           CLLocationCoordinate2D(latitude: CLLocationDegrees(0),
+                                                  longitude: CLLocationDegrees(-185)),
+                           CLLocationCoordinate2D(latitude: CLLocationDegrees(95),
+                                                  longitude: CLLocationDegrees(185)),
+                           CLLocationCoordinate2D(latitude: CLLocationDegrees(-95),
+                                                  longitude: CLLocationDegrees(185)),
+                           CLLocationCoordinate2D(latitude: CLLocationDegrees(95),
+                                                  longitude: CLLocationDegrees(-185)),
+                           CLLocationCoordinate2D(latitude: CLLocationDegrees(-95),
+                                                  longitude: CLLocationDegrees(-185))
+        ]
+
+        XCTAssertTrue(coordinates.allSatisfy { !$0.isValid }, "All test coordinates should be invalid")
     }
 }
