@@ -225,6 +225,66 @@ func containerViewController(_ container: ContainerViewController, animationCont
 }
 ```
 
+### External Mapping
+
+ Build deeplinks to commonly used map apps (currently supports Apple Maps, Google Maps, and Waze).
+
+ ExternalMappingURLBuilder is a single interface to build URLs for common mapping tasks to all supported apps.
+
+ Initialize an instance of ExternalMappingURLBuilder with the apps you want to build links to.
+ ```swift
+ let urlBuilder = ExternalMappingURLBuilder(apps: [.apple, .google, .waze])
+ ```
+
+ ExternalMappingURLBuilder.MapApp is an enum of all supported map apps.
+
+ Titles of each service are available via the title property.
+ ``` swift
+ ExternalMappingURLBuilder.MapApp.apple.title  // "Apple Maps"
+ ExternalMappingURLBuilder.MapApp.google.title // "Google Maps"
+ ExternalMappingURLBuilder.MapApp.waze.title   // "Waze"
+ ```
+
+ ExternalMappingURLBuilder.displayLocation(at:zoomPercent:style:) will make links to show a location on a map.
+ ```swift
+ urlBuilder.displayLocation(at: .init(latitude: 32.949447, longitude: -96.823948), zoomPercent: 0.3, style: .satellite)
+ // returns [.apple: maps://?t=k&ll=32.949447,-96.823948&z=7.7000003,
+ //          .google: comgooglemaps://?center=32.949447,-96.823948&views=satellite&zoom=6.9,
+ //          .waze: waze://?ll=32.949447,-96.823948&z=2461.8]
+ ```
+
+ ExternalMappingURLBuilder.search(for:near:style:) will make links to search for a phrase on the map.
+ ```swift
+ urlBuilder.search(for: "pizza", near: .init(latitude: 32.949447, longitude: -96.823948), style: .normal)
+ // returns [.apple: maps://?t=m&q=pizza&near=32.949448,-96.82395,
+ //          .google: comgooglemaps://?center=32.949448,-96.82395&views=&q=pizza,
+ //          .waze: waze://?q=pizza&ll=32.949448,-96.82395]
+ ```
+
+ ExternalMappingURLBuilder.navigate(to:from:via:style:) will make links to get directions on the map.
+ ```swift
+ urlBuilder.navigate(to: "14841 Dallas Parkway", from: "4970 Addison Circle", via: .walk, style: .transit)
+ // returns [.apple: maps://?t=m&daddr=14841+Dallas+Parkway&saddr=4970+Addison+Circle&dirflg=w,
+ //          .google: comgooglemaps://?views=&daddr=14841+Dallas+Parkway&saddr=4970+Addison+Circle&directionsmode=walking,
+ //          .waze: waze://?q=14841+Dallas+Parkway&navigate=yes]
+ ```
+
+ Note that each url should be checked for reachability before interface is presented to open it.
+ ```swift
+ let linkButtons = urlBuilder.search(for: "pizza").compactMap { 
+     let url = $0.value
+     let title = $0.key.title
+     guard UIApplication.shared.canOpen(url) else { return nil }
+     let button = UIButton(primaryAction: .init(handler: { _ in
+         UIApplication.shared.open(url, options: [:], completionHandler: nil)
+     }))
+     button.setTitle(title, for: .normal)
+     return button
+ }
+ ```
+
+ Interfaces for each individual service are also available (AppleMapsURLBuilder, GoogleMapsURLBuilder, WazeURLBuilder) for unique use cases that don't fit the common ExternalMappingURLBuilder interface.
+ 
 ### ActiveLabel
 
 `ActiveLabel` is a `UILabel` subclass that adds horizontal activity indicators to your label while its `text` property is set to `nil`. You can customize this view quite a bit in code or in Interface Builder to fit your specific needs. The purpose of this subclass is to have a visual indication at the label level while you are loading data into labels.
