@@ -2,6 +2,17 @@
 
 ##### Enhancements
 
+* None
+
+##### Bug Fixes
+
+* None
+
+
+## 1.8.0 (2022-01-19)
+
+##### Enhancements
+
 * Extend CLLocationCoordinate2D with isValid computed property
 [Andrew Winn](https://github.com/andrew-winn-br)
 [#102](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/102)

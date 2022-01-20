@@ -14,8 +14,6 @@
 		0E6A7E3C2758390300431FDC /* YellowDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A7E3B2758390300431FDC /* YellowDecorationView.swift */; };
 		0E6A7E3E27583AF000431FDC /* NibDrivenHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6A7E3D27583AF000431FDC /* NibDrivenHeaderFooterView.swift */; };
 		0E6A7E4027583AF800431FDC /* NibDrivenHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E6A7E3F27583AF800431FDC /* NibDrivenHeaderFooterView.xib */; };
-		0E6A7E47275931C300431FDC /* SnapshotTesting.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6A7E46275931C300431FDC /* SnapshotTesting.xcframework */; };
-		0E6A7E492759322400431FDC /* SnapshotTesting.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E6A7E482759322400431FDC /* SnapshotTesting.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0E6E8C6D2112551200617815 /* ContainerViewController+ManagedChildren.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6E8C6C2112551200617815 /* ContainerViewController+ManagedChildren.swift */; };
 		0EBE233127595FF700760DC7 /* SnapshotTesting.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EBE233027595FF700760DC7 /* SnapshotTesting.xcframework */; };
 		0EC8025C209CE9C90051F732 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC8025B209CE9C90051F732 /* Configurable.swift */; };
@@ -863,12 +861,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				VERSION = 1.7.0;
 			};
 			name = Debug;
 		};
@@ -914,13 +912,13 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
-				VERSION = 1.7.0;
 			};
 			name = Release;
 		};
