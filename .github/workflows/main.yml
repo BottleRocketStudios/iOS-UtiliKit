@@ -17,7 +17,7 @@ jobs:
         name: ["iOS"]
         include:
             - name: "iOS"
-              scheme: "UtiliKit-iOS"
+              scheme: "UtiliKit iOS"
               destination: "platform=iOS Simulator,OS=15.2,name=iPhone 12 Pro"
               test: true
 
