@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E666BDE27A074E7001082D0 /* CLLocationCoordinate2D+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E666BDD27A074E7001082D0 /* CLLocationCoordinate2D+Extensions.swift */; };
 		0EC7EFEC2792317600F712F3 /* UtiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC7EFE32792317600F712F3 /* UtiliKit.framework */; };
 		0EC7F054279231A400F712F3 /* UtiliKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EC7EFFC279231A300F712F3 /* UtiliKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0EC7F055279231A400F712F3 /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC7EFFE279231A300F712F3 /* ReuseIdentifiable.swift */; };
@@ -65,6 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E666BDD27A074E7001082D0 /* CLLocationCoordinate2D+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extensions.swift"; sourceTree = "<group>"; };
 		0EC7EFE32792317600F712F3 /* UtiliKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UtiliKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EC7EFEB2792317600F712F3 /* UtiliKit iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UtiliKit iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EC7EFFC279231A300F712F3 /* UtiliKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtiliKit.h; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			children = (
 				0EC7F007279231A300F712F3 /* UIView+Extensions.swift */,
 				0EC7F008279231A300F712F3 /* FileManager+Extensions.swift */,
+				0E666BDD27A074E7001082D0 /* CLLocationCoordinate2D+Extensions.swift */,
 				0EC7F009279231A300F712F3 /* URL+Extensions.swift */,
 			);
 			path = General;
@@ -332,9 +335,9 @@
 		0EC7F09B279231AB00F712F3 /* Deployment */ = {
 			isa = PBXGroup;
 			children = (
-				0EC7F09D279231BB00F712F3 /* LICENSE */,
 				0EC7F09E279231BB00F712F3 /* Package.swift */,
 				0EC7F09C279231BB00F712F3 /* UtiliKit.podspec */,
+				0EC7F09D279231BB00F712F3 /* LICENSE */,
 			);
 			name = Deployment;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				0EC7F06A279231A400F712F3 /* VersionConfig.swift in Sources */,
 				0EC7F068279231A400F712F3 /* ContainerViewController.swift in Sources */,
 				0EC7F066279231A400F712F3 /* DefaultContainerTransitionAnimator.swift in Sources */,
+				0E666BDE27A074E7001082D0 /* CLLocationCoordinate2D+Extensions.swift in Sources */,
 				0EC7F05F279231A400F712F3 /* URL+Extensions.swift in Sources */,
 				0EC7F05B279231A400F712F3 /* UICollectionView+Extensions.swift in Sources */,
 				0EC7F05C279231A400F712F3 /* NibLoadable.swift in Sources */,

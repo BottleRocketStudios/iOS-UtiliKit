@@ -20,7 +20,7 @@ jobs:
               scheme: "UtiliKit-iOS"
               destination: "platform=iOS Simulator,OS=15.2,name=iPhone 12 Pro"
               test: true
-              
+
     steps:
     - name: Checkout
       uses: actions/checkout@v2

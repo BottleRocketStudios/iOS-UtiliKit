@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: -
-@available(iOS, deprecated: 14.0, message: "Functionality is available with UIKit UIPageControls starting with iOS 14")
+@available(iOS, deprecated: 14.0, message: "Functionality is available with UIKit `UIPageControl` starting with iOS 14")
 @IBDesignable
 public class ScrollingPageControl: UIView {
     
@@ -365,7 +365,7 @@ public class ScrollingPageControl: UIView {
     }
 }
 
-@available(iOS, deprecated: 14.0, message: "Functionality is available with UIKit UIPageControls starting with iOS 14")
+@available(iOS, deprecated: 14.0, message: "Functionality is available with UIKit `UIPageControl` starting with iOS 14")
 private extension ScrollingPageControl {
     
     /// The default class used by `ScrollingPageControl` to represent pages.

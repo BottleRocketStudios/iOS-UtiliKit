@@ -11,6 +11,7 @@ import UIKit
 import SnapshotTesting
 @testable import UtiliKit
 
+@available(iOS, deprecated: 14.0, message: "Functionality is available with UIKit `UIPageControl` starting with iOS 14")
 class ScrollingPageControlTests: XCTestCase {
     
     func testDefaultsWithNoPages() {
@@ -156,7 +157,7 @@ class ScrollingPageControlTests: XCTestCase {
         pageControl.currentPage = 5
         assertSnapshot(matching: snapshotVC, as: .image(on: .iPhoneX))
     }
-    
+
     private func setupForSnapshot(pageControl: ScrollingPageControl) -> UIViewController {
         return setupForSnapshot(pageControls: [pageControl])
     }
