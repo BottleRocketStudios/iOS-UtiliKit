@@ -241,7 +241,7 @@ let label: ActiveLabel = ActiveLabel()
 label.estimatedNumberOfLines = 3
 label.finalLineTrailingInset = 100
 ```
-![](docs/images/ActiveLabelEdited01.gif)
+![](Documentation/Images/ActiveLabelEdited01.gif)
 
 Custom Configuration using convenience initializer.
 ``` swift
@@ -252,7 +252,7 @@ configuration.loadingView.animationDuration = 2.0
 configuration.loadingView.animationDelay = 0
 let label: ActiveLabel = ActiveLabel(frame: CGRect(x: 0, y: 0, width: 335, height: 21), configuration: configuration)
 ```
-![](docs/images/ActiveLabelEdited02.gif)
+![](Documentation/Images/ActiveLabelEdited02.gif)
 
 Add some color, change line height and spacing.
 ``` swift
@@ -263,7 +263,7 @@ label.loadingView.color = UIColor(red: 233.0/255.0, green: 231.0/255.0, blue: 23
 label.loadingView.lineHeight = 16
 label.loadingView.lineVerticalSpacing = 8
 ```
-![](docs/images/ActiveLabelEdited03.gif)
+![](Documentation/Images/ActiveLabelEdited03.gif)
 
 When initializing `ActiveLabel` in Storyboards or Xibs you must set the labels text to `nil` in code because IB initializes labels with an empty string value.
 
@@ -283,7 +283,7 @@ pageControl.hidesForSinglePage = false                  // default
 pageControl.pageIndicatorTintColor = .systemGray        // default
 pageControl.currentPageIndicatorTintColor = .systemBlue // default
 ```
-![](docs/images/ScrollingPageControl/ScrollingPageControl-Default.png)
+![](Documentation/Images/ScrollingPageControl/ScrollingPageControl-Default.png)
 
 Customize dot layout
 ``` swift
@@ -293,7 +293,7 @@ pageControl.dotSize = CGSize(width: 5.0, height: 10.0) // default is 7.0 x 7.0
 pageControl.dotSpacing = 14.0                          // default is 9.0
 pageControl.minimumDotScale = 0.25                     // default is 0.4
 ```
-![](docs/images/ScrollingPageControl/ScrollingPageControl-CustomizedLayout.png)
+![](Documentation/Images/ScrollingPageControl/ScrollingPageControl-CustomizedLayout.png)
 
 Responding to ScrollingPageControl interaction
 ``` swift
@@ -301,7 +301,7 @@ pageControl.didSetCurrentPage = { [weak self] (index) in
     self?.scrollToPageAtIndex(index)
 }
 ```
-![](docs/images/ScrollingPageControl/ScrollingPageControl-ControlInteraction.gif)
+![](Documentation/Images/ScrollingPageControl/ScrollingPageControl-ControlInteraction.gif)
 
 Adding custom page dots
 ``` swift

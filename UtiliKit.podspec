@@ -19,9 +19,9 @@ s.homepage          = 'https://github.com/BottleRocketStudios/iOS-UtiliKit'
 s.license           = { :type => 'Apache 2.0', :file => 'LICENSE' }
 s.author            = { 'Bottle Rocket Studios' => 'wilson.turner@bottlerocketstudios.com' }
 s.source            = { :git => 'https://github.com/bottlerocketstudios/iOS-UtiliKit.git', :tag => s.version.to_s }
-s.source_files      = 'Sources/UtiliKit/**/*'
+s.source_files      = 'Sources/**/*'
 s.ios.deployment_target = '10.0'
-s.swift_version = '5.0'
+s.swift_version = '5.5'
 
 s.default_subspec = 'Core'
 
@@ -31,31 +31,36 @@ core.dependency 'UtiliKit/General'
 end
 
 s.subspec 'Instantiation' do |instantiation|
-instantiation.source_files = 'Sources/UtiliKit/Instantiation/*.swift'
+instantiation.source_files = 'Sources/Instantiation/*.swift'
 end
 
 s.subspec 'TimelessDate' do |timeless|
-timeless.source_files = 'Sources/UtiliKit/TimelessDate/*.swift'
+timeless.source_files = 'Sources/TimelessDate/*.swift'
 end
 
 s.subspec 'General' do |general|
-general.source_files = 'Sources/UtiliKit/General/*.swift'
+general.source_files = 'Sources/General/*.swift'
 end
 
 s.subspec 'Version' do |version|
-version.source_files = 'Sources/UtiliKit/Version/*.swift'
+version.source_files = 'Sources/Version/*.swift'
 end
 
 s.subspec 'Container' do |container|
-container.source_files = 'Sources/UtiliKit/Container/**/*.swift'
+container.source_files = 'Sources/Container/**/*.swift'
 end
 
 s.subspec 'ActiveLabel' do |activeLabel|
-activeLabel.source_files = 'Sources/UtiliKit/ActiveLabel/*.swift'
+activeLabel.source_files = 'Sources/ActiveLabel/*.swift'
 end
 
 s.subspec 'Obfuscation' do |obfuscation|
-obfuscation.source_files = 'Sources/UtiliKit/Obfuscation/*.swift'
+obfuscation.source_files = 'Sources/Obfuscation/*.swift'
+end
+
+s.subspec 'ScrollingPageControl' do |pagecontrol|
+pagecontrol.dependency 'UtiliKit/General'
+pagecontrol.source_files = 'Sources/ScrollingPageControl/*.swift'
 end
 
 end

@@ -9,16 +9,16 @@
 import UIKit
 
 // MARK: -
-@available(iOS, deprecated: 14.0, message: "Functionality is available with UIKit UIPageControls starting with iOS 14")
+@available(iOS, deprecated: 14.0, message: "Functionality is available with UIKit `UIPageControl` starting with iOS 14")
 @IBDesignable
-class ScrollingPageControl: UIView {
+public class ScrollingPageControl: UIView {
     
     // MARK: Properties
     
     // MARK: Modeled Off UIPageControl
     
     /// The total number of pages represented, Default is `0`
-    @IBInspectable var numberOfPages: Int {
+    @IBInspectable public var numberOfPages: Int {
         set { _numberOfPages = max(0, newValue) } // prevent a negative number of pages
         get { return _numberOfPages }
     }
@@ -31,7 +31,7 @@ class ScrollingPageControl: UIView {
     }
     
     /// The index of the currently selected page. Default is `0`. Value pinned to `0..numberOfPages-1`
-    @IBInspectable var currentPage: Int {
+    @IBInspectable public var currentPage: Int {
         set {
             _currentPage = max(0, min(newValue, numberOfPages - 1)) // clamp the newValue between 0 and numberOfPages
         }
@@ -50,17 +50,17 @@ class ScrollingPageControl: UIView {
     }
     
     /// Hide the the indicator if there is only one page. Default is `false`.
-    @IBInspectable var hidesForSinglePage: Bool = false {
+    @IBInspectable public var hidesForSinglePage: Bool = false {
         didSet { evaluateSelfHiding() }
     }
     
     /// Tint color used to represent pages other than the `currentPage`
-    @IBInspectable var pageIndicatorTintColor: UIColor? = .systemGray {
+    @IBInspectable public var pageIndicatorTintColor: UIColor? = .systemGray {
         didSet { updateDotColors() }
     }
     
     /// Tint color used to represent the `currentPage`
-    @IBInspectable var currentPageIndicatorTintColor: UIColor? = .systemBlue {
+    @IBInspectable public var currentPageIndicatorTintColor: UIColor? = .systemBlue {
         didSet {
             tintColor = currentPageIndicatorTintColor
             updateDotColors()
@@ -69,7 +69,7 @@ class ScrollingPageControl: UIView {
     
     // MARK: Visual Customization
     /// The number of dots between the margins that will not scale. This cannot be set to a value less than 1.
-    @IBInspectable var mainDotCount: Int {
+    @IBInspectable public var mainDotCount: Int {
         set { _mainDotCount = max(1, newValue) }
         get { return _mainDotCount }
     }
@@ -79,7 +79,7 @@ class ScrollingPageControl: UIView {
     }
     
     /// The number of dots on each side that will scale if `numberOfPages` is greater than `maxVisibleDots`. This cannot be set to a value less than 0.
-    @IBInspectable var marginDotCount: Int {
+    @IBInspectable public var marginDotCount: Int {
         set { _marginDotCount = max(0, newValue) }
         get { return _marginDotCount }
     }
@@ -92,7 +92,7 @@ class ScrollingPageControl: UIView {
     var maxVisibleDots: Int { return max(1, marginDotCount + mainDotCount + marginDotCount) }
     
     /// The size of each dot view when it's index is in the main area of the control
-    var dotSize: CGSize {
+    public var dotSize: CGSize {
         set {
             _dotWidth = newValue.width
             _dotHeight = newValue.height
@@ -108,7 +108,7 @@ class ScrollingPageControl: UIView {
     @IBInspectable private var _dotHeight: CGFloat = 7.0
     
     /// The amount of space between each page dot view
-    @IBInspectable var dotSpacing: CGFloat = 9.0 {
+    @IBInspectable public  var dotSpacing: CGFloat = 9.0 {
         didSet {
             stackView.spacing = dotSpacing
             refreshDotLayout()
@@ -116,7 +116,7 @@ class ScrollingPageControl: UIView {
     }
     
     /// The scale factor for the dots in the outtermost position before scrolling out of frame. Used when `numberOfPages` is greater than `maxVisibleDots`, else the dots do not scale.
-    @IBInspectable var minimumDotScale: CGFloat = 0.4 {
+    @IBInspectable public var minimumDotScale: CGFloat = 0.4 {
         didSet {
             guard minimumDotScale >= 0.0 else {
                 minimumDotScale = 0.0
@@ -133,14 +133,14 @@ class ScrollingPageControl: UIView {
     }
     
     /// Customization point to change the view used per dot. Returning `nil` will default to dots at the specified `dotSize`. Not setting this block, or setting it to `nil`, will default to all dots at the specified `dotSize`.
-    var customPageDotAtIndex: ((_ index: Int) -> UIView?)? {
+    public var customPageDotAtIndex: ((_ index: Int) -> UIView?)? {
         didSet {
             resetDots()
         }
     }
     
     /// A block used to respond to changes to `currentPage`- either setting that value programatically, or through control interation
-    var didSetCurrentPage: ((_ index: Int) -> Void)?
+    public var didSetCurrentPage: ((_ index: Int) -> Void)?
     
     // MARK: Private
     private var stackView = UIStackView(arrangedSubviews: [])
@@ -204,7 +204,7 @@ class ScrollingPageControl: UIView {
     
     // MARK: Public
     /// Call to update the appearance of the dot at the specified `index`. Uses `customPageDotAtIndex` to get the new view for `index`.
-    func updateDot(at index: Int) {
+    public func updateDot(at index: Int) {
         dotContainerViews[index].subviews.first?.removeFromSuperview()
         let dotView = customPageDotAtIndex?(index) ?? PageDotView(frame: CGRect(origin: .zero, size: dotSize))
         dotView.translatesAutoresizingMaskIntoConstraints = false
@@ -233,46 +233,46 @@ class ScrollingPageControl: UIView {
     }
     
     // MARK: UIView
-    override var intrinsicContentSize: CGSize {
+    public override var intrinsicContentSize: CGSize {
         let visibleDots = CGFloat(min(numberOfPages, maxVisibleDots))
         guard visibleDots > 0 else { return .zero }
         let minimumControlHeight: CGFloat = 37.0
         return CGSize(width: (visibleDots * dotSize.width) + ((visibleDots - 1.0) * dotSpacing), height: max(minimumControlHeight, dotSize.height))
     }
     
-    override func tintColorDidChange() {
+    public override func tintColorDidChange() {
         super.tintColorDidChange()
         currentPageIndicatorTintColor = tintColor
     }
     
-    override func accessibilityDecrement() {
+    public override func accessibilityDecrement() {
         currentPage -= 1
     }
     
-    override func accessibilityIncrement() {
+    public override func accessibilityIncrement() {
         currentPage += 1
     }
     
-    override var accessibilityLabel: String? {
+    public override var accessibilityLabel: String? {
         set { _ = newValue }
         get {
             return numberOfPages == 0 ? NSLocalizedString("no pages", comment: "ScrollingPageControl - empty state accessibility label") : String.localizedStringWithFormat(NSLocalizedString("page %d of %d", comment: "ScrollingPageControl - current page accessibility label"), currentPage + 1, numberOfPages)
         }
     }
     
-    override var accessibilityValue: String? {
+    public override var accessibilityValue: String? {
         set { _ = newValue }
         get {
             return numberOfPages == 0 ? "" : "\(currentPage + 1)"
         }
     }
     
-    override var isAccessibilityElement: Bool {
+    public override var isAccessibilityElement: Bool {
         set { _ = newValue }
         get { return true }
     }
     
-    override var accessibilityTraits: UIAccessibilityTraits {
+    public override var accessibilityTraits: UIAccessibilityTraits {
         set { _ = newValue }
         get {
             return [.adjustable, .updatesFrequently]
@@ -360,11 +360,12 @@ class ScrollingPageControl: UIView {
         invalidateIntrinsicContentSize()
     }
     
-    override class func prepareForInterfaceBuilder() {
+    public override class func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
     }
 }
 
+@available(iOS, deprecated: 14.0, message: "Functionality is available with UIKit `UIPageControl` starting with iOS 14")
 private extension ScrollingPageControl {
     
     /// The default class used by `ScrollingPageControl` to represent pages.

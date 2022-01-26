@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UtiliKit
 
 class ScrollingPageControlExampleViewController: UIViewController, Configurable {
     

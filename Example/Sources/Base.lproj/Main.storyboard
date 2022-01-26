@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rdK-4z-16f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rdK-4z-16f">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,7 +33,7 @@
         <!--Views-->
         <scene sceneID="ssd-ip-ts2">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="Ywn-K3-9eh" customClass="ViewController" customModule="UtiliKit_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="Ywn-K3-9eh" customClass="ViewController" customModule="iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E3F-O8-DaJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,7 @@
         <!--Collection-->
         <scene sceneID="XPG-4M-Zsq">
             <objects>
-                <viewController storyboardIdentifier="CollectionViewController" id="NJX-AI-rJc" customClass="CollectionViewController" customModule="UtiliKit_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CollectionViewController" id="NJX-AI-rJc" customClass="CollectionViewController" customModule="iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T2G-3R-CLh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,7 +65,7 @@
         <!--View Controllers-->
         <scene sceneID="QML-N3-sii">
             <objects>
-                <viewController storyboardIdentifier="VCViewController" id="GXF-61-Br5" customClass="VCViewController" customModule="UtiliKit_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VCViewController" id="GXF-61-Br5" customClass="VCViewController" customModule="iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4e9-uU-trR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,7 +106,7 @@
         <!--Active Label-->
         <scene sceneID="BvX-ia-Zad">
             <objects>
-                <viewController id="ZgP-fe-jSw" customClass="ActiveLabelViewController" customModule="UtiliKit" sceneMemberID="viewController">
+                <viewController id="ZgP-fe-jSw" customClass="ActiveLabelViewController" customModule="iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ybc-Th-23T">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -302,7 +302,7 @@ loadingLineVerticalSpacing = 8</string>
         <!--Map-->
         <scene sceneID="h1W-dY-xUm">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" id="SBK-FD-08V" customClass="MapViewController" customModule="UtiliKit_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="SBK-FD-08V" customClass="MapViewController" customModule="iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="39P-nR-h1C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -332,7 +332,7 @@ loadingLineVerticalSpacing = 8</string>
         <!--Base Container View Controller-->
         <scene sceneID="Xjg-wM-sSs">
             <objects>
-                <viewController id="smy-zP-9K0" customClass="BaseContainerViewController" customModule="UtiliKit_iOSExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="smy-zP-9K0" customClass="BaseContainerViewController" customModule="iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gE4-id-R8o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

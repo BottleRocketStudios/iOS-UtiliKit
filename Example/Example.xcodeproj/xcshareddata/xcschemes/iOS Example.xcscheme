@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1310"
+   LastUpgradeVersion = "1320"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8698CFCF2061A19D0065AE20"
-               BuildableName = "UtiliKit-iOSExample.app"
-               BlueprintName = "UtiliKit-iOSExample"
-               ReferencedContainer = "container:UtiliKit.xcodeproj">
+               BlueprintIdentifier = "0EC7EF6727922FB700F712F3"
+               BuildableName = "iOS Example.app"
+               BlueprintName = "iOS Example"
+               ReferencedContainer = "container:Example.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -27,26 +27,7 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8698CFCF2061A19D0065AE20"
-            BuildableName = "UtiliKit-iOSExample.app"
-            BlueprintName = "UtiliKit-iOSExample"
-            ReferencedContainer = "container:UtiliKit.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8677314020601BB400C54343"
-               BuildableName = "UtiliKit-iOSTests.xctest"
-               BlueprintName = "UtiliKit-iOSTests"
-               ReferencedContainer = "container:UtiliKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -63,10 +44,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8698CFCF2061A19D0065AE20"
-            BuildableName = "UtiliKit-iOSExample.app"
-            BlueprintName = "UtiliKit-iOSExample"
-            ReferencedContainer = "container:UtiliKit.xcodeproj">
+            BlueprintIdentifier = "0EC7EF6727922FB700F712F3"
+            BuildableName = "iOS Example.app"
+            BlueprintName = "iOS Example"
+            ReferencedContainer = "container:Example.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -80,10 +61,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8698CFCF2061A19D0065AE20"
-            BuildableName = "UtiliKit-iOSExample.app"
-            BlueprintName = "UtiliKit-iOSExample"
-            ReferencedContainer = "container:UtiliKit.xcodeproj">
+            BlueprintIdentifier = "0EC7EF6727922FB700F712F3"
+            BuildableName = "iOS Example.app"
+            BlueprintName = "iOS Example"
+            ReferencedContainer = "container:Example.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

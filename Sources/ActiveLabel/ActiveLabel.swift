@@ -14,7 +14,7 @@ import UIKit
 /// it is considered the last line. `lastLineTrailingInset` takes precendence over `lastLineLength`.
 /// - Note: `ActiveLabel` loading indicators do not scale with Dynamic Type at this time. The text in the label does scale as expected.
 @IBDesignable
-class ActiveLabel: UILabel {
+public class ActiveLabel: UILabel {
 
     // codebeat:disable[TOO_MANY_FUNCTIONS]
 
@@ -168,13 +168,13 @@ class ActiveLabel: UILabel {
     /**
      When text is set to `nil` the loading views will display. When text is non-`nil` the loading views will be hidden.
      */
-    override var text: String? {
+    public override var text: String? {
         didSet {
             textDidUpdate()
         }
     }
     
-    override var isHidden: Bool {
+    public override var isHidden: Bool {
         didSet {
             if isHidden {
                 hideLoadingViews()
@@ -215,7 +215,7 @@ class ActiveLabel: UILabel {
         textDidUpdate()
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         
         loadingViews.forEach { [weak self] (view) in
@@ -227,7 +227,7 @@ class ActiveLabel: UILabel {
         }
     }
     
-    override func prepareForInterfaceBuilder() {
+    public override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         
         isGradientCentered = true
