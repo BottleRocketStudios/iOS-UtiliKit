@@ -53,6 +53,20 @@
 		0EC7F0A9279231D500F712F3 /* UtiliKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC7F031279231A300F712F3 /* UtiliKitTests.swift */; };
 		0EC7F0AA279231D500F712F3 /* ObfuscationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC7F034279231A300F712F3 /* ObfuscationTests.swift */; };
 		0EC7F0ED27923DD400F712F3 /* SnapshotTesting.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC7F0EC27923DD400F712F3 /* SnapshotTesting.xcframework */; };
+		59DAD1332805E3900097B7FF /* ExternalMappingURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DAD1282805E3900097B7FF /* ExternalMappingURLBuilder.swift */; };
+		59DAD1342805E3900097B7FF /* MapStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DAD12A2805E3900097B7FF /* MapStyle.swift */; };
+		59DAD1352805E3900097B7FF /* MappingCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DAD12B2805E3900097B7FF /* MappingCoordinate.swift */; };
+		59DAD1362805E3900097B7FF /* NavigationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DAD12C2805E3900097B7FF /* NavigationMode.swift */; };
+		59DAD1372805E3900097B7FF /* MapAppURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DAD12E2805E3900097B7FF /* MapAppURLBuilder.swift */; };
+		59DAD1382805E3900097B7FF /* WazeURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DAD1302805E3900097B7FF /* WazeURLBuilder.swift */; };
+		59DAD1392805E3900097B7FF /* AppleMapsURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DAD1312805E3900097B7FF /* AppleMapsURLBuilder.swift */; };
+		59DAD13A2805E3900097B7FF /* GoogleMapsURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DAD1322805E3900097B7FF /* GoogleMapsURLBuilder.swift */; };
+		59DAD13C2805E3EA0097B7FF /* ClosedRange+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DAD13B2805E3EA0097B7FF /* ClosedRange+Extensions.swift */; };
+		59DAD13E2805E40F0097B7FF /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DAD13D2805E40F0097B7FF /* String+Extensions.swift */; };
+		59DAD1402805E42A0097B7FF /* UISegmentedControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DAD13F2805E42A0097B7FF /* UISegmentedControl+Extensions.swift */; };
+		59DAD1422805E43D0097B7FF /* URLComponents+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DAD1412805E43D0097B7FF /* URLComponents+Extensions.swift */; };
+		59DAD1442805E4990097B7FF /* ClosedRangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DAD1432805E4990097B7FF /* ClosedRangeTests.swift */; };
+		59DAD1462805E4A40097B7FF /* ExternalMappingURLBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DAD1452805E4A40097B7FF /* ExternalMappingURLBuilderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +136,20 @@
 		0EC7F0A3279231C600F712F3 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = SOURCE_ROOT; };
 		0EC7F0A4279231C600F712F3 /* Dangerfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dangerfile.swift; sourceTree = SOURCE_ROOT; };
 		0EC7F0EC27923DD400F712F3 /* SnapshotTesting.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SnapshotTesting.xcframework; path = Carthage/Build/SnapshotTesting.xcframework; sourceTree = "<group>"; };
+		59DAD1282805E3900097B7FF /* ExternalMappingURLBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalMappingURLBuilder.swift; sourceTree = "<group>"; };
+		59DAD12A2805E3900097B7FF /* MapStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapStyle.swift; sourceTree = "<group>"; };
+		59DAD12B2805E3900097B7FF /* MappingCoordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappingCoordinate.swift; sourceTree = "<group>"; };
+		59DAD12C2805E3900097B7FF /* NavigationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationMode.swift; sourceTree = "<group>"; };
+		59DAD12E2805E3900097B7FF /* MapAppURLBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAppURLBuilder.swift; sourceTree = "<group>"; };
+		59DAD1302805E3900097B7FF /* WazeURLBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WazeURLBuilder.swift; sourceTree = "<group>"; };
+		59DAD1312805E3900097B7FF /* AppleMapsURLBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleMapsURLBuilder.swift; sourceTree = "<group>"; };
+		59DAD1322805E3900097B7FF /* GoogleMapsURLBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapsURLBuilder.swift; sourceTree = "<group>"; };
+		59DAD13B2805E3EA0097B7FF /* ClosedRange+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ClosedRange+Extensions.swift"; sourceTree = "<group>"; };
+		59DAD13D2805E40F0097B7FF /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		59DAD13F2805E42A0097B7FF /* UISegmentedControl+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extensions.swift"; sourceTree = "<group>"; };
+		59DAD1412805E43D0097B7FF /* URLComponents+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLComponents+Extensions.swift"; sourceTree = "<group>"; };
+		59DAD1432805E4990097B7FF /* ClosedRangeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosedRangeTests.swift; sourceTree = "<group>"; };
+		59DAD1452805E4A40097B7FF /* ExternalMappingURLBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExternalMappingURLBuilderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +204,7 @@
 				0EC7F017279231A300F712F3 /* Version */,
 				0EC7F01A279231A300F712F3 /* ActiveLabel */,
 				0EC7F01C279231A300F712F3 /* Obfuscation */,
+				59DAD1272805E3900097B7FF /* ExternalMapping */,
 				0EC7F01E279231A300F712F3 /* TimelessDate */,
 			);
 			path = Sources;
@@ -199,10 +228,14 @@
 		0EC7F006279231A300F712F3 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				0EC7F007279231A300F712F3 /* UIView+Extensions.swift */,
-				0EC7F008279231A300F712F3 /* FileManager+Extensions.swift */,
 				0E666BDD27A074E7001082D0 /* CLLocationCoordinate2D+Extensions.swift */,
+				59DAD13B2805E3EA0097B7FF /* ClosedRange+Extensions.swift */,
+				0EC7F008279231A300F712F3 /* FileManager+Extensions.swift */,
+				59DAD13D2805E40F0097B7FF /* String+Extensions.swift */,
+				59DAD13F2805E42A0097B7FF /* UISegmentedControl+Extensions.swift */,
+				0EC7F007279231A300F712F3 /* UIView+Extensions.swift */,
 				0EC7F009279231A300F712F3 /* URL+Extensions.swift */,
+				59DAD1412805E43D0097B7FF /* URLComponents+Extensions.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -322,12 +355,14 @@
 		0EC7F02E279231A300F712F3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				0EC7F02F279231A300F712F3 /* ScrollingPageControlTests.swift */,
-				0EC7F030279231A300F712F3 /* DateTests.swift */,
-				0EC7F031279231A300F712F3 /* UtiliKitTests.swift */,
 				0EC7F032279231A300F712F3 /* ActiveLabelTests.swift */,
+				59DAD1432805E4990097B7FF /* ClosedRangeTests.swift */,
 				0EC7F033279231A300F712F3 /* ContainerTests.swift */,
+				0EC7F030279231A300F712F3 /* DateTests.swift */,
+				59DAD1452805E4A40097B7FF /* ExternalMappingURLBuilderTests.swift */,
 				0EC7F034279231A300F712F3 /* ObfuscationTests.swift */,
+				0EC7F02F279231A300F712F3 /* ScrollingPageControlTests.swift */,
+				0EC7F031279231A300F712F3 /* UtiliKitTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -348,6 +383,45 @@
 				0EC7F0EC27923DD400F712F3 /* SnapshotTesting.xcframework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		59DAD1272805E3900097B7FF /* ExternalMapping */ = {
+			isa = PBXGroup;
+			children = (
+				59DAD1282805E3900097B7FF /* ExternalMappingURLBuilder.swift */,
+				59DAD1292805E3900097B7FF /* Supporting Types */,
+				59DAD12D2805E3900097B7FF /* MapAppURLBuilder */,
+			);
+			path = ExternalMapping;
+			sourceTree = "<group>";
+		};
+		59DAD1292805E3900097B7FF /* Supporting Types */ = {
+			isa = PBXGroup;
+			children = (
+				59DAD12A2805E3900097B7FF /* MapStyle.swift */,
+				59DAD12B2805E3900097B7FF /* MappingCoordinate.swift */,
+				59DAD12C2805E3900097B7FF /* NavigationMode.swift */,
+			);
+			path = "Supporting Types";
+			sourceTree = "<group>";
+		};
+		59DAD12D2805E3900097B7FF /* MapAppURLBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				59DAD12E2805E3900097B7FF /* MapAppURLBuilder.swift */,
+				59DAD12F2805E3900097B7FF /* Implementations */,
+			);
+			path = MapAppURLBuilder;
+			sourceTree = "<group>";
+		};
+		59DAD12F2805E3900097B7FF /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				59DAD1302805E3900097B7FF /* WazeURLBuilder.swift */,
+				59DAD1312805E3900097B7FF /* AppleMapsURLBuilder.swift */,
+				59DAD1322805E3900097B7FF /* GoogleMapsURLBuilder.swift */,
+			);
+			path = Implementations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -473,29 +547,43 @@
 				0EC7F06B279231A400F712F3 /* Bundle+Extensions.swift in Sources */,
 				0EC7F067279231A400F712F3 /* ContainerViewControllerInteractiveTransitioning.swift in Sources */,
 				0EC7F060279231A400F712F3 /* ScrollingPageControl.swift in Sources */,
+				59DAD1362805E3900097B7FF /* NavigationMode.swift in Sources */,
+				59DAD1462805E4A40097B7FF /* ExternalMappingURLBuilderTests.swift in Sources */,
 				0EC7F06A279231A400F712F3 /* VersionConfig.swift in Sources */,
 				0EC7F068279231A400F712F3 /* ContainerViewController.swift in Sources */,
 				0EC7F066279231A400F712F3 /* DefaultContainerTransitionAnimator.swift in Sources */,
+				59DAD1382805E3900097B7FF /* WazeURLBuilder.swift in Sources */,
 				0E666BDE27A074E7001082D0 /* CLLocationCoordinate2D+Extensions.swift in Sources */,
 				0EC7F05F279231A400F712F3 /* URL+Extensions.swift in Sources */,
 				0EC7F05B279231A400F712F3 /* UICollectionView+Extensions.swift in Sources */,
+				59DAD1332805E3900097B7FF /* ExternalMappingURLBuilder.swift in Sources */,
+				59DAD13A2805E3900097B7FF /* GoogleMapsURLBuilder.swift in Sources */,
+				59DAD13C2805E3EA0097B7FF /* ClosedRange+Extensions.swift in Sources */,
 				0EC7F05C279231A400F712F3 /* NibLoadable.swift in Sources */,
+				59DAD1372805E3900097B7FF /* MapAppURLBuilder.swift in Sources */,
 				0EC7F057279231A400F712F3 /* Configurable.swift in Sources */,
 				0EC7F06F279231A400F712F3 /* Date+Extensions.swift in Sources */,
 				0EC7F05D279231A400F712F3 /* UIView+Extensions.swift in Sources */,
+				59DAD1402805E42A0097B7FF /* UISegmentedControl+Extensions.swift in Sources */,
 				0EC7F063279231A400F712F3 /* ContainerPercentDrivenInteractiveTransitioner.swift in Sources */,
+				59DAD1352805E3900097B7FF /* MappingCoordinate.swift in Sources */,
 				0EC7F065279231A400F712F3 /* ContainerViewControllerTransitionCoordinator.swift in Sources */,
 				0EC7F058279231A400F712F3 /* MKMapView+Extensions.swift in Sources */,
+				59DAD1442805E4990097B7FF /* ClosedRangeTests.swift in Sources */,
 				0EC7F059279231A400F712F3 /* UIStoryboard+Extensions.swift in Sources */,
 				0EC7F05A279231A400F712F3 /* UITableView+Extensions.swift in Sources */,
 				0EC7F05E279231A400F712F3 /* FileManager+Extensions.swift in Sources */,
 				0EC7F062279231A400F712F3 /* ManagedChild.swift in Sources */,
+				59DAD1422805E43D0097B7FF /* URLComponents+Extensions.swift in Sources */,
 				0EC7F06E279231A400F712F3 /* TimelessDate.swift in Sources */,
 				0EC7F064279231A400F712F3 /* ContainerTransitionContext.swift in Sources */,
+				59DAD1342805E3900097B7FF /* MapStyle.swift in Sources */,
 				0EC7F069279231A400F712F3 /* ContainerViewControllerDelegate.swift in Sources */,
+				59DAD13E2805E40F0097B7FF /* String+Extensions.swift in Sources */,
 				0EC7F061279231A400F712F3 /* ContainerViewController+ManagedChildren.swift in Sources */,
 				0EC7F056279231A400F712F3 /* StoryboardIdentifiable.swift in Sources */,
 				0EC7F055279231A400F712F3 /* ReuseIdentifiable.swift in Sources */,
+				59DAD1392805E3900097B7FF /* AppleMapsURLBuilder.swift in Sources */,
 				0EC7F06D279231A400F712F3 /* ObfuscatedKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
