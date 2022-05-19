@@ -55,6 +55,9 @@
 		0EC7F0ED27923DD400F712F3 /* SnapshotTesting.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EC7F0EC27923DD400F712F3 /* SnapshotTesting.xcframework */; };
 		5919D94228354BFC00E1626E /* UIScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5919D94128354BFC00E1626E /* UIScrollView+Extensions.swift */; };
 		5919D94428354EE600E1626E /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5919D94328354EE600E1626E /* CGSize+Extensions.swift */; };
+		5919D94628369E1400E1626E /* Comparable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5919D94528369E1300E1626E /* Comparable+Extensions.swift */; };
+		5919D94928369F3C00E1626E /* CGSizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5919D94728369EA400E1626E /* CGSizeTests.swift */; };
+		5919D94B28369F6D00E1626E /* ComparableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5919D94A28369F6D00E1626E /* ComparableTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +129,9 @@
 		0EC7F0EC27923DD400F712F3 /* SnapshotTesting.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SnapshotTesting.xcframework; path = Carthage/Build/SnapshotTesting.xcframework; sourceTree = "<group>"; };
 		5919D94128354BFC00E1626E /* UIScrollView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extensions.swift"; sourceTree = "<group>"; };
 		5919D94328354EE600E1626E /* CGSize+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extensions.swift"; sourceTree = "<group>"; };
+		5919D94528369E1300E1626E /* Comparable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Extensions.swift"; sourceTree = "<group>"; };
+		5919D94728369EA400E1626E /* CGSizeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeTests.swift; sourceTree = "<group>"; };
+		5919D94A28369F6D00E1626E /* ComparableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparableTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +211,7 @@
 			children = (
 				5919D94328354EE600E1626E /* CGSize+Extensions.swift */,
 				0E666BDD27A074E7001082D0 /* CLLocationCoordinate2D+Extensions.swift */,
+				5919D94528369E1300E1626E /* Comparable+Extensions.swift */,
 				0EC7F008279231A300F712F3 /* FileManager+Extensions.swift */,
 				5919D94128354BFC00E1626E /* UIScrollView+Extensions.swift */,
 				0EC7F007279231A300F712F3 /* UIView+Extensions.swift */,
@@ -328,6 +335,8 @@
 		0EC7F02E279231A300F712F3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				5919D94728369EA400E1626E /* CGSizeTests.swift */,
+				5919D94A28369F6D00E1626E /* ComparableTests.swift */,
 				0EC7F02F279231A300F712F3 /* ScrollingPageControlTests.swift */,
 				0EC7F030279231A300F712F3 /* DateTests.swift */,
 				0EC7F031279231A300F712F3 /* UtiliKitTests.swift */,
@@ -486,6 +495,7 @@
 				0E666BDE27A074E7001082D0 /* CLLocationCoordinate2D+Extensions.swift in Sources */,
 				0EC7F05F279231A400F712F3 /* URL+Extensions.swift in Sources */,
 				0EC7F05B279231A400F712F3 /* UICollectionView+Extensions.swift in Sources */,
+				5919D94628369E1400E1626E /* Comparable+Extensions.swift in Sources */,
 				0EC7F05C279231A400F712F3 /* NibLoadable.swift in Sources */,
 				0EC7F057279231A400F712F3 /* Configurable.swift in Sources */,
 				0EC7F06F279231A400F712F3 /* Date+Extensions.swift in Sources */,
@@ -513,10 +523,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EC7F0A5279231D500F712F3 /* ScrollingPageControlTests.swift in Sources */,
+				5919D94B28369F6D00E1626E /* ComparableTests.swift in Sources */,
 				0EC7F0A8279231D500F712F3 /* ContainerTests.swift in Sources */,
 				0EC7F0A9279231D500F712F3 /* UtiliKitTests.swift in Sources */,
 				0EC7F0AA279231D500F712F3 /* ObfuscationTests.swift in Sources */,
 				0EC7F0A7279231D500F712F3 /* ActiveLabelTests.swift in Sources */,
+				5919D94928369F3C00E1626E /* CGSizeTests.swift in Sources */,
 				0EC7F0A6279231D500F712F3 /* DateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

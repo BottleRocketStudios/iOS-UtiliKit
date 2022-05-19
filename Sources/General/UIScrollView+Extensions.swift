@@ -37,7 +37,7 @@ extension UIScrollView {
         }
         let horizontalPercentage = insetAdjustedContentOffset.x / totalScrollableWidth
 
-        return (horizontal: min(max(horizontalPercentage, 0), 1), vertical: min(max(verticalPercentage, 0), 1))
+        return (horizontal: horizontalPercentage.clamped(min: 0, max: 1), vertical: verticalPercentage.clamped(min: 0, max: 1))
     }
 
     /// `true` if the scroll view is scrolled to the top, else `false`
