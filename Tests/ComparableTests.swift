@@ -11,43 +11,49 @@ import XCTest
 
 class ComparableTests: XCTestCase {
 
+    let minValue = 0
+    let maxValue = 10
+    let middleValue = 5
+    let lessThanValue = -5
+    let greaterThanValue = 15
+
     func test_clamping_lessThanMin() {
-        XCTAssertEqual(-5.clamped(min: 0, max: 10), 0)
+        XCTAssertEqual(lessThanValue.clamped(min: minValue, max: maxValue), minValue)
     }
 
     func test_clamping_equalToMin() {
-        XCTAssertEqual(0.clamped(min: 0, max: 10), 0)
+        XCTAssertEqual(minValue.clamped(min: minValue, max: maxValue), minValue)
     }
 
     func test_clamping_inMinMax() {
-        XCTAssertEqual(5.clamped(min: 0, max: 10), 5)
+        XCTAssertEqual(middleValue.clamped(min: minValue, max: maxValue), middleValue)
     }
 
     func test_clamping_equalToMax() {
-        XCTAssertEqual(10.clamped(min: 0, max: 10), 10)
+        XCTAssertEqual(maxValue.clamped(min: minValue, max: maxValue), maxValue)
     }
 
     func test_clamping_greaterThanMax() {
-        XCTAssertEqual(15.clamped(min: 0, max: 10), 10)
+        XCTAssertEqual(greaterThanValue.clamped(min: minValue, max: maxValue), maxValue)
     }
 
     func test_clamping_lessThanMinRange() {
-        XCTAssertEqual(-5.clamped(in: 0...10), 0)
+        XCTAssertEqual(lessThanValue.clamped(in: minValue...maxValue), minValue)
     }
 
     func test_clamping_equalToMinRange() {
-        XCTAssertEqual(0.clamped(in: 0...10), 0)
+        XCTAssertEqual(minValue.clamped(in: minValue...maxValue), minValue)
     }
 
     func test_clamping_inRange() {
-        XCTAssertEqual(5.clamped(in: 0...10), 5)
+        XCTAssertEqual(middleValue.clamped(in: minValue...maxValue), middleValue)
     }
 
     func test_clamping_equalToMaxRange() {
-        XCTAssertEqual(10.clamped(in: 0...10), 10)
+        XCTAssertEqual(maxValue.clamped(in: minValue...maxValue), maxValue)
     }
 
     func test_clamping_greaterThanMaxRange() {
-        XCTAssertEqual(15.clamped(in: 0...10), 10)
+        XCTAssertEqual(greaterThanValue.clamped(in: minValue...maxValue), maxValue)
     }
 }
