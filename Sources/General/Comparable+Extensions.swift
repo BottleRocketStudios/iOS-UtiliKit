@@ -25,4 +25,11 @@ extension Comparable {
     func clamped(in range: Range<Self>) -> Self {
         clamped(min: range.lowerBound, max: range.upperBound)
     }
+
+    /// Keeps the value within the specified `range` of values
+    /// - Parameter range: The range of values to return
+    /// - Returns: The `range.lowerBound` if less than the range, else `range.upperBound` if greater than the range, else the value itself
+    func clamped(in range: ClosedRange<Self>) -> Self {
+        clamped(min: range.lowerBound, max: range.upperBound)
+    }
 }
