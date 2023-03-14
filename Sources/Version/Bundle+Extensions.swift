@@ -20,9 +20,9 @@ public extension Bundle {
 	}
 	
 	/**
-     Returns the version number of the application. EX. 5.0.1
+     Returns the version number of the application. EX. 5.0.1.123
      
-     Short Version EX. 5.0.1.123
+     Short Version EX. 5.0.1
      
      - Parameter configuration: Defaults to the standard config. This struct defines the keys used for fetching the version number
      - Parameter isShortVersion: A Bool value used to switch between the short and long version

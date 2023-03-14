@@ -1,6 +1,6 @@
 # TimelessDate
 
-A Timeless Date is a simple abstraction the removes the time from a Date and uses Calendar for calculations. This is especially useful for calendar and travel use cases as seeing how many days away something is often is more important that the number of hours between them / 24.
+A `TimelessDate` is a simple abstraction the removes the time from a Date and uses Calendar for calculations. This is especially useful for calendar and travel use cases as seeing how many days away something is often is more important that the number of hours between them / 24.
 
 ``` swift
 func numberOfDaysBetween(start: TimelessDate, finish: TimelessDate) -> DateInterval {

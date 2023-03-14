@@ -1,20 +1,20 @@
 # Version
 
 Getting version numbers into user facing strings only requires a function call. *Note this function throws an error if the provided version config contains an invalid key.
-A simple implementation might look like this:
+A simple implementation with examples in comments might look like this:
 
 ``` swift
 func printVersions() {
     do {
-        let customVersionString = try Bundle.main.versionString(for: MyVersionConfig(), isShortVersion: false)
-        let verboseVersionString = try Bundle.main.verboseVersionString()
         let versionString = try Bundle.main.versionString()
-
-        print(customVersionString)
-        print(verboseVersionString)
-        print(versionString)
+        let shortVersionString = try Bundle.main.versionString(for: MyVersionConfig(), isShortVersion: true)
+        let verboseVersionString = try Bundle.main.verboseVersionString()
+        
+        print(versionString) // 5.0.1.123
+        print(shortVersionString) // 5.0.1
+        print(verboseVersionString) // version 5.0.1.123
     } catch {
-        print(error)
+        // Handle error
     }
 }
 ```
