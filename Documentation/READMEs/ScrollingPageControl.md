@@ -38,9 +38,10 @@ pageControl.customPageDotAtIndex = { [weak self] (index) in
     return FavoriteIconView()
 }
 ```
+![](Images/ScrollingPageControl/ScrollingPageControl-CustomizedPageDot.png)
+
 Usage notes:
 - Returning `nil` for an `index` in the `customPageDotAtIndex` block will default to the standard page dot at the specified `dotSize` for that index.
 - It's advised that any custom view returned from this block should respond to `tintColorDidChange()` in a way that makes it clear when it is/is not the `currentPage`.
 - It's advised that any custom view returned from this block should take `dotSize` and `dotSpacing` into account to maintain a uniform look and feel.
 - Anytime the data used in this block gets updated after it is initially set, `updateDot(at:)` or `updateDots(at:)` should be called to keep the page control in sync.
-![](Images/ScrollingPageControl/ScrollingPageControl-CustomizedPageDot.png)
