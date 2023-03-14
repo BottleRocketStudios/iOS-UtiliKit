@@ -35,9 +35,9 @@ public extension Bundle {
 	}
 	
 	/**
-     Returns the verbose version number of the application. EX. version 5.0.1.123DE🐞 Debug
+     Returns the verbose version number of the application. EX. version 5.0.1.123 DE 🐞 Debug
      
-     Short Version EX. version 5.0.1DE🐞 Debug
+     Short Version EX. version 5.0.1 DE 🐞 Debug
      
      - Parameter configuration: Defaults to the standard config. This struct defines the keys used for fetching the version number
      - Parameter isShortVersion: A Bool value used to switch between the short and long version
@@ -47,9 +47,10 @@ public extension Bundle {
 		
 		let version = try versionString(for: configuration, isShortVersion: isShortVersion)
 		let environment = configuration.environmentName ?? ""
-		
+        let debugSymbol = showDebugSymbol ? " 🐞 Debug" : ""
+
 		let localizedVersionString = NSLocalizedString("version %@", comment: "Version string - %@ will be replaced with a version number. EX. 5.0.1")
-		let formatString = String.localizedStringWithFormat(localizedVersionString, "\(version) \(environment)")
+		let formatString = String.localizedStringWithFormat(localizedVersionString, "\(version) \(environment)\(debugSymbol)")
 		
 		return formatString
 	}

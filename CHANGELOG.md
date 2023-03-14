@@ -1,4 +1,4 @@
-## Master
+## Main
 
 ##### Enhancements
 
@@ -6,7 +6,9 @@
 
 ##### Bug Fixes
 
-* None
+* Fix debug symbol not showing in `verboseVersionString` method.
+[Earl Gaspard](https://github.com/earlgaspard)
+[#121](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/121)
 
 
 ## 1.8.0 (2022-01-19)
@@ -28,6 +30,7 @@
 ##### Bug Fixes
 
 * None
+
 
 ## 1.7.0 (2020-08-17)
 
@@ -77,6 +80,7 @@
 * Fix an issue where ContainerViewController was not removing source or destination views from the view hierarchy after transitioning
 [Dimitar Milinski](https://github.com/dmilinski)
 [#81](https://github.com/BottleRocketStudios/iOS-UtiliKit/pull/81)
+
 
 ## 1.6.0 (2019-08-29)
 
