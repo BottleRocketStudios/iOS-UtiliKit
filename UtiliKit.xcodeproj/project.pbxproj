@@ -122,6 +122,14 @@
 		0EC7F0A3279231C600F712F3 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = SOURCE_ROOT; };
 		0EC7F0A4279231C600F712F3 /* Dangerfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dangerfile.swift; sourceTree = SOURCE_ROOT; };
 		0EC7F0EC27923DD400F712F3 /* SnapshotTesting.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SnapshotTesting.xcframework; path = Carthage/Build/SnapshotTesting.xcframework; sourceTree = "<group>"; };
+		622D004D29C114D8006191B2 /* ActiveLabel.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ActiveLabel.md; sourceTree = "<group>"; };
+		622D004E29C11C38006191B2 /* Container.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Container.md; sourceTree = "<group>"; };
+		622D004F29C11C38006191B2 /* Version.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Version.md; sourceTree = "<group>"; };
+		622D005029C11C38006191B2 /* TimelessDate.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TimelessDate.md; sourceTree = "<group>"; };
+		622D005129C11C38006191B2 /* ScrollingPageControl.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ScrollingPageControl.md; sourceTree = "<group>"; };
+		622D005229C11C38006191B2 /* General.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = General.md; sourceTree = "<group>"; };
+		622D005329C11C38006191B2 /* Obfuscation.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Obfuscation.md; sourceTree = "<group>"; };
+		622D005429C11C38006191B2 /* Instantiation.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Instantiation.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,8 +284,8 @@
 		0EC7F021279231A300F712F3 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
-				0EC7F022279231A300F712F3 /* Images */,
 				0EC7F02C279231A300F712F3 /* Guides */,
+				622D004C29C114D8006191B2 /* READMEs */,
 				0EC7F0A3279231C600F712F3 /* CHANGELOG.md */,
 				0EC7F0A1279231C600F712F3 /* CODEOWNERS */,
 				0EC7F0A0279231C600F712F3 /* CONTRIBUTING.md */,
@@ -291,11 +299,8 @@
 		0EC7F022279231A300F712F3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				0EC7F023279231A300F712F3 /* ActiveLabelDefault.gif */,
+				622D005529C11DF1006191B2 /* ActiveLabel */,
 				0EC7F024279231A300F712F3 /* ScrollingPageControl */,
-				0EC7F029279231A300F712F3 /* ActiveLabelEdited02.gif */,
-				0EC7F02A279231A300F712F3 /* ActiveLabelEdited03.gif */,
-				0EC7F02B279231A300F712F3 /* ActiveLabelEdited01.gif */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -348,6 +353,33 @@
 				0EC7F0EC27923DD400F712F3 /* SnapshotTesting.xcframework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		622D004C29C114D8006191B2 /* READMEs */ = {
+			isa = PBXGroup;
+			children = (
+				0EC7F022279231A300F712F3 /* Images */,
+				622D004D29C114D8006191B2 /* ActiveLabel.md */,
+				622D004E29C11C38006191B2 /* Container.md */,
+				622D005229C11C38006191B2 /* General.md */,
+				622D005429C11C38006191B2 /* Instantiation.md */,
+				622D005329C11C38006191B2 /* Obfuscation.md */,
+				622D005129C11C38006191B2 /* ScrollingPageControl.md */,
+				622D005029C11C38006191B2 /* TimelessDate.md */,
+				622D004F29C11C38006191B2 /* Version.md */,
+			);
+			path = READMEs;
+			sourceTree = "<group>";
+		};
+		622D005529C11DF1006191B2 /* ActiveLabel */ = {
+			isa = PBXGroup;
+			children = (
+				0EC7F023279231A300F712F3 /* ActiveLabelDefault.gif */,
+				0EC7F029279231A300F712F3 /* ActiveLabelEdited02.gif */,
+				0EC7F02A279231A300F712F3 /* ActiveLabelEdited03.gif */,
+				0EC7F02B279231A300F712F3 /* ActiveLabelEdited01.gif */,
+			);
+			path = ActiveLabel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
